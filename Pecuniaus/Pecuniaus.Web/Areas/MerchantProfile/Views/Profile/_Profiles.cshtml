@@ -1,0 +1,95 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantProfileDetailModel
+@using (Ajax.BeginForm("ProcessProfile", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q5" }))
+{
+@Html.Partial("_PageMessage")
+@Html.ValidationSummary()
+<div class="panel-body">
+    <div class="form-group form-actions">
+        <div class="col-xs-12">
+            <div class="pull-right">
+                @*<button class="btn btn-primary" type="submit" name="submitButton" value="Update">@Pecuniaus.Resources.Common.Save</button>
+    <button class="btn btn-primary" type="button">Edit</button>
+        <button class="btn btn-primary" type="button">Save</button>
+        <button class="btn btn-danger" type="button">Cancel</button>
+        <a class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" href="#modal-searchpopup" data-original-title="" title="">Notes</a>
+                <br>
+                <br>*@
+                <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.ProcessorId)
+                    @Html.DropDownListFor(m => m.ProcessorId, Model.Processors, new { @class = "form-control", @placeholder = "Visa Net", style = "width: 100%;" })
+                </div>
+
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.ProcessorNumber)
+                    @Html.TextBoxFor(m => m.ProcessorNumber, new { @class = "form-control" })
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5" style="margin-top:17px;">
+                    <div class="pull-left">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="Filter">@Pecuniaus.Resources.Common.Filter</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start --> <br>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.GrossYearlySale)<br>
+                    @Html.DisplayFor(m => m.GrossYearlySale)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.AverageMonthlyTicket)<br>
+                    @Html.DisplayFor(m => m.AverageMonthlyTicket)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.MonthlyCCSale)<br>
+                    @Html.DisplayFor(m => m.MonthlyCCSale)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.AverageMonthlyCCValue)<br>
+                    @Html.DisplayFor(m => m.AverageMonthlyCCValue)
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                    <thead>
+                        <tr role="row">
+                            @*<th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Edit</th>*@
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.MerchantProfile.Profiles.Month</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Profiles.Year</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Profiles.ProcessorName</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.MerchantProfile.Profiles.Amount</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Profiles.Tickets</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var modItem in Model.ProfileDetail)
+                        {
+                            <tr style="@(modItem.IsAutomated ? "Background-color:pink" : "")"> 
+                                @*<td><input type="radio" id="example-checkbox1" name="example-checkbox1" value="option1" onclick="loadProfileDetails(@Html.DisplayFor(Item => modItem.ActivityID));"></td>*@
+                                <td>@Html.DisplayFor(Item => modItem.MonthName)</td>
+                                <td>@Html.DisplayFor(Item => modItem.Year)</td>
+                                <td>@Html.DisplayFor(Item => modItem.ProcessorName)</td>
+                                <td>@Html.DisplayFor(Item => modItem.Amount)</td>
+                                <td>@Html.DisplayFor(Item => modItem.Tickets)</td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+            <br>
+        </div>
+            <div id="profiledetails"></div>
+    </div>
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+</div>
+}

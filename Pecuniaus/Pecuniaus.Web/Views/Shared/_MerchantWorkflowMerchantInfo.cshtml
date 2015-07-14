@@ -1,0 +1,33 @@
+﻿<!-- Widget -->
+<div class="widget">
+    <div class="widget-extra blue_bg">
+        <div class="widget-options">
+            <div class="btn-group btn-group-xs notesmrgn">
+                @if (Request["merchantId"] != null)
+                {
+                    <a href="#modal-searchpopup" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-default enable-tooltip" onclick="FetchNotes();"> <i class="fa fa-pencil"></i></a>
+                }
+                <a title="" data-toggle="tooltip" class="btn btn-default" href="javascript:void(0)" data-original-title="Quick Settings"><i class="fa fa-cog"></i></a>
+            </div>
+        </div>
+        <h3 class="widget-content-light">Merchant <strong>Information</strong></h3>
+    </div>
+    <div class="widget-simple">
+        <div class="col-md-6">
+            <address>
+                <strong>Merchant Name: </strong> <label id="lblMerchantName"></label>
+                <br>
+                <strong>Legal Name:</strong> <label id="lblLegalName"></label>
+                <br>
+                <strong>Assigned Sales Rep:</strong> <label id="lblSalesRep1"></label><br>
+            </address>
+        </div>
+        <div class="col-md-6">
+            <address>
+                <strong>Business Name: </strong> <label id="lblBusinessName"></label><br>
+                <strong>RNC :</strong> <label id="lblRNC"></label> <br>
+            </address>
+        </div>
+    </div>
+</div>
+<!-- END Widget -->

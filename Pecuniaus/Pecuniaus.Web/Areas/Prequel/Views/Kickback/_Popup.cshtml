@@ -1,0 +1,35 @@
+﻿@model Pecuniaus.Models.KickBack
+
+<div id="mod-kickback" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+                @using (Ajax.BeginForm("PopupSubmit", "Kickback", new { area = "Prequel" }, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       //  UpdateTargetId = "dvKickback",
+       OnSuccess = "window.location=data.url;ShowLoading();",
+   }, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Task</label>
+                            @Html.DropDownListFor(m => m.TaskTypeId, Model.TaskTypes, new { @class = "form-control", @data_placeholder = "Select Module" })
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 text-right">
+                            <input type="submit" class="btn btn-sm btn-primary" value="@Pecuniaus.Resources.Common.OK" />
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">@Pecuniaus.Resources.Common.Close</button>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

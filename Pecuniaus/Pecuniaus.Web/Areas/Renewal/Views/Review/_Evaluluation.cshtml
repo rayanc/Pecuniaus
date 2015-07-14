@@ -1,0 +1,68 @@
+﻿@model Pecuniaus.Renewal.Models.RetrieveMerchantInformationModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWRenewalReview);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.RW_RenewalReview);
+}
+<div id="divEvaluation">
+
+    @using (Ajax.BeginForm("SaveMerchantEvaluation", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "divEvaluation",
+       OnSuccess = "alert('Save')",
+   }, new { @class = "a", role = "form" }))
+    {
+    
+        
+        <div>
+            @Html.HiddenFor(m => m.score)
+            @Html.HiddenFor(m => m.mccv)
+            @Html.HiddenFor(m => m.finalletter)
+            @Html.HiddenFor(m => m.roundedscore)
+            @Html.HiddenFor(m => m.rawData)
+        </div>
+
+        <div class="row">
+            <div class="pull-right">
+                 @if (permissions.Write )
+                 {
+                <input type="submit" id="btnSaveEvaluation" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") hidden ="@isFormDisabled" />}
+            </div>
+        </div>
+
+        <div class="block">
+
+            <div class="block-title">
+                <h2><strong>Scores </strong></h2>
+            </div>
+            <button class="btn btn-primary" type="button" id="btngeneratescore" @(isFormDisabled ? "disabled" : "") >Genrate Score</button>
+            <br />
+            <br />
+            Merchant Score:&nbsp;<div id="divscore">
+                <b>@Model.score</b>
+            </div>
+            Final Letter:&nbsp;<div id="divfinalletter">
+                <b>@Model.finalletter</b>
+            </div>
+            @*  <a href="@Model.rawData" target="_blank">Scoring Data</a>*@
+            <a href="@Url.Action("GetScoringData")" target="_blank">Scoring Data</a>
+            <br />
+            Avreage MCCV&nbsp;<div>
+                @Html.DisplayFor(m => m.mccv)
+            </div>
+            <br />
+            <br />
+            @{Html.RenderAction("CreditPull");}
+            <br />
+            <br />
+            <div id="divcreditreport" class="form-group clearfix" data-source-url="@Url.Action("ListCreditReport")">
+                @{Html.RenderAction("ListCreditReport");}
+            </div>
+            <br />
+            <br />
+        </div>
+  
+      
+    }
+
+</div>

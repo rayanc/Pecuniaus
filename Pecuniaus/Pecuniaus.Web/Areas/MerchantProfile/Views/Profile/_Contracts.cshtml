@@ -1,0 +1,79 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractDetailModel
+@{
+    var permissionsContracts = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Contracts);
+}
+<div class="panel-body">
+    @using (Ajax.BeginForm("SearchContract", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q11" }))
+    {
+        @Html.Partial("_PageMessage")
+        @Html.ValidationSummary()
+        <div class="row">
+            <div class="col-md-3">
+                @Pecuniaus.Resources.Common.From
+                @Html.EditorFor(m => m.StartDate)
+            </div>
+
+            <div class="col-md-3">
+                @Pecuniaus.Resources.Common.To
+                @Html.EditorFor(m => m.EndDate)
+            </div>
+            @*<div class="col-md-1"></div>*@
+            <div class="col-md-6" style="margin-top:17px;">
+                <div class="pull-right">
+                    <button class="btn btn-primary" type="submit" name="submitButton" value="Search">@Pecuniaus.Resources.Common.Search</button>
+                    @*<button class="btn btn-danger" type="button">@Pecuniaus.Resources.Common.Clear</button>*@
+                    <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+        <div class="table-responsive" style="margin-top: 30px; overflow: auto;">
+            <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid">
+                <thead>
+                    <tr role="row">
+                        @*@if (permissionsContracts.Edit)
+                        {*@
+                            <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Select</th>
+                        @*}*@
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending">@Pecuniaus.Resources.MerchantProfile.Contracts.ContactNumber</th>
+                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">@Pecuniaus.Resources.MerchantProfile.Contracts.FundingDate</th>
+                        <th class="sorting " rowspan="1" colspan="1" aria-label="Actions">@Pecuniaus.Resources.MerchantProfile.Contracts.LoanedAmount</th>
+                        <th class="" rowspan="1" colspan="1" aria-label="Actions">@Pecuniaus.Resources.MerchantProfile.Contracts.OwnedAmount</th>
+                        <th class="" rowspan="1" colspan="1" aria-label="Actions">@Pecuniaus.Resources.MerchantProfile.Contracts.Price</th>
+                        <th class="sorting" rowspan="1" colspan="1" aria-label="Actions">@Pecuniaus.Resources.MerchantProfile.Contracts.RetentionPercentage</th>
+                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">@Pecuniaus.Resources.MerchantProfile.Contracts.Time</th>
+                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">@Pecuniaus.Resources.MerchantProfile.Contracts.RealTime</th>
+                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">@Pecuniaus.Resources.MerchantProfile.Contracts.PaidAmount</th>
+                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">@Pecuniaus.Resources.MerchantProfile.Contracts.PendingAmount</th>
+                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">@Pecuniaus.Resources.MerchantProfile.Contracts.Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var modItem in Model.ContractDetail)
+                    {
+                        <tr>
+@*@if (permissionsContracts.Edit)
+                        {*@
+                            <td><input type="radio" id="example-checkbox1" name="example-checkbox1" value="option1" onclick="loadContractDetails(@Html.DisplayFor(Item => modItem.ContractId));"></td>
+@*}*@
+                            <td>@Html.DisplayFor(item => modItem.ContractNumber)</td>
+                            <td>@Html.DisplayFor(item => modItem.FundingDate)</td>
+                            <td>@Html.DisplayFor(item => modItem.LoanedAmount)</td>
+                            <td>@Html.DisplayFor(item => modItem.OwnedAmount)</td>
+                            <td>@Html.DisplayFor(item => modItem.Price)</td>
+                            <td>@Html.DisplayFor(item => modItem.RetentionPercentage)</td>
+                            <td>@Html.DisplayFor(item => modItem.Time)</td>
+                            <td>@Html.DisplayFor(item => modItem.RealTime)</td>
+                            <td>@Html.DisplayFor(item => modItem.PaidAmount)</td>
+                            <td>@Html.DisplayFor(item => modItem.PendingAmount)</td>
+                            <td>@Html.DisplayFor(item => modItem.Score)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }<br>
+    <div id="contractdetails" class="row">
+    </div>
+</div>

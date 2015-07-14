@@ -1,0 +1,116 @@
+﻿@{var actionName = ViewContext.RouteData.GetRequiredString("controller").ToLower();}
+<div class="row header-section circles-header-section">
+    <div class="circles">
+
+        <div class="@(actionName == "documentscan" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "DocumentScan")">
+                            @Pecuniaus.Resources.Common.Document<br>
+                            @Pecuniaus.Resources.Common.Scanning
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "verificationcall" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "VerificationCall")">
+                            @Pecuniaus.Resources.Common.Verification <br>
+                            @Pecuniaus.Resources.Common.Call
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "dataentry" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "DataEntry")">
+                            @Pecuniaus.Resources.Common.Data <br>
+                            @Pecuniaus.Resources.Common.Entry
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "verificationtask" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("BankInformation", "VerificationTask")">
+                            @Pecuniaus.Resources.Common.Verification <br>
+                            @Pecuniaus.Resources.Common.Task
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "reviewtask" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "ReviewTask")">
+                            @Pecuniaus.Resources.Common.Review <br>
+                            @Pecuniaus.Resources.Common.Task
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "contract" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Contract")">
+                            @Pecuniaus.Resources.Common.Contract
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "funding" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Funding")">
+                            @Pecuniaus.Resources.Common.Funding
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "finalverification" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "FinalVerification")">
+                            @Pecuniaus.Resources.Common.Final<br>@Pecuniaus.Resources.Common.FinalValidation
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

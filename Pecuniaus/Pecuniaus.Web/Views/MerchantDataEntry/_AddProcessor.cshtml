@@ -1,0 +1,37 @@
+﻿@model Pecuniaus.Web.Models.ProcessorModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQDataEntry);}
+<div id="dvNewProcessor">
+    @using (Ajax.BeginForm("AddProcessor", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewProcessor",
+       OnSuccess = "ProcessorUpdated()",
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+        @Html.ValidationSummary()
+
+
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.ProcessorTypes)
+                @Html.DropDownListFor(m => m.ProcessorTypeId, Model.ProcessorTypes, "", new { @class = "form-control", @data_placeholder = "Processor Compar" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.processorNumber)
+                @Html.TextBoxFor(m => m.processorNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.FirstProcessedDate)
+                @Html.EditorFor(m => m.FirstProcessedDate)
+            </div>
+
+            <div class="col-md-3">
+                <label>&nbsp;</label>
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.AddNew" @(isFormDisabled ? "disabled" : "") />
+                </div>
+            </div>
+        </div>
+    }
+</div>

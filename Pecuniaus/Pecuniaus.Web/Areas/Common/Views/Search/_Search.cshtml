@@ -1,0 +1,57 @@
+﻿@model Pecuniaus.Models.SearchModel
+
+<ul class="nav navbar-nav-custom topsearchBox">
+    <li>
+        <input type="text" placeholder="Merchant ID/Name" class="form-control" id="sMerchantName" value="@Model.MerchantIdName" style="width:145px" >
+    </li>
+    <li>
+        <input type="text" placeholder="Contract ID" class="form-control" id="sContId" value="@Model.ContractId" style="width:120px"></li>
+    <li>
+        @Html.DropDownListFor(model => model.TaskNameId, new SelectList(Model.TaskNameList, "keyId", "description"), "-All-",
+                         new { id = "sTaskName", @class = "select-select2", style = "width: 100%;min-width:130px" })
+    </li>
+    <li>
+        @Html.DropDownListFor(model => model.TaskStatusId, new SelectList(Model.TaskStatusList, "keyId", "description"), "-All-",
+        new { id = "sTaskStatus", @placeholder = "", @class = "select-select2", style = "width: 100%;min-width:130px" })
+    </li>
+    <li>
+        @Html.DropDownListFor(model => model.UserId, Model.Users, "-All-",
+        new { id = "sUserId", @placeholder = "", @class = "select-select2", style = "width: 100%;min-width:130px" })
+    </li>
+     <li>
+        <button class="btn btn-sm btn-danger btn-search" type="button" data-toggle="modal" data-target="#ContSrchMdl"><i class="fa fa-search"></i> Search</button>
+        @*<a href="#ContSrchMdl" id="lnkmodal-sf-list" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-danger btn-search"><i class="fa fa-search"> Search</i></a>*@
+    </li>
+    @if (Model.ShowSF)
+    {
+        <li>
+            <a href="#modal-sf-list" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-danger enable-tooltip sflistbtn">
+                <i class="gi gi-show_thumbnails_with_lines"></i>
+                SF List
+            </a>
+        </li>
+    }
+</ul>
+
+
+
+@Html.HiddenFor(model => model.WorkFlowID, new { id = "sWorkFlowID" })
+@Html.HiddenFor(model => model.SearchType, new { id = "sSearchType" })
+
+<div class="modal fade" id="ContSrchMdl" tabindex="-1" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="">
+                    <div class="block-options pull-right">
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="hi fa-1x hi-remove"></i></button>
+                    </div>
+                    <h2>Merchant Listing</h2>
+                </div>
+            </div>
+            <div class="modal-body" id="dvMSrchRes" data-source-url="@Url.Action("SearchResult", "Search", new { area = "Common" })">
+            </div>
+
+        </div>
+    </div>
+</div>

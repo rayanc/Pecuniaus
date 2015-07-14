@@ -1,0 +1,15 @@
+﻿@model  Pecuniaus.Collection.Models.MerchantDocumentModel
+  @if(Model!=null)
+  { 
+    if (@Model.FileDetails.StartsWith("image"))
+    {
+        <img src='/ScanDocuments/@Model.FileName' class="img-responsive" />
+    }
+    else
+    {
+        <object data='/ScanDocuments/@Model.FileName' style='width:100%;height:100%;min-height:450px' type="@Model.FileDetails"><p><a href='/ScanDocuments/@Model.FileName'>@Pecuniaus.Resources.Contract.DocumentScan.ViewDoc</a></p></object>
+    }
+  }
+
+   
+

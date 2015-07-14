@@ -1,0 +1,100 @@
+﻿@model Pecuniaus.User.Models.UserModel
+
+@using HtmlHelpers.Extension
+@*<style>
+        .table thead > tr > th {
+            font-size: 13px;
+            font-weight: 600;
+        }
+    </style>*@
+@*@Scripts.Render("~/bundles/GridMvc")*@
+<div id="divUsers" style="min-height: 614px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>User Management</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="@Url.Action("Index", "Account")">User Management</a></li>
+    </ul>
+    <div class="block">
+        <!-- Search Styles Title -->
+        <div class="block-title">
+            <ul  class="nav nav-tabs">
+                <li class="active"><a href="@Url.Action("Index", "Account")">@Pecuniaus.Resources.User.User.UserMenuName</a></li>
+                <li><a href="@Url.Action("Index", "UserProfile")">@Pecuniaus.Resources.User.UserProfile.UserProfileMenuName</a></li>
+                <li id="liGroup"><a href="@Url.Action("Index", "Group")">@Pecuniaus.Resources.User.Group.GroupMenuName</a></li>
+                <li id="liGroupPermission"><a href="@Url.Action("Index", "GroupPermission")">@Pecuniaus.Resources.User.GroupPermission.GroupPermissionMenuName</a></li>
+                <li id="liTaskManagement"><a href="@Url.Action("Index", "TaskManagement")">@Pecuniaus.Resources.User.TaskManagement.TaskManagementMenuName</a></li>
+
+              
+            </ul>
+        </div>
+        <!-- END Search Styles Title -->
+        <!-- Search Styles Content -->
+        <div class="tab-content">
+            <div id="new-users" class="tab-pane active">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block full">
+                            <div class="block-title">
+                                <h2><strong>@Pecuniaus.Resources.User.User.Users</strong></h2>
+                            </div>
+                            @*<div id="dvEditUser" data-source-url="@Url.Action("AddUser")">
+                            </div>*@
+                            <div id="dvEditUser">
+                                @{ Html.RenderAction("AddUser");  }
+                            </div>
+                            <div class="form-group" id="dvUsersListing" data-source-url="@Url.Action("ListUsers")">
+                                @{ Html.RenderAction("ListUsers");  }
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="group" class="tab-pane"> </div>
+            <div id="group-permissions" class="tab-pane"> </div>
+        </div>
+        <!-- END Search Styles Content -->
+    </div>
+    <!-- All Boxes Content Start -->
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(
+          function () {
+              AddUser();
+              ajaxifyGridMvc("#dvUsersListing");
+          });
+
+        function UserUpdated() {
+            BindUsers();
+        }
+
+        function EditUser(userID) {
+            $('#dvEditUser').load('@Url.Action("EditUser")?id=' + userID);
+        }
+        function UserProfile(userID) {
+            window.location.href = "@Url.Action("Index", "UserProfile")?UserId=" + userID;
+        }
+        
+        function AddUser() {
+            var $dvEditUser = $('#dvEditUser');
+            $dvEditUser.load($dvEditUser.attr('data-source-url'));
+        }
+        function BindUsers() {
+            var $dvUsersListing = $('#dvUsersListing');
+            var url = $dvUsersListing.attr("data-source-url");
+            $dvUsersListing.load(url);
+        }
+    </script>
+}

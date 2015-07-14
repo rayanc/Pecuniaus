@@ -1,0 +1,51 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `avz_access`@`101.%` 
+    SQL SECURITY DEFINER
+VIEW `avz_vw_merchantTempdetails` AS
+    select 
+        `mrc`.`MerchantId_TMP` AS `merchantId`,
+        `cont`.`ContractId` AS `contractid`,
+        `mrc`.`LegalName` AS `merchantName`,
+        `mrc`.`LegalName` AS `legalName`,
+        `mrc`.`BusinessName` AS `businessName`,
+        `mrc`.`BusinessStartDate` AS `businessStartDate`,
+        `mrc`.`BusinessTypeId` AS `BusinessTypeId`,
+        '' AS `businessUrl`,
+        `mrc`.`RNCNumber` AS `RNCNumber`,
+        concat(`repsal`.`FirstName`,
+                ' ',
+                `repsal`.`LastName`) AS `assignedSalesRep`,
+        '' AS `ownerName`,
+        `mrc`.`SalesRepId` AS `salesRepId`,
+        `tsktyp`.`TaskName` AS `taskName`,
+        `wrk`.`WorkFlowName` AS `workFlowName`,
+        `tsk`.`WorkflowId` AS `WorkflowId`,
+        `tsk`.`AssignedUserId` AS `assigneduserId`,
+        `tsk`.`AssignedDate` AS `assignedDate`,
+        `mrc`.`IndustryTypeId` AS `industryTypeId`,
+        '' AS `SSN`,
+        '' AS `phoneNumber`,
+        `ent`.`Name` AS `TypeofBusinessentity`,
+        ifnull(`tskst`.`StatusId`, 0) AS `taskStatusId`,
+        ifnull(`tskst`.`StatusName`, 'Assigned') AS `tasKStatus`,
+        '20001' AS `merchantStatusId`,
+        ifnull(`contst`.`StatusId`, 0) AS `contractStatusId`,
+        'Prequalification' AS `merchantStatus`,
+        `contst`.`StatusName` AS `contractStatus`,
+        `mrc`.`InsertUserId` AS `insertUserId`,
+        ifnull(`tsktyp`.`TaskTypeId`, 0) AS `taskTypeId`,
+		 `tsk`.`TaskId` AS `taskId`
+    from
+        (((((((((`tmp_tb_merchants` `mrc`
+        left join `tb_salesrep` `sal` ON ((`mrc`.`SalesRepId` = `sal`.`SalesRepId`)))
+        left join `tb_salesrep_contact` `repsal` ON ((`sal`.`Contactid` = `repsal`.`ContactId`)))
+        left join `tb_tasks` `tsk` ON ((`tsk`.`MerchantIDTMP` = `mrc`.`MerchantId_TMP`)))
+        left join `tb_tasktypes` `tsktyp` ON ((`tsk`.`TaskTypeId` = `tsktyp`.`TaskTypeId`)))
+        left join `lkp_tb_entitytypes` `ent` ON ((`ent`.`EntitytypeID` = `mrc`.`BusinessTypeId`)))
+        left join `tb_workflows` `wrk` ON ((`tsk`.`WorkflowId` = `wrk`.`WorkFlowId`)))
+        left join `lkp_tb_statuses` `tskst` ON ((`tsk`.`StatusId` = `tskst`.`StatusId`)))
+        left join `tb_contracts` `cont` ON ((`cont`.`MerchantId` = `mrc`.`MerchantId`)))
+        left join `lkp_tb_statuses` `contst` ON ((`cont`.`StatusId` = `contst`.`StatusId`)))
+    where
+        isnull(`mrc`.`MerchantId`)

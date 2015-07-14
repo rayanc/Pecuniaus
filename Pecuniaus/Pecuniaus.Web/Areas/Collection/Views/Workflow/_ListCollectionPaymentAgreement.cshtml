@@ -1,0 +1,13 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+@if (Model.LstCollectionPaymentAgreement != null)
+{
+    @Html.Grid(Model.LstCollectionPaymentAgreement).Named("grdPaymentAgreement").Columns(columns =>
+  {
+      columns.Add(data => data.dueDate).Titled(@Pecuniaus.Resources.Collection.PaymentAgreement.DueDate).Format("{0:d}");
+      columns.Add(data => data.amount).Titled(@Pecuniaus.Resources.Collection.PaymentAgreement.Amount);
+      columns.Add(data => data.status).Titled(@Pecuniaus.Resources.Collection.PaymentAgreement.Status);
+      columns.Add(data => data.dateofPayment).Titled(@Pecuniaus.Resources.Collection.PaymentAgreement.DateofPayment).Format("{0:d}");
+  }).WithPaging(5).Sortable()
+
+}

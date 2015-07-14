@@ -1,0 +1,104 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+    //ViewBag.Title = "Create New Lawyer";
+}
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Collection.Collection.CreateNewLawyer</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+        <li><a href="@Url.Action("CreateNewLawyer", "Workflow")">@Pecuniaus.Resources.Collection.Collection.CreateNewLawyer</a></li>
+
+        @*<li><a href="@Url.Action("CreateNewLawyer", "Workflow", new { merchantID = Model.merchantId, contractID = Model.contractId })">@Pecuniaus.Resources.Collection.Collection.CreateNewLawyer</a></li>*@
+    </ul>
+    @if (Model.MerchantsDetail.merchantId > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+
+                    @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                    @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                    <div class="block-title" style="padding-top: 10px;">
+                        <h2><strong>@Pecuniaus.Resources.Collection.Collection.CreateNewLawyer</strong></h2>
+                        <div class="pull-right" style=" margin-right: 50px;">
+                            @if (permissions.Write)
+                            {
+                                <input type="button" class="btn btn-primary" onclick="Save();" id="btSave" value="@Pecuniaus.Resources.Common.Save" />
+                            }
+                            <button type="button" class="btn btn-primary" onclick="ReturnToLegalScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToLegalScreen</button>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div id="dvAddLawyer" data-source-url="@Url.Action("AddLawyer")">
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group" id="dvLawyerList" data-source-url="@Url.Action("ListLawyers")">
+
+                            @{Html.RenderAction("ListLawyers");}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+
+</div>
+@section Scripts {
+    <script>
+
+        $(document).ready(
+         function () {
+             var $dvEditProcessor = $('#dvAddLawyer');
+             $dvEditProcessor.load($dvEditProcessor.attr('data-source-url'));
+             ajaxifyGridMvc("#dvLawyerList");
+         });
+
+        function Save() {
+            window.location.href = "@Url.Action("AddUpdateLawyers", "Workflow")";
+        }
+        function LawyerUpdated() {
+            RefreshLawyerList();
+        };
+
+        function LawyerDeleted() {
+            if (confirm("Are you sure to delete Lawyer?")) {
+                RefreshLawyerList();
+            }
+        }
+        function RefreshLawyerList() {
+            var $dvLawyerList = $('#dvLawyerList');
+            var url = $dvLawyerList.attr("data-source-url");
+            $dvLawyerList.load(url);
+        }
+
+        function EditLawyer(id) {
+            $('#dvAddLawyer').load('@Url.Action("EditLawyer")?Id=' + id);
+        }
+        function CancelLawyer() {
+            $('#dvAddLawyer').load('@Url.Action("AddLawyer")');
+        }
+
+        function ReturnToLegalScreen() {
+            //var queryString = "merchantID=" + $("#MerchantsDetail_merchantId").val().trim() + "&contractID=" + $("#MerchantsDetail_contractId").val().trim();
+            window.location.href = "@Url.Action("Legal", "Workflow")"
+        }
+
+    </script>
+}

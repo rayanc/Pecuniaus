@@ -1,0 +1,582 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWRenewalReview);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.RW_RenewalReview);
+}
+<div id="page-content">
+
+    <header class="navbar navbar-default">
+        <!-- Left Header Navigation -->
+        <ul class="nav navbar-nav-custom">
+            <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+
+        </ul>
+        @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = Pecuniaus.UICore.WorkflowTypes.Renewal, SearchType = "PT", ShowSf = true })
+
+        <!-- END Left Header Navigation -->
+        <!-- Right Header Navigation -->
+        @Html.Partial("_HeaderRight")
+        <!-- END Right Header Navigation -->
+    </header>
+
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_RenewalWorkflowHeader")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Renewal.Renewal.RenewalReview<br>
+                    </h1>
+                    @Html.Partial("_PageMessage")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Renewal.Renewal.renewalWorkflow</li>
+        <li><a href="#">@Pecuniaus.Resources.Renewal.Renewal.RenewalReview</a></li>
+    </ul>
+
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                @if (permissions.Write)
+                {
+                    <a href="@Url.Action("ScanDoc", "DocumentScan", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Document
+                    </a>
+                    <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Kickback
+                    </a>
+                    
+                    <form method="post" style="display: inline">
+                        <button class="btn btn-success" type="submit" @(isFormDisabled ? "disabled" : "")  >@Pecuniaus.Resources.Common.Complete</button>
+                    </form>
+                    
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>}
+            </div>
+        </div>
+    </div>
+
+    <!-- All Boxes Content Start -->
+    @{ Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.UICore.SessionHelper.CurrentMerchantID }); }
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="block full">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Renewal.Renewal.ReviewTask</h2>
+                </div>
+
+                <div id="dvContAcor" class="panel-group" data-ajax-accordrev="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i><a class="accordion-toggle" data-toggle="collapse" data-parent="#cntRevw" href="#cntRevw_q3">@Pecuniaus.Resources.Renewal.Renewal.RenewalEvaluation</a></h4>
+                        </div>
+                        <div id="cntRevw_q3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                @{Html.RenderAction("Evaluluation", "Review", new { area = "Renewal" });}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i>
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_doc">@Pecuniaus.Resources.Common.DocumentScanning</a></h4>
+                        </div>
+                        <div id="cntRevw_doc" class="panel-collapse collapse" data-source-url="@Url.Action("Documents", "Review")" data-success-callback="ajaxifyGridMvc('#dvdocgrid');">
+                            <div class="panel-body">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i><a class="accordion-toggle" data-toggle="collapse" data-parent="#cntRevw" href="#cntRevw_q2">@Pecuniaus.Resources.Renewal.Renewal.OfferList</a></h4>
+                        </div>
+                        <div id="cntRevw_q2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div id="divOffer">
+                                    @{ Html.RenderAction("MCCVInformation");  }
+                                </div>
+                                <div id="dvEditOffer">
+                                    @{ Html.RenderAction("AddOffer");  }
+                                </div>
+                                <div>
+                                    <div class="form-group" id="dvOffers">
+                                        @{ Html.RenderAction("ListOffers");  }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@Html.Action("Popup", "Kickback", new { area = "Renewal", TaskTypeId = Pecuniaus.UICore.TaskTypes.RWRenewalReview })
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/ajaxform")
+
+
+    <script>
+        function resetFormInputElement(e) {
+            e.wrap('<form>').closest('form').get(0).reset();
+            e.unwrap();
+        }        
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            ajaxifyGridMvc("#dvOffers");
+            EnableReason() ;    
+            InitializeSliders();
+            
+        });
+
+        $(document).on("pageload",function(){
+            alert("pageload event fired!");
+        });
+
+        function EnableReason() {
+            if ($("#chkManual").prop('checked') == true) {
+                $("#divReason").show();
+                $("#averageMCCV").removeAttr("readonly" );
+
+            }
+            else {
+                $("#divReason").hide();
+                $("#averageMCCV").attr('readonly','readonly');
+            }
+        }
+
+        function OfferUpdated() {
+            RefreshOfferList();
+        };
+
+        function OfferDeleted() {
+            RefreshOfferList();
+        };
+
+        function EditOffer(offerID) {
+            $('#dvEditOffer').load('@Url.Action("EditOffer")?id=' + offerID);
+            RefershSliders();
+        }
+        function CEOffer() {
+            $('#dvEditOffer').load('@Url.Action("AddOffer")');
+            RefershSliders();
+        }
+
+        function RefershSliders() {
+            $("#slLoanAmt .input-slider1").slider('refresh');
+            $("#slPropotion .input-slider1").slider('refresh');
+            $("#slRetention .input-slider1").slider('refresh');
+            $("#slTime .input-slider1").slider('refresh');
+        }
+
+        function RefreshOfferList() {
+            $('#dvOffers').load('@Url.Action("ListOffers")');
+            RefershSliders();
+        }
+        function SendEmail() {
+            var values = $("#sEmList>option").map(function () { return $(this).val(); });
+            var url = "/RenewalOffer/GenratePDF";
+            $.post(url, { email: '' + values + '' }, function (result) {
+
+                $('#mod_sendemail').modal('hide');
+            });
+
+        }
+    </script>
+
+    <script>
+        var $slLoanAmt;
+        var $slPropotion;
+        var $slRetention;
+        var $slTime;
+        var MaxTurn=@Model.MaxTurn;
+        var MaxSalesTaken= @Model.SalesTaken;
+        var i=0;
+
+        
+        $(document).ajaxComplete(function () {
+
+            InitializeSliders();
+        });
+
+        function InitializeSliders()
+        {
+            @if (Model.TurnMinPrice != null && Model.TurnMinPrice.Count > 0)
+            {
+                <text>
+
+            $slLoanAmt = $("#slLoanAmt .input-slider1").slider();
+            $slPropotion = $("#slPropotion .input-slider1").slider();
+            $slRetention = $("#slRetention .input-slider1").slider();
+            $slTime = $("#slTime .input-slider1").slider();
+
+            $("#slTime .input-slider1").on('slideStop', function (ev) {
+                CalcMCA();
+            });
+
+            $('#slLoanAmt .input-slider1').on('slideStop', function (ev) {
+                Calc();
+            });
+
+            $('#slPropotion .input-slider1').on('slideStop', function (ev) {
+                Calc();
+            });
+
+            $('#slRetention .input-slider1').on('slideStop', function (ev) {
+                Calc();
+            });
+
+
+            $('#txtTime').on('change paste', function(){
+                $slTime.data('slider').setValue(parseFloat($(this).val()));
+                CalcMCA();
+            });
+
+            $('#txtret').on('change paste', function(){
+                $slRetention.data('slider').setValue(parseInt($(this).val()));
+                Calc();
+            });
+
+            $('#txtprop').on('change paste', function(){
+                $slPropotion.data('slider').setValue(parseFloat($(this).val()));
+                Calc();
+            });
+
+            $('#loanAmount').on('change paste', function(){
+                var v=parseFloat(FixComma($(this).val()));
+                $slLoanAmt.data('slider').setValue(v);
+                Calc();
+            });
+
+            </text>
+            }
+            else
+            {
+                <text> DisableControls2(); </text>
+
+            }
+
+        }
+
+        function FixComma(v)
+        {
+            if(v!=undefined){
+                return  v.toString().replace(/,/g,'');
+            }
+            return v
+        }
+        function CalcMCA()
+        {
+            $('#txtTime').css('background-color', 'white');
+            $('#txtSalesTaken').css('background-color', 'white');
+            $('#txtprop').css('background-color', 'white');
+            if($('#hdnButtonStatus').val()=="enabled")
+            {
+                EnableButtons();
+            }
+            var loadAmt = $slLoanAmt.slider('getValue');
+            var propotion = $slPropotion.slider('getValue');
+            var ret = $slRetention.slider('getValue');
+            var time = $slTime.slider('getValue');
+
+            var mccv = $('#averageMCCV').val();
+            var sales =$('#grossYearlySales').val();
+
+            mccv= parseFloat(FixComma(mccv));
+            sales=parseFloat(FixComma(sales));
+            loadAmt=parseFloat(FixComma(loadAmt));
+
+
+            var monthlypay = (mccv * ret) / 100;
+            var yearlypay = monthlypay * 12;
+            var salesTaken = (yearlypay / sales) * 100;
+            var ownedAmount = (monthlypay * time);
+            var mcaAmount= (ownedAmount / propotion);
+
+            loadAmt=FixDecimals2(mcaAmount);
+            salesTaken = salesTaken ? salesTaken : 0;
+
+            $slLoanAmt.data('slider').setValue(parseFloat(mcaAmount));
+            //       $slLoanAmt.slider('setValue', mcaAmount);
+            $('#loanAmount').val(FixDecimals2(mcaAmount));
+            $('#monthlypayment').val(FixDecimals2(monthlypay));
+            $('#yearly').val(FixDecimals2(yearlypay));
+            $('#ownedAmount').val(FixDecimals2(ownedAmount));
+            $('#txtprop').val(FixDecimals(propotion));
+            $('#txtTime').val(FixDecimals2(time));
+            //  debugger;
+            $('#txtSalesTaken').val(FixDecimals2(salesTaken));
+            $('retention').val(FixDecimals2(ret));
+            $('txtret').val(FixDecimals2(ret));
+
+            if(loadAmt <=104000)
+            {
+                $('#loanAmount').css('background-color', 'red');
+                DisableControls();
+            }
+            else
+            {
+                $('#loanAmount').css('background-color', 'white');
+            }
+
+            if(salesTaken > MaxSalesTaken)
+            {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtSalesTaken').css('background-color', 'red');
+
+            }
+            if (time >= MaxTurn ) {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtTime').css('background-color', 'red');
+            }
+            else
+            {
+                @{var fRow = true;}
+    @foreach (var tp in Model.TurnMinPrice)
+    {
+        if (fRow)
+        {
+        <text>
+                if(Math.round(time) == @tp.MaxTime  && propotion <= @tp.minPrice )
+                {
+
+                                    if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+            </text>
+        }
+        else
+        { <text>
+        else if(Math.round(time) == @tp.MaxTime  &&  propotion <= @tp.minPrice )
+            {
+
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+
+            </text>
+        }
+        fRow = false;
+    }
+
+        }
+        }
+
+
+
+        function Calc() {
+
+
+            $('#txtTime').css('background-color', 'white');
+            $('#txtSalesTaken').css('background-color', 'white');
+            $('#txtprop').css('background-color', 'white');
+            if($('#hdnButtonStatus').val()=="enabled")
+            {
+                EnableButtons();
+            }
+            var loadAmt = $slLoanAmt.slider('getValue');
+            var propotion = $slPropotion.slider('getValue');
+            var ret = $slRetention.slider('getValue');
+            var time = $slTime.slider('getValue');
+
+            var mccv = $('#averageMCCV').val();
+            var sales =$('#grossYearlySales').val();
+
+            mccv= parseFloat(FixComma(mccv));
+            sales=parseFloat(FixComma(sales));
+            loadAmt=parseFloat(FixComma(loadAmt));
+
+            var ownedAmount = (propotion * loadAmt);
+            var monthlypay = (mccv * ret) / 100;
+            var yearlypay =  monthlypay * 12;
+            var term = ownedAmount / monthlypay;
+            var salesTaken = ((yearlypay / sales) * 100);
+
+
+            salesTaken = salesTaken ? salesTaken : 0;
+
+            $('#txtTime').val(FixDecimals2(term));
+            $('#monthlypayment').val(FixDecimals2(monthlypay));
+            $('#yearly').val(FixDecimals2(yearlypay));
+            $('#ownedAmount').val(FixDecimals2(ownedAmount));
+
+            $('#loanAmount').val(FixDecimals2( loadAmt));
+            $('#txtprop').val(FixDecimals(propotion));
+            // debugger;
+            $('#txtSalesTaken').val(FixDecimals2(salesTaken));
+            $('retention').val(FixDecimals2(ret));
+            $('#txtret').val(FixDecimals2(ret));
+
+            $slTime.data('slider').setValue(parseFloat(term));
+
+            //          $slTime.slider('setValue', term);
+
+            if(loadAmt <=104000)
+            {
+                $('#loanAmount').css('background-color', 'red');
+                DisableControls();
+            }
+            else
+            {
+                $('#loanAmount').css('background-color', 'white');
+            }
+
+            if(salesTaken > MaxSalesTaken)
+            {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtSalesTaken').css('background-color', 'red');
+            }
+            if (term >= MaxTurn ) {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtTime').css('background-color', 'red');
+            }
+            else
+            {
+                @{var firstRow = true;}
+    @foreach (var tp in Model.TurnMinPrice)
+    {
+        if (firstRow)
+        {
+        <text>
+                if(Math.round(term) == @tp.MaxTime  && propotion <= @tp.minPrice )
+                {
+
+                                    if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+            </text>
+        }
+        else
+        { <text>
+        else if(Math.round(term) == @tp.MaxTime  &&  propotion <= @tp.minPrice )
+            {
+
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+
+            </text>
+        }
+        firstRow = false;
+    }
+        }
+        }
+
+
+
+        function CopyTerm()
+        {
+            var term=  $('#txtTime').val();
+            $slTime.data('slider').setValue(parseFloat(term));
+
+            //     $slTime.slider('setValue', term);
+        }
+
+        function DisableControls()
+        {
+            //$('input[type="submit"]').attr('disabled','disabled');
+            $('#btnSaveOffer').attr('disabled','disabled');
+            $('#btnAddOffer').attr('disabled','disabled');
+
+            $('#btnComplete').attr('disabled','disabled');
+            $('#btnDecline').attr('disabled','disabled');
+            $('#btnKickback').attr('disabled','disabled');
+            //  $('#btnSendEmail').attr('disabled','disabled');
+            $('#btnDocument').attr('disabled','disabled');
+        }
+        
+        function DisableControls2()
+        {
+            
+            //$('input[type="submit"]').attr('disabled','disabled');
+            $('#btnComplete').attr('disabled','disabled');
+            //$('#btnDecline').attr('disabled','disabled');
+            //$('#btnKickback').attr('disabled','disabled');
+            ////  $('#btnSendEmail').attr('disabled','disabled');
+            //$('#btnDocument').attr('disabled','disabled');
+        }
+
+        function EnableButtons()
+        {
+            // $('input[type="submit"]').removeAttr("disabled");
+            $('#btnSaveOffer').removeAttr("disabled");
+            $('#btnAddOffer').removeAttr("disabled");
+
+            $('#btnComplete').removeAttr("disabled");
+            $('#btnDecline').removeAttr("disabled");
+            $('#btnKickback').removeAttr("disabled");
+            // $('#btnSendEmail').removeAttr("disabled");
+            $('#btnDocument').removeAttr("disabled");
+        }
+
+        function ParseCurrency(num)
+        {
+            if(num!=undefined){
+                return  num.toString().replace(/,/g,'');
+            }
+            return num;
+        }
+        function FixDecimals2(num)
+        {
+            if(num!=undefined){
+                return  num.toFixed(2);
+            }
+            return num;
+        }
+
+        function FixDecimals(num)
+        {
+            if(num!=undefined){
+                return Math.round(num * 1000) / 1000;
+            }
+            return num;
+        }
+
+    </script>
+
+    <script src="@Url.Content("~/Areas/Renewal/Scripts/MerchantEvaluation.js")"></script>
+    <script src="@Url.Content("~/Areas/Renewal/Scripts/ScanDoc.js")"></script>
+
+}
+
+

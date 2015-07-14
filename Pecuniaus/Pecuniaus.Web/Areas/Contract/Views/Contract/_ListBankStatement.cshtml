@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Pecuniaus.Models.Contract.BankStatementModel>
+@{var permissions = new Pecuniaus.Models.User.GroupPermission { IsFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWContract) };
+var model = new Tuple<Pecuniaus.Models.User.GroupPermission, IEnumerable<Pecuniaus.Models.Contract.BankStatementModel>>(permissions,Model);
+}
+
+@Html.Partial("~/Areas/Contract/Views/DataEntry/_LstPBankStatement.cshtml", model)

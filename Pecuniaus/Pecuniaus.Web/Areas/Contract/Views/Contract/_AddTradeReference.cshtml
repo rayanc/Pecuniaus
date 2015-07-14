@@ -1,0 +1,3 @@
+﻿@model Pecuniaus.Models.Contract.TradeReferenceModel
+@{Model.IsDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWContract);}
+@Html.Partial("~/Areas/Contract/Views/DataEntry/_AdPTradeReference.cshtml", Model)

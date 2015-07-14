@@ -1,0 +1,33 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantProcessorInfoModel
+<div class="col-md-2">
+    @Pecuniaus.Resources.MerchantProfile.Business.EditProcessorName
+    @Html.DropDownListFor(m => m.processorId, Model.Processors, new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+</div>
+<div class="col-md-2">
+    @Pecuniaus.Resources.MerchantProfile.Business.EditProcessorNumber
+    @Html.TextBoxFor(m => m.ProcessorNumber, new { @class = "form-control", @placeholder = "Street 1, #483" })
+    @*<input type="text" placeholder="XXXXX" class="form-control" name="" id="txtProcessorNo">*@
+</div>
+<div class="col-md-1">
+    @Pecuniaus.Resources.MerchantProfile.Business.EditProcessorTerminal
+    @Html.TextBoxFor(m => m.Terminal, new { @class = "form-control", @placeholder = "1" })
+    @*<input type="text" placeholder="1" class="form-control" id="txtTerminal">*@
+</div>
+<div class="col-md-2">
+    @Pecuniaus.Resources.MerchantProfile.Business.EditProcessorGracePeriod
+    @Html.EditorFor(m => m.DateGracePeriod, new { @class = "form-control", @placeholder = "1" })
+    @*<input type="text" placeholder="dd/mm/yyyy" class="form-control input-datepicker" id="txtDateGracrPeriod">*@
+</div>
+<div class="col-md-2">
+    @Pecuniaus.Resources.MerchantProfile.Business.EditProcessorIndustryType
+    @Html.DropDownListFor(m => m.IndustryTypeID, Model.IndustryTypes, new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+
+</div>
+<div class="col-md-2">
+    @Pecuniaus.Resources.MerchantProfile.Business.EditProcessorFirstProcessedDate
+    @Html.EditorFor(m => m.FirstProcessedDate, new { @class = "form-control", @placeholder = "1" })
+    @*<input type="text" name="example-datepicker" class="form-control input-datepicker" data-date-format="mm/dd/yy" placeholder="yy/dd/mm" id="txtFirstProcessedDate">*@
+</div>
+<div class="col-md-1">
+        <button class="btn btn-primary" type="button" onclick="UpdateProcessors();">@Pecuniaus.Resources.Common.Save</button>
+</div>

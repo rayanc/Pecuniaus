@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+    }
+
+<h2>Index</h2>
+
+@Html.ActionLink("English", "Index", new { cultureName="en-us" })&nbsp;
+@Html.ActionLink("Spanish", "Index", new { cultureName = "es-DO" }) &nbsp;
+@Html.ActionLink("Hindi", "Index", new { cultureName = "hi-IN" }) &nbsp;
+@Html.ActionLink("Punjabi", "Index", new { cultureName = "pa-IN" })
+
+
+<br />
+<p>
+    @{var date = DateTime.Now;
+    var amount = 1434534534m; }
+
+    Date Format: @date.ToString("d")<br />
+    Date: @date.ToString("dd/MMM/yyyy")<br />
+    Amount: @amount.ToString("C2")
+
+
+</p>
+

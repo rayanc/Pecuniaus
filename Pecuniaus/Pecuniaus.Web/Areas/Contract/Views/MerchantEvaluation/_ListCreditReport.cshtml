@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Pecuniaus.Models.Contract.CreditReport>
+@using GridMvc.Html
+<div class="row">
+        @Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(m => m.CreditReportId, true);
+        columns.Add(m => m.Timeofreport).Titled("Date").Format("{0:d}") ;
+        columns.Add(m => m.Type).Titled("Type");
+        columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => RenderActionLinks(o)).Titled("View Report");
+        columns.Add(o => o.Isavailable)
+                .Titled("Report Available")
+                .RenderValueAs(o => CustomBoolValue(o));
+        //columns.Add(m => m.isavailable).Titled("Report Available");
+    }).WithPaging(10).Sortable()
+        @helper RenderActionLinks(Pecuniaus.Models.Contract.CreditReport m)
+{
+        <a href="@Url.Action("GeneratePDF", "MerchantEvaluation", new { area = "", creditReportId = m.CreditReportId, merchantid = m.MerchantId, contractid = m.ContractId })" title="View Report" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
+}
+    @helper CustomBoolValue(Pecuniaus.Models.Contract.CreditReport m)
+{
+    if (m.Isavailable)
+    {
+        <text>@Pecuniaus.Resources.Common.Yes</text>
+    }
+    else
+    {
+        <text>@Pecuniaus.Resources.Common.No</text>
+    }
+}
+   </div>
+

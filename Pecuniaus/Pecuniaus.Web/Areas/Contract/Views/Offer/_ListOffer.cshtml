@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Pecuniaus.Models.Contract.OfferModel>
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQOfferCreation);}
+@using GridMvc.Html
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Common.Saved</strong> @Pecuniaus.Resources.Common.Offer</h2>
+            </div>
+            <div class="row">
+                @Html.Grid(Model, "_ListOfferTemp").Columns(columns =>
+{
+
+    columns.Add()
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(o => RenderCol1(o));
+
+}).WithPaging(10)
+
+                @helper RenderCol1(Pecuniaus.Models.Contract.OfferModel m)
+{
+                <h2>@Pecuniaus.Resources.Common.Offer @m.Id </h2>
+                <p>
+                    <input type="hidden" value="@m.offerId" data-taskid="@m.offerId" />
+                    <strong>Time:</strong> @m.turn<br>
+                    <strong>MCA Amount:</strong> @m.loanAmount.ToString("C")<br>
+                    <strong>Owed Amount:</strong> @m.ownedAmount.ToString("C")<br>
+                    <input type="hidden" value="@m.merchantId" data-taskid="@m.merchantId" />
+                    <input type="hidden" value="@m.contractId" data-taskid="@m.contractId" />
+                    <strong>Proportion:</strong> @m.proportion<br>
+                    <strong>Retention:</strong> @m.retention<br>
+
+                </p>
+
+                <a href="Javascript:void(0);" title="Select" onclick="EditOffer(@m.Id);"><i class="fa fa-pencil-square-o"></i></a>
+                @Html.Raw(@Ajax.ActionLink("[Delete]",
+                 "DelOffer",
+                  new { id = m.Id },
+                new AjaxOptions
+                 {
+                     OnSuccess = "OfferDeleted()",
+                     //    UpdateTargetId="CustomerList", // <-- DOM element ID to update
+                     // InsertionMode = InsertionMode., // <-- Replace the content of DOM element
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+
+
+
+}
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="#mod_SendOfferEmail" class="btn btn-danger" id="btnSendEmail" data-toggle="modal" data-target="#mod_SendOfferEmail" >
+                        @Pecuniaus.Resources.Common.SendEmail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

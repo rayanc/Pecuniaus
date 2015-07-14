@@ -1,0 +1,56 @@
+﻿@model Pecuniaus.Web.Models.NotesModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="table-responsive">
+                <div id="example-datatable_wrapper" class="dataTables_wrapper">
+                    @using (Ajax.BeginForm("SaveNote", "Common", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "modal-search-noteschild" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <label for="example-nf-email">Note Text</label>
+                                    @Html.TextBoxFor(m => m.note, new { Placeholder = "", @class = "form-control", id = "txtNote" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <label for="example-nf-email">Note Type ID</label>
+                                    @*@Html.TextBoxFor(m => m.noteTypeId, new { Placeholder = "", @class = "form-control", id = "txtNoteTypeID" })*@
+                                    @*@Html.DropDownList("NoteTypes", null, new Dictionary<string, object> { { "data-placeholder", "Choose one.." }, { "class", "select-select2" }, { "style", "width: 100%;" } })*@
+                                    @Html.DropDownListFor(x => x.noteTypeId, (SelectList)ViewBag.NoteTypes, new Dictionary<string, object> { { "data-placeholder", "Choose one.." }, { "class", "select-select2" }, { "style", "width: 100%;" } })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="example-nf-email">Screen Name</label>
+                                    @Html.TextBoxFor(m => m.screenName, new { Placeholder = "", @class = "form-control", id = "txtScreenName" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="example-nf-email">Merchant ID</label>
+                                    @Html.TextBoxFor(m => m.merchantId, new { Placeholder = "", @class = "form-control", id = "txtMerchantID" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label for="example-nf-email">Contract ID</label>
+                                    @Html.TextBoxFor(m => m.contractId, new { Placeholder = "", @class = "form-control", id = "txtContractID" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="example-nf-email">Workflow ID</label>
+                                    @Html.TextBoxFor(m => m.workFlowId, new { Placeholder = "", @class = "form-control", id = "txtWorkflowID" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <label for="example-nf-email">&nbsp;</label>
+                                    <button class="btn btn-sm btn-success pop_addbtn_margn" type="submit"><i class="hi hi-check"></i> Save Note</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

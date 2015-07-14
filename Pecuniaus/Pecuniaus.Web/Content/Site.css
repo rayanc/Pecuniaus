@@ -1,0 +1,49 @@
+﻿
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+select.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.modal-vertical-centered {
+  transform: translate(0, 50%) !important;
+  -ms-transform: translate(0, 50%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
+}
+.cursor{
+    cursor:pointer;
+}
+
+.dashtable {
+margin-bottom:10px;
+}
+.dashtable > thead > tr > th, 
+.dashtable > tbody > tr > th, 
+.dashtable > tfoot > tr > th, 
+.dashtable > thead > tr > td, 
+.dashtable > tbody > tr > td, 
+.dashtable > tfoot > tr > td {
+    padding: 6px;
+}

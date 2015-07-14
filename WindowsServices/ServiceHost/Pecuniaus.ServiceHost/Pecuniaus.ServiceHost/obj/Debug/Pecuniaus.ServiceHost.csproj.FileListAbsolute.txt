@@ -1,0 +1,8 @@
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\bin\Debug\Pecuniaus.ServiceHost.exe.config
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\obj\Debug\Pecuniaus.ServiceHost.csprojResolveAssemblyReference.cache
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\bin\Debug\Pecuniaus.ServiceHost.exe
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\bin\Debug\Pecuniaus.ServiceHost.pdb
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\bin\Debug\NLog.dll
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\bin\Debug\Pecuniaus.ServiceContract.pdb
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\obj\Debug\Pecuniaus.ServiceHost.exe
+D:\Harish\Harish\MCA\trunk\WindowsServices\ServiceHost\Pecuniaus.ServiceHost\Pecuniaus.ServiceHost\obj\Debug\Pecuniaus.ServiceHost.pdb

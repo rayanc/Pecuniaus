@@ -1,0 +1,253 @@
+﻿@model Pecuniaus.Models.Contract.ScanDocumentModel
+
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWScanDocument);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CW_DocumentScanning);
+}
+
+
+@using (Html.BeginForm("index", "DocumentScan", FormMethod.Post, new { id = "frmScanDoc", enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_Header")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        @Pecuniaus.Resources.Common.ScanDocument <br>
+                        <small>
+                        </small>
+                    </h1>
+                    @Html.Partial("_PageMessage")
+                    @Html.ValidationSummary()
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        @Html.Partial("_breadcrumbBase")
+        <li>@Pecuniaus.Resources.Common.ScanDocument</li>
+    </ul>
+
+
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Document
+                </a>
+                @*<a href="@Url.Action("Index", "MerchantEvaluation", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.PQMerchantEvaluation
+                </a>*@
+                @if (permissions.Write)
+                {
+
+                    <button value="Complete" name="button" class="btn btn-success cancel" onclick="Complete();"
+                            type="button" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Complete
+                    </button>
+                    <button value="Save" name="button" type="submit" class="btn btn-primary" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Save</button>
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>}
+            </div>
+        </div>
+    </div>    <!-- All Boxes Content Start -->
+    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+        <!-- Datatables Content -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.UploadDocuments </h2>
+                </div>
+                <div class="row">
+                    <div class="widget-simple">
+                        <div class="pull-left col-md-4">
+                            @Html.DropDownListFor(m => m.DocumentTypeID, Model.DocumentTypes, "", new { @class = "select-select2 docType", @style = "width: 100%;", @data_placeholder = "Document Type" })
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsPending, new { id = "chkdoc" }) @*@Html.LabelFor(m => m.IsPending)*@
+                                    @Html.DisplayNameFor(m => m.IsPending)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="pull-right col-md-4">
+                            @if (permissions.Write)
+                            {
+                                <a href="Javascript:void(0)" id="lkAddNew" style="display:none">@Pecuniaus.Resources.Common.AddNew</a>
+
+                                @Html.HiddenFor(m => m.DocumentID, new {id="hDocID" })
+                                <input type="file" name="file" id="file" class="btn btn-success" style="display:none" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="widget-simple">
+                        <div class="col-md-12">
+                            <div class="form-group" id="dvDocGrid" data-source-url="@Url.Action("GetDocList", "DocumentScan", new { area = "Contract" })">
+                            </div>
+
+                            <div class="progress progress-striped active">
+                                <div aria-valuemax="100" aria-valuemin="0" id="barUpload" role="progressbar" class="progress-bar progress-bar-success" @(isFormDisabled ? "disabled" : "")></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(function () {
+            $('#lkAddNew').on('click', function () {
+                $('#file').show();
+                $('#lkAddNew').hide();
+                $('#hDocID').val('0');
+            });
+            ajaxifyGridMvc("#dvDocGrid");
+
+            $(".docType").change(function () {
+                $('#barUpload').width("0%"); // reset bars
+                $('#barUpload').html("0%");
+
+                LoadGrid();
+                CheckPending();
+            });
+        });
+
+        function CheckPending()
+        {
+            var selectedItem = $(".docType :selected").val();
+            var url = '/Contract/DocumentScan/IsDocPending?docType=' + selectedItem;
+            $.ajax({
+                dataType: "json",
+                url: url,
+                success: function (result) {
+                    if (result === true)
+                    {
+                        $('#chkdoc').attr('checked', 'checked');
+                    }
+                    else
+                    {
+                        $('#chkdoc').removeAttr('Checked');
+                    }
+                }
+            });
+            
+        }
+        
+        $(document).ajaxComplete(function () {
+            $('#file').hide();
+            $('#lkAddNew').show();
+            $('#hDocID').val('0');
+        });
+
+        function LoadGrid()
+        {
+            var selectedItem = $(".docType :selected").val();
+
+            var $dv = $("#dvDocGrid");
+            var url = $dv.attr('data-source-url') + '?docType=' + selectedItem;
+            $dv.load(url);
+
+            if (selectedItem > 0) {
+                $('#file').hide();
+                $('#lkAddNew').show();
+                $('#hDocID').val('0');
+            }
+        }
+
+        function EditDoc(id)
+        {
+            $('#file').show();
+            $('#lkAddNew').hide();
+            $('#hDocID').val(id);
+        }
+
+        function showimagepreview(input) {
+
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#imgprvw').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+@Scripts.Render("~/bundles/ajaxform")
+
+
+@*    <script src="http://malsup.github.com/jquery.form.js"></script>*@
+
+    <script>
+            (function () {
+                var bar = $('#barUpload');
+                var percent = $('#barUpload');
+
+                $('#frmScanDoc').ajaxForm({
+                    beforeSend: function () {
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    beforeSubmit: function () {
+                        $form = $("#frmScanDoc");
+                        if ($form.valid()) {        //clear summary
+                            $form.find("[data-valmsg-summary=true]")
+                            .removeClass("validation-summary-errors")
+                           .addClass("validation-summary-valid")
+                           .find("ul").empty();
+                            return true;
+                        }
+                        return false;
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    complete: function (xhr) {
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                        var $file = $("#file")
+                        resetFormInputElement($file);
+                        LoadGrid();
+                    }
+                });
+
+            })();
+            
+            function Complete() {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Complete")',
+                    success: function (data, textStatus, xhr) {
+                        window.location.href = data.redirectToUrl;
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        $(".error-summary").html(xhr.responseText);
+                    }
+                });
+            }
+        </script>
+}

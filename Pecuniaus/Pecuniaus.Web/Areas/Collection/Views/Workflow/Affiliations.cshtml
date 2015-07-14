@@ -1,0 +1,137 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+<style>
+    .btn-primary.btn-alt {
+        background-color: #ffffff;
+        color: #00529c;
+    }
+
+    .ui-widget-header {
+        background: repeat-x scroll 50% 50% #00529c;
+    }
+    .table thead > tr > th {
+        font-size: 12px !important;
+        
+    }
+</style>
+
+<div id="page-content" style="min-height: 516px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Collection.Collection.MerchantAffiliations</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+        <li><a href="@Url.Action("Affiliations", "Workflow")">@Pecuniaus.Resources.Collection.Collection.Affiliations</a></li>
+    </ul>
+    @if (Model.MerchantsDetail.merchantId > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="content-header tophdrbuttons">
+                        @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                        @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Collection.Collection.Merchant: @Model.MerchantsDetail.merchantName </label>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Collection.Collection.MerchantID: @Model.MerchantsDetail.merchantId</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    <button type="button" class="btn btn-primary" onclick="ReturnToCollectionScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToCollectionScreen</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#divRNC">@Pecuniaus.Resources.Collection.Collection.RNC</a></li>
+                                <li><a href="#divOwner">@Pecuniaus.Resources.Collection.Collection.Owner</a></li>
+                            </ul>
+                            <div id="divRNC">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="block full">
+                                            <div class="block-title">
+                                                <h2><strong>@Pecuniaus.Resources.Collection.Collection.Active</strong> @Pecuniaus.Resources.Collection.Collection.Contracts</h2>
+                                            </div>
+                                            <div class="form-group" id="dvRNCActiveContracts" data-source-url="@Url.Action("RNCActiveContracts")">
+                                                @{Html.RenderAction("RNCActiveContracts");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="block full">
+                                            <div class="block-title">
+                                                <h2><strong>@Pecuniaus.Resources.Collection.Collection.Inactive</strong> @Pecuniaus.Resources.Collection.Collection.Contracts</h2>
+                                            </div>
+                                            <div class="form-group" id="dvRNCInActiveContracts" data-source-url="@Url.Action("RNCInActiveContracts")">
+                                                @{Html.RenderAction("RNCInActiveContracts");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divOwner">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="block full">
+                                            <div class="block-title">
+                                                <h2><strong>@Pecuniaus.Resources.Collection.Collection.Active</strong> @Pecuniaus.Resources.Collection.Collection.Contracts</h2>
+                                            </div>
+                                            <div class="form-group" id="dvOwnerActiveContracts" data-source-url="@Url.Action("OwnerActiveContracts")">
+                                                @{Html.RenderAction("OwnerActiveContracts");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="block full">
+                                            <div class="block-title">
+                                                <h2><strong>@Pecuniaus.Resources.Collection.Collection.Inactive</strong> @Pecuniaus.Resources.Collection.Collection.Contracts</h2>
+                                            </div>
+                                            <div class="form-group" id="dvOwnerInActiveContracts" data-source-url="@Url.Action("OwnerInActiveContracts")">
+                                                @{Html.RenderAction("OwnerInActiveContracts");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <!-- Datatables Content -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tabs").tabs();
+            ajaxifyGridMvc("#dvRNCActiveContracts");
+            ajaxifyGridMvc("#dvRNCInActiveContracts");
+            ajaxifyGridMvc("#dvOwnerActiveContracts");
+            ajaxifyGridMvc("#dvOwnerInActiveContracts");
+
+        });
+    </script>
+}

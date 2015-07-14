@@ -1,0 +1,103 @@
+﻿using System.Web.Mvc;
+
+namespace Pecuniaus.Controllers
+{
+    public class ReportViewerController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult ShowReport(string id )
+        {
+            return PartialView("_ViewReport", id);
+        }
+
+        public ActionResult DocumentViewerPartial(string id)
+        {
+            switch (id)
+            {
+                case "0":
+                   // ViewData["Report"] = new Pecuniaus.Reports.Monthly_MCA();
+                    break;
+                case "1":
+                    ViewData["Report"] = new Pecuniaus.Reports.Collection();
+                    break;
+                case "2":
+                    ViewData["Report"] = new Pecuniaus.Reports.Contracts_Contract();
+                    break;
+                case "3":
+                    ViewData["Report"] = new Pecuniaus.Reports.Contracts_DeclinedByAvanzame();
+                    break;
+                case "4":
+                    ViewData["Report"] = new Pecuniaus.Reports.Contracts_DeclinedByClient();
+                    break;
+                case "5":
+                    ViewData["Report"] = new Pecuniaus.Reports.Contracts_Pending();
+                    break;
+                case "6":
+                    ViewData["Report"] = new Pecuniaus.Reports.Investigation();
+                    break;
+                case "7":
+                    ViewData["Report"] = new Pecuniaus.Reports.Monthly_MCA();
+                    break;
+                case "8":
+                    ViewData["Report"] = new Pecuniaus.Reports.Notes();
+                    break;
+                case "9":
+                    ViewData["Report"] = new Pecuniaus.Reports.PAFReport();
+                    break;
+                case "10":
+                    ViewData["Report"] = new Pecuniaus.Reports.Prequalification();
+                    break;
+                case "11":
+                  // missing prequaliofication decinlde by avanzame
+                    break;
+                case "12":
+                    ViewData["Report"] = new Pecuniaus.Reports.Prequalification_DeclinedByClient();
+                    break;
+                case "13":
+                    ViewData["Report"] = new Pecuniaus.Reports.Prequalification_Offers();
+                    break;
+                case "14":
+                    ViewData["Report"] = new Pecuniaus.Reports.Prequalifications_Pending();
+                    break;
+                case "15":
+                    ViewData["Report"] = new Pecuniaus.Reports.Prequalifications_AcceptedOffers();
+                    break;
+                case "16":
+                    ViewData["Report"] = new Pecuniaus.Reports.Refund_Done();
+                    break;
+                case "17":
+                    ViewData["Report"] = new Pecuniaus.Reports.Refund_Pending();
+                    break;
+                case "18":
+                    ViewData["Report"] = new Pecuniaus.Reports.Renewals();
+                    break;
+                case "19":
+                    ViewData["Report"] = new Pecuniaus.Reports.Renewals_Pending();
+                    break;
+                case "20":
+                    ViewData["Report"] = new Pecuniaus.Reports.Renewals_DeclinedByAvanzeMe();
+                    break;
+                case "21":
+                    ViewData["Report"] = new Pecuniaus.Reports.Renewals_DeclinedByClient();
+                    break;
+                case "22":
+                    ViewData["Report"] = new Pecuniaus.Reports.ScoringReport();
+                    break;
+                case "23":
+                    ViewData["Report"] = new Pecuniaus.Reports.WorkFlowReport();
+                    break;
+                case "24":
+                    ViewData["Report"] = new Pecuniaus.Reports.WrittenOffContracts();
+                    break;
+                case "25":
+                    ViewData["Report"] = new Pecuniaus.Reports.WSF_Report();
+                    break;
+            }
+            return PartialView("_ViewReport");
+        }
+    }
+}

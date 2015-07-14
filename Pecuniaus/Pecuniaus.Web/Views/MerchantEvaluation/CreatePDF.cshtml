@@ -1,0 +1,506 @@
+﻿@model Pecuniaus.Web.Models.CreditReportBase
+@helper DisplayCurrency(decimal? v)
+{
+    if (v.HasValue && v.Value > 0)
+    {
+        <span>@string.Format("${0:N0}", v)</span>
+    }}
+
+
+@helper DisplayInt(int? v)
+{
+    if (v.HasValue && v.Value > 0)
+    {
+        <span>@v</span>
+    }
+}
+
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pecuniaus</title>
+    <meta name="description" content="Pecuniaus">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link href="~/Content/plugins.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/main.css">
+    <link rel="stylesheet" href="~/Content/data_report.css">
+</head>
+<body style="background: none;">
+    <table style="width:100%">
+        <tbody>
+            <tr>
+                <td align="center">
+                    <img src="~/Images/logo.png" width="368" height="84" alt="El Buró de Crédito Líder">
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td align="center"><strong>Reporte de Crédito</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    @if (Model.ErrorHandling.Id != "0")
+    {
+        <div class="block full">
+            <div class="block-title">
+                <h2>Error </h2>
+            </div>
+            <h5>
+                @Model.ErrorHandling.Description
+            </h5>
+        </div>
+
+        return;
+    }
+    <div class="block full">
+        <div class="block-title">
+            <h2>Información Consultada</h2>
+        </div><h5>
+            <span class="green_Text">@Html.DisplayFor(m => m.Security.InformationConsulted)</span>
+        </h5>
+    </div>
+
+    <div class="block full">
+        <div class="block-title">
+            <h2>Consumidor Registrado</h2>
+        </div>
+        <div class="row">
+            @if (Model.Individual != null)
+            {
+                <table class="indInfo">
+                    <tbody>
+                        <tr>
+                            <td class="grayBG" width="20%">Nombres // Apellidos</td>
+                            <td colspan="3" width="60%" style="font-size: 15pt"><b>@Html.DisplayFor(m => m.Individual.Name) // @Html.DisplayFor(m => m.Individual.LastName)</b>&nbsp;</td>
+                            <td rowspan="8" width="20%">
+                                <div class="pull-right">
+                                    <img class="img-thumbnail" style="height:185px" src='data:image/jpeg;base64,@Model.Photo'>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Fecha de Nacimiento</td>
+                            <td><span style="font-size: 11pt;"><b>@Html.DisplayFor(m => m.Individual.BirthDate)</b></span>&nbsp;[Día - Mes - Año]&nbsp; </td>
+                            <td class="grayBG" width="10%">Edad</td>
+                            <td width="15%">
+                                <b>
+                                    @Html.DisplayFor(m => m.Individual.Age)
+                                </b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Lugar de Nacimiento</td>
+                            <td>@Html.DisplayFor(m => m.Individual.placeofbirth)</td>
+                            <td class="grayBG">NAC</td>
+                            <td>@Html.DisplayFor(m => m.Individual.nationality)</td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Cédula Nueva CIE</td>
+                            <td style="border-bottom: 0; font-size: 15pt"><b>@Model.Security.CedulaNueva</b></td>
+                            <td class="grayBG">Sexo</td>
+                            <td>@Html.DisplayFor(m => m.Individual.gender)</td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Cédula Anterior CED</td>
+                            <td style="border-bottom: 0">&nbsp;</td>
+                            <td class="grayBG">Madre</td>
+                            <td>@Html.DisplayFor(m => m.Individual.motherName)</td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Pasaporte</td>
+                            <td>@Html.DisplayFor(m => m.Individual.passport)</td>
+                            <td class="grayBG">Padre</td>
+                            <td>@Html.DisplayFor(m => m.Individual.fatherName)</td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Ocupación</td>
+                            <td>@Html.DisplayFor(m => m.Individual.occupation)</td>
+                            <td class="grayBG">Cónyuge</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="grayBG">Comentario</td>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            @if (Model.Company != null)
+            {
+                <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 12px;">
+                    <tbody>
+                        <tr>
+                            <td width="18%" height="28" class="grayBG">Nombre // Tipo Empresa</td>
+                            <td class="text1" width="68%" colspan="5" style="border-bottom: 0; font-size: 15pt"><b>@Html.DisplayFor(m => m.Company.Name) // @Html.DisplayFor(m => m.Company.CompanyType)</b>&nbsp;</td>
+                            <td class="pad1" width="12%" rowspan="8">
+                                <img class="img-thumbnail" src='data:image/jpeg;base64,@Model.Photo'>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+    @if (Model.CurrencyWiseProducts != null)
+    { 
+    <div class="block full">
+        <div class="block-title">
+            <h2>&Sigma; Deudas Por Tipo de Producto</h2>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                <thead>
+                    <tr>
+                        <th class="gry_color_th" style="width: 3%;"></th>
+                        <th align="left" style="width: 25%;" class="gry_color_th">Tipo de Producto</th>
+                        <th style="width: 3%;" class="gry_color_th text-center">&Sigma;</th>
+                        <th class="gry_color_th text-center" style="width: 4%;">FDR</th>
+                        <th class="gry_color_th text-center" style="width: 5%;">Moneda</th>
+                        <th class="gry_color_th text-center" style="width: 10%;">Cr&eacute;dito Aprobado</th>
+                        <th class="gry_color_th text-center" style="width: 10%;">Total Adeudado</th>
+                        <th class="gry_color_th text-center" style="width: 10%;">Cuota</th>
+                        <th class="gry_color_th text-center" style="width: 10%;">Vencido</th>
+                        <th class="gry_color_th text-center" style="width: 10%;">En Legal</th>
+                        <th class="gry_color_th text-center" style="width: 10%; border-right: none !important;">Castigado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+
+                        foreach (var item in Model.CurrencyWiseProducts)
+                        {
+
+                            <tr>
+                                <td class="text-center">
+                                    <span class="fa fa-check-square"></span>
+                                </td>
+                                <td align="left">@item.code</td>
+                                <td align="center">@item.Accounts.Count</td>
+                                <td align="center">@item.Accounts.Sum(z => z.Fdr)</td>
+                                <td align="center">@item.Currency</td>
+                                <td align="right" class="text-right"> @DisplayCurrency(item.TotalApproved)</td>
+                                <td align="right" class="text-right">@DisplayCurrency(item.TotalOwed)</td>
+                                <td align="right" class="text-right">@DisplayCurrency(item.TotalQuota)</td>
+                                <td align="right" class="text-right red_Text">@DisplayCurrency(item.TotalDelay)</td>
+                                <td align="right" class="text-center">&nbsp;</td>
+                                <td align="right" class="text-center">&nbsp;</td>
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+                <tfoot>
+                    @foreach (var c in Model.Currencies)
+                    {
+                        if (Model.CurrencyWiseProducts.Where(a => a.CurrencyId == c.Id).Count() > 0)
+                        {
+                            <tr>
+                                <td colspan="5" class="text-right">Totales en Moneda = @c.Symbol </td>
+                                <td class="text-right">@DisplayCurrency(Model.CurrencyWiseProducts.Where(a => a.CurrencyId == c.Id).Sum(s => s.TotalApproved)) </td>
+                                <td class="text-right">@DisplayCurrency(Model.CurrencyWiseProducts.Where(a => a.CurrencyId == c.Id).Sum(s => s.TotalOwed)) </td>
+                                <td class="text-right">@DisplayCurrency(Model.CurrencyWiseProducts.Where(a => a.CurrencyId == c.Id).Sum(s => s.TotalQuota)) </td>
+                                <td class="text-right red_Text">@DisplayCurrency(Model.CurrencyWiseProducts.Where(a => a.CurrencyId == c.Id).Sum(s => s.TotalDelay)) </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        }
+                    }
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+    }
+    <h3>Análisis Crediticio</h3>
+
+    <div class="block full">
+        <div class="block-title">
+            <h2>
+                Cantidad Total de Cuentas
+
+            </h2>
+        </div>
+        @if (Model.creditAnalysis.TotalAmountAccount.Currencies != null)
+        {
+            <div class="row">
+                <table class="table table-striped table-vcenter table-bordered fnt13">
+                    <tr>
+                        <th>Moneda </th>
+                        <th class="text-center">Cuentas </th>
+                        <th class="text-center">Cerradas </th>
+                        <th class="text-center">Abiertas </th>
+                        <th class="text-center">Normal </th>
+                        <th class="text-center">Vencido </th>
+                        <th class="text-center">Acuerdo Pago </th>
+                        <th class="text-center">En Legal </th>
+                        <th class="text-center"> Castigado</th>
+                    </tr>
+
+                    @foreach (var item in Model.creditAnalysis.TotalAmountAccount.Currencies)
+                {
+                        <tr>
+                            <td>@Model.Currencies.FirstOrDefault(c => c.Id == item.Id).Symbol </td>
+                            <td class="text-center">@item.Accounts</td>
+                            <td class="text-center">@item.Closed</td>
+                            <td class="text-center">@item.Open</td>
+                            <td class="text-center">@item.Normal</td>
+                            <td class="text-center">@item.Expired</td>
+                            <td class="text-center">@item.PaymentAgreement</td>
+                            <td class="text-center">@item.InLegal</td>
+                            <td class="text-center">@item.Punished </td>
+                        </tr>
+                }
+                    <tr>
+                        <td>Totales</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.Accounts</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.Closed</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.Open</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.Normal</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.Expired</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.PaymentAgreement</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.InLegal</td>
+                        <td class="text-center">@Model.creditAnalysis.TotalAmountAccount.Totals.Punished </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+
+    <h3></h3>
+    <div class="block full">
+        <div class="block-title">
+            <h2>$ Desglose de Créditos y Deudas</h2>
+        </div>
+        @{var i = 0;
+         if (Model.Products != null)
+         {
+             foreach (var prod in Model.Products)
+          {
+
+
+                <div class="row">
+                    <table class="table table-vcenter table-bordered fnt13">
+                        <tr>
+                            <td rowspan="2" colspan="2">
+                                Sector Económico
+                            </td>
+                            <td rowspan="2">Fecha De Apertura</td>
+                            <td rowspan="2">Fecha Reportado</td>
+                            <td rowspan="2">Mes Consolidado</td>
+                            <td rowspan="2">Fecha Ultima Transacción</td>
+                            <td rowspan="2">Moneda</td>
+                            <td rowspan="2">Crédito Aprobado</td>
+                            <td rowspan="2">Total Adeudado</td>
+                            <td rowspan="2">Cuota</td>
+                            <td rowspan="2">
+                                Total
+                                Vencido
+                            </td>
+                            <td colspan="4">
+                                Veces Vencido
+                                @*   30 60 90 120+*@
+                            </td>
+                        </tr>
+                        <tr> <td>30</td><td>60</td><td>90</td><td>120+</td></tr>
+                        <tr><td colspan="15"><h4> @prod.code</h4></td></tr>
+
+                        @foreach (var account in prod.Accounts)
+                    {
+                        i++;
+                            <tr>
+                                <td rowspan="2">
+                                    <span class="fa fa-check-square"></span>
+                                </td>
+                                <td>
+                                    <strong> @i</strong>
+                                </td>
+                                <td>@account.openedDate </td>
+                                <td>@account.reportedDate</td>
+                                <td>@account.consolidateMonth</td>
+                                <td>@account.lastTransactionDate</td>
+                                <td>@account.currency</td>
+                                <td class="text-right">@DisplayCurrency(account.TotalApproved)</td>
+                                <td class="text-right">@DisplayCurrency(account.TotalOwed)</td>
+                                <td class="text-right">@DisplayCurrency(account.Quota)</td>
+                                <td class="text-right red_Text">@DisplayCurrency(account.totalDelay)</td>
+                                <td rowspan="2" class="red_Text">@account.totalDelay30</td>
+                                <td rowspan="2" class="red_Text">@account.totalDelay60</td>
+                                <td rowspan="2" class="red_Text">@account.totalDelay90</td>
+                                <td rowspan="2" class="red_Text">@account.totalDelay120</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="9">
+                                    <span> @account.affiliates </span>
+                                    <br />
+                                    <span>Estatus Ultimo: @account.LatestStaus</span>
+                                    <br />
+                                    <span>FDR: @account.Fdr</span>
+                                </td>
+                            </tr>
+                    }
+                        <tfoot>
+                            @foreach (var c in Model.Currencies)
+                        {
+                            if (prod.Accounts.Where(a => a.CurrencyId == c.Id).Count() > 0)
+                            {
+                                <tr>
+                                    <td colspan="7" class="text-right">Sub-Totales @prod.code @c.Symbol </td>
+                                    <td class="text-right">@DisplayCurrency(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.TotalApproved)) </td>
+                                    <td class="text-right">@DisplayCurrency(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.TotalOwed)) </td>
+                                    <td class="text-right">@DisplayCurrency(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.Quota)) </td>
+                                    <td class="text-right red_Text">@DisplayCurrency(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.totalDelay))</td>
+                                    <td class="red_Text">@DisplayInt(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.totalDelay30))</td>
+                                    <td class="red_Text">@DisplayInt(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.totalDelay60))</td>
+                                    <td class="red_Text">@DisplayInt(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.totalDelay90))</td>
+                                    <td class="red_Text">@DisplayInt(prod.Accounts.Where(a => a.CurrencyId == c.Id).Sum(s => s.totalDelay120))</td>
+                                </tr>
+                            }
+                        }
+                        </tfoot>
+                    </table>
+                </div>
+
+
+          }
+        }
+        }
+    </div>
+    @if (Model.Telphones != null)
+    {
+
+        <div class="block full">
+            <div class="block-title">
+                <h2>Teléfonos Asociados = @Model.Telphones.Count</h2>
+            </div>
+
+            <div class="row">
+                <table width="100%" class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                    <thead>
+                        <tr>
+                            <th align="center" class="gry_color_th text-center">Ref</th>
+                            <th align="center" class="gry_color_th text-center">Fecha Relación</th>
+                            <th align="center" class="gry_color_th text-center">Teléfono</th>
+                            <th align="left" class="gry_color_th" style="border-right: none !important;">Suscriptor // Dirección Actual</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+        int telcount = 1;
+        foreach (var tel in Model.Telphones)
+        {
+
+            <tr>
+                <td align="center">@telcount</td>
+                <td align="center" class="text-center"></td>
+                <td align="center" class="text-center"><u>@tel.telephone</u></td>
+                <td align="left">@tel.subscriptor // @tel.address</td>
+            </tr>
+            telcount++;
+        }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    @{ if (Model.Addresses != null)
+     {
+        <div class="block full">
+            <div class="block-title">
+
+                <h2>Direcciones Asociadas = @Model.Addresses.Count</h2>
+            </div>
+            <div class="row">
+                <table width="100%" class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                    <thead>
+                        <tr>
+                            <th align="center" class="gry_color_th text-center">Ref</th>
+                            <th align="center" class="gry_color_th text-center">Fecha Relación</th>
+                            <th align="left" class="gry_color_th" style="border-right: none !important;">Dirección</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+         int count = 1;
+         foreach (var add in Model.Addresses)
+         {
+
+            <tr>
+                <td align="center">@count</td>
+                <td align="center" class="text-center">@add.DateFetched</td>
+                <td align="left">@add.Value </td>
+            </tr>
+             count++;
+         }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+     }}
+    @{ if (Model.Persons != null)
+     {
+        <div class="block full">
+            <div class="block-title">
+                <h2>Total Personas Relacionadas = @Model.Persons.Count</h2>
+            </div>
+            <div class="row">
+                <table width="100%" class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                    <thead>
+                        <tr>
+                            <th align="center" class="gry_color_th text-center">Ref</th>
+                            <th align="center" class="gry_color_th text-center">Fecha Relación</th>
+                            <th align="left" class="gry_color_th">Relación</th>
+                            <th align="left" class="gry_color_th">Nombre</th>
+                            <th align="center" class="gry_color_th text-center">Cédula Nueva</th>
+                            <th align="left" class="gry_color_th" style="border-right: none !important;">Edad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+         foreach (var person in Model.Persons)
+         {
+             int personcount = 1;
+            <tr>
+                <td align="center">@personcount</td>
+                <td align="center" class="text-center"></td>
+                <td align="left"></td>
+                <td align="left" class="">@person.name // @person.lastname</td>
+                <td align="center" class="text-center">@person.newId</td>
+                <td align="left">@person.age</td>
+            </tr>
+             personcount++;
+         }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+     }}
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <strong>Fin del Reporte [ @Model.Security.InformationConsulted ]</strong>
+                <br />
+                <strong>Consulta ID :</strong> @Model.Security.ConsultationId <br />
+                <strong>Fecha Creación Reporte : </strong>@Model.Security.DateTime
+            </p>
+
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+</html>

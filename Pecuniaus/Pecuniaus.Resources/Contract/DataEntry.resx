@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AddressLine1" xml:space="preserve">
+    <value>Address Line 1</value>
+  </data>
+  <data name="AddressLine2" xml:space="preserve">
+    <value>Address Line 2</value>
+  </data>
+  <data name="AffiliateNumber" xml:space="preserve">
+    <value>Affiliate Number</value>
+  </data>
+  <data name="Authorized" xml:space="preserve">
+    <value>Authorized</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="BusinessName" xml:space="preserve">
+    <value>Business Name</value>
+  </data>
+  <data name="BusinessStartDate" xml:space="preserve">
+    <value>Business Start Date</value>
+  </data>
+  <data name="CellNumber" xml:space="preserve">
+    <value>Cell Number</value>
+  </data>
+  <data name="Cities" xml:space="preserve">
+    <value>Cities</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FirstProcessedDate" xml:space="preserve">
+    <value>First Processed Date</value>
+  </data>
+  <data name="GrossYearlySale" xml:space="preserve">
+    <value>Gross Yearly Sale</value>
+  </data>
+  <data name="IndustryTypes" xml:space="preserve">
+    <value>Industry Types</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="LoanAmountRequired" xml:space="preserve">
+    <value>MCAAmount Required</value>
+  </data>
+  <data name="Merchant" xml:space="preserve">
+    <value>Merchant</value>
+  </data>
+  <data name="OtherTelephoneNumber" xml:space="preserve">
+    <value>Other Telephone Number</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Owner1" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="OwnerDOB" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="OwnerFirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="OwnerFirstNameRequired" xml:space="preserve">
+    <value>First Name is required.</value>
+  </data>
+  <data name="OwnerLastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="OwnerLastNameRequired" xml:space="preserve">
+    <value>Last Name is required.</value>
+  </data>
+  <data name="PassportNumber" xml:space="preserve">
+    <value>ID / Passport Number</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="Processor" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="ProcessorCompar" xml:space="preserve">
+    <value>Processor Compar</value>
+  </data>
+  <data name="PropertyTypes" xml:space="preserve">
+    <value>Property Types</value>
+  </data>
+  <data name="Provinces" xml:space="preserve">
+    <value>Provinces</value>
+  </data>
+  <data name="RentAmount" xml:space="preserve">
+    <value>Rent Amount</value>
+  </data>
+  <data name="RNC" xml:space="preserve">
+    <value>RNC</value>
+  </data>
+  <data name="States" xml:space="preserve">
+    <value>States</value>
+  </data>
+  <data name="TelephoneNumber" xml:space="preserve">
+    <value>Telephone Number</value>
+  </data>
+  <data name="TypeOfBusinessEntity" xml:space="preserve">
+    <value>Type of Business entity</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
+  <data name="BankAccountName" xml:space="preserve">
+    <value>Bank Account Name</value>
+  </data>
+  <data name="BankAccountNumber" xml:space="preserve">
+    <value>Bank Account Number</value>
+  </data>
+  <data name="BusinessNameReq" xml:space="preserve">
+    <value>Business Name is Required</value>
+  </data>
+  <data name="FirstProcessedDateReq" xml:space="preserve">
+    <value>First Processed Date is required.</value>
+  </data>
+  <data name="GrossYearlySaleReq" xml:space="preserve">
+    <value>Gross Yearly Sale is required.</value>
+  </data>
+  <data name="ProvincesReq" xml:space="preserve">
+    <value> Provinces is required.</value>
+  </data>
+  <data name="EmailValidReq" xml:space="preserve">
+    <value>Enter Vaild Email Address.</value>
+  </data>
+  <data name="AffiliateNumberReq" xml:space="preserve">
+    <value>Affiliate Number is required.</value>
+  </data>
+  <data name="AnnualSales" xml:space="preserve">
+    <value>Annual Sales</value>
+  </data>
+  <data name="BusinessStartDateReq" xml:space="preserve">
+    <value>Business Start Date is required.</value>
+  </data>
+  <data name="CitiesReq" xml:space="preserve">
+    <value>Cities is required.</value>
+  </data>
+  <data name="IndustryTypesReq" xml:space="preserve">
+    <value>Industry Types is required.</value>
+  </data>
+  <data name="LegalName" xml:space="preserve">
+    <value>Legal Name</value>
+  </data>
+  <data name="LegalNameReq" xml:space="preserve">
+    <value>Legal Name is required.</value>
+  </data>
+  <data name="LoanAmountReq" xml:space="preserve">
+    <value>MCA Amount is required.</value>
+  </data>
+  <data name="ProcessorComparReq" xml:space="preserve">
+    <value>Processor Compar is required.</value>
+  </data>
+  <data name="PropertyTypesReq" xml:space="preserve">
+    <value>Property Types is required.</value>
+  </data>
+  <data name="RentAmountReq" xml:space="preserve">
+    <value>Rent Amount is required.</value>
+  </data>
+  <data name="RNCReq" xml:space="preserve">
+    <value>RNC is required.</value>
+  </data>
+  <data name="AddressLine1Req" xml:space="preserve">
+    <value>Address Line 1 is required.</value>
+  </data>
+  <data name="AnnualSalesReq" xml:space="preserve">
+    <value>Annual Sales is required.</value>
+  </data>
+  <data name="AuthorizedReq" xml:space="preserve">
+    <value>Authorized is required.</value>
+  </data>
+  <data name="CellNumberReq" xml:space="preserve">
+    <value>Cell Number is required.</value>
+  </data>
+  <data name="CityReq" xml:space="preserve">
+    <value>City is required.</value>
+  </data>
+  <data name="OwnerDOBReq" xml:space="preserve">
+    <value>Owner DOB is required.</value>
+  </data>
+  <data name="OwnerValidEmail" xml:space="preserve">
+    <value>Enter a valid email.</value>
+  </data>
+  <data name="PassportNumberReq" xml:space="preserve">
+    <value>Passport Number is required.</value>
+  </data>
+  <data name="PhoneNumberReq" xml:space="preserve">
+    <value>Phone Number is required.</value>
+  </data>
+  <data name="StatesReq" xml:space="preserve">
+    <value>States is required.</value>
+  </data>
+  <data name="ZipCodeReq" xml:space="preserve">
+    <value>Zip Code is required.</value>
+  </data>
+  <data name="TradeRef" xml:space="preserve">
+    <value>Trade Reference</value>
+  </data>
+  <data name="Statement" xml:space="preserve">
+    <value>Bank Statement</value>
+  </data>
+  <data name="TypeOfAdvance" xml:space="preserve">
+    <value>Type Of Advances</value>
+  </data>
+  <data name="TypeOfAdvanceErr" xml:space="preserve">
+    <value>Type Of Advances Required</value>
+  </data>
+  <data name="RNCValidation" xml:space="preserve">
+    <value>RNC Number must 9 to 11 digit long.</value>
+  </data>
+  <data name="TelephoneVal" xml:space="preserve">
+    <value>Telephone Number is invalid.</value>
+  </data>
+  <data name="CellNumberVal" xml:space="preserve">
+    <value>Cell Number must be Ten digit long.</value>
+  </data>
+  <data name="OtherTelephoneVal" xml:space="preserve">
+    <value>Other Telephone Number is invalid.</value>
+  </data>
+  <data name="PhoneNumberVal" xml:space="preserve">
+    <value>Phone Number must be Ten digit long.</value>
+  </data>
+  <data name="AnnualSalesFile" xml:space="preserve">
+    <value>Annual Sales Calculation File</value>
+  </data>
+  <data name="AnnualSalesCalcReq" xml:space="preserve">
+    <value>Please select Annual Sales Calculation File</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameOfTheReference" xml:space="preserve">
+    <value>Name of the Reference</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="ProcessorNumber" xml:space="preserve">
+    <value>Processor Number</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="StatementMonth" xml:space="preserve">
+    <value>Statement Month</value>
+  </data>
+  <data name="StatementYear" xml:space="preserve">
+    <value>Statement Year</value>
+  </data>
+  <data name="LandlordCompanyName" xml:space="preserve">
+    <value>Landlord Company Name</value>
+  </data>
+  <data name="LandlordCompanyNameReq" xml:space="preserve">
+    <value>Landlord Company Name is required.</value>
+  </data>
+  <data name="LandlordFirstName" xml:space="preserve">
+    <value>Landlord First Name</value>
+  </data>
+  <data name="LandlordFirstNameReq" xml:space="preserve">
+    <value>Landlord First Name is required.</value>
+  </data>
+  <data name="LandlordLastName" xml:space="preserve">
+    <value>Landlord Last Name</value>
+  </data>
+  <data name="LandlordLastNameReq" xml:space="preserve">
+    <value>Landlord Last Name is required.</value>
+  </data>
+  <data name="LandlordPhoneNumber" xml:space="preserve">
+    <value>Landlord Phone Number</value>
+  </data>
+  <data name="LandlordPhoneNumberReq" xml:space="preserve">
+    <value>Landlord Phone Number is required.</value>
+  </data>
+</root>

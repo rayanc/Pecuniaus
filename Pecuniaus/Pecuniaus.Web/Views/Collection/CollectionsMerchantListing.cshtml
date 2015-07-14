@@ -1,0 +1,188 @@
+﻿@model Pecuniaus.Web.Models.CollectionsModel
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/scriptsbundle")
+
+<div id="page-content" style="min-height: 615px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>Collection Workflow</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="">Collection Workflow</a></li>
+    </ul>
+    <!-- Datatables Content -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="panel-group" id="faq2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#faq2_q2" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">Prevention</a></h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="faq2_q2">
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                        <div class="form-group">
+                                            <label>Show merchants paying slower than</label>
+
+                                            <input id="txtSearch" type="text" maxlength="4"  name="SearchString" placeholder="%age">
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-sm btn-primary" onclick="return BindMerchants('merchantId')" type="button">Search</button>
+                                        </div>
+                                        <br>
+                                    <span id="spanMerchantResult"></span> 
+                                        <br>
+                                    
+                                    <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                                        <thead>
+                                            <tr role="row">
+                                                <th aria-sort="ascending" colspan="1" rowspan="1" class="sorting_disabled">Merchant</th>
+                                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Merchant ID</th>
+                                                <th aria-label="Actions" onclick="BindMerchants('PendingAmount')" colspan="1" rowspan="1" class="sorting ">
+                                                    Pending Amount
+                                                </th>
+                                                <th aria-label="Actions" onclick="BindMerchants('FundingDate')" colspan="1" rowspan="1" class="sorting">
+                                                    Funding Date  </th>
+
+
+                                                <th aria-label="Actions" colspan="1" onclick="BindMerchants('ExpectedDate')" rowspan="1" class="sorting">
+                                                    Expected Date
+
+                                                </th>
+                                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Real turn</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyMerchant">
+
+                                            @{if (Model.Collections != null)
+                                            {
+                                                foreach (var collection in Model.Collections)
+                                                {
+                                                    <tr>
+                                                        <td> @Html.DisplayFor(item => collection.merchantName)</td>
+                                                        <td> @Html.DisplayFor(item => collection.merchantId)</td>
+                                                        <td> @Html.DisplayFor(item => collection.pendingAmount)</td>
+                                                        <td> @Html.DisplayFor(item => collection.fundingDate)</td>
+                                                        <td> @Html.DisplayFor(item => collection.expectedDate)</td>
+                                                        <td> @Html.DisplayFor(item => collection.actualturn)</td>
+
+                                                    </tr>
+                                                }
+                                            }
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @Html.Partial("PartialCollectionListing", Model.CollectionsDaysWithoutActivity)
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+    <div  style="display:none;">
+        <table>
+            <tbody id="divTemplateMerchant">
+                <tr>
+                    <td>$Template.merchantName</td>
+                    <td>$Template.merchantId</td>
+                    <td> $Template.pendingAmount</td>
+                    <td>$Template.fundingDate</td>
+                    <td> $Template.expectedDate</td>
+                    <td> $Template.actualturn</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        localStorage.isDesc = true;
+        common.EnterNumberOnly("txtSearch");
+
+    });
+   
+   
+    function Bind_HTML(searchResult) {
+        $("#tbodyMerchant").html('');
+        var countInfo = 0;
+        
+        var data =JSON.parse(searchResult);
+        if (data != null) {
+            if (data.length > 0) {
+               
+               
+                var divTemplate = $("#divTemplateMerchant").attr("id");
+                for (var i = 0; i < data.length; i++) {
+                    templateHTML = null;
+                    templateHTML = common.BindHtml(divTemplate, data[i]);
+                    $("#tbodyMerchant").append(templateHTML);
+                }
+                //$('#divLoader').html('');
+            }
+            else {
+                showNoRecordMessage();
+            }
+        }
+        else {
+            showNoRecordMessage();
+        }
+    }
+    function showNoRecordMessage() {
+        $('#' + 'spanMerchantResult').html('No Merchant found related to your search criteria.');
+    }
+    function BindMerchants(SortBy)
+    {
+        var page = 1;
+      
+        var searchText = $("#txtSearch").val();
+        var isDesc = localStorage.isDesc;
+        var json = '{"searchText":"' + searchText + '","sortOrder":"' + SortBy + '","isDesc":"' + isDesc + '","page":"' + page + '"}';
+       
+        var URL = "RetrivePrevention";
+        var options = {
+            type: "POST",
+            dataType: "json",
+            url: URL,
+            contentType: "application/json; charset=utf-8",
+            data: json,
+            success: function (searchResult) {
+                if (searchResult != null) {
+                    Bind_HTML(searchResult);
+                }
+                
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+               
+            }
+        }
+        $.ajax(options);
+       
+        if (localStorage.isDesc == "true") {
+            localStorage.isDesc = false;
+        }
+        else if (localStorage.isDesc == "false")
+        {
+            localStorage.isDesc = true;
+        }
+        return false;
+    }
+   
+
+</script>

@@ -1,0 +1,38 @@
+﻿@model Pecuniaus.Models.Contract.MerchantScoreInfo
+    <div>
+    @Html.HiddenFor(m => m.Score)
+    @Html.HiddenFor(m => m.Mccv)
+    @Html.HiddenFor(m => m.FinalLetter)
+    @Html.HiddenFor(m => m.RoundedScore)
+    @*@Html.HiddenFor(m => m.RawData)*@
+</div>
+
+<div class="block">
+    <div class="block-title">
+        <h2><strong>@Pecuniaus.Resources.Common.Scores </strong></h2>
+    </div>
+    <button class="btn btn-primary" type="button" id="btngeneratescore" >@Pecuniaus.Resources.Common.GenrateScore</button>
+    <br />
+    <br />
+    Merchant Score:&nbsp;<div id="divscore">
+        <b>@Model.Score</b>
+    </div>
+    Final Letter:&nbsp;<div id="divfinalletter">
+        <b>@Model.FinalLetter</b>
+    </div>
+    @*  <a href="@Model.rawData" target="_blank">Scoring Data</a>*@
+    <a href="@Url.Action("GetScoringData", "MerchantEvaluation", new {area="" })" target="_blank">@Pecuniaus.Resources.Common.ScoringData</a>
+    <br />
+    Avreage MCCV &nbsp;<div>
+        @Html.DisplayFor(m => m.Mccv)
+    </div>
+    <br />
+    <br />
+    @{Html.RenderAction("CreditPull");}
+    <br />
+    <br />
+    <div id="divcreditreport" class="form-group clearfix" data-source-url="@Url.Action("ListCreditReport")">
+        @{Html.RenderAction("ListCreditReport");}
+    </div>
+</div>
+

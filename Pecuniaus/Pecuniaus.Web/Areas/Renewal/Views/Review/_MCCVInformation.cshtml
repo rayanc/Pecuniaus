@@ -1,0 +1,107 @@
+﻿@model Pecuniaus.Models.Contract.MerchantInformationOfferModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWRenewalReview);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.RW_RenewalReview);
+}
+<div>
+    @using (Ajax.BeginForm("SaveOffer", null, new AjaxOptions
+                                   {
+                                       HttpMethod = "POST",
+                                       InsertionMode = InsertionMode.Replace,
+                                       UpdateTargetId = "divOffer",
+                                       OnSuccess = "OfferUpdated()",
+                                   }, new { @class = "aa", role = "form" }))
+    {
+        <div class="row">
+            <div class="pull-right">
+                @if (permissions.Write)
+                {
+                    <input type="submit" id="btnSaveOffer" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" disabled  />}
+            </div>
+        </div>
+                                            
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <div class=" col-md-3">
+                                        @if ((isFormDisabled))
+                                        {
+                                            <input type="hidden" id="hdnButtonStatus" value="disabled" />
+                                        }
+                                        else
+                                        {
+                                            <input type="hidden" id="hdnButtonStatus" value="enabled" />
+                                        }
+
+                                        @Html.LabelFor(m => m.businessName) :
+                                        @Html.TextBoxFor(m => m.businessName, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.address.addressLine1) :
+                                        @Html.TextBoxFor(m => m.address.addressLine1, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.score) :
+                                        @Html.TextBoxFor(m => m.score, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.finalscore) :
+                                        @Html.TextBoxFor(m => m.finalscore, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.address.state) :
+                                        @Html.TextBoxFor(m => m.address.state, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>
+                                            @Html.CheckBoxFor(m => m.AddManulMccv, new { id = "chkManual", onclick = "EnableReason();" })
+                                            @*<input type="checkbox" id="chkManual" onclick="EnableReason();">*@
+                                            Add Manual MCCV
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.LabelFor(m => m.yearlysales)
+                                        <div class="input-group">
+                                            <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                            @Html.EditorFor(m => m.yearlysales, new { htmlAttributes = new { id = "grossYearlySales" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.LabelFor(m => m.avgmccv)
+                                        <div class="input-group">
+                                            <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                            @Html.EditorFor(m => m.avgmccv, new { htmlAttributes = new { @id = "averageMCCV", @readonly = "readonly" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="divReason" class="col-md-12">
+                                        @Html.LabelFor(m => m.reason)
+                                        @Html.TextBoxFor(m => m.reason, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    };
+</div>

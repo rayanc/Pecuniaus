@@ -1,0 +1,115 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantAffiliationDetailModel
+@using (Ajax.BeginForm("ProcessAffiliations", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q14" }))
+{
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="tophdrbuttons">
+            <div class="row">
+                <div class="col-md-6">
+                    @foreach (var bE in Model.RequestTypes)
+                    {
+                        <label class="radio-inline">
+
+                            @Html.RadioButtonFor(model => model.RequestType, bE.Value, new { id = "" })
+
+                            @bE.Text
+                        </label>
+                    }
+                </div>
+                <div class="col-md-6">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="Search">@Pecuniaus.Resources.Common.Search</button>
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="MCCV">@Pecuniaus.Resources.MerchantProfile.Affiliations.MCCV</button>
+                        <button class="btn btn-danger" type="reset">@Pecuniaus.Resources.Common.Clear</button>
+                        <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block full">
+                            <div class="block-title">
+                                <h2>@Pecuniaus.Resources.Common.ActiveContracts</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                                    <thead>
+                                        <tr role="row">
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.MerchantName</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.MerchantID</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.AECAmount</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.OwnedAmount</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.PendingAmount</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.RetentionTime</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.FundingDate</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.MerchantStatus</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var modItem in Model.ActiveAffiliations)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(item => modItem.MerchantName)</td>
+                                                <td>@Html.DisplayFor(item => modItem.MerchantId)</td>
+                                                <td>@Html.DisplayFor(item => modItem.AECAmount)</td>
+                                                <td>@Html.DisplayFor(item => modItem.OwnedAmount)</td>
+                                                <td>@Html.DisplayFor(item => modItem.PendingAmount)</td>
+                                                <td>@Html.DisplayFor(item => modItem.RetentionTime)</td>
+                                                <td>@Html.DisplayFor(item => modItem.FundingDate)</td>
+                                                <td>@Html.DisplayFor(item => modItem.MerchantStatus)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12">
+                        <div class="block full">
+                            <div class="block-title">
+                                <h2><strong>Inactive </strong>Contracts</h2>
+                            </div>
+                            <div class="table-responsive">
+                                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                                    <thead>
+                                        <tr role="row">
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.MerchantName</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.MerchantID</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.CreationDate</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.LastDateOfEvaluation</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.RequestedCCVolumes</th>
+                                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Affiliations.VolumeStatus</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var modItem in Model.InActiveAffiliations)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(item => modItem.MerchantName)</td>
+                                                <td>@Html.DisplayFor(item => modItem.MerchantId)</td>
+                                                <td>@Html.DisplayFor(item => modItem.CreationDate)</td>
+                                                <td>@Html.DisplayFor(item => modItem.LastEvaluationDate)</td>
+                                                <td>@Html.DisplayFor(item => modItem.RequestedCCVolumes)</td>
+                                                <td>@Html.DisplayFor(item => modItem.VolumeStatus)</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- END Datatables Content -->
+                <!-- All Boxes Content Start -->
+            </div>
+        </div>
+    </div>
+}

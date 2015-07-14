@@ -1,0 +1,411 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+}
+@using (Ajax.BeginForm("UpdateLandlord", "Workflow", new AjaxOptions() { HttpMethod = "POST" }, new { id = "frmLandLord", @class = "form-horizontal", role = "form", UpdateTargetId = "dvLCollectionLandLord" }))
+{
+    <div id="page-content" style="min-height: 516px;">
+        <div class="content-header">
+            <div class="header-section">
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>@Pecuniaus.Resources.Collection.Collection.Landlord</h1>
+                        @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                        {
+                            <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+            <li>@Pecuniaus.Resources.Common.Home</li>
+            <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+            <li><a href="@Url.Action("Landlord", "Workflow")">@Pecuniaus.Resources.Collection.Collection.Landlord</a></li>
+        </ul>
+        <div id="dvLCollectionLandLord">
+            @if (Model.MerchantsDetail.merchantId > 0)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block full">
+                            <div class="content-header tophdrbuttons">
+                                @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                                @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="example-nf-email" style="margin-top:10px; margin-left:20px;">@Pecuniaus.Resources.Collection.Collection.Merchant: @Model.MerchantsDetail.merchantName </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="example-nf-email" style="margin-top:10px; margin-left:20px;">@Pecuniaus.Resources.Collection.Collection.MerchantID: @Model.MerchantsDetail.merchantId </label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="pull-right">
+                                            @if (permissions.Write)
+                                            {
+                                                <button class="btn btn-primary" type="submit" onclick="CollectionLandLordUpdated()">@Pecuniaus.Resources.Common.Save</button>
+
+                                            }
+                                            &nbsp;
+                                            <button type="button" class="btn btn-primary" onclick="ReturnToCollectionScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToCollectionScreen</button>
+
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <br>
+                                    </div>
+
+                                    @if (Model.CollectionLandLord != null)
+                                    {
+                                        <div id="" style="height:170px">
+                                            @Html.ValidationSummary()
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(m => m.CollectionLandLord.typeOfPropertyId)
+                                                        @Html.DropDownListFor(m => m.CollectionLandLord.typeOfPropertyId, Model.PropertyTypes, new { @class = "form-control", @placeholder = "Choose one..", style = "width: 100%;" })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(m => m.CollectionLandLord.landlordCompanyName)
+                                                        @Html.TextBoxFor(m => m.CollectionLandLord.landlordCompanyName, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(m => m.CollectionLandLord.landlordFirstName)
+                                                        @Html.TextBoxFor(m => m.CollectionLandLord.landlordFirstName, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        @Html.LabelFor(m => m.CollectionLandLord.landlordLastName)
+                                                        @Html.TextBoxFor(m => m.CollectionLandLord.landlordLastName, new { @class = "form-control" })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(m => m.CollectionLandLord.monthlyRentAmount)
+                                                        <div>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                                                @Html.TextBoxFor(m => m.CollectionLandLord.monthlyRentAmount, new { @class = "form-control"})
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="clearfix">
+                                                <br>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <div class="col-md-3">
+                                                    @Html.LabelFor(m => m.CollectionLandLord.address)
+                                                    @Html.TextBoxFor(m => m.CollectionLandLord.address, new { @class = "form-control" })
+                                                </div>
+                                                <div class="col-md-2">
+                                                    @Html.LabelFor(m => m.CollectionLandLord.city)
+                                                    @Html.TextBoxFor(m => m.CollectionLandLord.city, new { @class = "form-control" })
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.LabelFor(m => m.CollectionLandLord.email)
+                                                    @Html.TextBoxFor(m => m.CollectionLandLord.email, new { @class = "form-control" })
+                                                </div>
+                                                <div class="col-md-2">
+                                                    @Html.LabelFor(m => m.CollectionLandLord.telePhone)
+                                                    @Html.TextBoxFor(m => m.CollectionLandLord.telePhone, new { @class = "form-control"})
+                                                </div>
+                                                <div class="col-md-2">
+                                                    @Html.LabelFor(m => m.CollectionLandLord.cellPhone)
+                                                    @Html.TextBoxFor(m => m.CollectionLandLord.cellPhone, new { @class = "form-control" })
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                   
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.LandLordVerification</h2>
+                </div>
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                                                    Experience the lessor
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            A. ". Good morning (Good afternoon) I speak on behalf of the company Dominican Advance; my name is <b>@Html.DisplayFor(m => m.CollectionLandLord.Questions.UserFullName)</b>." How are you today?
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            [Record]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 form-inline">
+                            1. The purpose of this call is to give us reference rental history of one of his tenants:
+                            <div>
+                                Name: @Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.OwnerFirstName, new { @class = "form-control", ReadOnly = "readonly" }) @Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.OwnerLastName, new { @class = "form-control", ReadOnly = "readonly" })
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.OwnerName, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.OwnerName, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+                            <div>
+                                At:@Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.MerchantAddress, new { @class = "form-control", ReadOnly = "readonly" })
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.MerchantAddress, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.MerchantAddress, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 form-inline">
+                            "First I would like to verify certain information about you and your company."
+                            <div>  2. I please confirm your full name?</div>
+                            <div>
+                                Name: @Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.LLFirstName, new { @class = "form-control", ReadOnly = "readonly" })
+                                @Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.LLLastName, new { @class = "form-control", ReadOnly = "readonly" })
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.LandlordName, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.LandlordName, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            In case of a company to complete the following:
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 form-inline">
+                            3. We confirm please What is the name of your company ?:
+                            <div>
+                                Name: @Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.LegalName, new { @class = "form-control", ReadOnly = "readonly" })
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.LegalName, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.LegalName, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 form-inline">
+                            "Now I would like to verify certain information regarding the property in question."<br />
+                            <div>                            4. Could you confirm when the contract started ?:</div>
+                            <div>
+                                Month and year <input type="text" class="form-control" readonly="readonly" />
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractStartDate, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractStartDate, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+                            <div>
+                                Does this contract is automatically renewed when it expires?
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractAutoRenew, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Yes
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractAutoRenew, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.No
+                                </label>
+                            </div>
+                            <div>
+                                When does it expire? Expiration date: <input type="text" class="form-control" readonly="readonly" />
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractExpiryDate, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractExpiryDate, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            5. It is possible to renew the contract at the end ?:
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractRenewAtEnd, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContractRenewAtEnd, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 form-inline">
+                            6. What is the monthly rental amount ?: @Html.TextBoxFor(m => m.CollectionLandLord.Questions.MerchantDetails.RentedAmount, new { @class = "form-control", ReadOnly = "readonly" })
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.RentedAmount, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Right
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.RentedAmount, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Wrong
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            7. Do you find current with payments ?: <label> <input type="radio" name="q7" /> Yes</label>&nbsp;&nbsp; <label> <input type="radio" name="q7" />  No</label>
+                            <br />If not, to what month is the day? Month: *
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            8. If the tenant is updated with rent payments, would you continue renting ?: 
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContinueRent, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.ContinueRent, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            9. Would you agree if third the amount of rent paid by the tenant late ?: 
+                        
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.AgreeRentLate, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.AgreeRentLate, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+
+                         </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            10. Do you own any part shape of the lessee's business ?: 
+
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.LessesBusiness, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.CollectionLandLord.Questions.Answers.LessesBusiness, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CollectionLandLord.Questions.ScriptFile, new { @class = "col-md-4 control-label" })
+
+                        <div class="col-md-4">
+                            @Html.HiddenFor(m => m.CollectionLandLord.Questions.ScriptFile)
+                            @*<input type="file" name="file" class="btn btn-success" />
+                            <br />*@
+                            <div class="form-group">
+                                <audio controls class="">
+                                    <source src="@Model.CollectionLandLord.Questions.ScriptFilePath@Model.CollectionLandLord.Questions.ScriptFile" type="audio/mp3" />
+                                    <!-- <source src="media/guitar.ogg" type="audio/ogg" />-->
+
+                                    <p>Your browser does not support HTML 5 audio element</p>
+
+                                </audio>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+                                    
+            }
+        </div>
+    </div>
+    <!-- Datatables Content -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+}
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(
+        function () {
+            $('.qrWR:checked').each(function () {
+                SetCtrlAttr(this);
+            });
+
+            $('.qrWR').on('change', function () {
+                SetCtrlAttr(this);
+            });
+        });
+        function SetCtrlAttr(s) {
+            var $rdo = $(s);
+            var $ctrls = $rdo.parent().siblings("input[type=text],select");
+            if ($rdo.val() == "true") {
+                $ctrls.attr('readonly', 'readonly');
+            }
+            else {
+                $ctrls.removeAttr('readonly');
+            }
+
+        }
+        function CollectionLandLordUpdated() {
+            if ($("#frmLandLord").valid()) {
+                window.location.href = "@Url.Action("Landlord", "Workflow")";
+            }
+        }
+    </script>
+}

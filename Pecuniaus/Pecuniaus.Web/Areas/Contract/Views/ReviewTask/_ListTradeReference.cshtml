@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Pecuniaus.Models.Contract.TradeReferenceModel>
+
+@{var permissions = new Pecuniaus.Models.User.GroupPermission { IsFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWReview) };
+  var model = new Tuple<Pecuniaus.Models.User.GroupPermission, IEnumerable<Pecuniaus.Models.Contract.TradeReferenceModel>>(permissions, Model);
+}
+
+@Html.Partial("~/Areas/Contract/Views/DataEntry/_LstPTradeReference.cshtml", model)

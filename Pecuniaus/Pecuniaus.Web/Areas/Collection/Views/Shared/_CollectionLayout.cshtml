@@ -1,0 +1,130 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@RenderSection("CSS", required: false)
+
+<header class="navbar navbar-default">
+    <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+
+    </ul>
+    @Html.Partial("_HeaderRight")
+</header>
+<!-- Page content -->
+<div id="page-content">
+    @RenderBody()
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Contract")
+    @*@Scripts.Render("~/bundles/GridMvc")*@
+    @RenderSection("scripts", required: false)
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+
+    <script>
+
+        function ReturnToCollectionScreen() {
+            //var queryString = "merchantID=" + $("#MerchantsDetail_merchantId").val().trim() + "&contractID=" + $("#MerchantsDetail_contractId").val().trim();
+            window.location.href = "@Url.Action("CollectionWorkflow", "Workflow")";
+        }
+
+
+        $(".uploaddoc").click(function (e) {
+            $("#faq2_q6").css("display", "block");
+            $("#dvUpload").css("display", "block");
+            $("#dvPreview").css("display", "none");
+            var idClicked = e.target.id;
+            $("#faq2_q6 #DocumentUpload").empty();
+            $("#faq2_q6 #DocumentUpload").load('@Url.Action("UploadDocument", "Workflow")?UploadSignedDocument=' + idClicked);
+            SetDocScans();
+
+
+
+        });
+
+        function LoadMerchantDocumentsGrid() {
+            var $dv = $("#dvMerchantDocuments");
+            var url = $dv.attr('data-source-url');
+            $dv.load(url);
+        }
+
+
+        function LoadGrid() {
+            var selectedItem = $(".docType :selected").val();
+            var $dv = $("#dvDocGrid");
+            var url = $dv.attr('data-source-url') + '?docType=' + selectedItem;
+            $dv.load(url);
+        }
+        function GetPreviewDoc(documentId) {
+            $("#faq2_q6").css("display", "block");
+            $("#dvUpload").css("display", "none");
+            $("#dvPreview").css("display", "block");
+            var $dv = $("#dvPreviewDoc");
+            var url = $dv.attr('data-source-url') + '?documentId=' + documentId;
+
+            $dv.load(url);
+        }
+        function SetDocScans() {
+
+            $(document).ajaxComplete(function () {
+                var bar = $('#barUpload');
+                var percent = $('#barUpload');
+
+                $('#frmScanDoc').ajaxForm({
+                    beforeSend: function () {
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    beforeSubmit: function () {
+                        $form = $("#frmScanDoc");
+                        if ($form.valid()) {        //clear summary
+                            $form.find("[data-valmsg-summary=true]")
+                            .removeClass("validation-summary-errors")
+                           .addClass("validation-summary-valid")
+                           .find("ul").empty();
+                            return true;
+                        }
+                        return false;
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    complete: function (xhr) {
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                        var $file = $("#file")
+                        resetFormInputElement($file);
+                        LoadMerchantDocumentsGrid();
+                        LoadGrid();
+                    }
+                });
+            });
+        };
+
+        //function showimagepreview(input) {
+        //    if (input.files && input.files[0]) {
+        //        var filerdr = new FileReader();
+        //        filerdr.onload = function (e) {
+        //            $('#imgprvw').attr('src', e.target.result);
+        //        }
+        //        filerdr.readAsDataURL(input.files[0]);
+        //    }
+        //}
+    </script>
+}
+
+
+
+
+
+

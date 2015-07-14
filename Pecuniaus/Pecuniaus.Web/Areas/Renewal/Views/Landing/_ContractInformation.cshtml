@@ -1,0 +1,117 @@
+﻿@model Pecuniaus.Renewal.Models.MerchantsDetail
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="block-title">
+            <h2><strong>Contract</strong> Information</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <legend><i class="fa fa-angle-right"></i>Contract</legend>
+                    <form class="form-horizontal">
+
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => Model.contractId)<br />
+                                <span>@Model.contractId</span>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => Model.contractStatus)<br />
+                                <span>@Model.contractStatus</span>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.loanamount)<br />
+                                <span>@Model.loanamount</span>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.ownedAmount)<br />
+                                <span>@Model.ownedAmount</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => Model.paidamount)<br />
+                                <span>@Model.paidamount</span>
+                            </div>
+
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => Model.paidpercent)<br />
+                                <span>@Model.paidpercent</span>
+                            </div>
+                             <div class="col-md-3">
+                                @Html.LabelFor(m => Model.pendingAmount)<br />
+                                <span>@Model.pendingAmount</span>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.actualturn)<br />
+                                <span>@Model.actualturn</span>
+                            </div>
+                        </div>
+                         @* <div class="col-md-3">
+                                @Html.LabelFor(m => Model.expectedDate)<br />
+                                <span>@Model.expectedDate</span>
+                            </div>*@
+                           
+                        @*<div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.fundedDate,new{@placeholder = "mm/dd/yy"})<br />
+                                <span>@Model.fundedDate</span>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => Model.pendingAmount)<br />
+                                <span>@Model.pendingAmount</span>
+                            </div>
+                        </div>*@
+                    </form>
+
+                </div>
+
+                <div class="block full">
+                    <legend><i class="fa fa-angle-right"></i>Merchant</legend>
+                    
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.merchantName)
+                                <span>@Model.merchantName</span>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.businessName)
+                                <span>@Model.businessName</span>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.merchantStatus)
+                                <span>@Model.merchantStatus</span>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.taskstatus)<br />
+                                <span>@Model.taskstatus</span>
+                            </div>
+                        
+                            </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => Model.taskName)<br />
+                                <span>@Model.taskName</span>
+                            </div>                            
+                        </div>
+
+                        <div class="clearfix">
+                            <br>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <div style="margin-top: 5px">
+            <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button" onclick="closeDialog();">Close</button>
+        </div>
+
+
+    </div>
+</div>

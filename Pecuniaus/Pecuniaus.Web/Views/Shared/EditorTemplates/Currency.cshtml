@@ -1,0 +1,28 @@
+﻿@model Decimal?
+@using Pecuniaus.Web.HelperClasses;
+@{
+
+    var value = "0.00";
+    if (Model.HasValue)
+    {
+        value = Model.Value.ToString("N2");
+    }
+}
+@{
+    object htmlAttributes = null;
+    if (Html.ViewData.ContainsKey("htmlAttributes"))
+    {
+        htmlAttributes = ViewData["htmlAttributes"];
+    }
+    
+    var attributes = (IDictionary<string, object>) HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+    object cssClass;
+    if(attributes.TryGetValue("class", out cssClass) == false)
+    {
+        cssClass = "";
+    }
+    attributes["class"] = cssClass + " form-control input-currency";
+
+}
+@*@Html.TextBox("", value, new { @class = "form-control input-currency" })*@
+@Html.TextBox("", value, attributes)

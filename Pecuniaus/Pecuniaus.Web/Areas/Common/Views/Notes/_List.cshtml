@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Pecuniaus.Models.NotesModel>
+@using GridMvc.Html
+
+<!-- Modal Body -->
+    <div class="row">
+        <div class="row form-group">
+
+            <div class="form-horizontal">
+                <div class="col-sm-7">
+                    <label for="example-email-input" class="col-md-2 control-label">@Pecuniaus.Resources.Common.Notes</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn no_searrchbgcolor" type="button" id="btnNoteSearch"><i class="fa fa-search"></i></button>
+                            </span>
+                            <input type="text" placeholder="Enter the search creteria here" class="form-control" name="example-input1-group2" id="txtSearchCriteria">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button data-target="#mod_notes_add" data-toggle="modal"
+                            class="btn btn-sm btn-success pop_addbtn_margn" type="button">
+                        <i class="hi hi-check"></i>@Pecuniaus.Resources.Common.AddNote
+                    </button>
+                </div>
+                <div class="col-sm-3">
+                    @Html.DropDownList("drpNotesWorkflowId", new SelectList(ViewBag.WorkflowTypes, "Value", "Text"), new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+                    @*<select size="1" style="float:left" class="form-control" name="example-select" id="example-select">
+                        <option value="0">Filter By</option>
+                        <option value="1">Option #1</option>
+                        <option value="2">Option #2</option>
+                        <option value="3">Option #3</option>
+                    </select>*@
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive" style="overflow:auto !Important;">
+            @Html.Grid(Model).Columns(columns =>
+       {
+          // columns.Add(data => data.Note).Titled("Note").Css("minimaltext");
+           columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => "<div class='minimaltext'>" + @o.Note.Replace("\n", "<br>") + "</div>").Titled("Note").Css("");
+           columns.Add(data => data.noteTypeDescription).Titled("Note Type").SetWidth(100);
+           columns.Add(data => data.UserName).Titled("Insert User").SetWidth(200);
+           //columns.Add(data => data.ScreenName).Titled("Screen Name").SetWidth(100);
+           //columns.Add(data => data.MerchantId).Titled("Merchant ID").SetWidth(100);
+           //columns.Add(data => data.ContractId).Titled("Contract ID").SetWidth(100);
+           // columns.Add(data => data.WorkFlowId).Titled("Workflow ID").SetWidth(100);
+       }).WithPaging(10)
+        </div>
+        <div class="form-actions">
+            <div class="col-xs-12 text-right">
+                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button">@Pecuniaus.Resources.Common.Close</button>
+            </div>
+        </div>
+        <!-- END Table Styles Content -->
+    </div>
+<!-- END Modal Body -->
+<script>
+    var urlSearchNotes = '@Html.Raw(Url.Action("List", "Notes", new { area = "Common" }))';
+    var searchCriteria, searchCriteria2;
+    $(document).ready(function () {
+
+        $(".minimaltext").readmore({
+            collapsedHeight: 22,
+            moreLink: '<a href="#">More</a>',
+            lessLink: '<a href="#">Less</a>',
+            embedCSS: true
+        });
+
+        if (searchCriteria2 != 'undefined')
+            $("#drpNotesWorkflowId").val(searchCriteria2);
+
+        if (searchCriteria != 'undefined')
+            $("#txtSearchCriteria").val(searchCriteria);
+
+        $("#btnNoteSearch").click(function () {
+            searchCriteria = $("#txtSearchCriteria").val();
+            $("#dvNotesList").load(urlSearchNotes + "?SearchCriteria=" + searchCriteria);
+        });
+
+        $("#drpNotesWorkflowId").change(function () {
+            searchCriteria2 = $("#drpNotesWorkflowId option:selected").val();
+            $("#dvNotesList").load(urlSearchNotes + "?WorkflowId=" + searchCriteria2);
+        });
+    });
+</script>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Pecuniaus</title>
+<meta name="description" content="Pecuniaus">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/plugins.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<div id="page-container" class="sidebar-visible-lg sidebar-no-animations">
+  <!-- Main Sidebar -->
+  <div id="sidebar">
+    <div class="sidebar-scroll">
+      <!-- Sidebar Content -->
+      <div class="sidebar-content">
+        <!-- Brand -->
+        <div class="logo"><img src="img/logo.png" alt=""></div>
+        <!-- END Brand -->
+        <!-- Sidebar Navigation -->
+        <ul class="sidebar-nav">
+          <li class="sidebar-header"> <span class="sidebar-header-title">Recently Visited</span> </li>
+           <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi-home sidebar-nav-icon"></i>Home</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi-notes_2 sidebar-nav-icon"></i>Prequal Workflow</a>
+            <ul class="sidebar_infoblock">
+              <li>Merchant Name</li>
+              <li>Task Name</li>
+              <li>Business Name</li>
+              <li>Task Status</li>
+            </ul>
+          </li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi-stats sidebar-nav-icon"></i>Contract Workflow</a>
+            <ul class="sidebar_infoblock">
+              <li>Merchant Name</li>
+              <li>Task Name</li>
+              <li>Conbtract ID</li>
+              <li>Task Status</li>
+            </ul>
+          </li>
+         <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi gi-history sidebar-nav-icon"></i>Renewal Workflow</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi gi-user sidebar-nav-icon"></i>Merchant Profile</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi hi hi-th sidebar-nav-icon"></i>Collection</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi gi-signal sidebar-nav-icon"></i>Finance</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi gi-notes sidebar-nav-icon"></i>Report</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi-notes_2 sidebar-nav-icon"></i>User Management</a></li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="gi gi gi-address_book sidebar-nav-icon"></i>System Administration</a></li>
+        </ul>
+        <!-- END Sidebar Navigation -->
+      </div>
+      <!-- END Sidebar Content -->
+    </div>
+  </div>
+  <!-- END Main Sidebar -->
+  <!-- Main Container -->
+  <div id="main-container">
+    <header class="navbar navbar-default">
+      <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onClick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+      </ul>
+      <!-- Right Header Navigation -->
+      <ul class="nav navbar-nav-custom pull-right">
+        <li> <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle"><i class="gi gi-notes_2 sidebar-nav-icon"></i> <span class="label label-white label-indicator animation-floating">4</span> </a>
+          <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li> <a href="javascript:void(0)"><i class="fa fa-plus pull-right"></i>Test Action here</a> <a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Another Action</a> <a href="javascript:void(0)"><i class="fa fa-envelope-o pull-right"></i>Another Action</a> </li>
+          </ul>
+        </li>
+        <!-- Dropdown -->
+        <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> <img src="img/avatar.jpg" alt="avatar"> <i class="fa fa-angle-down"></i> </a>
+          <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li class="dropdown-header text-center">Account</li>
+            <li> <a href="page_ready_lock_screen.html"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a> <a href="login.html"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a> </li>
+          </ul>
+        </li>
+        <!-- END Dropdown -->
+      </ul>
+      <!-- END Right Header Navigation -->
+    </header>
+    <!-- END Header -->
+    <!-- Page content -->
+    <div id="page-content">
+      <div class="content-header">
+        <div class="header-section">
+          <div class="row">
+            <div class="col-md-4 col-lg-6 hidden-sm">
+              <h1>Merchant <strong>Profile</strong><br>
+                <small>Any sample text comes here</small></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="">Merchant Profile</a></li>
+      </ul>
+      <!-- All Boxes Content Start -->
+      <!-- Datatables Content -->
+      <div class="row">
+  <div class="col-md-12">
+    <div class="block">
+      <!-- Normal Form Title -->
+      <div class="block-title">
+        <h2><strong>Search</strong> Merchant</h2>
+      </div>
+      <!-- END Normal Form Title -->
+      <!-- Normal Form Content -->
+      <form class="form-horizontal form-bordered">
+        <div class="form-group">
+          <div class="col-md-3">
+            <label for="example-nf-email">Merchant ID</label>
+            <input type="email" class="form-control" placeholder="Enter Merchant ID">
+          </div>
+          <div class="col-md-2">
+            <label for="example-nf-email">Merchant Status</label>
+             <select class="select-select2" style="width: 100%;" data-placeholder="Choose one..">
+                    <option></option>
+                    <option value="Merchant Status 1">Merchant Status 1</option>
+                    <option value="Merchant Status 2">Merchant Status 2</option>
+                    <option value="Merchant Status 3">Merchant Status 3</option>
+                    <option value="Merchant Status 4">Merchant Status 4</option>
+                    <option value="Merchant Status 5">Merchant Status 5</option>
+                  </select>
+          </div>
+          <div class="col-md-3">
+            <label for="example-nf-email">Processor</label>
+            <select class="select-select2" style="width: 100%;" data-placeholder="Choose one..">
+                    <option></option>
+                    <option value="Processor Status 1">Processor 1</option>
+                    <option value="Processor Status 2">Processor Status 2</option>
+                    <option value="Processor Status 3">Processor Status 3</option>
+                    <option value="Processor Status 4">Processor Status 4</option>
+                    <option value="Processor Status 5">Processor Status 5</option>
+                  </select>
+          </div>
+          <div class="col-md-2">
+            <label for="example-nf-email">Processor Number</label>
+            <input type="email" class="form-control" placeholder="Enter text..">
+          </div>
+          <div class="col-md-2">
+            <label for="example-nf-email">Owner Name</label>
+            <input type="email" class="form-control" placeholder="Enter text..">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-3">
+            <label for="example-nf-email">Legal Name</label>
+            <input type="email" class="form-control" placeholder="Enter text..">
+          </div>
+          <div class="col-md-3">
+            <label for="example-nf-email">Business Name</label>
+            <input type="email" class="form-control" placeholder="Enter text..">
+          </div>
+          <div class="col-md-2">
+            <label for="example-nf-email">Owner ID</label>
+            <input type="email" class="form-control" placeholder="Enter text..">
+          </div>
+          <div class="col-md-2">
+             <label for="example-nf-email">&nbsp;</label>
+                      <button class="btn btn-success form-control darkbluebtn" type="button">Search</button>
+          </div>
+          <div class="col-md-2">
+             <label for="example-nf-email">&nbsp;</label>
+                      <button class="btn btn-danger form-control" type="button"> Cancel</button>
+          </div>
+        </div>
+        <div class="form-group form-actions">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-sm btn-primary darkbluebtn"><i class="fa fa-angle-right"></i> Submit</button>
+            <button type="reset" class="btn btn-sm btn-warning dark_greenbtn"><i class="fa fa-repeat"></i> Reset</button>
+          </div>
+        </div>
+      </form>
+      <!-- END Normal Form Content -->
+    </div>
+  </div>
+</div>
+
+      <div class="row">
+  <div class="col-md-12">
+    <div class="block full">
+      <div id="faq2" class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q1">Business</a></h4>
+          </div>
+          <div id="faq2_q1" class="panel-collapse collapse in">
+            <div class="panel-body">
+              <div class="tophdrbuttons">
+                <div class="row">
+                  <div class="pull-right">
+                    <button class="btn btn-primary" type="button">Save</button>
+                    <button class="btn btn-danger" type="button">Cancel</button>
+                    <a class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" href="#modal-searchpopup" data-original-title="" title="">Notes</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="block full">
+                    <div class="block-title">
+                      <h2><strong>Marchent</strong> Information</h2>
+                    </div>
+                    <div class="row top3head">
+                      <div class="col-md-4">
+                        <h3>Marchent ID : XXXXX </h3>
+                      </div>
+                      <div class="col-md-4">
+                        <h3>Status : XXXXX </h3>
+                      </div>
+                      <div class="col-md-4">
+                        <h3>Contract : Status : XXXXX </h3>
+                      </div>
+                    </div>
+                    <legend><i class="fa fa-angle-right"></i> Business Information</legend>
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <div class="col-md-3"> Name of the Company
+                          <input type="text" placeholder="Business Name" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Name of the Business
+                          <input type="text" placeholder="Name of the Business" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Business Status
+                          <input type="text" placeholder="Business Status" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Type of entity
+                          <input type="text" placeholder="Type of entity" class="form-control">
+                        </div>
+                        <div class="col-md-2"> RNC
+                          <input type="text" placeholder="RNC Number" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3"> Date Business Started
+                          <input type="text" placeholder="dd/mm/yyyy" class="form-control" name="masked_date" id="masked_date">
+                        </div>
+                        <div class="col-md-3"> Date the business began accepting CC
+                          <input type="text" placeholder="dd/mm/yyyy" class="form-control" name="masked_date" id="masked_date">
+                        </div>
+                        <div class="col-md-2"> Type of Industry
+                          <input type="text" placeholder=" MCC Code" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Affiliation Number
+                          <input type="text" placeholder="Affiliation Number" class="form-control">
+                        </div>
+                      </div>
+                      <div class="clearfix"><br>
+                      </div>
+                       <legend><i class="fa fa-angle-right"></i> Physical Address</legend>
+                      <div class="form-group">
+                        <div class="col-md-5"> Address
+                          <input type="text" placeholder="Street 1, #483" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Province
+                          <input type="text" placeholder=" Province Name" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Telephone 1*:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3"> Telephone 1*:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Email *:
+                          <input type="text" placeholder="user@domain.com" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Fax No.:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                      </div>
+                      
+                       <legend><i class="fa fa-angle-right"></i> Legal Address</legend>
+                      <div class="form-group">
+                        <div class="col-md-5">Address
+                          <input type="text" placeholder="Street 1, #483" class="form-control">
+                        </div>
+                        <div class="col-md-2">City
+                          <input type="text" placeholder="City" class="form-control">
+                        </div>
+                        <div class="col-md-3">Province:
+                          <input type="text" placeholder="Province Name" class="form-control">
+                        </div>
+                         <div class="col-md-2">Telephone 1:
+                          <input type="text" placeholder="(125) 548 1255" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3"> Telephone 2*:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Email *:
+                          <input type="text" placeholder="user@domain.com" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Fax No.:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                      </div>
+                      <legend><i class="fa fa-angle-right"></i> Processor Information</legend>
+                      <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid" >
+                        <thead>
+                          <tr role="row">
+                            <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending" >Edit</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" >Terminals</th>
+                            <th class="text-center sorting " rowspan="1" colspan="1"  aria-label="Actions">Processor Name</th>
+                            <th class="text-center" rowspan="1" colspan="1"  aria-label="Actions">Processor Name</th>
+                            <th class="text-center sorting" rowspan="1" colspan="1"  aria-label="Actions">Phone Number</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Industry Type</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" >Frist Proce</th>
+                          </tr>
+                        </thead>
+                        <tr>
+                          <td><input type="checkbox" value="option1" name="example-checkbox1" id="example-checkbox1"></td>
+                          <td>1</td>
+                          <td>Card NET</td>
+                          <td>XXXXX</td>
+                          <td>(123) 458 - 4589</td>
+                          <td>XXXXX</td>
+                          <td>YYYY/MM/DD</td>
+                        </tr>
+                      </table>
+                      <div class="clearfix"><br>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-2"> Processor Name
+                          <select size="1" class="form-control" name="example-select" id="example-select">
+                            <option value="0">VISA NET</option>
+                            <option value="1">Card Net</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2"> Processor Number
+                          <input type="text" placeholder="XXXXX" class="form-control" name="" id="">
+                        </div>
+                        <div class="col-md-1"> Terminal
+                          <input type="text" placeholder="1" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Date grace period
+                          <input type="text" placeholder="dd/mm/yyyy" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Industry Type
+                          <select size="1" class="form-control" name="example-select" id="example-select">
+                            <option value="0">ComboBox</option>
+                            <option value="1">1</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2"> Frist processed date
+                          <input type="text" id="example-datepicker" name="example-datepicker" class="form-control input-datepicker" data-date-format="mm/dd/yy" placeholder="yy/dd/mm">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- END Datatables Content -->
+                <!-- All Boxes Content Start -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q2">Landlord</a></h4>
+          </div>
+          <div id="faq2_q2" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q3">Contacts</a></h4>
+          </div>
+          <div id="faq2_q3" class="panel-collapse collapse">
+            <div class="panel-body">
+            
+            
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="block full">
+                    <div class="block-title">
+                      <h2><strong>Marchent</strong> Information</h2>
+                    </div>
+                    <div class="row top3head">
+                      <div class="col-md-4">
+                        <h3>Marchent ID : XXXXX </h3>
+                      </div>
+                      <div class="col-md-4">
+                        <h3>Status : XXXXX </h3>
+                      </div>
+                      <div class="col-md-4">
+                        <h3>Contract : Status : XXXXX </h3>
+                      </div>
+                    </div>
+                    <legend><i class="fa fa-angle-right"></i> Business Information</legend>
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <div class="col-md-3"> Name of the Company
+                          <input type="text" placeholder="Business Name" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Name of the Business
+                          <input type="text" placeholder="Name of the Business" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Business Status
+                          <input type="text" placeholder="Business Status" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Type of entity
+                          <input type="text" placeholder="Type of entity" class="form-control">
+                        </div>
+                        <div class="col-md-2"> RNC
+                          <input type="text" placeholder="RNC Number" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3"> Date Business Started
+                          <input type="text" placeholder="dd/mm/yyyy" class="form-control" name="masked_date" id="masked_date">
+                        </div>
+                        <div class="col-md-3"> Date the business began accepting CC
+                          <input type="text" placeholder="dd/mm/yyyy" class="form-control" name="masked_date" id="masked_date">
+                        </div>
+                        <div class="col-md-2"> Type of Industry
+                          <input type="text" placeholder=" MCC Code" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Affiliation Number
+                          <input type="text" placeholder="Affiliation Number" class="form-control">
+                        </div>
+                      </div>
+                      <div class="clearfix"><br>
+                      </div>
+                       <legend><i class="fa fa-angle-right"></i> Physical Address</legend>
+                      <div class="form-group">
+                        <div class="col-md-5"> Address
+                          <input type="text" placeholder="Street 1, #483" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Province
+                          <input type="text" placeholder=" Province Name" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Telephone 1*:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3"> Telephone 1*:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Email *:
+                          <input type="text" placeholder="user@domain.com" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Fax No.:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                      </div>
+                      
+                       <legend><i class="fa fa-angle-right"></i> Legal Address</legend>
+                      <div class="form-group">
+                        <div class="col-md-5">Address
+                          <input type="text" placeholder="Street 1, #483" class="form-control">
+                        </div>
+                        <div class="col-md-2">City
+                          <input type="text" placeholder="City" class="form-control">
+                        </div>
+                        <div class="col-md-3">Province:
+                          <input type="text" placeholder="Province Name" class="form-control">
+                        </div>
+                         <div class="col-md-2">Telephone 1:
+                          <input type="text" placeholder="(125) 548 1255" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3"> Telephone 2*:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Email *:
+                          <input type="text" placeholder="user@domain.com" class="form-control">
+                        </div>
+                        <div class="col-md-3"> Fax No.:
+                          <input type="text" placeholder="(125) 548-1254" class="form-control">
+                        </div>
+                      </div>
+                      <legend><i class="fa fa-angle-right"></i> Processor Information</legend>
+                      <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid" >
+                        <thead>
+                          <tr role="row">
+                            <th class="text-center sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending" >Edit</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" >Terminals</th>
+                            <th class="text-center sorting " rowspan="1" colspan="1"  aria-label="Actions">Processor Name</th>
+                            <th class="text-center" rowspan="1" colspan="1"  aria-label="Actions">Processor Name</th>
+                            <th class="text-center sorting" rowspan="1" colspan="1"  aria-label="Actions">Phone Number</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Industry Type</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1" >Frist Proce</th>
+                          </tr>
+                        </thead>
+                        <tr>
+                          <td><input type="checkbox" value="option1" name="example-checkbox1" id="example-checkbox1"></td>
+                          <td>1</td>
+                          <td>Card NET</td>
+                          <td>XXXXX</td>
+                          <td>(123) 458 - 4589</td>
+                          <td>XXXXX</td>
+                          <td>YYYY/MM/DD</td>
+                        </tr>
+                      </table>
+                      <div class="clearfix"><br>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-2"> Processor Name
+                          <select size="1" class="form-control" name="example-select" id="example-select">
+                            <option value="0">VISA NET</option>
+                            <option value="1">Card Net</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2"> Processor Number
+                          <input type="text" placeholder="XXXXX" class="form-control" name="" id="">
+                        </div>
+                        <div class="col-md-1"> Terminal
+                          <input type="text" placeholder="1" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Date grace period
+                          <input type="text" placeholder="dd/mm/yyyy" class="form-control">
+                        </div>
+                        <div class="col-md-2"> Industry Type
+                          <select size="1" class="form-control" name="example-select" id="example-select">
+                            <option value="0">ComboBox</option>
+                            <option value="1">1</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2"> Frist processed date
+                          <input type="text" id="example-datepicker" name="example-datepicker" class="form-control input-datepicker" data-date-format="mm/dd/yy" placeholder="yy/dd/mm">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- END Datatables Content -->
+                <!-- All Boxes Content Start -->
+              </div>
+            
+            
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q4">Owners</a></h4>
+          </div>
+          <div id="faq2_q4" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Profiles</a></h4>
+          </div>
+          <div id="faq2_q5" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Documents</a></h4>
+          </div>
+          <div id="faq2_q6" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Activity</a></h4>
+          </div>
+          <div id="faq2_q7" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Statements</a></h4>
+          </div>
+          <div id="faq2_q8" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">History</a></h4>
+          </div>
+          <div id="faq2_q9" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Risk Evolution</a></h4>
+          </div>
+          <div id="faq2_q10" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Contracts</a></h4>
+          </div>
+          <div id="faq2_q11" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Credit Card reports</a></h4>
+          </div>
+          <div id="faq2_q12" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Collections</a></h4>
+          </div>
+          <div id="faq2_q13" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Affilations</a></h4>
+          </div>
+          <div id="faq2_q14" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5">Credit Reports</a></h4>
+          </div>
+          <div id="faq2_q15" class="panel-collapse collapse">
+            <div class="panel-body">text</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- END Datatables Content -->
+      <!-- All Boxes Content Start -->
+    </div>
+    <!-- END Page Content -->
+    <!-- Footer -->
+    <footer class="clearfix">
+	<div class="pull-left footerlinks"> <a href="#" title="About us">About us</a> <a href="#" class="Support">Support</a><a href="#" class="Privacy and Security">Privacy &amp; Security</a> <a href="#" title="Terms of Use">Terms of Use</a> <a href="#" title="How it works">How it works </a></div>
+      <div class="pull-right"> 2014  &copy; Pecuniaus </div>
+    </footer>
+    <!-- END Footer -->
+  </div>
+  <!-- END Main Container -->
+</div>
+<!-- Pop Search Start -->
+<div id="modal-searchpopup" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="row form-group">
+            <form class="form-horizontal">
+              <div class="col-sm-7">
+                <label for="example-email-input" class="col-md-2 control-label">Notes</label>
+                <div class="col-md-10">
+                  <div class="input-group"> <span class="input-group-btn">
+                    <button class="btn no_searrchbgcolor" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                    <input type="text" placeholder="Enter the search creteria here" class="form-control" name="example-input1-group2" id="example-input1-group2">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-sm btn-success pop_addbtn_margn" type="submit"><i class="hi hi-check"></i> Add Note</button>
+              </div>
+              <div class="col-sm-3">
+                <select size="1" style="float:left" class="form-control" name="example-select" id="example-select">
+                  <option value="0">Filter By</option>
+                  <option value="1">Option #1</option>
+                  <option value="2">Option #2</option>
+                  <option value="3">Option #3</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-vcenter table-bordered" id="general-table">
+              <thead>
+                <tr class="active">
+                  <th>Notes</th>
+                  <th>Dates</th>
+                  <th>User</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Notes 1</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+                <tr>
+                  <td>Notes 2</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+                <tr>
+                  <td>Notes 3</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+                <tr>
+                  <td>Notes 4</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3"><div class="btn-group btn-group-sm"> Results: 50 Records </div>
+                    <div class="btn-group btn-group-sm  pull-right">
+                      <select size="1" class="form-control" name="example-select" id="example-select">
+                        <option value="0">Please select</option>
+                        <option value="1">Option #1</option>
+                        <option value="2">Option #2</option>
+                        <option value="3">Option #3</option>
+                      </select>
+                    </div></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="form-group form-actions">
+            <div class="col-xs-12 text-right">
+              <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button">Close</button>
+            </div>
+          </div>
+          <!-- END Table Styles Content -->
+        </div>
+      </div>
+      <!-- END Modal Body -->
+    </div>
+  </div>
+</div>
+<!-- Pop Search End-->
+
+<!-- END Page Container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages/tablesDatatables.js"></script>
+<script>$(function(){ TablesDatatables.init(); });</script>
+</body>
+</html>

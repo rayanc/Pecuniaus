@@ -1,0 +1,39 @@
+{
+"companyId":5,
+"salesRepId":5,   
+"merchantName":"Test",
+   "businessName":"test business",
+   "legalName":"test business",
+   "rnc":"12121wsdf",
+   "mccCode":"1111111",
+   "ownerId":12123,
+   "businessStartDate":"2012-12-23",
+   "businessEndDate":"2012-12-23",
+   "businessTypeId":1,
+   "businessWebSite":"http://www.google.com",
+   "rentAmount":2000.23,
+   "annualSales":100010.0,
+   "industryTypeId":1,
+   "propertyType":1,
+   "processorCompany":"proCompany",
+   "affiliationNumber":1111111,
+   "address":{
+      "city":"aa",
+      "state":"ss",
+      "zip":11111,
+      "phone1":"1111111",
+      "phone2":"111111",
+      "fax":"11111",
+      "addressLine1":"addresss1",
+      "addressLine2":"addresss2",
+      "email":"test@t.com"
+   },
+   "processor":{
+      "processorId":1,
+      "companyName":"procomp",
+      "processorRNC":"q122222",
+      "bankAccountNumber":"acc number",
+      "bankAccountName":"test",
+      "authorisedOwner":"1233"
+   }
+}

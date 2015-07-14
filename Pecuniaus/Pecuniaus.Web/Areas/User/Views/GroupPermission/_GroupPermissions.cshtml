@@ -1,0 +1,98 @@
+﻿@model Pecuniaus.User.Models.GroupPermissionModel
+
+@using GridMvc.Html
+<div id="divUsers" style="min-height: 614px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>User Management</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="@Url.Action("Index", "Account")">User Management</a></li>
+    </ul>
+    <div class="block">
+        <!-- Search Styles Title -->
+        <div class="block-title">
+            <ul class="nav nav-tabs">
+                <li><a href="@Url.Action("Index", "Account")">@Pecuniaus.Resources.User.User.UserMenuName</a></li>
+                <li><a href="@Url.Action("Index", "UserProfile")">@Pecuniaus.Resources.User.UserProfile.UserProfileMenuName</a></li>
+                <li id="liGroup"><a href="@Url.Action("Index", "Group")">@Pecuniaus.Resources.User.Group.GroupMenuName</a></li>
+                <li id="liGroupPermission" class="active"><a href="@Url.Action("Index", "GroupPermission")">@Pecuniaus.Resources.User.GroupPermission.GroupPermissionMenuName</a></li>
+            </ul>
+        </div>
+        <!-- END Search Styles Title -->
+        <!-- Search Styles Content -->
+        <div class="tab-content">
+            <div id="divGroupPermission" class="tab-pane active">
+                @using GridMvc.Html
+
+                @Html.ValidationSummary()
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block full">
+                            <div class="block-title">
+                                <h2>Module based group Permissions</h2>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-3">
+                                    @Pecuniaus.Resources.User.GroupPermission.Module
+
+                                    @Html.DropDownListFor(u => u.ModuleID, Model.ParentModules, "Select Module", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Pecuniaus.Resources.User.GroupPermission.Group
+                                    @Html.LabelFor(u => u.GroupID)
+
+                                    @Html.DropDownListFor(u => u.GroupID, Model.Groups, "Select Group", new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="row form-group"> </div>
+
+                            <div id="dvGroupRights" data-source-url="@Url.Action("ListGroupRights")">
+                                @if (Model.lstGroupRights != null && Model.lstGroupRights.Count > 0)
+                                {
+                                    @Html.Partial("_GroupPermissionsListing", Model.lstGroupRights);
+                                }
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {           
+
+            $("#ModuleID,#GroupID").change(function () {
+                if ($("#ModuleID").val() != "" && $("#GroupID").val() != "") {
+                    BindGroupRights($("#ModuleID").val(), $("#GroupID").val());
+                }
+                
+            });
+
+        });
+
+        function BindGroupRights(moduleID,groupID) {
+            var dvGroupRights = $('#dvGroupRights');
+            var url = dvGroupRights.attr("data-source-url") + '?moduleID=' + moduleID + '&groupID=' + groupID
+            dvGroupRights.load(url);
+        }
+
+    </script>
+}

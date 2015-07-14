@@ -1,0 +1,54 @@
+﻿@model Pecuniaus.Models.Contract.CorporateDocVerificationModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWContract);}
+
+@using (Ajax.BeginForm("CorpDocVer", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "InitCorpDocsVeri()",
+                UpdateTargetId = "tCorpDoc",
+                InsertionMode=InsertionMode.Replace
+            }, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-md-4 col-lg-6 hidden-sm">
+            @Html.Partial("_PageMessage")
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-md-8 col-lg-6 pull-right">
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Areas/Contract/Views/VerificationTask/_CorpDocs.cshtml", Model)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full a form-horizontal">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.Owners</h2>
+                </div>
+
+                <div id="dvAddCorpDoc" data-source-url="@Url.Action("AddCorpDoc", "VerificationTask")" data-source-edit-url="@Url.Action("UpdateCorpDoc", "VerificationTask")"></div>
+
+                <div id="dvListCorpDoc" data-source-url="@Url.Action("ListCorpDoc", "VerificationTask")"></div>
+
+                <div class="form-group">
+                    <div class="widget-simple">
+                        @Html.HiddenFor(m => m.DocTypeId, new { id = "hCopDocTId" })
+                        <div id="dvCorpDocPrev" data-source-url="@Url.Action("GetDocListModal", "DocumentScan",
+                    new {
+                        area = "Contract",
+                        MerchantID = Pecuniaus.UICore.SessionHelper.CurrentMerchantID,
+                        ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+                    })">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

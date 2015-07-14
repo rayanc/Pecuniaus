@@ -1,0 +1,11 @@
+﻿@model string
+@using DevExpress.Web.Mvc.UI
+@Html.DevExpress().DocumentViewer(settings =>{
+    // The following settings are required for a Report Viewer. 
+    settings.Name = "documentViewer1";
+    settings.Report = (DevExpress.XtraReports.UI.XtraReport)ViewData["Report"];
+    // Callback and export route values specify corresponding controllers and their actions. 
+    // These settings are required as well. 
+    settings.CallbackRouteValues = new { Controller = "ReportViewer", Action = "DocumentViewerPartial",  id=@Model};
+   // settings.ExportRouteValues = new { Controller = "ReportViewer", Action = "ExportDocumentViewer" };    
+ }).GetHtml()

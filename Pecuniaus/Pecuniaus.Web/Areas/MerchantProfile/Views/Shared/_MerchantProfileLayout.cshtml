@@ -1,0 +1,542 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@RenderSection("CSS", required: false)
+
+<header class="navbar navbar-default">
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+
+    </ul>
+    @Html.Partial("_HeaderRight")
+</header>
+<!-- Page content -->
+<div id="page-content">
+    @RenderBody()
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/MerchantProfile")
+    @Scripts.Render("~/bundles/inputmask")
+
+    @RenderSection("scripts", required: false)
+
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script>
+        //Global Variables
+        var CurrentMerchantID, CurrentProcessorID;
+        var BusinessLoaded = 0, LandlordLoaded = 0, ContactsLoaded = 0, OwnersLoaded = 0, ProfilesLoaded = 0, DocumentsLoaded = 0,
+            ActivitiesLoaded = 0, StatementsLoaded = 0, HistoryLoaded = 0, RiskLoaded = 0, ContractLoaded = 0, CollectionLoaded = 0,
+            AffiliationLoaded = 0, CreditLoaded = 0;
+        var urlFetchNotes;
+        var urlFetchMerchantSearch = '@Html.Raw(Url.Action("MerchantProfileSearch", "Profile", new { area = "" }))';
+    var urlUpdateprocessor = '@Html.Raw(Url.Action("UpdateBusinessProcessInfo", "Profile", new { area = "MerchantProfile" }))';
+        $(document).ready(function () {
+            $("#lnkMerchantProfileSearch").click(function () {
+                var MerchantID = $("#merchantID").val();
+                var MerchantStatusID = $("#merchantStatusID option:selected").val();
+                var ProcessorID = $("#processorID option:selected").text();
+                var processorNumber = $("#processorNumber").val();
+                var ownerName = $("#ownerName").val();
+                var legalName = $("#legalName").val();
+                var businessName = $("#businessName").val();
+                var ownerID = $("#ownerID").val();
+                FetchMerchantSearchMP(MerchantID, MerchantStatusID, ProcessorID, processorNumber, ownerName, legalName, businessName, ownerID);
+            });
+        });
+
+        function ExportContractActivities() {
+            $('#tblContractActivity').tableExport({ type: 'excel', escape: 'false' });
+        }
+        function SetSelectedMerchant(rowObject) {
+            //alert($(rowObject).html());
+            //CurrentMerchantID = $('input[type=hidden][name=MPMerchantID]').val();
+            CurrentMerchantID = $(rowObject).find('input[type=hidden][name=MPMerchantID]').val();
+            //alert(CurrentMerchantID);
+            urlFetchNotes = '@Html.Raw(Url.Action("List", "Notes", new { area = "Common" }))';
+        urlFetchNotes = urlFetchNotes.replace("CurrentMerchantID", CurrentMerchantID);
+        $("#btnMPModalClose").trigger("click");
+        BusinessLoaded = 0;
+        LandlordLoaded = 0;
+        loadBusiness();
+    }
+    function loadBusiness() {
+        if (BusinessLoaded == 0) {
+            $("#details").empty();
+            $("#details").load('@Url.Action("Business")' + "?MerchantID=" + CurrentMerchantID);
+            BusinessLoaded = 1;
+        }
+        else {
+            BusinessLoaded = 0;
+        }
+    }
+    function EditProcessor(ProcessorId, tblRow) {
+        CurrentProcessorID = ProcessorId;
+        var Terminal, ProcessorName, ProcessorNumber, IndustryTypeID, FirstProcessedDate, DateGracePeriod;
+        Terminal = $(tblRow).find("#tdTerminal").text();
+        ProcessorName = $(tblRow).find("#tdProcessorName").text();
+        ProcessorNumber = $(tblRow).find("#tdProcessorNumber").text();
+        FirstProcessedDate = $(tblRow).find("#tdFirstProcessedDate").text();
+        //IndustryTypeID = $(tblRow).find("#tdIndustryTypeID").text();
+        IndustryTypeID = $(tblRow).find("input[type=hidden]#IndustryTypeID").val();
+        DateGracePeriod = $(tblRow).find("input[type=hidden]#DateGracePeriod").val();
+
+        var QValue = '@Url.Action("BusinessProcessorInformation")' + "?Trmnl=" + Terminal +
+            "&PName=" + ProcessorName + "&PNo=" + ProcessorNumber +
+        "&IndID=" + IndustryTypeID +
+        "&PId=" + CurrentProcessorID + "&FPDate=" + FirstProcessedDate + "&DGP=" + "01/01/0001";
+        $("#divEditProcessor").empty();
+        $("#divEditProcessor").load(QValue);
+
+        //$("#frmMerchantBusiness").removeData('validator');
+        //$("#frmMerchantBusiness").removeData('unobtrusiveValidation');
+    }
+        function UpdateProcessors() {
+            //alert($("select#IndustryTypeID").val());
+            urlUpdateprocessor = '@Html.Raw(Url.Action("UpdateBusinessProcessInfo", "Profile", new { area = "MerchantProfile" }))' + "?Terminal=" + $("#Terminal").val() + "&processorTypeId=" + $("#processorId option:selected").val() + "&processorNumber=" + $("#ProcessorNumber").val() + "&dateGracePeriod=1900/01/01&industryTypeID=" + $("#IndustryTypeID").val() + "&firstProcessedDate=" + $("#FirstProcessedDate").val() + "&processorId=" + CurrentProcessorID;
+
+        $.ajax({
+            url: urlUpdateprocessor,
+            async: false,
+            type: 'POST',
+            success: function (data) {
+                //alert('Update done!!');
+            },
+            error: function () {
+                //alert('error');
+            }
+        });
+    }
+    function loadLandlord() {
+        if (LandlordLoaded == 0) {
+            $("#faq2_q2").empty();
+            $("#faq2_q2").load('@Url.Action("Landlord")' + "?MerchantID=" + CurrentMerchantID);
+            LandlordLoaded = 1;
+        }
+        else {
+            LandlordLoaded = 0;
+        }
+    }
+    function RefreshLandlord() {        
+        $("#faq2_q2").load('@Url.Action("Landlord")' + "?MerchantID=" + CurrentMerchantID);
+            LandlordLoaded = 1;
+        }
+        function loadContacts() {
+            if (ContactsLoaded == 0) {
+                $("#faq2_q3").empty();
+                $("#faq2_q3").load('@Url.Action("Contacts")' + "?MerchantID=" + CurrentMerchantID);
+            $("#frmMerchantContacts").removeData('validator');
+            $("#frmMerchantContacts").removeData('unobtrusiveValidation');
+            ContactsLoaded = 1;
+        }
+        else {
+            ContactsLoaded = 0;
+        }
+    }
+    function loadContactDetails(ContactID) {
+        $("#faq2_q3 #contactdetails").empty();
+        $("#faq2_q3 #contactdetails").load('@Url.Action("ContactsInformation")' + "?ContactID=" + ContactID);
+        //var form = $("#faq2_q3 #contactdetails").closest("form");
+        //alert(form);
+        $("#frmMerchantContacts").removeData('validator');
+        //alert('done1');
+        $("#frmMerchantContacts").removeData('unobtrusiveValidation');
+        //alert('done2');
+        //$.validator.unobtrusive.parse($("#contactdetailsform"));
+        //alert('done3');
+        //$.validator.unobtrusive.parseDynamicContent($("#contactsform"));
+    }
+    function loadContactDetailstoAdd() {
+        $("#faq2_q3 #contactdetails").empty();
+        $("#faq2_q3 #contactdetails").load('@Url.Action("AddContact")');
+        $("#frmMerchantContacts").removeData('validator');
+        $("#frmMerchantContacts").removeData('unobtrusiveValidation');
+    }
+    function loadOwners() {
+        if (OwnersLoaded == 0) {
+            $("#faq2_q4").empty();
+            $("#faq2_q4").load('@Url.Action("Owners")' + "?MerchantID=" + CurrentMerchantID);
+            $("#frmMerchantOwners").removeData('validator');
+            $("#frmMerchantOwners").removeData('unobtrusiveValidation');
+            OwnersLoaded = 1;
+        }
+        else {
+            OwnersLoaded = 0;
+        }
+    }
+    function loadOwnerDetails(OwnerID) {
+        $("#faq2_q4 #ownerdetails").empty();
+        $("#faq2_q4 #ownerdetails").load('@Url.Action("OwnersInformation")' + "?OwnerID=" + OwnerID);
+        $("#frmMerchantOwners").removeData('validator');
+        $("#frmMerchantOwners").removeData('unobtrusiveValidation');
+    }
+    function loadOwnerDetailstoAdd() {
+        $("#faq2_q4 #ownerdetails").empty();
+        $("#faq2_q4 #ownerdetails").load('@Url.Action("AddOwner")');
+        $("#frmMerchantOwners").removeData('validator');
+        $("#frmMerchantOwners").removeData('unobtrusiveValidation');
+    }
+    function loadProfiles() {
+        if (ProfilesLoaded == 0) {
+            $("#faq2_q5").empty();
+            $("#faq2_q5").load('@Url.Action("Profiles")' + "?MerchantID=" + CurrentMerchantID);
+            ProfilesLoaded = 1;
+        }
+        else {
+            ProfilesLoaded = 0;
+        }
+    }
+    function loadProfileDetails(ProfileId) {
+        $("#faq2_q5 #profiledetails").empty();
+        $("#faq2_q5 #profiledetails").load('@Url.Action("ProfilesInformation")' + "?ProfileId=" + ProfileId);
+    }
+
+    function loadDocuments() {
+        if (DocumentsLoaded == 0) {
+            $("#faq2_q6").empty();
+            $("#faq2_q6").load('@Url.Action("Documents")' + "?MerchantID=" + CurrentMerchantID);
+            DocumentLoaded = 1;
+        }
+        else {
+            DocumentLoaded = 0;
+        }
+    }
+    function loadNewDocumentUpload() {
+        $("#faq2_q6 #DocumentUpload").empty();
+        $("#faq2_q6 #DocumentUpload").load('@Url.Action("UploadDocument")');
+        SetDocScans();
+    }
+    function loadActivities() {
+        if (ActivitiesLoaded == 0) {
+            $("#faq2_q7").empty();
+            $("#faq2_q7").load('@Url.Action("Activities")' + "?MerchantID=" + CurrentMerchantID);
+            $("#frmMerchantActivity").removeData('validator');
+            $("#frmMerchantActivity").removeData('unobtrusiveValidation');
+            ActivitiesLoaded = 1;
+        }
+        else {
+            ActivitiesLoaded = 0;
+        }
+    }
+    function ShowActivityDetails(ProcessorId, MonthName, Year) {
+        $("#modal-sf-listchildMPActivitieschild").empty();
+        $("#modal-sf-listchildMPActivitieschild").load('@Url.Action("ActivitiesDetail")' + "?ProcessorTypeId=" + ProcessorId + "&Month=" + MonthName + "&Year=" + Year);
+    }
+
+    function loadStatements() {
+        if (StatementsLoaded == 0) {
+            $("#faq2_q8").empty();
+            $("#faq2_q8").load('@Url.Action("Statements")' + "?MerchantID=" + CurrentMerchantID);
+            StatementsLoaded = 1;
+        }
+        else {
+            StatementsLoaded = 0;
+        }
+    }
+
+    function ReturnFileForDownload(result) {
+        if (result.statementFilePath != "Emailed") {
+            window.location = result.statementFilePath;
+        }
+        else
+        {
+            alert('@Pecuniaus.Resources.ApplicationMessages.MPStatementEmailSuccess');
+        }
+    }
+
+    function loadHistory() {
+        if (HistoryLoaded == 0) {
+            $("#faq2_q9").empty();
+            $("#faq2_q9").load('@Url.Action("History")' + "?MerchantID=" + CurrentMerchantID);
+            $("#frmMerchantHistory").removeData('validator');
+            $("#frmMerchantHistory").removeData('unobtrusiveValidation');
+            HistoryLoaded = 1;
+        }
+        else {
+            HistoryLoaded = 0;
+        }
+    }
+    function loadRiskEvolution() {
+        if (RiskLoaded == 0) {
+            $("#faq2_q10").empty();
+            $("#faq2_q10").load('@Url.Action("RiskEvolution")' + "?MerchantID=" + CurrentMerchantID);
+            $("#frmMerchantRiskEvolution").removeData('validator');
+            $("#frmMerchantRiskEvolution").removeData('unobtrusiveValidation');
+            RiskLoaded = 1;
+        }
+        else {
+            RiskLoaded = 0;
+        }
+    }
+    function loadCreditReportPDF(CreditReportId, ContractId) {
+        $("#divREReportPDF").empty();
+        $("#divREReportPDF").load('@Url.Action("LoadRiskEvaluationReport")' + "?creditReportId=" + CreditReportId + "&contractId=" + ContractId);
+    }
+    function loadContracts() {
+        if (ContractLoaded == 0) {
+            $("#faq2_q11").empty();
+            $("#faq2_q11").load('@Url.Action("Contracts")' + "?MerchantID=" + CurrentMerchantID);
+            ContractLoaded = 1;
+        }
+        else {
+            ContractLoaded = 0;
+        }
+    }
+    function loadContractDetails(ContractID) {
+        loadContractGeneralInfo(ContractID);
+    }
+    function loadContractGeneralInfo(ContractID) {
+        $("#contractdetails").empty();
+        $("#contractdetails").load('@Url.Action("ContractGeneralInformation")' + "?ContractID=" + ContractID);
+    }
+    function loadContractActivity(ContractID) {
+        $("#faq2_q11_q2").empty();
+        $("#faq2_q11_q2").load('@Url.Action("ContractActivities")' + "?ContractID=" + ContractID);
+    }
+    function loadContractSalesRep(ContractID) {
+        $("#faq2_q11_q3").empty();
+        $("#faq2_q11_q3").load('@Url.Action("ContractSalesRep")' + "?ContractID=" + ContractID);
+    }
+    function loadContractSalesRepDetailstoAdd() {
+        $("#salesrepdetails").empty();
+        $("#salesrepdetails").load('@Url.Action("AddContractSalesRep")');
+    }
+    function loadContractSalesRepDetails(SalesRepId) {
+        $("#salesrepdetails").empty();
+        $("#salesrepdetails").load('@Url.Action("ContractSalesRepDetails")' + "?SalesRepId=" + SalesRepId);
+    }
+    function loadContractHistory(ContractID) {
+        $("#faq2_q11_q4").empty();
+        $("#faq2_q11_q4").load('@Url.Action("ContractHistory")' + "?ContractID=" + ContractID);
+    }
+    function loadCollections() {
+        if (CollectionLoaded == 0) {
+            $("#faq2_q13").empty();
+            $("#faq2_q13").load('@Url.Action("Collections")' + "?MerchantID=" + CurrentMerchantID);
+            $("#frmMerchantCollections").removeData('validator');
+            $("#frmMerchantCollections").removeData('unobtrusiveValidation');
+            CollectionLoaded = 1;
+        }
+        else {
+            CollectionLoaded = 0;
+        }
+    }
+    function loadAffiliation() {
+        if (AffiliationLoaded == 0) {
+            $("#faq2_q14").empty();
+            $("#faq2_q14").load('@Url.Action("Affiliations")' + "?MerchantID=" + CurrentMerchantID);
+            AffiliationLoaded = 1;
+        }
+        else {
+            AffiliationLoaded = 0;
+        }
+    }
+    function loadCreditReports() {
+        if (CreditLoaded == 0) {
+            $("#faq2_q15").empty();
+            $("#faq2_q15").load('@Url.Action("CreditReports")' + "?MerchantID=" + CurrentMerchantID);
+            CreditLoaded = 1;
+        }
+        else {
+            CreditLoaded = 0;
+        }
+    }
+    function loadCreditReportSelect(contractId) {
+        $.getJSON("Profile/LoadCreditReportDropdown", { contractId: contractId },
+                    function (data) {
+                        var select = $("#ReportId");
+                        select.empty();
+                        select.append($('<option/>', {
+                            value: 0,
+                            text: "Select Evaluation"
+                        }));
+                        $.each(data, function (index, itemData) {
+                            select.append($('<option/>', {
+                                value: itemData.Value,
+                                text: itemData.Text
+                            }));
+                        });
+                    });
+    }
+    function loadCreditReportData() {
+        var ContractID = $("#ContractId option:selected").val()
+        var ReportId = $("#ReportId option:selected").val()
+        $("#creditReportDetails").empty();
+        $("#creditReportDetails").load('@Url.Action("LoadCreditReportData")' + "?MerchantID=" + CurrentMerchantID + "&ContractId=" + ContractID + "&ReportId=" + ReportId);
+    }
+
+    //Other functions
+
+    function FadeOutAlertMessage() {
+        $(".alert-success").fadeTo(3000, 0).slideUp(1000, function () {
+            $(this).remove();
+        });
+    }
+
+    @*function EditProcessor(ProcessorId, tblRow) {
+        CurrentProcessorID = ProcessorId;
+        var Terminal, ProcessorName, ProcessorNumber, ProcessorPhoneNumber, IndustryTypeID, FirstProcessedDate;
+        Terminal = $(tblRow).find("#tdTerminal").text();
+        ProcessorName = $(tblRow).find("#tdProcessorName").text();
+        ProcessorNumber = $(tblRow).find("#tdProcessorNumber").text();
+        ProcessorPhoneNumber = $(tblRow).find("#tdProcessorPhoneNumber").text();
+        IndustryTypeID = $(tblRow).find("#tdIndustryTypeID").text();
+        FirstProcessedDate = $(tblRow).find("#tdFirstProcessedDate").text();
+
+        $("#processorID option").each(function () {
+            if ($(this).text() == ProcessorName) {
+                $(this).attr('selected', 'selected');
+            }
+        });
+        $("#IndustryTypeID option").each(function () {
+            if ($(this).text() == IndustryTypeID) {
+                $(this).attr('selected', 'selected');
+            }
+        });
+        $("#txtProcessorNo").text(ProcessorNumber);
+        $("#txtTerminal").text(Terminal);
+        $("#txtFirstProcessedDate").text(FirstProcessedDate);
+    }
+    function UpdateProcessors()
+    {
+        //var Url = "http://localhost/PecuniausBridge/merchantprofile/business/Update/processor?Terminal=1&processorTypeId=" + $("#processorID option:selected").val() + "&processorNumber=" + $("#txtProcessorNo").val() + "&dateGracePeriod=1900/01/01&industryTypeID=" + $("#IndustryTypeID option:selected").val() + "&firstProcessedDate=" + $("#txtFirstProcessedDate").val() + "&processorId=" + CurrentProcessorID;
+        urlUpdateprocessor = '@Html.Raw(Url.Action("UpdateBusinessProcessInfo", "Profile", new { area = "MerchantProfile" }))' + "?Terminal=1&processorTypeId=" + $("#processorID option:selected").val() + "&processorNumber=" + $("#txtProcessorNo").val() + "&dateGracePeriod=1900/01/01&industryTypeID=" + $("#IndustryTypeID option:selected").val() + "&firstProcessedDate=" + $("#txtFirstProcessedDate").val() + "&processorId=" + CurrentProcessorID;
+
+        $.ajax({
+            url: urlUpdateprocessor,
+            async: false,
+            type: 'POST',
+            success: function (data) {
+                //alert('Update done!!');
+            },
+            error:function(){
+                //alert('error');
+            }
+        });
+    }*@
+
+        function showimagepreview(input) {
+            if (input.files && input.files[0]) {
+                var filerdr = new FileReader();
+                filerdr.onload = function (e) {
+                    $('#imgprvw').attr('src', e.target.result);
+                }
+                filerdr.readAsDataURL(input.files[0]);
+            }
+        }
+        $(".mdocType").change(function () {
+            GetImageData($(this).val());
+        });
+
+        function GetImageData(selectedItem) {
+            $.ajax({
+                url: '/MerchantProfile/Profile/GetImage/?docType=' + selectedItem,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#imgDocPrvw').attr('src', data.FilePath);
+                },
+                error: function (x, y, z) {
+                    //     alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function SetDocScans() {
+
+            $(document).on('change', '.docType', function () {
+
+                $('#barUpload').width("0%"); // reset bars
+                $('#barUpload').html("0%");
+
+                var selectedItem = $(this).val();
+                $.ajax({
+                    url: '/MerchantProfile/Profile/GetImage/?docType=' + selectedItem,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        $('#imgprvw').attr('src', data.FilePath);
+
+                        $('#DocumentID').val(data.DocumentID);
+                    },
+                    error: function (x, y, z) {
+                        //     alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+            });
+            $(document).ajaxComplete(function () {
+                var bar = $('#barUpload');
+                var percent = $('#barUpload');
+                //var status = $('#status');
+
+                $('#frmScanDoc').ajaxForm({
+                    beforeSend: function () {
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    beforeSubmit: function () {
+                        $form = $("#frmScanDoc");
+                        if ($form.valid()) {        //clear summary
+                            $form.find("[data-valmsg-summary=true]")
+                            .removeClass("validation-summary-errors")
+                           .addClass("validation-summary-valid")
+                           .find("ul").empty();
+                            return true;
+                        }
+                        return false;
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentVal = percentComplete + '%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    success: function () {
+                        var percentVal = '100%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                    },
+                    complete: function (xhr) {
+                        var percentVal = '0%';
+                        bar.width(percentVal)
+                        percent.html(percentVal);
+                        var $file = $("#file")
+                        resetFormInputElement($file);
+                        //  status.html(xhr.responseText);
+                    }
+                });
+            });
+        };
+
+        function resetFormInputElement(e) {
+            e.wrap('<form>').closest('form').get(0).reset();
+            e.unwrap();
+        }
+        //$('a#remove-file').click(function () {
+        //    //Clear input file
+        //    resetFormInputElement($('.fileupload input'));
+        //    return false;
+        //});
+        @*function Complete() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Complete")',
+          //      data: form.serialize(),
+                success: function (data, textStatus, xhr) {
+                    window.location.href = data.redirectToUrl;
+                    //At this point I would like to redirect
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    $(".error-summary").html(xhr.responseText);
+                }
+            });
+        }*@
+    </script>
+}
+

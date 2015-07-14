@@ -1,0 +1,10 @@
+﻿<Sequential>
+    <assembly>
+        <sequence_number>1</sequence_number>
+        <assembly_name>Viamo.EpgDataLoader.dll</assembly_name>
+    </assembly>
+    <assembly>
+      <sequence_number>2</sequence_number>
+      <assembly_name>Viamo.P4epgParser.dll</assembly_name>
+    </assembly>
+</Sequential>

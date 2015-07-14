@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Pecuniaus.Web.Models.MerchantTempModel>
+
+<div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+        <div class="">
+            <div class="block-options pull-right">
+                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button"><i class="hi fa-1x hi-remove"></i></button>
+            </div>
+            <h2><strong>Merchant</strong> Listing</h2>
+        </div>
+    </div>
+    <!-- END Modal Header -->
+    <!-- Modal Body -->
+    <div class="modal-body">
+        <table>
+            @{
+    if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr onclick="LoadSFMerchant($('#modal-sf-listchild table tr').index($(this)), @Session["SFMerchants"]);">
+                <td>
+                    <div class="row popup_rowbg">
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Merchant Name: </strong> @Html.DisplayFor(modelItem => item.merchantName)<br>
+                                @*<strong>Merchant ID:</strong> @Html.DisplayFor(modelItem => item.merchantId) <br>*@
+                                <strong>Sales Rep:</strong> @Html.DisplayFor(modelItem => item.salesRepId)<br>
+                            </address>
+                        </div>
+                        <div class="col-md-6">
+                            <address>
+                                <strong>Task Name: </strong> <label id="lblTaskName"></label>
+                                <br>
+                                <strong>Task Status :</strong> <label id="lblTaskStatus"></label> <br>
+                            </address>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+}
+        </table>
+        @*<div class="row">
+                <div class="col-md-6">
+                    <address>
+                        <strong>Merchant Name: </strong> Robert Ryan<br>
+                        <strong>Merchant ID:</strong> 00933083 <br>
+                        <strong>Sales Rep:</strong> 20<br>
+                    </address>
+                </div>
+                <div class="col-md-6">
+                    <address>
+                        <strong>Task Name: </strong> Testing<br>
+                        <strong>Task Status :</strong> Close <br>
+                    </address>
+                </div>
+            </div>
+            <div class="row popup_rowbg">
+                <div class="col-md-6">
+                    <address>
+                        <strong>Merchant Name: </strong> Robert Ryan<br>
+                        <strong>Merchant ID:</strong> 00933083 <br>
+                        <strong>Sales Rep:</strong> 20<br>
+                    </address>
+                </div>
+                <div class="col-md-6">
+                    <address>
+                        <strong>Task Name: </strong> Testing<br>
+                        <strong>Task Status :</strong> Close <br>
+                    </address>
+                </div>
+            </div>*@
+    </div>
+    <!-- END Modal Body -->
+</div>

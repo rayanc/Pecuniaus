@@ -1,0 +1,27 @@
+﻿@model Pecuniaus.Models.Contract.CreditPull
+@{//var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQMerchantEvaluation);
+    var isFormDisabled = false;
+}
+<div class="row">
+    <div class="col-md-3">
+        <button data-toggle="modal" id="btnrequest" class="btn btn-xs btn-danger pop_addbtn_margn" type="button" @(isFormDisabled ? "disabled" : "")>
+            @Pecuniaus.Resources.Common.PullCreditReports
+        </button>
+    </div>
+    <div class="col-md-3">
+        @Html.LabelFor(m => m.Type)
+        @Html.DropDownListFor(m => m.typeid, Model.Type, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+    </div>
+    <div class="col-md-3">
+        <input type="checkbox" id="chkNoReport" name="chkNoReport" />
+       @Pecuniaus.Resources.Common.NoReports
+    </div>
+</div>
+
+
+
+
+
+
+
+

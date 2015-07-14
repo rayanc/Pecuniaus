@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://200.88.48.24/dcrservice_acme_ruby.asmx?wsdl" docRef="http://200.88.48.24/dcrservice_acme_ruby.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://200.88.48.24/dcrservice_acme_ruby.asmx" xmlns:q1="http://www.datacredito1.com/CaltecService" binding="q1:clsCaltecServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://200.88.48.24/dcrservice_acme_ruby.asmx" xmlns:q2="http://www.datacredito1.com/CaltecService" binding="q2:clsCaltecServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

@@ -1,0 +1,55 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantRiskEvaluationDetailModel
+@using (Ajax.BeginForm("ProcessRisk", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q10" }, new { id = "frmMerchantRiskEvolution" }))
+{
+@Html.Partial("_PageMessage")
+@Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3">
+                @Pecuniaus.Resources.Common.From
+                @Html.EditorFor(m => m.StartDate)
+            </div>
+            <div class="col-md-3">
+                @Pecuniaus.Resources.Common.To
+                @Html.EditorFor(m => m.EndDate)
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5" style="margin-top:17px;">
+                <div class="pull-right">
+                    <button class="btn btn-primary" type="submit" name="submitButton" value="Search">@Pecuniaus.Resources.Common.Search</button>
+                    @*<button class="btn btn-danger" type="button">@Pecuniaus.Resources.Common.Clear</button>*@
+                    <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+
+        </div>
+        <div class="table-responsive" style="margin-top:30px;">
+            <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid">
+                <thead>
+                    <tr role="row">
+                        <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Select</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending">@Pecuniaus.Resources.MerchantProfile.RiskEvaluation.Date</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending">@Pecuniaus.Resources.MerchantProfile.RiskEvaluation.ContractNumber</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending">@Pecuniaus.Resources.MerchantProfile.RiskEvaluation.DataCredito</th>
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-sort="ascending">@Pecuniaus.Resources.MerchantProfile.RiskEvaluation.ScoresGenerated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var modItem in Model.RiskEvaluationDetail)
+                    {
+                        <tr>
+                            <td><input type="radio" id="example-checkbox1" name="example-checkbox1" value="option1" onclick="loadCreditReportPDF(@Html.DisplayFor(Item => modItem.CreditReportID),@Html.DisplayFor(Item => modItem.ContractId));"></td>
+                            <td>@Html.DisplayFor(item => modItem.EvaluationDate)</td>
+                            <td>@Html.DisplayFor(item => modItem.ContractNumber)</td>
+                            <td>@Html.DisplayFor(item => modItem.DateofCredit)</td>
+                            <td>@Html.DisplayFor(item => modItem.ScoresGenerated)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="divREReportPDF"></div>
+    </div>
+}

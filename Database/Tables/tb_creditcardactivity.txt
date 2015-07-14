@@ -1,0 +1,8 @@
+ALTER TABLE `tb_creditcardactivity` 
+CHANGE COLUMN `ProcessorMerchantId` `ProcessorMerchantId` BIGINT(20) NULL ,
+CHANGE COLUMN `AcctivityTypeId` `AcctivityTypeId` INT(11) NULL ,
+CHANGE COLUMN `CurrencyId` `CurrencyId` INT(11) NULL ,
+CHANGE COLUMN `ProcessedDate` `ProcessedDate` DATETIME NULL ,
+CHANGE COLUMN `IndustryId` `IndustryId` INT(11) NULL ,
+CHANGE COLUMN `MerchantStatusId` `MerchantStatusId` INT(11) NULL ,
+CHANGE COLUMN `AuthorizedOwnerId` `AuthorizedOwnerId` BIGINT(20) NULL ;

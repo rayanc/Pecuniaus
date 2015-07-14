@@ -1,0 +1,938 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36F51BFF-4CF8-4D95-8F27-40802F5D9F16}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pecuniaus.Web</RootNamespace>
+    <AssemblyName>Pecuniaus.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.DataAccess.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Reports.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.ExpressApp.Reports.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.ExpressApp.Web.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Office.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.PivotGrid.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Printing.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.RichEdit.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v14.2.Core, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Sparkline.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.Mvc5.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Web.Mvc5.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Web.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Charts.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Xpf.Charts.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Xpf.Printing.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v14.2.Service, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Xpf.Printing.v14.2.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Xpo.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v14.2.Web, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.Xpo.v14.2.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.XtraPrinting.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.XtraReports.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2.Extensions, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.XtraReports.v14.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2.Service, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.XtraReports.v14.2.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.2.Web, Version=14.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Bridge\trunk\Pecuniaus\packages\DevExpress14.2\DevExpress.XtraReports.v14.2.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\packages\FluentValidation.MVC5.5.5.0.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="GridMvc">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlHelpers.Extension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Helpers\HtmlHelpers.Extension.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Rotativa\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Docs\" />
+    <Folder Include="Library\" />
+    <Folder Include="Models\Contract\" />
+    <Folder Include="Outbox\" />
+    <Folder Include="Uploads\LandLordCall\" />
+    <Folder Include="Uploads\VerifyCall\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <!-- <Compile Include="Areas\Users\UsersAreaRegistration.cs" /> -->
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\CultureTestController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\MerchantController.cs" />
+    <Compile Include="Controllers\MerchantCreditVolumeController.cs" />
+    <Compile Include="Controllers\MerchantDataEntryController.cs" />
+    <Compile Include="Controllers\MerchantDocumentScanController.cs" />
+    <Compile Include="Controllers\MerchantEvaluationController.cs" />
+    <Compile Include="GetQueryStringValues.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HelperClasses\CommonFunctions.cs" />
+    <Compile Include="HelperClasses\CustomAttributes.cs" />
+    <Compile Include="HelperClasses\SessionManager.cs" />
+    <Compile Include="ModelBinder\DecimalModelBinder.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CreditPullModel.cs" />
+    <Compile Include="Models\ScoringData.cs" />
+    <Compile Include="Models\CreditReportBase.cs" />
+    <Compile Include="Models\CreditReportModel.cs" />
+    <Compile Include="Models\CreditVolumesModel.cs" />
+    <Compile Include="Models\DataEntryModel.cs" />
+    <Compile Include="Models\DeclineModel.cs" />
+    <Compile Include="Models\DropDownTypes.cs" />
+    <Compile Include="Models\GeneralModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MerchantAddressInfoModel.cs" />
+    <Compile Include="Models\MerchantDataEntryModel.cs" />
+    <Compile Include="Models\MerchantDocumentModel.cs" />
+    <Compile Include="Models\MerchantDocumentTypeModel.cs" />
+    <Compile Include="Models\MerchantOwnerModel.cs" />
+    <Compile Include="Models\MerchantProcessorModel.cs" />
+    <Compile Include="Models\MerchantScanDocumentModel.cs" />
+    <Compile Include="Models\MerchantsDetail.cs" />
+    <Compile Include="Models\MerchantsModel.cs" />
+    <Compile Include="Models\MerchantTempModel.cs" />
+    <Compile Include="Models\NotesModel.cs" />
+    <Compile Include="Models\OwnerModel.cs" />
+    <Compile Include="Models\ProcessorModel.cs" />
+    <Compile Include="Models\RecentlyVisitedModel.cs" />
+    <Compile Include="Models\RetrieveMerchantInformationModel.cs" />
+    <Compile Include="Models\SalesRepresentativeModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CreditVolumeRepository.cs" />
+    <Compile Include="Repository\OwnerSesssionRepository.cs" />
+    <Compile Include="Repository\ProcessorSessionRepository.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Contract\ContractTemplate.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\Contract\IOUOther1Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUOther2Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUPersonaFisica1Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUPersonaFisica2Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUPersonaFisicaSantoDomingo1Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUPersonaFisicaSantoDomingo2Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUSantoDomingo1Owner.xslt" />
+    <Content Include="App_Data\Contract\IOUSantoDomingo2Owner.xslt" />
+    <Content Include="App_Data\Contract\Terms.html" />
+    <Content Include="App_Data\TaskPages.xml" />
+    <Content Include="Areas\Collection\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Collection\Views\Shared\_CollectionLayout.cshtml" />
+    <Content Include="Areas\Collection\Views\Web.config" />
+    <Content Include="Areas\Collection\Views\Workflow\Affiliations.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\CollectionWorkflow.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\CreateNewLawyer.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\CreditPull.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\DataCredito.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\Index.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\Landlord.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\Legal.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\MerchantDocuments.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\PaymentAgreement.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_AddLawyer.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_CollectionsListing.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_DocumentUpload.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_EditLawyer.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_ListAssignedLawyers.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_ListAssignNewLawyer.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_ListCollectionPaymentAgreement.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_ListCreditReport.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_ListDocuments.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_ListLawyers.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_LstMerchantDocument.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_OwnerActiveContracts.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_OwnerInActiveContracts.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_QuestionControl.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_RetrivePrevention.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_RNCActiveContracts.cshtml" />
+    <Content Include="Areas\Collection\Views\Workflow\_RNCInActiveContracts.cshtml" />
+    <Content Include="Areas\Collection\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Common\Views\Contract\_Decline.cshtml" />
+    <Content Include="Areas\Common\Views\Merchant\_MerchantInfo.cshtml" />
+    <Content Include="Areas\Common\Views\Notes\_Add.cshtml" />
+    <Content Include="Areas\Common\Views\Notes\_List.cshtml" />
+    <Content Include="Areas\Common\Views\Notes\_SendNotesEmail.cshtml" />
+    <Content Include="Areas\Common\Views\Search\_Search.cshtml" />
+    <Content Include="Areas\Common\Views\Search\_SearchResult.cshtml" />
+    <Content Include="Areas\Common\Views\Shared\_SearchGridTemp.cshtml" />
+    <Content Include="Areas\Common\Views\Web.config" />
+    <Content Include="Areas\Common\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Contract\Scripts\BankInfo.js" />
+    <Content Include="Areas\Contract\Scripts\CommertialNameVeri.js" />
+    <Content Include="Areas\Contract\Scripts\Contract.js" />
+    <Content Include="Areas\Contract\Scripts\CorpDocVeri.js" />
+    <Content Include="Areas\Contract\Scripts\DataEntry.js" />
+    <Content Include="Areas\Contract\Scripts\VeriCall.js" />
+    <Content Include="Areas\Contract\Views\Contract\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_AddBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_AddOwner.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_AddProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_AddTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_Contracts.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_DataEntry.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_Documents.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_EditBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_EditProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_EditTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_ListBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_ListOwners.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_ListProcessors.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_ListTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_VerificationCall.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AddBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AddOwner.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AddProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AddTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AdPBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AdPOwner.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AdPProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_AdPTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_DEBankInfo.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_DEMerchant.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_EditBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_EditProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_EditTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_EdtPBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_LandlordInformation.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_ListBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_ListOwners.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_ListProcessors.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_ListTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_LstPBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_LstPOwners.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_LstPProcessors.cshtml" />
+    <Content Include="Areas\Contract\Views\DataEntry\_LstPTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\DocumentScan\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\DocumentScan\ScanDoc.cshtml" />
+    <Content Include="Areas\Contract\Views\DocumentScan\_ListDocs.cshtml" />
+    <Content Include="Areas\Contract\Views\DocumentScan\_ListDocsModal.cshtml" />
+    <Content Include="Areas\Contract\Views\FinalVerification\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\FinalVerification\_Contracts.cshtml" />
+    <Content Include="Areas\Contract\Views\Funding\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_AddBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_AddOwner.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_AddProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_AddTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_DataEntry.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_documents.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_EditBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_EditProcessor.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_EditTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_ListBankStatement.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_ListOwners.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_ListProcessors.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_ListTradeReference.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_VBankInfo.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_VCommName.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_VCorpDoc.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_VerificationCall.cshtml" />
+    <Content Include="Areas\Contract\Views\ReviewTask\_VLandLord.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_breadcrumbBase.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_ContractLayout.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_Header.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_MerchantInfo.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_OwnerInfo.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_QuestionControl.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_RTQuestionControl.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_ScanGridPager.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_ScanGridTmp.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationCall\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationCall\_NoPop.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationCall\_VeriCall.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\BankInformation.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\CommercialName.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\CorporateDocuments.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Contract\Views\VerificationTask\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\Landlord.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Contract\Views\VerificationTask\_AddCorpDoc.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\_BankInfo.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\_CommertialName.cshtml" />
+    <Content Include="Areas\Contract\Views\VerificationTask\_CorpDocs.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Contract\Views\VerificationTask\_LandLord.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Contract\Views\VerificationTask\_ListCorpDoc.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Contract\Views\VerificationTask\_SubNav.cshtml" />
+    <Content Include="Areas\Contract\Views\Web.config" />
+    <Content Include="Areas\Contract\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Finance\Views\MerchantFinance\Index.cshtml" />
+    <Content Include="Areas\Finance\Views\MerchantFinance\_AddFinance.cshtml" />
+    <Content Include="Areas\Finance\Views\MerchantFinance\_SearchGrid.cshtml" />
+    <Content Include="Areas\Finance\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Finance\Views\Shared\_FinanceLayout.cshtml" />
+    <Content Include="Areas\Finance\Views\Web.config" />
+    <Content Include="Areas\Finance\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Activities.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Affiliations.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Business.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_BusinessProcessor.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Collections.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContactDetails.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Contacts.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContractActivity.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContractDetails.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContractGeneralInfo.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContractHistory.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Contracts.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContractSalesRep.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ContractSalesRepDetails.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_CreditReports.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Documents.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_DocumentUpload.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_History.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Landlord.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_MerchantProfileDetails.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_OwnerDetails.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Owners.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_ProfileDetails.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Profiles.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_RiskEvolution.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_Statements.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Shared\_MerchantProfileLayout.cshtml" />
+    <Content Include="Areas\MerchantProfile\Views\Web.config" />
+    <Content Include="Areas\MerchantProfile\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Prequel\Views\Kickback\_Popup.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Prequel\Views\OfferAcceptance\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\Prequel\Views\OfferAcceptance\_ListOffers.cshtml" />
+    <Content Include="Areas\Prequel\Views\OfferCreation\Index.cshtml" />
+    <Content Include="Areas\Prequel\Views\OfferCreation\_AddOffer.cshtml" />
+    <Content Include="Areas\Prequel\Views\OfferCreation\_ListOffer.cshtml" />
+    <Content Include="Areas\Prequel\Views\OfferCreation\_SendEmail.cshtml" />
+    <Content Include="Areas\Prequel\Views\Shared\_ListOfferTemp.cshtml" />
+    <Content Include="Areas\Prequel\Views\Web.config" />
+    <Content Include="Areas\Prequel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Renewal\Views\Contract\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\Contract\_Contracts.cshtml" />
+    <Content Include="Areas\Renewal\Views\DocumentScan\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\DocumentScan\_ListDocs.cshtml" />
+    <Content Include="Areas\Renewal\Views\FinalVerification\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\FinalVerification\_Contracts.cshtml" />
+    <Content Include="Areas\Renewal\Views\Funding\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\Landing\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\Landing\_ContractInformation.cshtml" />
+    <Content Include="Areas\Renewal\Views\Landing\_DeclineRenewal.cshtml" />
+    <Content Include="Areas\Renewal\Views\Landing\_RenewalListing.cshtml" />
+    <Content Include="Areas\Renewal\Views\Landing\_Snooze.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalEvaluation\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalOffer\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalOffer\_AddOffer.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalOffer\_ListOffer.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\Index.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\_Evaluluation.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\_ListDocs.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\_ListOffer.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\_ScanDoc.cshtml" />
+    <Content Include="Areas\Renewal\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Renewal\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Renewal\Views\Shared\_ListOfferTemp.cshtml" />
+    <Content Include="Areas\Renewal\Views\Shared\_RenewalWorkflowHeader.cshtml" />
+    <Content Include="Areas\Renewal\Views\Shared\_ScanGridPager.cshtml" />
+    <Content Include="Areas\Renewal\Views\Shared\_ScanGridTmp.cshtml" />
+    <Content Include="Areas\Renewal\Views\Web.config" />
+    <Content Include="Areas\Renewal\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\User\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\User\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\User\Views\Account\Index.cshtml" />
+    <Content Include="Areas\User\Views\Account\Login.cshtml" />
+    <Content Include="Areas\User\Views\Account\Manage.cshtml" />
+    <Content Include="Areas\User\Views\Account\ManageUsers.cshtml" />
+    <Content Include="Areas\User\Views\Account\Register.cshtml" />
+    <Content Include="Areas\User\Views\Account\_AddUser.cshtml" />
+    <Content Include="Areas\User\Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Areas\User\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\User\Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Areas\User\Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Areas\User\Views\Account\_UserListing.cshtml" />
+    <Content Include="Areas\User\Views\GroupPermission\_GroupPermissions.cshtml" />
+    <Content Include="Areas\User\Views\GroupPermission\_GroupPermissionsListing.cshtml" />
+    <Content Include="Areas\User\Views\Group\ManageGroups.cshtml" />
+    <Content Include="Areas\User\Views\Group\_AddGroup.cshtml" />
+    <Content Include="Areas\User\Views\Group\_GroupListing.cshtml" />
+    <Content Include="Areas\User\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Areas\User\Views\UserProfile\Index.cshtml" />
+    <Content Include="Areas\User\Views\UserProfile\_TasksListing.cshtml" />
+    <Content Include="Areas\User\Views\Web.config" />
+    <Content Include="Areas\User\Views\_ViewStart.cshtml" />
+    <Content Include="bin\DevExpress.Data.v14.2.dll" />
+    <Content Include="bin\DevExpress.DataAccess.v14.2.dll" />
+    <Content Include="bin\DevExpress.ExpressApp.Reports.v14.2.dll" />
+    <Content Include="bin\DevExpress.ExpressApp.Web.v14.2.dll" />
+    <Content Include="bin\DevExpress.Office.v14.2.Core.dll" />
+    <Content Include="bin\DevExpress.PivotGrid.v14.2.Core.dll" />
+    <Content Include="bin\DevExpress.Printing.v14.2.Core.dll" />
+    <Content Include="bin\DevExpress.RichEdit.v14.2.Core.dll" />
+    <Content Include="bin\DevExpress.Sparkline.v14.2.Core.dll" />
+    <Content Include="bin\DevExpress.Web.Mvc5.v14.2.dll" />
+    <Content Include="bin\DevExpress.Web.v14.2.dll" />
+    <Content Include="bin\DevExpress.Xpf.Charts.v14.2.dll" />
+    <Content Include="bin\DevExpress.Xpf.Printing.v14.2.dll" />
+    <Content Include="bin\DevExpress.Xpf.Printing.v14.2.Service.dll" />
+    <Content Include="bin\DevExpress.Xpo.v14.2.dll" />
+    <Content Include="bin\DevExpress.Xpo.v14.2.Web.dll" />
+    <Content Include="bin\DevExpress.XtraPrinting.v14.2.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v14.2.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v14.2.Extensions.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v14.2.Service.dll" />
+    <Content Include="bin\DevExpress.XtraReports.v14.2.Web.dll" />
+    <Content Include="bin\MerchantProfile.dll" />
+    <Content Include="bin\Pecuniaus.Collection.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Pecuniaus.Common.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Pecuniaus.Contract.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Pecuniaus.Finance.dll" />
+    <Content Include="bin\Pecuniaus.Notification.dll" />
+    <Content Include="bin\Pecuniaus.Prequel.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="bin\Pecuniaus.Renewal.dll" />
+    <Content Include="bin\Pecuniaus.User.dll" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\data_report.css" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\jHtmlArea.css" />
+    <Content Include="Images\JHtmlArea\jHtmlArea.png" />
+    <Content Include="Images\JHtmlArea\jHtmlArea_Toolbar_Group_BG.png" />
+    <Content Include="Images\JHtmlArea\jHtmlArea_Toolbar_Group__Btn_Select_BG.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\plugins.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\timepicki.css" />
+    <Content Include="data_report\b3.gif" />
+    <Content Include="data_report\B4%281%29.gif" />
+    <Content Include="data_report\B4.gif" />
+    <Content Include="data_report\CG.gif" />
+    <Content Include="data_report\CN.gif" />
+    <Content Include="data_report\icon_consultada.gif" />
+    <Content Include="data_report\icon_consumidor.gif" />
+    <Content Include="data_report\icon_dad.gif" />
+    <Content Include="data_report\icon_home.gif" />
+    <Content Include="data_report\icon_judicial.gif" />
+    <Content Include="data_report\icon_ldc.gif" />
+    <Content Include="data_report\icon_prel.gif" />
+    <Content Include="data_report\icon_suma.gif" />
+    <Content Include="data_report\icon_sumatoria.gif" />
+    <Content Include="data_report\icon_tel.gif" />
+    <Content Include="data_report\icon_top.gif" />
+    <Content Include="data_report\linea.gif" />
+    <Content Include="data_report\logo_new_DC6.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Helpers\HtmlHelpers.Extension.dll" />
+    <Content Include="Images\arrow.png" />
+    <Content Include="Images\avatar.jpg" />
+    <Content Include="Images\jquery.chosen\chosen-sprite%402x.png" />
+    <Content Include="Images\jquery.chosen\chosen-sprite.png" />
+    <Content Include="Images\jquery.datatables\sort_asc%402x.png" />
+    <Content Include="Images\jquery.datatables\sort_asc.png" />
+    <Content Include="Images\jquery.datatables\sort_asc_disabled%402x.png" />
+    <Content Include="Images\jquery.datatables\sort_asc_disabled.png" />
+    <Content Include="Images\jquery.datatables\sort_both%402x.png" />
+    <Content Include="Images\jquery.datatables\sort_both.png" />
+    <Content Include="Images\jquery.datatables\sort_desc%402x.png" />
+    <Content Include="Images\jquery.datatables\sort_desc.png" />
+    <Content Include="Images\jquery.datatables\sort_desc_disabled%402x.png" />
+    <Content Include="Images\jquery.datatables\sort_desc_disabled.png" />
+    <Content Include="Images\jquery.select2\select2-spinner.gif" />
+    <Content Include="Images\jquery.select2\select2.png" />
+    <Content Include="Images\jquery.select2\select2x2.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo1.png" />
+    <Content Include="Images\template\ie8_opacity_dark_15.png" />
+    <Content Include="Images\template\ie8_opacity_dark_20.png" />
+    <Content Include="Images\template\ie8_opacity_dark_30.png" />
+    <Content Include="Images\template\ie8_opacity_dark_40.png" />
+    <Content Include="Images\template\ie8_opacity_dark_60.png" />
+    <Content Include="Images\template\ie8_opacity_light_10.png" />
+    <Content Include="Images\template\ie8_opacity_light_75.png" />
+    <Content Include="Images\top_arr.png" />
+    <Content Include="img\b3.gif" />
+    <Content Include="img\B4%281%29.gif" />
+    <Content Include="img\B4.gif" />
+    <Content Include="img\CG.gif" />
+    <Content Include="img\CN.gif" />
+    <Content Include="img\icon_consultada.gif" />
+    <Content Include="img\icon_consumidor.gif" />
+    <Content Include="img\icon_dad.gif" />
+    <Content Include="img\icon_home.gif" />
+    <Content Include="img\icon_judicial.gif" />
+    <Content Include="img\icon_ldc.gif" />
+    <Content Include="img\icon_prel.gif" />
+    <Content Include="img\icon_suma.gif" />
+    <Content Include="img\icon_sumatoria.gif" />
+    <Content Include="img\icon_tel.gif" />
+    <Content Include="img\icon_top.gif" />
+    <Content Include="img\linea.gif" />
+    <Content Include="img\logo_new_DC6.png" />
+    <Content Include="ScanDocuments\NoImage.jpg" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Grid.mvc.readme" />
+    <Content Include="App_Data\Contract\Terms.pdf" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Content Include="Areas\MerchantProfile\Views\Profile\_CreatePDF.cshtml" />
+    <Content Include="Areas\Notification\Views\Notification\Index.cshtml" />
+    <Content Include="Areas\Notification\Views\Processor\Index.cshtml" />
+    <Content Include="Areas\Notification\Views\Processor\_AddProcessor.cshtml" />
+    <Content Include="Areas\Notification\Views\Processor\_ListProcessors.cshtml" />
+    <Content Include="Areas\Notification\Views\Shared\_NotificationLayout.cshtml" />
+    <Content Include="Areas\Notification\Views\Web.config" />
+    <Content Include="Areas\Notification\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Prequel\Views\OfferAcceptance\_EditOffer.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_VBankInfo.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_VCommName.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_VCorpDoc.cshtml" />
+    <Content Include="Areas\Contract\Views\Contract\_VLandLord.cshtml" />
+    <Content Include="Areas\Contract\Views\Shared\_VerificationTask.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalEvaluation\CreditPull.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalEvaluation\ListCreditReport.cshtml" />
+    <Content Include="Areas\Renewal\Views\RenewalOffer\_SendEmail.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\CreditPull.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\ListCreditReport.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\_AddOffer.cshtml" />
+    <Content Include="Areas\Renewal\Views\Review\_MCCVInformation.cshtml" />
+    <Content Include="Areas\Contract\Views\Kickback\_Popup.cshtml" />
+    <Content Include="Areas\Contract\Views\MerchantEvaluation\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\MerchantEvaluation\_CreditPull.cshtml" />
+    <Content Include="Areas\Contract\Views\MerchantEvaluation\_ListCreditReport.cshtml" />
+    <Content Include="Areas\Contract\Views\MerchantEvaluation\_MEModal.cshtml" />
+    <Content Include="Areas\Contract\Views\Offer\Index.cshtml" />
+    <Content Include="Areas\Contract\Views\Offer\_AddOffer.cshtml" />
+    <Content Include="Areas\Contract\Views\Offer\_ListOffer.cshtml" />
+    <Content Include="Areas\Contract\Views\Offer\_SendEmail.cshtml" />
+    <Content Include="Areas\Contract\Views\DocumentScan\_ListDocsUpload.cshtml" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jHtmlArea-0.8.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.inputmask\init.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.date.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.phone.extensions.js" />
+    <Content Include="Scripts\jquery.inputmask\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Scripts\jquery.timepicker.js" />
+    <Content Include="Scripts\pages\compCharts.js" />
+    <Content Include="Scripts\pages\uiProgress.js" />
+    <Content Include="Scripts\readmore.min.js" />
+    <Content Include="Scripts\requiredIf.js" />
+    <Content Include="Scripts\vendor\jquery-ui-1.11.2.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\pages\tablesDatatables.js" />
+    <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\vendor\bootstrap.min.js" />
+    <Content Include="Scripts\vendor\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\vendor\modernizr-2.7.1-respond-1.4.2.min.js" />
+    <Content Include="Templates\CollectionLetter.html" />
+    <Content Include="Templates\EmailTemplate.txt" />
+    <Content Include="Templates\NotesLetterTemplate.html" />
+    <Content Include="Templates\OfferTemplate.HTML" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Dashboard\_TaskActivityList.cshtml" />
+    <Content Include="Views\Dashboard\_CollectionActivityList.cshtml" />
+    <Content Include="Views\Dashboard\_NewLeadList.cshtml" />
+    <Content Include="Views\Dashboard\_SalePerformanceList.cshtml" />
+    <Content Include="Views\MerchantEvaluation\CreatePDF.cshtml" />
+    <Content Include="Views\Shared\_GridDash.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PhoneNumber.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Views\Merchant\_Decline.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Currency.cshtml" />
+    <Content Include="Views\Shared\_LayoutBlank.cshtml" />
+    <Content Include="Views\MerchantEvaluation\ScoringData.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\AddNote.cshtml" />
+    <Content Include="Views\Shared\_HeaderRight.cshtml" />
+    <Content Include="Views\Shared\RecentVisits.cshtml" />
+    <Content Include="Views\MerchantDocumentScan\Index.cshtml" />
+    <Content Include="Views\Shared\_MerchantWorkflowHeader.cshtml" />
+    <Content Include="Views\Shared\_MerchantWorkflowMerchantInfo.cshtml" />
+    <Content Include="Views\Shared\_MerchantWorkflowOwnerInfo.cshtml" />
+    <Content Include="Views\MerchantDataEntry\Index.cshtml" />
+    <Content Include="Views\MerchantDataEntry\_AddOwner.cshtml" />
+    <Content Include="Views\MerchantDataEntry\_AddProcessor.cshtml" />
+    <Content Include="Views\MerchantDataEntry\_EditProcessor.cshtml" />
+    <Content Include="Views\MerchantDataEntry\_ListOwners.cshtml" />
+    <Content Include="Views\MerchantDataEntry\_ListProcessors.cshtml" />
+    <Content Include="Views\Shared\MerchantProfileSearch.cshtml" />
+    <Content Include="Views\Shared\_PageMessage.cshtml" />
+    <Content Include="Views\Shared\SearchGridTemp.cshtml" />
+    <Content Include="Templates\NCFStatementTemplate.xlsx" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_PrequalbreadcrumbBase.cshtml" />
+    <Content Include="Views\MerchantCreditVolume\AddCredit.cshtml" />
+    <Content Include="Views\MerchantCreditVolume\EditCredit.cshtml" />
+    <Content Include="Views\MerchantCreditVolume\Index.cshtml" />
+    <Content Include="Views\MerchantCreditVolume\ListCreditVolumes.cshtml" />
+    <Content Include="Views\MerchantEvaluation\About.cshtml" />
+    <Content Include="Views\MerchantEvaluation\CreditPull.cshtml" />
+    <Content Include="Views\MerchantEvaluation\Index.cshtml" />
+    <Content Include="Views\MerchantEvaluation\ListCreditReport.cshtml" />
+    <Content Include="Views\MerchantEvaluation\_Details.cshtml" />
+    <Content Include="Views\CultureTest\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{c3759fba-c734-41ff-996b-2be9db9bdc7a}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pecuniaus.ApiHelper\Pecuniaus.ApiHelper.csproj">
+      <Project>{f016bf88-4e56-43f5-8d97-34ed681bc4c1}</Project>
+      <Name>Pecuniaus.ApiHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pecuniaus.AudioConvertor\Pecuniaus.AudioConvertor.csproj">
+      <Project>{e63d2bb0-f611-4467-b5f1-0d63dd32e02f}</Project>
+      <Name>Pecuniaus.AudioConvertor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pecuniaus.Resources\Pecuniaus.Resources.csproj">
+      <Project>{d7c928d5-df6e-481d-81ee-2ceda62980bf}</Project>
+      <Name>Pecuniaus.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pecuniaus.Utilities\Pecuniaus.Utilities.csproj">
+      <Project>{5235b54d-ac38-4104-8f1f-216ff78bc178}</Project>
+      <Name>Pecuniaus.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UICore\UICore.csproj">
+      <Project>{c9f7bd37-087a-4c78-b827-fde9bc3ba55b}</Project>
+      <Name>UICore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.eot" />
+    <Content Include="fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.svg" />
+    <Content Include="fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.ttf" />
+    <Content Include="fonts\glyphicons.filetypes.pro\glyphicons-filetypes-regular.woff" />
+    <Content Include="fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons.halflings.pro\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons.pro\glyphicons-regular.eot" />
+    <Content Include="fonts\glyphicons.pro\glyphicons-regular.svg" />
+    <Content Include="fonts\glyphicons.pro\glyphicons-regular.ttf" />
+    <Content Include="fonts\glyphicons.pro\glyphicons-regular.woff" />
+    <Content Include="fonts\glyphicons.social.pro\glyphicons-social-regular.eot" />
+    <Content Include="fonts\glyphicons.social.pro\glyphicons-social-regular.svg" />
+    <Content Include="fonts\glyphicons.social.pro\glyphicons-social-regular.ttf" />
+    <Content Include="fonts\glyphicons.social.pro\glyphicons-social-regular.woff" />
+    <Content Include="Views\Merchant\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Pecuniaus.Web.pubxml" />
+    <Content Include="Views\Merchant\MerchantListing.cshtml" />
+    <Content Include="Views\Shared\Notes.cshtml" />
+    <Content Include="Views\Shared\Search.cshtml" />
+    <Content Include="Views\Shared\SearchResult.cshtml" />
+    <Content Include="Views\Merchant\MerchantSearch.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53908/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

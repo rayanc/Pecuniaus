@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Pecuniaus.User.Models.TaskAssignmentModel>
+
+@using HtmlHelpers.Extension
+
+<div id="page-content" style="min-height: 616px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.User.UserProfile.UserProfileMenuName</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="@Url.Action("Index", "Account")">User Management</a></li>
+        <li> @Pecuniaus.Resources.User.UserProfile.UserProfileMenuName</li>
+    </ul>
+    <div class="block">
+        <!-- Search Styles Title -->
+        <div class="block-title">
+            <ul class="nav nav-tabs">
+                <li><a href="@Url.Action("Index", "Account")">@Pecuniaus.Resources.User.User.UserMenuName</a></li>
+                <li><a href="@Url.Action("Index", "UserProfile")">@Pecuniaus.Resources.User.UserProfile.UserProfileMenuName</a></li>
+                <li id="liGroup"><a href="@Url.Action("Index", "Group")">@Pecuniaus.Resources.User.Group.GroupMenuName</a></li>
+                <li id="liGroupPermission"><a href="@Url.Action("Index", "GroupPermission")">@Pecuniaus.Resources.User.GroupPermission.GroupPermissionMenuName</a></li>
+                <li class="active" id="liTaskManagement"><a href="@Url.Action("Index", "TaskManagement")">@Pecuniaus.Resources.User.TaskManagement.TaskManagementMenuName</a></li>
+            </ul>
+        </div>
+        <!-- END Search Styles Title -->
+        <!-- Search Styles Content -->
+        <div class="tab-content">
+            <div id="new-users" class="tab-pane active">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block full">
+                            @*<div class="block-title"> </div>
+                            <div class="row form-group">
+                                <div class="col-md-3">
+                                    @Pecuniaus.Resources.User.UserProfile.Workflow
+
+                                    @Html.DropDownListFor(u => u.WorkFlowID, Model.WorkFlows, "Select Workflow", new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Pecuniaus.Resources.User.UserProfile.Users
+
+                                    @Html.DropDownListFor(u => u.UserID, Model.Users, "Select User", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>*@
+                            <div id="dvUserTaskAssignment">@Html.Partial("_TaskManagement", Model)</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="group" class="tab-pane"> </div>
+            <div id="group-permissions" class="tab-pane"> </div>
+        </div>
+        <!-- END Search Styles Content -->
+    </div>
+    <!-- All Boxes Content Start -->
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        function ShowAssignmentDetails(UserId) {
+            //alert(UserID);
+            $("#taskassignmentdetails").empty();
+            $("#taskassignmentdetails").load('@Url.Action("Details")' + "?UserId=" + UserId);
+        }
+
+        //$("#WorkFlowID,#UserID").change(function () {
+        //    if ($("#WorkFlowID").val() != "" && $("#UserID").val() != "") {
+        //        BindUserTasks($("#WorkFlowID").val(), $("#UserID").val());
+        //    }
+
+        //});
+        //function BindUserTasks(workFlowID, userID) {
+        //    var dvUserTasks = $('#dvUserTasks');
+        //    var url = dvUserTasks.attr("data-source-url") + '?workflowID=' + workFlowID + '&userID=' + userID
+        //    dvUserTasks.load(url);
+
+        //}
+    </script>
+}

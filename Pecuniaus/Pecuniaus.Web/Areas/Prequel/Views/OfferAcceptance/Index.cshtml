@@ -1,0 +1,160 @@
+﻿@model Pecuniaus.Models.Contract.MerchantInformationOfferModel
+
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQOfferAcceptance);
+var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.PQ_OfferAcceptance);
+}
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 1, SearchType = "PT", ShowSf = true })
+
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+<!-- Main Container -->
+@*<div id="main-container">*@
+
+<!-- END Header -->
+<!-- Page content -->
+<div id="page-content">
+    @using (Html.BeginForm("index", "OfferAcceptance", FormMethod.Post, new { @class = "a", role = "form", }))
+    {
+        <div class="content-header">
+            <div class="header-section">
+                @Html.Partial("_MerchantWorkflowHeader")
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>
+                            @Pecuniaus.Resources.Common.OfferAccptance
+                            <br>
+                        </h1>
+                        @Html.Partial("_PageMessage")
+                        <label for="errMessage" style="color: red;"></label>
+                        @Html.ValidationSummary()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="breadcrumb breadcrumb-top">
+            @Html.Partial("_PrequalbreadcrumbBase")
+            <li>@Pecuniaus.Resources.Common.OfferAccptance</li>
+
+        </ul>
+
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    @if (permissions.Write)
+                    {
+                        <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Document
+                        </a>
+                        <a href="#mod-kickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                            Kickback
+                        </a>
+                        <button class="btn btn-success" type="submit" onclick="return ValidateOffer();" name="button" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete </button>
+                        <input type="submit" class="btn btn-primary" onclick="return ValidateOffer();" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                        <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Decline
+                        </a>}
+                </div>
+            </div>
+        </div>
+
+        <!-- All Boxes Content Start -->
+        { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+        <input type="hidden" name="Selectedoffer" id="hdnSelOffer" value="@Model.SelectedOfferId" />
+    }
+    <div id="dvEditOffer">
+        @{ Html.RenderAction("AddOffer");  }
+    </div>
+
+
+    <div>
+        <div class="form-group" id="dvOffers">
+            @{ Html.RenderAction("ListOffers");  }
+        </div>
+    </div>
+
+    @Html.Action("Popup", "Kickback", new { area = "Prequel", TaskTypeId = Pecuniaus.UICore.TaskTypes.PQOfferAcceptance })
+
+    <div id="mod_SendAceptanceMail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" data-source-url="@Url.Action("SendEmail", "OfferAcceptance", new
+                                                    {
+                                                        area = "Prequel",
+                                                        WorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(),
+                                                        ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+                                                    })">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- END Page Content -->
+<!-- Footer -->
+<!-- END Main Container -->
+@section Scripts
+   {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+
+            ajaxifyGridMvc("#dvOffers");
+
+            //  hdnSelOffer
+
+        });
+        function SetSelected(v) {
+            $('#hdnSelOffer').val(v);
+        }
+
+        function OfferUpdated() {
+            RefreshOfferList();
+        };
+
+        function ValidateOffer() {
+            var selectedOffer = $("input:radio[name=Selectedoffer]:checked").val();
+            if (selectedOffer == undefined) {
+                jQuery("label[for='errMessage']").html("Please select Offer");
+                return false;
+
+            }
+            else {
+                jQuery("label[for='errMessage']").html("");
+                return true;
+            }
+        }
+
+        function EditOffer(offerID) {
+            $('#dvEditOffer').load('@Url.Action("EditOffer")?id=' + offerID);
+
+        }
+
+        function CEOffer() {
+            $('#dvEditOffer').load('@Url.Action("AddOffer")');
+            RefreshOfferList();
+        }
+
+        function RefreshOfferList() {
+            $('#dvOffers').load('@Url.Action("ListOffers")');
+        }
+
+    </script>
+}
+
+
+

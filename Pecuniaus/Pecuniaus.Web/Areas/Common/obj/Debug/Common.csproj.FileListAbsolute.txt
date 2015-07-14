@@ -1,0 +1,6 @@
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Common.dll.config
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Common.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Common.pdb
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Common\obj\Debug\Pecuniaus.Common.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Common\obj\Debug\Pecuniaus.Common.pdb

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Pecuniaus.Web.Models.MerchantsModel>
+<table id="example-datatable" class="table table-vcenter table-condensed table-bordered table-hover dataTable no-footer" role="grid">
+    <thead>
+        <tr role="row">
+            <th class="text-center">Merchant ID</th>
+            <th class="text-center">Business Name</th>
+            <th>Legal Name</th>
+            <th>Owner Name</th>
+            <th>RNC</th>
+            <th class="text-center">Duplicate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr role="row" id="rwDupSearch">
+                        @*<td class="text-center"></td>
+                            <td class="text-center">testing data</td>
+                            <td><a href="javascript:void(0)">client56</a></td>
+                            <td>client56@company.com</td>
+                            <td><span class="label label-info">Business</span></td>
+                            <td class="text-center">test</td>*@
+                        <td class="text-center">@Html.DisplayFor(model => item.merchantId, new { id = "lblmerchantId" })</td>
+                        <td class="text-center">@Html.DisplayFor(model => item.businessName)</td>
+                        <td>@Html.DisplayFor(model => item.legalName)</td>
+                        <td>@Html.DisplayFor(model => item.ownerName)</td>
+                        <td class="text-center">@Html.DisplayFor(model => item.rnc)</td>
+                        <td class="text-center">
+                            <input type="radio" id="rdDuplicate" name="nmDuplicate" data-merchantid="@Html.DisplayFor(model => item.merchantId)" onclick="GetMerchantInfo(@Html.DisplayFor(model => item.merchantId));" />@Html.HiddenFor(model => item.merchantId, new { id = "hdnMerchantID" })
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+<script>
+    function GetMerchantInfo(merchantId) {
+        
+        window.location.href = "?dupmerchantid=" + merchantId + "&TaskType=0" ;
+    }
+</script>

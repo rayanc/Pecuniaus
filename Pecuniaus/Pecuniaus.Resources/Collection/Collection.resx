@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="Affiliation" xml:space="preserve">
+    <value>Affiliation</value>
+  </data>
+  <data name="AverageCC" xml:space="preserve">
+    <value>Average CC Sales</value>
+  </data>
+  <data name="AverageCCSalesUser" xml:space="preserve">
+    <value>Average CC &lt;br&gt;used in Offer</value>
+  </data>
+  <data name="Collections" xml:space="preserve">
+    <value>Collections</value>
+  </data>
+  <data name="CollectionState" xml:space="preserve">
+    <value>Collection State</value>
+  </data>
+  <data name="CollectionTitle" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="CollectionWorkflow" xml:space="preserve">
+    <value>Collections Workflow</value>
+  </data>
+  <data name="DataCredito" xml:space="preserve">
+    <value>Data Credito</value>
+  </data>
+  <data name="DayWithoutActivity" xml:space="preserve">
+    <value>Day without &lt;br&gt;activity</value>
+  </data>
+  <data name="Expected" xml:space="preserve">
+    <value>Expected</value>
+  </data>
+  <data name="ExpectedDate" xml:space="preserve">
+    <value>Expected Date</value>
+  </data>
+  <data name="FundingDate" xml:space="preserve">
+    <value>Funding &lt;br&gt; Date</value>
+  </data>
+  <data name="Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+  <data name="Landlord" xml:space="preserve">
+    <value>Landlord</value>
+  </data>
+  <data name="Legal" xml:space="preserve">
+    <value>Legal</value>
+  </data>
+  <data name="Letter" xml:space="preserve">
+    <value>Letter</value>
+  </data>
+  <data name="Merchant" xml:space="preserve">
+    <value>Merchant</value>
+  </data>
+  <data name="MerchantID" xml:space="preserve">
+    <value>Merchant Id</value>
+  </data>
+  <data name="MerchantName" xml:space="preserve">
+    <value>Merchant &lt;br&gt; Name</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="OwnedAmount" xml:space="preserve">
+    <value>Owed &lt;br&gt; Amount</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="PendingAmount" xml:space="preserve">
+    <value>Pending &lt;br&gt; Amount</value>
+  </data>
+  <data name="Prevention" xml:space="preserve">
+    <value>Prevention</value>
+  </data>
+  <data name="Realturn" xml:space="preserve">
+    <value>Real turn</value>
+  </data>
+  <data name="ShowMerchantsPayingSlowerThan" xml:space="preserve">
+    <value>Show merchants paying slower than</value>
+  </data>
+  <data name="ShowMerchantThatHavnotProcessedIn" xml:space="preserve">
+    <value>Show merchant that haven't processed in</value>
+  </data>
+  <data name="ActiveContracts" xml:space="preserve">
+    <value>Active Contracts</value>
+  </data>
+  <data name="Affiliations" xml:space="preserve">
+    <value>Affiliations</value>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="InactiveContracts" xml:space="preserve">
+    <value>Inactive Contracts</value>
+  </data>
+  <data name="MerchantAffiliations" xml:space="preserve">
+    <value>Merchant affiliations</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="PullCreditReport" xml:space="preserve">
+    <value>Pull Credit Report</value>
+  </data>
+  <data name="ReturnToCollectionScreen" xml:space="preserve">
+    <value>Return to Collection Screen</value>
+  </data>
+  <data name="RNC" xml:space="preserve">
+    <value>RNC</value>
+  </data>
+  <data name="AECAmount" xml:space="preserve">
+    <value>AEC &lt;br&gt; Amount</value>
+  </data>
+  <data name="CreationDate" xml:space="preserve">
+    <value>Creation Date</value>
+  </data>
+  <data name="LastDateofEvaluation" xml:space="preserve">
+    <value>Last Date of Evaluation</value>
+  </data>
+  <data name="MerchantStatus" xml:space="preserve">
+    <value>Merchant &lt;br&gt; Status</value>
+  </data>
+  <data name="RequestedCCVolumes" xml:space="preserve">
+    <value>Requested CC Volumes</value>
+  </data>
+  <data name="RetentionTime" xml:space="preserve">
+    <value>Retention &lt;br&gt; Time</value>
+  </data>
+  <data name="VolumeStatus" xml:space="preserve">
+    <value>Volume Status</value>
+  </data>
+  <data name="DocumentName" xml:space="preserve">
+    <value>Document Name</value>
+  </data>
+  <data name="DocumentType" xml:space="preserve">
+    <value>Document Type</value>
+  </data>
+  <data name="MerchantDocuments" xml:space="preserve">
+    <value>Merchant Documents</value>
+  </data>
+  <data name="MerchantDocumentsDeleted" xml:space="preserve">
+    <value>Merchant Document(s) deleted successfully</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="UploadedBy" xml:space="preserve">
+    <value>Uploaded By</value>
+  </data>
+  <data name="UploadedDate" xml:space="preserve">
+    <value>Uploaded Date</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="DateOfAssignment" xml:space="preserve">
+    <value>Date Of Assignment</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="AssignedLawyers" xml:space="preserve">
+    <value>Assigned Lawyers</value>
+  </data>
+  <data name="AssignNewLawyer" xml:space="preserve">
+    <value>Assign New Lawyer</value>
+  </data>
+  <data name="DocumentId" xml:space="preserve">
+    <value>Document ID</value>
+  </data>
+  <data name="CreateNewLawyer" xml:space="preserve">
+    <value>Create New/Edit Lawyer</value>
+  </data>
+  <data name="DocumentUpdated" xml:space="preserve">
+    <value>Document Updated successfully</value>
+  </data>
+  <data name="LawyerAssigned" xml:space="preserve">
+    <value>Lawyer assigned successfully</value>
+  </data>
+  <data name="LawyerCompany" xml:space="preserve">
+    <value>Lawyer Company</value>
+  </data>
+  <data name="LawyerFirstName" xml:space="preserve">
+    <value>Lawyer First Name</value>
+  </data>
+  <data name="LawyerLastName" xml:space="preserve">
+    <value>Lawyer Last Name</value>
+  </data>
+  <data name="ReturnToLegalScreen" xml:space="preserve">
+    <value>Return To Legal Screen</value>
+  </data>
+  <data name="AreyousuretoassignnewLawyer" xml:space="preserve">
+    <value>Are you sure to assign Lawyer?</value>
+  </data>
+  <data name="CancelChanges" xml:space="preserve">
+    <value>Are you sure to cancel all the changes?</value>
+  </data>
+  <data name="DeleteMerchantDocument" xml:space="preserve">
+    <value>Are you sure to delete Merchant Document(s)?</value>
+  </data>
+  <data name="NoDocumentSelected" xml:space="preserve">
+    <value>No Document is selected</value>
+  </data>
+  <data name="NoLawyerSelected" xml:space="preserve">
+    <value>No Lawyer is selected</value>
+  </data>
+  <data name="NoMerchantDocumentSelected" xml:space="preserve">
+    <value>No Merchant Document is selected</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Contracts" xml:space="preserve">
+    <value>Contracts</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="GenerateLetter" xml:space="preserve">
+    <value>Generate Letter</value>
+  </data>
+  <data name="ReturnToSearchScreen" xml:space="preserve">
+    <value>Return to Search Screen</value>
+  </data>
+  <data name="PleaseSelect" xml:space="preserve">
+    <value>Please Select</value>
+  </data>
+  <data name="MerchantDocumentsDeletedError" xml:space="preserve">
+    <value>Error while deleting Merchant Document(s)</value>
+  </data>
+  <data name="CollectionActivities" xml:space="preserve">
+    <value>Collection Activity saved successfully</value>
+  </data>
+  <data name="ErrorDocumentUpdated" xml:space="preserve">
+    <value>Error while uploading the Document</value>
+  </data>
+  <data name="AEC" xml:space="preserve">
+    <value>AEC</value>
+  </data>
+  <data name="CCAverageusedinOffer" xml:space="preserve">
+    <value>CC Average used in Offer</value>
+  </data>
+  <data name="CollectionStatus" xml:space="preserve">
+    <value>Collection Status</value>
+  </data>
+  <data name="ContractId" xml:space="preserve">
+    <value>Contract Id</value>
+  </data>
+  <data name="lbFundingDate" xml:space="preserve">
+    <value>Funding Date</value>
+  </data>
+  <data name="lbOwnedAmount" xml:space="preserve">
+    <value>Owed Amount</value>
+  </data>
+  <data name="lbPendingAmount" xml:space="preserve">
+    <value>Pending Amount</value>
+  </data>
+  <data name="MonthlyCCAverage" xml:space="preserve">
+    <value>Monthly CC Average</value>
+  </data>
+  <data name="Retention" xml:space="preserve">
+    <value>Retention</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="CreditReportError" xml:space="preserve">
+    <value>Error while Credit Report pulled</value>
+  </data>
+  <data name="CreditReportPulled" xml:space="preserve">
+    <value>Credit Report pulled successfully</value>
+  </data>
+  <data name="LandlordUpdated" xml:space="preserve">
+    <value>Landlord updated successfully</value>
+  </data>
+  <data name="PleaseSelectCreditPullType" xml:space="preserve">
+    <value>Please Select credit pull type</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="LandLordAnswers" xml:space="preserve">
+    <value>(Answers can not be modified from here)</value>
+  </data>
+  <data name="ErrorNotifyPayment" xml:space="preserve">
+    <value>Please upload payment receipt document</value>
+  </data>
+  <data name="ErrorPaymentAgreement" xml:space="preserve">
+    <value>Please upload payment agreement documnet</value>
+  </data>
+  <data name="RequestProcessor" xml:space="preserve">
+    <value>Request Processor</value>
+  </data>
+  <data name="ViewDocument" xml:space="preserve">
+    <value>View Document</value>
+  </data>
+  <data name="LawyerAdded" xml:space="preserve">
+    <value>Lawyer added/updated successfully</value>
+  </data>
+</root>

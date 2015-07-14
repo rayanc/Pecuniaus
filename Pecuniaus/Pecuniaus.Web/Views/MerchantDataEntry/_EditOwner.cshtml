@@ -1,0 +1,76 @@
+﻿@model Pecuniaus.Web.Models.OwnerModel
+<div id="dvNewOwner">
+    @using (Ajax.BeginForm("EditOwner", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewOwner",
+       OnSuccess = "OwnerUpdated()",
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+        @Html.ValidationSummary()
+                @Html.HiddenFor(m => m.OwnerId)
+        
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.OwnerFirstName)
+                @Html.TextBoxFor(m => m.OwnerFirstName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.OwnerLastName)
+                @Html.TextBoxFor(m => m.OwnerLastName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.PassportNumber)
+                @Html.TextBoxFor(m => m.PassportNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                <label></label>
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Update" /> <button class="btn btn-primary" onclick="CEOwner()" >@Pecuniaus.Resources.Common.Cancel</button></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.OwnerDOB)
+                @*@Html.EditorFor(m => m.OwnerDOB, new { @class = "form-control input-datepicker", @placeholder = "Enter text.." })*@
+                @Html.EditorFor(m => m.OwnerDOB)
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Phone1)
+                @Html.TextBoxFor(m => m.Phone1, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.CellNumber)
+                @Html.TextBoxFor(m => m.CellNumber, new {  @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Authorized)
+                @Html.CheckBoxFor(m => m.Authorized, new { @class = "form-control", @style = "width:auto;"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.AddressLine1)
+                @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-2">
+                <label>State</label>
+                @Html.LabelFor(m => m.StateID)
+                @Html.DropDownListFor(m => m.StateID, Model.States, "", new { @class = "form-control", @style = "width: 100%;", })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.Zip)
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+        </div>
+    }
+</div>

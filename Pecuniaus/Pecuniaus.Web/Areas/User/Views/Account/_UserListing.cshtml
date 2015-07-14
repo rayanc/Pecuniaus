@@ -1,0 +1,30 @@
+﻿@model List<Pecuniaus.User.Models.UserModel>
+    @using GridMvc.Html
+
+    @Html.Grid(Model).Columns(columns =>
+{
+    //columns.Add(data => data.UserName).Titled(@Pecuniaus.Resources.User.User.UserName);
+    columns.Add().Sanitized(false)
+                 .Encoded(false)
+                 .RenderValueAs(o => RenderActionUserLinks(o)).Titled(@Pecuniaus.Resources.User.User.UserName); 
+    columns.Add(data => data.FirstName).Titled(@Pecuniaus.Resources.User.User.FirstName);
+    columns.Add(data => data.LastName).Titled(@Pecuniaus.Resources.User.User.LastName);
+    columns.Add(data => data.DateofBirth).Titled(@Pecuniaus.Resources.User.User.DateofBirth);
+    columns.Add(data => data.GroupName).Titled(@Pecuniaus.Resources.User.User.GroupName);
+    columns.Add()
+                 .Sanitized(false)
+                 .Encoded(false)
+                 .RenderValueAs(o => RenderActionLinks(o));
+}).WithPaging(5).Sortable(true)
+    @helper RenderActionLinks(Pecuniaus.User.Models.UserModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditUser(@m.ID);"><i class="fa fa-pencil-square-o"></i></a>
+
+}
+@helper RenderActionUserLinks(Pecuniaus.User.Models.UserModel m)
+{
+    <a href="Javascript:void(0);" title="User Profile" onclick="UserProfile(@m.ID);">@m.UserName</a>
+
+}
+
+

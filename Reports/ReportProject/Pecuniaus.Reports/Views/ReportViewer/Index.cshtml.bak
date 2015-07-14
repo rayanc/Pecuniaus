@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Reports</h2>
+<select id="Reports">
+    <option value="0">-Select-</option>
+    <option value="1">Collection</option>
+    <option value="2">Contracts</option>
+    <option value="3">Contracts Declined By Avanzame</option>
+    <option value="4">Contracts Declined By Client</option>
+    <option value="5">Contracts Pending</option>
+    <option value="6">Investigation</option>
+    <option value="7">Monthly MCA</option>
+    <option value="8">Notes</option>
+    <option value="9">PAF Report</option>
+    <option value="10">Prequalifications</option>
+    <option value="11"></option>
+    <option value="12">Prequalification Declined By Client</option>
+    <option value="13">Prequalification Offers</option>
+    <option value="14">Prequalifications Pending</option>
+    <option value="15">Prequalification AcceptedOffers</option>
+    <option value="16">Refund Done</option>
+    <option value="17">Refund Pending</option>
+    <option value="18">Renewals</option>
+    <option value="19">Renewals Pending</option>
+    <option value="20">Renewals Declined By AvanzeMe</option>
+    <option value="21">Renewals Declined By Client</option>
+    <option value="22">Scoring Report</option>
+    <option value="23">WorkFlow Report</option>
+    <option value="24">WrittenOff Contracts</option>
+    <option value="25">WSF Report</option>
+</select>
+<br />
+
+<div id="dvRepView">
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#Reports').on('change', function () {
+            v = $(this).val();
+            var url = '@Url.Action("ShowReport")/' + v;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                async: false,
+                success: function (result) {
+                    $("#dvRepView").html(result);
+                }
+            });
+        });
+    });
+</script>

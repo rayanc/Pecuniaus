@@ -1,0 +1,38 @@
+﻿<!-- Right Header Navigation -->
+<ul class="nav navbar-nav-custom pull-right">
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-flag"></i> </a>
+        <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li class="dropdown-header text-center">Change Language</li>
+            <li>
+                <a href="?culture=1">English</a>
+                <a href="?culture=2">Spanish</a>
+            </li>
+        </ul>
+    </li>
+      <li>
+        <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle"><i class="gi gi-notes_2 sidebar-nav-icon"></i> <span class="label label-white label-indicator animation-floating">4</span> </a>
+        <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li> <a href="javascript:void(0)"><i class="fa fa-plus pull-right"></i>Test Action here</a> <a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Another Action</a> <a href="javascript:void(0)"><i class="fa fa-envelope-o pull-right"></i>Another Action</a> </li>
+        </ul>
+    </li>
+    <!-- Dropdown -->
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> <img src="/images/avatar.jpg" alt="avatar"> <i class="fa fa-angle-down"></i> </a>
+        <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li class="dropdown-header text-center">Account</li>
+            <li>
+                <a href="@Url.Action("ChangePassword", "Account", new {area="" })"><i class="fa fa-lock fa-fw pull-right"></i> Change Password</a>
+                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-ban fa-fw pull-right"></i> Logout @User.Identity.Name </a>
+            </li>
+        </ul>
+    </li>
+    <!-- END Dropdown -->
+</ul>
+<!-- END Right Header Navigation -->
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+    {
+     }
+}

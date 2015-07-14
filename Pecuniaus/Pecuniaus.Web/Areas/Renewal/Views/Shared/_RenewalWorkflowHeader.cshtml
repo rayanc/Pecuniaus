@@ -1,0 +1,119 @@
+﻿@{var actionName = ViewContext.RouteData.GetRequiredString("controller").ToLower();}
+<div class="row header-section circles-header-section">
+    <div class="circles">
+        <div class="@(actionName == "Landing" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Landing")">List of<br>
+                            Merchant
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@(actionName == "renewalevaluation" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "RenewalEvaluation")">Renewal
+                            <br>
+                            Evaluation
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "documentscan" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "DocumentScan")">Document 
+                            <br>
+                            Verification
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@(actionName == "renewaloffer" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "RenewalOffer")">Offer
+                            <br>
+                            Creation
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@(actionName == "review" ? "circle_block active_circle" : "circle_block")">
+
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Review")">Renewal
+                            <br>
+                            Review
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@(actionName == "contract" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Contract")">Contract
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@(actionName == "funding" ? "circle_block active_circle" : "circle_block")">
+
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Funding")">Funding
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="@(actionName == "finalverification" ? "circle_block active_circle" : "circle_block")">
+
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "FinalVerification")">Final Validation
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

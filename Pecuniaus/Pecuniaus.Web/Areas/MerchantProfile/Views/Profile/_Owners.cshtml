@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Pecuniaus.MerchantProfile.Models.MPMerchantOwnersModel>
+@{
+    var permissionsOwners = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Owners);
+}
+@using (Ajax.BeginForm("ProcessOwner", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q4", InsertionMode = InsertionMode.Replace, OnSuccess = "FadeOutAlertMessage();" }, new { id = "frmMerchantOwners" }))
+{
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="form-group form-actions">
+            <div class="col-xs-12">
+                <div class="pull-right">
+                    @*@if (permissionsOwners.Edit)
+                    {*@
+                        <button class="btn btn-primary" type="button" value="Add" onclick="loadOwnerDetailstoAdd();">@Pecuniaus.Resources.Common.AddNew</button>
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="Update">@Pecuniaus.Resources.Common.Save</button>
+                        <button class="cancel btn btn-danger" type="submit" name="submitButton" value="Delete">@Pecuniaus.Resources.Common.Delete</button>
+                        <br>
+                        <br>
+                    @*}*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                        <thead>
+                            <tr role="row">
+                                @*@if (permissionsOwners.Edit)
+                                {*@
+                                    <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Edit</th>
+                                    <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Delete</th>
+                                @*}*@
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Owners.FirstName</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.MerchantProfile.Owners.LastName</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.MerchantProfile.Owners.DateofBirth</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Owners.IsAuthorized</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Owners.OwnerIdentification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var modItem in Model)
+                        {
+                            <tr>
+                                @*@if (permissionsOwners.Edit)
+                                {*@
+                                    <td><input type="radio" id="example-checkbox1" name="example-checkbox1" value="option1" onclick="loadOwnerDetails(@Html.DisplayFor(Item => modItem.OwnerId));"></td>
+                                    <td><input type="checkbox" id="DeleteIt" name="DeleteIt" value="@Html.DisplayFor(Item => modItem.OwnerId)"></td>
+                                @*}*@
+                            <td>@Html.DisplayFor(Item => modItem.FirstName)</td>
+                            <td>@Html.DisplayFor(Item => modItem.LastName)</td>
+                            <td>@Html.DisplayFor(Item => modItem.DateofBirth)</td>
+                            <td>@Html.DisplayFor(Item => modItem.IsAuthorized)</td>
+                            <td>@Html.DisplayFor(Item => modItem.OwnerIdentification)</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+            </div>
+            <div id="ownerdetails">
+            </div>
+        </div>
+    </div>
+
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+}

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Pecuniaus</title>
+    <meta name="description" content="Pecuniaus">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+    
+    @Styles.Render("~/bundles/stylesbundle")
+    @Styles.Render("~/bundles/GridMvc")
+
+    @RenderSection("CSS", required: false)
+    @Scripts.Render("~/bundles/modernizrbundle")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+</head>
+<body style="background:none">
+    <div id="page-container" class="sidebar-visible-lg sidebar-no-animations">
+        
+            @RenderBody()
+    </div>
+    <div class="modal fade" id="loading" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog  modal-vertical-centered" style="width:75px">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa fa-spinner fa-3x fa-spin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Contract")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

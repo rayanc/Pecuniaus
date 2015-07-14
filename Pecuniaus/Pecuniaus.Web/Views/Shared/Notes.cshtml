@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Pecuniaus.Web.Models.NotesModel>
+@using GridMvc.Html
+
+<!-- Modal Body -->
+<div class="modal-body">
+    <div class="row">
+        <div class="row form-group">
+            <form class="form-horizontal">
+                <div class="col-sm-7">
+                    <label for="example-email-input" class="col-md-2 control-label">Notes</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn no_searrchbgcolor" type="button"><i class="fa fa-search"></i></button>
+                            </span>
+                            <input type="text" placeholder="Enter the search creteria here" class="form-control" name="example-input1-group2" id="example-input1-group2">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-sm btn-success pop_addbtn_margn" type="button" onclick="AddNote();"><i class="hi hi-check"></i> Add Note</button>
+                </div>
+                <div class="col-sm-3">
+                    <select size="1" style="float:left" class="form-control" name="example-select" id="example-select">
+                        <option value="0">Filter By</option>
+                        <option value="1">Option #1</option>
+                        <option value="2">Option #2</option>
+                        <option value="3">Option #3</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="table-responsive">
+            @Html.Grid(Model).Columns(columns => {
+           columns.Add(data => data.note).Titled("Note").SetWidth(100);
+           columns.Add(data => data.noteTypeId).Titled("Note Type").SetWidth(100);
+           columns.Add(data => data.screenName).Titled("Screen Name").SetWidth(100);
+           columns.Add(data => data.merchantId).Titled("Merchant ID").SetWidth(100);
+           columns.Add(data => data.contractId).Titled("Contract ID").SetWidth(100);
+           columns.Add(data => data.workFlowId).Titled("Workflow ID").SetWidth(100);
+       }).WithPaging(10)
+            @*<table class="table table-striped table-vcenter table-bordered" id="general-table">
+                <thead>
+                    <tr class="active">
+                        <th>Notes</th>
+                        <th>Dates</th>
+                        <th>User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Notes 1</td>
+                        <td>05/08/2014 &nbsp; 2:56pm</td>
+                        <td>User 1</td>
+                    </tr>
+                    <tr>
+                        <td>Notes 2</td>
+                        <td>05/08/2014 &nbsp; 2:56pm</td>
+                        <td>User 1</td>
+                    </tr>
+                    <tr>
+                        <td>Notes 3</td>
+                        <td>05/08/2014 &nbsp; 2:56pm</td>
+                        <td>User 1</td>
+                    </tr>
+                    <tr>
+                        <td>Notes 4</td>
+                        <td>05/08/2014 &nbsp; 2:56pm</td>
+                        <td>User 1</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <div class="btn-group btn-group-sm"> Results: 50 Records </div>
+                            <div class="btn-group btn-group-sm  pull-right">
+                                <select size="1" class="form-control" name="example-select" id="example-select">
+                                    <option value="0">Please select</option>
+                                    <option value="1">Option #1</option>
+                                    <option value="2">Option #2</option>
+                                    <option value="3">Option #3</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>*@
+        </div>
+        <div class="form-group form-actions">
+            <div class="col-xs-12 text-right">
+                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button">Close</button>
+            </div>
+        </div>
+        <!-- END Table Styles Content -->
+    </div>
+</div>
+<!-- END Modal Body -->

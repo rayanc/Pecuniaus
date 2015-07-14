@@ -1,0 +1,144 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+
+<div id="page-content" style="min-height: 615px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">       
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li><a href="@Url.Action("Index", "Workflow")">@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</a></li>
+    </ul>
+    <!-- Datatables Content -->
+    @using (Html.BeginForm("Index", "Workflow", FormMethod.Post, new { id = "frmCollection", @class = "form-horizontal", role = "form", }))
+    {
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    @Html.HiddenFor(model => model.isCollectionGrid)
+
+                    <div class="panel-group" id="faq2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#faq2_q2" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">@Pecuniaus.Resources.Collection.Collection.Prevention</a></h4>
+                            </div>
+                            <div class="panel-collapse collapse in" id="faq2_q2">
+                                <div class="panel-body">
+
+                                    <div class="table-responsive">
+
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <label>@Pecuniaus.Resources.Collection.Collection.ShowMerchantsPayingSlowerThan:</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                @Html.TextBoxFor(model => model.PreventionSearch, new { @class = "form-control", @placeholder = "%age" })
+
+                                                @*<input id="txtSearch" type="text" maxlength="4" name="SearchString" placeholder="%age" class="form-control">*@
+                                            </div>
+                                            <div class="col-md-3">                                               
+                                                    <button class="btn btn-sm btn-primary" name="command" value="search" type="submit">@Pecuniaus.Resources.Common.Search</button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <br>
+                                        </div>
+                                        <br />
+                                        <div class="form-group" id="dvRetrivePrevention" data-source-url="@Url.Action("RetrivePrevention")">
+                                            @{Html.RenderAction("RetrivePrevention");}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#faq2_q3" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">@Pecuniaus.Resources.Collection.Collection.Collections</a></h4>
+                            </div>
+                            <div class="panel-collapse collapse" id="faq2_q3">
+                                <div class="panel-body">
+
+
+                                    <div class="table-responsive">
+                                        <div class="form-group">
+                                            <div class="col-md-5">
+                                                <label>@Pecuniaus.Resources.Collection.Collection.ShowMerchantThatHavnotProcessedIn:</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.DropDownListFor(model => model.listDaysActivity, Model.listDays, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Choose one.." })
+                                            </div>
+                                            <div class="col-md-3">                                               
+                                                    <button type="submit" name="command" value="show" class="btn btn-sm btn-primary">@Pecuniaus.Resources.Common.Show</button>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <br>
+                                        </div>
+
+                                        <br />
+                                        <div class="form-group" id="dvCollectionsListing" data-source-url="@Url.Action("CollectionsListing")">
+                                            @{Html.RenderAction("CollectionsListing");}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+    }
+</div>
+<style>
+    .clickable {
+        cursor: pointer;
+        background: #ffff99;
+    }
+</style>
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(
+           function () {
+
+               if ($("#isCollectionGrid").val() == "True") {
+                   $("#faq2_q2").removeClass('in');
+                   $("#faq2_q3").addClass('in');
+               }
+               else {
+                   $("#faq2_q2").addClass('in');
+                   $("#faq2_q3").removeClass('in');
+               }
+               ajaxifyGridMvc("#dvCollectionsListing", CollectionsListingRowClick);
+               ajaxifyGridMvc("#dvRetrivePrevention", RetrivePreventionRowClick);
+               CollectionsListingRowClick();
+               RetrivePreventionRowClick();
+           });
+
+        function CollectionsListingRowClick() {  
+            pageGrids.grdCollectionsListing.onRowSelect(function (e) {
+                var queryString = "merchantID=" + e.row.merchantId + "&contractID=" + e.row.contractId + "&merchantName=" + e.row.merchantName + "&realTurn=" + e.row.realTurn;
+                window.location.href = "@Url.Action("Collections", "Workflow")?" + queryString;
+            });
+        }
+
+        function RetrivePreventionRowClick() {
+            pageGrids.grdRetrivePrevention.onRowSelect(function (e) {
+                var queryString = "merchantID=" + e.row.merchantId + "&contractID=" + e.row.contractId + "&merchantName=" + e.row.merchantName + "&realTurn=" + e.row.realTurn;
+                window.location.href = "@Url.Action("Collections", "Workflow")?" + queryString;
+            });            
+            
+        }
+    </script>
+}

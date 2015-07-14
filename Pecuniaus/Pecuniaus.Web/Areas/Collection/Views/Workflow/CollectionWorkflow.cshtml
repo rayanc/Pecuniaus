@@ -1,0 +1,219 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+
+    //ViewBag.Title = "Collection Workflow";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-content" style="min-height: 516px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Common.Collections</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li><a href="@Url.Action("CollectionWorkflow", "Workflow")">@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</a></li>
+    </ul>
+    @if (Model.MerchantsDetail.merchantId > 0)
+    {
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-primary" onclick="ReturnToSearchScreen()">@Pecuniaus.Resources.Collection.Collection.ReturnToSearchScreen</button>
+                </div>
+            </div>
+        </div>
+    <!-- Datatables Content -->
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Widget -->
+                <div class="widget">
+                    <div class="widget-extra blue_bg">
+                        <h3 class="widget-content-light">@Pecuniaus.Resources.Common.Contract <strong>@Pecuniaus.Resources.Common.Information</strong></h3>
+
+                    </div>
+                    <div class="widget-simple">
+                        @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                        @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                        @Html.HiddenFor(model => model.ColActivities[0].pNotifyPayment)
+                        @Html.HiddenFor(model => model.ColActivities[0].pPaymentAgreement)
+                        @if (@Model.ContractInfo != null)
+                        {
+                            <div class="col-md-6">
+                                <address>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.CollectionStatus: </strong> @Model.ContractInfo[0].collectionStatus <br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.MerchantID: </strong> @Model.ContractInfo[0].merchantId<br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.ContractId: </strong> @Model.ContractInfo[0].contractId<br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.lbFundingDate: </strong> @Model.ContractInfo[0].fundingDate <br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.MonthlyCCAverage: </strong> @Model.ContractInfo[0].monthlyAverage<br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.CCAverageusedinOffer: </strong> @Model.ContractInfo[0].CCAverageOffer<br>
+
+                                </address>
+                            </div>
+                            <div class="col-md-6">
+                                <address>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.AEC: </strong> @Model.ContractInfo[0].AEC<br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.lbOwnedAmount: </strong> @Model.ContractInfo[0].ownedAmount <br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.Retention: </strong> @Model.ContractInfo[0].retention <br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.Time: </strong> @Model.ContractInfo[0].time <br>
+                                    <strong>@Pecuniaus.Resources.Collection.Collection.lbPendingAmount: </strong> @Model.ContractInfo[0].pendingAmount <br>
+                                </address>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- END Widget -->
+            </div>
+            <div class="col-md-6">
+                <!-- Widget -->
+                <div class="widget">
+                    <div class="widget-extra green_bg">
+                        <h3 class="widget-content-light">@Pecuniaus.Resources.Common.Owner <strong>@Pecuniaus.Resources.Common.Information </strong></h3>
+                    </div>
+                    <div class="widget-simple">
+                        @if (@Model.OwnerInfo != null)
+                        {
+                            <div class="col-md-6">
+                                <address>
+                                    <strong>@Pecuniaus.Resources.Common.Name:</strong>@Model.OwnerInfo[0].ownerName<br>
+                                    <strong>@Pecuniaus.Resources.Common.Address: </strong> @Model.OwnerInfo[0].address1<br>@Model.OwnerInfo[0].address2
+                                </address>
+                            </div>
+                            <div class="col-md-6">
+                                <address>
+                                    <strong>@Pecuniaus.Resources.Common.Telephone:</strong> @Model.OwnerInfo[0].telephone <br>
+                                    <strong>@Pecuniaus.Resources.Common.CellPhone:</strong> @Model.OwnerInfo[0].cellPhone<br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </address>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- END Widget -->
+            </div>
+        </div>
+        <div class="tophdrbuttons1">
+            <div class="row">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-primary" onclick="DataCredito();">@Pecuniaus.Resources.Collection.Collection.DataCredito</button>&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Affiliations();">@Pecuniaus.Resources.Collection.Collection.Affiliation</button>&nbsp;
+                    <button type="button" class="btn btn-warning" onclick="MerchantDocuments();">@Pecuniaus.Resources.Common.Documents</button>&nbsp;
+                    <button type="button" class="btn btn-danger" onclick="Landlord();">@Pecuniaus.Resources.Collection.Collection.Landlord</button>&nbsp;
+                    <button type="button" class="btn btn-info" onclick="Payment();">@Pecuniaus.Resources.Collection.Collection.Payment</button>&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="Legal();">@Pecuniaus.Resources.Collection.Collection.Legal</button>&nbsp;
+                    <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                </div>
+            </div>
+        </div>
+        using (Html.BeginForm("SaveCollectionDetails", "Workflow", FormMethod.Post, new { id = "frmCollectionDetails", role = "form", }))
+        {
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block full">
+                        <div class="row col-md-12">
+                            @if (permissions.Write)
+                            {
+                                <button type="button" class="btn btn-primary pull-right" onclick="GenerateLetter()">@Pecuniaus.Resources.Collection.Collection.GenerateLetter</button>
+
+                            }
+                        </div>
+
+                        <div class="row">
+
+                            <div class="widget-simple">
+                                <div class="row col-md-12">
+                                    @Html.ValidationSummary()
+                                </div>
+                                <div class="form-group clearfix">
+                                    <label class="col-md-3 control-label" for="example-select">@Pecuniaus.Resources.Collection.Collection.Activity</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.CollectionActivity.activityTypeId, Model.listActivities, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Choose one.." })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="example-textarea-input">@Pecuniaus.Resources.Collection.Collection.Note</label>
+                                    <div class="col-md-6">
+                                        @Html.TextAreaFor(model => model.CollectionActivity.notes, new { @class = "form-control", @placeholder = "", @rows = "9" })
+                                    </div>
+                                </div>
+                                <div class="row col-md-12">
+                                    @if (permissions.Write)
+                                    {
+                                        <button type="submit" class="btn btn-primary pull-right" onclick="return Save()">@Pecuniaus.Resources.Common.Save</button>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+<script>
+
+    function DataCredito() {
+        window.location.href = "@Url.Action("DataCredito", "Workflow")";
+    }
+    function Affiliations() {
+        window.location.href = "@Url.Action("Affiliations", "Workflow")";
+    }
+    function MerchantDocuments() {
+        window.location.href = "@Url.Action("MerchantDocuments", "Workflow")";
+    }
+    function Landlord() {
+        window.location.href = "@Url.Action("Landlord", "Workflow")";
+    }
+    function Legal() {
+        window.location.href = "@Url.Action("Legal", "Workflow")";
+    }
+    function Payment() {
+        window.location.href = "@Url.Action("PaymentAgreement", "Workflow")";
+    }
+    function ReturnToSearchScreen() {
+        window.location.href = "@Url.Action("Index", "Workflow")";
+    }
+
+    function GenerateLetter() {
+        $.getJSON("/Workflow/GenerateLetter", {}, function (response) {
+
+            if (response) {
+                window.location.href = "@Url.Action("CollectionWorkflow", "Workflow")"
+            }
+        });
+    }
+    function Save()
+    {
+        
+        if (($("#CollectionActivity_activityTypeId").val() == 7) && ($("#ColActivities_0__pNotifyPayment").val() == "False")) {
+            alert("@Pecuniaus.Resources.Collection.Collection.ErrorNotifyPayment");
+                return false;
+            }
+        else if (($("#CollectionActivity_activityTypeId").val() == 8) && ($("#ColActivities_0__pPaymentAgreement").val() == "False")) {
+                alert("@Pecuniaus.Resources.Collection.Collection.ErrorPaymentAgreement");
+                return false;
+            }
+            return true;
+          
+         
+       
+    }
+</script>

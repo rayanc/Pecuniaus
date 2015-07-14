@@ -1,0 +1,105 @@
+﻿@model Pecuniaus.Models.Contract.DataEntryModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWReview);
+Model.IsDisabled = isFormDisabled;
+}
+
+
+@using GridMvc.Html
+
+@using (Html.BeginForm("index", "DataEntry", FormMethod.Post, new { id = "frmDE", @class = "a", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.ContractId);
+
+    <div class="row">
+        <div class="col-md-4 col-lg-6 hidden-sm">
+            @Html.Partial("_PageMessage")
+
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-md-8 col-lg-6 pull-right">
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("~/Areas/Contract/Views/DataEntry/_DEMerchant.cshtml", Model)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("~/Areas/Contract/Views/DataEntry/_DEBankInfo.cshtml", Model)
+        </div>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Owner</strong> @Pecuniaus.Resources.Contract.DataEntry.Statement</h2>
+            </div>
+            <div id="dvEditStatement" data-source-url="@Url.Action("AddStatement")" data-edit-url="@Url.Action("EditStatement")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvStatement" data-source-url="@Url.Action("ListStatement")">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Owner</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+            </div>
+            <div id="dvEditOwner" data-source-url="@Url.Action("AddOwner")" data-edit-url="@Url.Action("EditOwner")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvOwners" data-source-url="@Url.Action("ListOwners")">
+                    @{ Html.RenderAction("ListOwners");  }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.TradeRef</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+            </div>
+            <div id="dvEditTradeReference" data-source-url="@Url.Action("AddTradeReference")" data-edit-url="@Url.Action("EditTradeReference")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvTradeReference" data-source-url="@Url.Action("ListTradeReference")">
+                    @{Html.RenderAction("ListTradeReference");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Processor</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+            </div>
+            <div id="dvEditProcessor" data-source-url="@Url.Action("AddProcessor")" data-edit-url="@Url.Action("EditProcessor")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvProcessor" data-source-url="@Url.Action("ListProcessors")">
+                    @{Html.RenderAction("ListProcessors");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

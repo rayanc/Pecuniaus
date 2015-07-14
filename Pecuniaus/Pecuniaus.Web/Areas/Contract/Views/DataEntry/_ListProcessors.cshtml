@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Pecuniaus.Models.Contract.ProcessorModel>
+
+@{var permissions = new Pecuniaus.Models.User.GroupPermission { IsFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWDataEntry) };
+  var model = new Tuple<Pecuniaus.Models.User.GroupPermission, IEnumerable<Pecuniaus.Models.Contract.ProcessorModel>>(permissions, Model);
+}
+
+@Html.Partial("_LstPProcessors", model)

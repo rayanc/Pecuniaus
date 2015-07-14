@@ -1,0 +1,83 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <div class="block full">
+                <div>
+                    <div class="row">
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label>Template </label>
+                                <select class="form-control ddTemplate">
+                                    <option value="0"></option>
+                                    <option value="OfferTemplate">Offer</option>
+                                    <option value="OfferAcceptanceTemplate">Offer Acceptance </option>
+                                    <option value="NotesLetterTemplate">Notes Letter</option>
+                                    <option value="DeclineLetterTemplate">Decline Letter</option>
+                                    <option value="CollectionLetter">Collection Letter</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>&nbsp;</label><br />
+                                <button class="btn btn-sm btn-primary" type="submit" name="submitButton" value="Save" onclick="SaveTemplate();"><i class="hi hi-check"></i>@Pecuniaus.Resources.Common.Save</button>
+                                <button class="btn btn-sm btn-warning" name="submitButton" value="cancel" onclick="$('.ddTemplate').trigger('change');"><i class="hi hi-check"></i>@Pecuniaus.Resources.Common.Cancel</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="row">
+                            <div class="col-md-12">                                
+                                <textarea id="txtText" cols="50" rows="30"> </textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-actions">
+            <div class="col-xs-12 text-right">
+                <label for="example-nf-email">&nbsp;</label>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#txtText").htmlarea(); // Initialize jHtmlArea's with all default values
+        $('.ddTemplate').on('change', function () {
+            if ($('.ddTemplate').val() != '0') {
+                $.ajax({
+                    type: "Get",
+                    url: "/EmailTemplate/GetTemplate",
+                    dataType: "html",
+                    data: { template: $('.ddTemplate').val() },
+                    success: function (data) {
+                        $("#txtText").htmlarea('html', data);
+                    }
+                });
+            } else {
+                $("#txtText").val('');
+                $("#txtText").htmlarea('html', '');
+            }
+        });
+    });
+
+    function SaveTemplate() {
+        if ($("#txtText").htmlarea('html') != '') {
+            $.ajax({
+                type: "POST",
+                url: "/EmailTemplate/SaveTemplate",
+                dataType: "html",
+                data: { template: $("#txtText").htmlarea('html'), name: $('.ddTemplate').val() },
+                success: function (data) {
+                    $("#txtText").htmlarea('html', data);
+                    alert("Template Updated Successfully");
+                }
+            });
+        } else { alert("Can not save empty template"); }
+    }
+
+</script>
+

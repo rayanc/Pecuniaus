@@ -1,0 +1,13 @@
+﻿@model  IEnumerable<Pecuniaus.Models.AssignedTask>
+@using GridMvc.Html
+
+@Html.Grid(Model, "_GridDash").Named("grdTaskActivities").Columns(columns =>
+           {
+               columns.Add(m => m.MerchantId, true);
+               columns.Add(m => m.TaskTypeId, true);
+               columns.Add(m => m.LegalName).Titled("Legal Name");
+               columns.Add(m => m.WorkFlowName).Titled("Workflow");
+               columns.Add(m => m.TaskName).Titled("Task Name");
+               columns.Add(m => m.StatusName).Titled("Status");
+
+           }).WithPaging(5).Sortable(true).SetRowCssClasses(item => "cursor")

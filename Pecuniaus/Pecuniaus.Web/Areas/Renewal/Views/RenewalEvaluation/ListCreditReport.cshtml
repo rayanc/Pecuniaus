@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Pecuniaus.Renewal.Models.CreditReportModel>
+@using GridMvc.Html
+<div class="row">
+        @Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(m => m.creditReportId, true);
+        columns.Add(m => m.timeofreport).Titled("Date");
+        columns.Add(m => m.type).Titled("Type");
+        columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => RenderActionLinks(o)).Titled("View Report");
+        columns.Add(o => o.isavailable)
+                .Titled("Report Available")
+                .RenderValueAs(o => CustomBoolValue(o));
+        //columns.Add(m => m.isavailable).Titled("Report Available");
+    }).WithPaging(10).Sortable()
+        @helper RenderActionLinks(Pecuniaus.Renewal.Models.CreditReportModel m)
+{
+        <a href="@Url.Action("GeneratePDF", "Review", new { area = "Renewal", creditReportId = m.creditReportId, merchantid= m.merchantId, contractid=m.contractId })" title="View Report" target="_blank"><i class="fa fa-pencil-square-o"></i></a>
+}
+    @helper CustomBoolValue(Pecuniaus.Renewal.Models.CreditReportModel m)
+{
+    if (m.isavailable)
+    {
+        <text>Yes</text>
+    }
+    else
+    {
+        <text>No</text>
+    }
+}
+    <div id="mod_credit_save1" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="dvmodalcredit1">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @*@if (@Model!=null)
+        { 
+        <div>
+            <input type="hidden" id="hdnowner" value="@Model.ToList()[0].IsOwner" />
+            <input type="hidden" id="hdncompany" value="@Model.ToList()[0].IsCompany" />
+        </div>
+        }*@
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@model Pecuniaus.Finance.Models.SearchFinanceModel
+@using GridMvc.Html
+<div class="table-responsive" id="dvfinanceList">
+    @if (Model.finance != null)
+    {
+        @Html.Grid(Model.finance).Columns(columns =>
+                                           {
+                                               columns.Add(data => data.dateOfActivity).Titled(@Pecuniaus.Resources.Finance.Finance.Date);
+                                               columns.Add(data => data.processorName).Titled(@Pecuniaus.Resources.Finance.Finance.Processor);
+                                               columns.Add(data => data.retention).Titled(@Pecuniaus.Resources.Finance.Finance.Retention);
+                                               columns.Add(data => data.totalAmount).Titled(@Pecuniaus.Resources.Finance.Finance.Total).Format("{0:C}");
+                                               columns.Add(data => data.price).Titled(@Pecuniaus.Resources.Finance.Finance.Price).Format("{0:C}");
+                                               columns.Add(data => data.capital).Titled(@Pecuniaus.Resources.Finance.Finance.Capital).Format("{0:C}");
+                                               columns.Add(data => data.incomeThroughProcessor).Titled(@Pecuniaus.Resources.Finance.Finance.IncomeProcessor).Format("{0:C}");
+                                               columns.Add(data => data.otherIncome).Titled(@Pecuniaus.Resources.Finance.Finance.OtherIncome).Format("{0:C}");
+                                               columns.Add(data => data.activityType).Titled(@Pecuniaus.Resources.Finance.Finance.TypeofActivity);
+                                               columns.Add(data => data.contractNumber).Titled(@Pecuniaus.Resources.Finance.Finance.ContractNumber);
+                                               columns.Add(data => data.notes).Titled(@Pecuniaus.Resources.Finance.Finance.Note).SetWidth(200);
+                                               columns.Add()
+
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(data => RenderCol1(data.ActivityId));
+                                           }).WithPaging(5).Sortable()
+    }
+
+
+    @helper RenderCol1(Int64 ActivityId)
+{
+        @Html.Raw(@Ajax.ActionLink("[Delete]",
+                 "DelActivity",
+                  new { id = ActivityId },
+                new AjaxOptions
+                 {
+                     OnBegin = "return validate();",
+                     OnSuccess = "RefreshActitityList()",
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))                    
+    }
+
+    <script>
+        function RefreshActitityList() {
+            $('#mylists').load('@Url.Action("SearchGrid")');
+        }
+        function validate() {
+            if (confirm("Do you want to delete this Activity ?"))
+                return true;
+            else return false;
+        }
+    </script>
+
+</div>

@@ -1,0 +1,16 @@
+﻿@model Pecuniaus.Models.Contract.MerchantScoreInfo
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQMerchantEvaluation);}
+@{
+    ViewBag.Title = "Pecuniaus";
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+}
+
+@Html.Partial("~/Areas/Contract/Views/MerchantEvaluation/_MEModal.cshtml", Model)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @*@Scripts.Render("~/bundles/scriptsbundle")*@
+
+    <script src="@Url.Content("~/Areas/Contract/Scripts/MerchantEvaluation.js")"> </script>
+}

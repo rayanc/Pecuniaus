@@ -1,0 +1,10 @@
+﻿@model  IEnumerable<Pecuniaus.Models.CollectionActivity>
+@using GridMvc.Html
+
+@Html.Grid(Model, "_GridDash").Columns(columns =>
+           {
+               columns.Add(m => m.LegalName).Titled("Legal Name");
+               columns.Add(m => m.StatusName).Titled("Status");
+
+           }).WithPaging(5).Sortable(true)
+

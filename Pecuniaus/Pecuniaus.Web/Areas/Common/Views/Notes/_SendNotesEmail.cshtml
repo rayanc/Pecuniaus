@@ -1,0 +1,134 @@
+﻿@model Pecuniaus.Models.NotesModel
+<div class="row">
+    <div class="col-md-12">
+        @using (Ajax.BeginForm("SaveandSendNote", "Notes", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvmodalAddchild", OnSuccess = "NoteAdded();" }, new { id = "frmnotesmail", name = "frmnotesmail", encType = "multipart/form-data" }))
+        {    <div class="table-responsive">
+            <div class="block full">
+                <div id="example-datatable_wrapper" class="dataTables_wrapper">
+
+                    @Html.ValidationSummary()
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Common.NoteText</label>
+                                @Html.TextBoxFor(m => m.Note, new { Placeholder = "", @class = "form-control", id = "txtNote" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Common.NoteTypeID</label>
+                                @Html.DropDownListFor(model => model.NoteTypeId, Model.NoteTypes, null, new { @class = "form-control", style = "width: 100%;" })
+
+                                @*@Html.DropDownListFor(x => x.NoteTypeId, (SelectList)ViewBag.NoteTypes, new Dictionary<string, object> { { "data-placeholder", "Choose one.." }, { "class", "select-select2" }, { "style", "width: 100%;" } })*@
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Screen Name</label>*@
+                                @Html.HiddenFor(m => m.ScreenName)
+                            </div>
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Merchant ID</label>
+                                    @Html.TextBoxFor(m => m.MerchantId, new { Placeholder = "", @class = "form-control", id = "txtMerchantID" })*@
+                                @Html.HiddenFor(m => m.MerchantId)
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Contract ID</label>*@
+                                @Html.HiddenFor(m => m.ContractId)
+                            </div>
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Workflow ID</label>*@
+                                @Html.HiddenFor(m => m.WorkFlowId)
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div>
+                                    @Html.LabelFor(m => m.EmailList)
+                                    @Html.ListBoxFor(m => m.SelectedEmail, new MultiSelectList(Model.EmailList, "Value", "Text"), new { row = 5, id = "lstEmail", Multiple = "multiple", style = "width: 100%;" })
+                                </div>
+                                <br />
+                                <div class="row">
+                                    @Html.LabelFor(m => m.SelectedEmail)
+                                    <input type="text" id="txEmail" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <br />
+                                    <input type="button" class="btn btn-success" value="@Pecuniaus.Resources.Common.Add @Pecuniaus.Resources.Common.Email" onclick="ValidateEmail()" />
+                                    <input type="button" value="@Pecuniaus.Resources.Common.Remove @Pecuniaus.Resources.Common.Email" class="btn btn-success" onclick="$('#lstEmail').find(':selected').remove();" />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row form-actions">
+                <div class="col-xs-12 text-right">
+                    <label for="example-nf-email">&nbsp;</label>
+                    <button class="btn btn-sm btn-success pop_addbtn_margn" type="submit"><i class="hi hi-check"></i>@Pecuniaus.Resources.Common.SaveandSend</button>
+                    <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button">@Pecuniaus.Resources.Common.Close</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    $("#frmnotesmail").submit(function (e) {
+        $("#lstEmail option").prop("selected", "selected");
+    });
+
+    function ValidateEmail() {
+        var isValid = true;
+        var filter = /^[\w\-\.\+]+\@@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+        if ($('#txEmail').val().indexOf(';') == -1) {
+            if (filter.test($('#txEmail').val())) {
+                $('#lstEmail').find('option').each(function () {
+                    if ($(this).text() == $('#txEmail').val()) {
+                        alert('Email already in list');
+                        isValid = false;
+                        return false;
+                    }
+                });
+                if (isValid)
+                    $('#lstEmail').append('><option>' + ($('#txEmail').val() + '</option>'));
+            }
+            else {
+                alert("Enter Valid Email");
+                return false;
+            }
+        }
+        else {
+            var arr = $('#txEmail').val().split(';');
+            $.each(arr, function (index, item) {
+                if (filter.test(item)) {
+                    $('#lstEmail').find('option').each(function () {
+                        if ($(this).text() == item) {
+                            alert('Email already in list');
+                            isValid = false;
+                            return false;
+                        }
+                    });
+                    if (isValid)
+                        $('#lstEmail').append('><option>' + (item + '</option>'));
+                }
+                else {
+                    alert("Enter Valid Email");
+                    return false;
+                }
+            });
+        }
+    }
+
+</script>

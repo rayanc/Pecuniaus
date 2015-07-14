@@ -1,0 +1,25 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+@if (Model != null)
+{
+     @Html.Grid(Model.CollectionDays).Named("grdCollectionsListing").Columns(columns =>
+    {
+        columns.Add(data => data.merchantId, true);
+        columns.Add(data => data.contractId, true);
+        columns.Add(data => data.merchantName).Titled(@Pecuniaus.Resources.Collection.Collection.MerchantName);
+        columns.Add(data => data.ownedAmount).Titled(@Pecuniaus.Resources.Collection.Collection.OwnedAmount);
+        columns.Add(data => data.pendingAmount).Titled(@Pecuniaus.Resources.Collection.Collection.PendingAmount);
+        columns.Add(data => data.expectedTurn).Titled(@Pecuniaus.Resources.Collection.Collection.Expected);
+        columns.Add(data => data.realTurn).Titled(@Pecuniaus.Resources.Collection.Collection.Realturn);
+        columns.Add(data => data.retention).Titled(@Pecuniaus.Resources.Collection.Collection.Retention);
+        columns.Add(data => data.averagerccsalesCurrent).Titled(@Pecuniaus.Resources.Collection.Collection.AverageCC);
+        columns.Add(data => data.averageccsalesOffered).Titled(@Pecuniaus.Resources.Collection.Collection.AverageCCSalesUser);
+        columns.Add(data => data.dayswithoutactivity).Titled(@Pecuniaus.Resources.Collection.Collection.DayWithoutActivity);
+    }).WithPaging(5).Sortable().SetRowCssClasses(data=>data.redColHighlight?"warning":string.Empty)
+}
+
+<style>
+    tr.warning > td {
+        background-color: #ff0000 !important;
+    }
+</style>

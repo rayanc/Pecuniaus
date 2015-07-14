@@ -1,0 +1,21 @@
+﻿@model Pecuniaus.Models.Contract.VerificationCallModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWReview);}
+
+@using (Html.BeginForm("Index", "VerificationCall", FormMethod.Post, new { @class = "a", role = "form", id="frmVeriCall", @enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-4 col-lg-6 hidden-sm">
+            @Html.Partial("_PageMessage")
+
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-md-8 col-lg-6 pull-right">
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Areas/Contract/Views/VerificationCall/_VeriCall.cshtml", Model)
+}
+@Html.Partial("~/Areas/Contract/Views/VerificationCall/_NoPop.cshtml", Model)
+

@@ -1,0 +1,170 @@
+﻿@model IEnumerable<Pecuniaus.Web.Models.CollectionsModel>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#faq2_q3" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">Collections</a></h4>
+    </div>
+    <div class="panel-collapse collapse in" id="faq2_q3">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>Show merchant that havn't processed in:</label>
+                        <select size="1" class="form-control" name="example-select" id="ddlDays">
+                            <option value="0">Please select</option>
+                            <option value="2">2 Days</option>
+                            <option value="4">4 Days</option>
+                            <option value="8">8 Days</option>
+                            <option value="15">15 Days</option>
+                            <option value="30">30 Days</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" style="display:none" onclick="BindCollections('')" class="btn btn-sm btn-primary">Show</button>
+                    </div>
+                    <br>
+                    <br>
+                </form>
+                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                    <thead>
+                        <tr role="row">
+                            <th aria-sort="ascending" colspan="1" rowspan="1" class="sorting_disabled">Merchant Name</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Owned amount</th>
+                            <th aria-label="Actions" onclick="BindCollections('PendingAmount')" colspan="1" rowspan="1" class="sorting ">Pending amount</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="">Expected</th>
+                            <th aria-label="Actions" onclick="BindCollections('RealTurn')" colspan="1" rowspan="1" class="sorting">Real turn</th>
+                            <th rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Retent</th>
+                            <th rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Average CC</th>
+                            <th rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Average CC sales user</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">Day without ac</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyCollection">
+
+                        @{if ((Model) != null)
+                        {
+                            foreach (var collec in Model)
+                            {
+                                <tr>
+                                    <td> @Html.DisplayFor(item => collec.merchantName)</td>
+                                    <td> @Html.DisplayFor(item => collec.ownedAmount)</td>
+                                    <td> @Html.DisplayFor(item => collec.pendingAmount)</td>
+                                    <td> @Html.DisplayFor(item => collec.expectedTurn)</td>
+                                    <td> @Html.DisplayFor(item => collec.realTurn)</td>
+                                    <td> @Html.DisplayFor(item => collec.retention)</td>
+                                    <td> @Html.DisplayFor(item => collec.averagerccsalesCurrent)</td>
+                                    <td> @Html.DisplayFor(item => collec.averageccsalesOffered)</td>
+                                    <td> @Html.DisplayFor(item => collec.dayswithoutactivity)</td>
+
+
+                                </tr>
+                            }
+                        }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div style="display:none;">
+    <table>
+        <tbody id="divTemplateCollection">
+            <tr>
+                <td> $Template.merchantName</td>
+                <td> $Template.ownedAmount</td>
+                <td> $Template.pendingAmount</td>
+                <td> $Template.expectedTurn</td>
+                <td> $Template.realTurn</td>
+                <td> $Template.retention</td>
+                <td> $Template.averagerccsalesCurrent</td>
+                <td> $Template.averageccsalesOffered</td>
+                <td> $Template.dayswithoutactivity</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ddlDays").change(function () {
+            BindCollections();
+        });
+        alert("a");
+        localStorage.isDesc = true;
+    });
+
+
+    function Bind_HTML_Collection(searchResult) {
+        $("#tbodyCollection").html('');
+        var countInfo = 0;
+
+        var data = JSON.parse(searchResult);
+        if (data != null) {
+            if (data.length > 0) {
+
+
+                var divTemplate = $("#divTemplateCollection").attr("id");
+                for (var i = 0; i < data.length; i++) {
+                    templateHTML = null;
+                    templateHTML = common.BindHtml(divTemplate, data[i]);
+                    $("#tbodyCollection").append(templateHTML);
+                }
+                //$('#divLoader').html('');
+            }
+            else {
+                showNoRecordMessageCollection();
+            }
+        }
+        else {
+            showNoRecordMessageCollection();
+        }
+    }
+    function showNoRecordMessageCollection() {
+        $('#' + 'spanCollectionResult').html('No Collection found related to your filtered criteria.');
+    }
+    function BindCollections(SortBy) {
+
+        var page = 1;
+        var sortOrder = SortBy;
+        
+        var filtered = $('#ddlDays option:selected').val();
+        if (filtered == 0)
+        {
+            filtered = '';
+        }
+        var isDesc = localStorage.isDesc;
+        var json = '{"filtered":"' + filtered + '","sortOrder":"' + sortOrder + '","isDesc":"' + isDesc + '","page":"' + page + '"}';
+        var URL = "CollectionsListing";
+        var options = {
+            type: "POST",
+            dataType: "json",
+            url: URL,
+            contentType: "application/json; charset=utf-8",
+            data: json,
+            success: function (searchResult) {
+                if (searchResult != null) {
+                    Bind_HTML_Collection(searchResult);
+                }
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            }
+        }
+        $.ajax(options);
+
+        if (localStorage.isDesc == "true") {
+            localStorage.isDesc = false;
+        }
+        else if (localStorage.isDesc == "false") {
+            localStorage.isDesc = true;
+        }
+        return false;
+    }
+
+
+</script>
+    }
+

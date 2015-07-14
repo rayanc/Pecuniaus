@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.datacredito1.com/CaltecService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.datacredito1.com/CaltecService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.datacredito1.com/CaltecService">
+      <s:element name="GetXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlParameters" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlJson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlParameters" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlJsonResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetXmlJsonStr">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xmlParameters" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetXmlJsonStrResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetXmlJsonStrResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXml" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlJson" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlJsonStrSoapIn">
+    <wsdl:part name="parameters" element="tns:GetXmlJsonStr" />
+  </wsdl:message>
+  <wsdl:message name="GetXmlJsonStrSoapOut">
+    <wsdl:part name="parameters" element="tns:GetXmlJsonStrResponse" />
+  </wsdl:message>
+  <wsdl:portType name="clsCaltecServiceSoap">
+    <wsdl:operation name="GetXml">
+      <wsdl:input message="tns:GetXmlSoapIn" />
+      <wsdl:output message="tns:GetXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlJson">
+      <wsdl:input message="tns:GetXmlJsonSoapIn" />
+      <wsdl:output message="tns:GetXmlJsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlJsonStr">
+      <wsdl:input message="tns:GetXmlJsonStrSoapIn" />
+      <wsdl:output message="tns:GetXmlJsonStrSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="clsCaltecServiceSoap" type="tns:clsCaltecServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetXml">
+      <soap:operation soapAction="http://www.datacredito1.com/CaltecService/GetXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlJson">
+      <soap:operation soapAction="http://www.datacredito1.com/CaltecService/GetXmlJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlJsonStr">
+      <soap:operation soapAction="http://www.datacredito1.com/CaltecService/GetXmlJsonStr" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="clsCaltecServiceSoap12" type="tns:clsCaltecServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetXml">
+      <soap12:operation soapAction="http://www.datacredito1.com/CaltecService/GetXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlJson">
+      <soap12:operation soapAction="http://www.datacredito1.com/CaltecService/GetXmlJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetXmlJsonStr">
+      <soap12:operation soapAction="http://www.datacredito1.com/CaltecService/GetXmlJsonStr" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="clsCaltecService">
+    <wsdl:port name="clsCaltecServiceSoap" binding="tns:clsCaltecServiceSoap">
+      <soap:address location="http://200.88.48.24/dcrservice_acme_ruby.asmx" />
+    </wsdl:port>
+    <wsdl:port name="clsCaltecServiceSoap12" binding="tns:clsCaltecServiceSoap12">
+      <soap12:address location="http://200.88.48.24/dcrservice_acme_ruby.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

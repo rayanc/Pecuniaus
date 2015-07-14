@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Pecuniaus.Collection.Models.LegalDocuments>
+@using GridMvc.Html
+@if (Model != null)
+{
+    @Html.Grid(Model).Named("grdDocuments").Columns(columns =>
+    {
+        columns.Add().Encoded(false).Sanitized(false).Sortable(false).RenderValueAs(m => Html.CheckBox("Select", m.Select, new { @class = "check-item", data_id = m.documentType })).Titled(@Pecuniaus.Resources.Collection.Collection.Select);
+        columns.Add(data => data.documentId).Titled(@Pecuniaus.Resources.Collection.Collection.DocumentId).Sortable(true);
+        columns.Add(data => data.documentType).Titled(@Pecuniaus.Resources.Collection.Collection.DocumentType).Sortable(true);
+    }).WithPaging(5)
+}

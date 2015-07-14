@@ -1,0 +1,35 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantProfileDetailModel
+<div class="table-responsive">
+    <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+        <thead>
+            <tr role="row">
+                <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.MerchantProfile.Profiles.Month</th>
+                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Profiles.Year</th>
+                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Profiles.ProcessorName</th>
+                <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.MerchantProfile.Profiles.Amount</th>
+                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Profiles.Tickets</th>
+                <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DropDownListFor(Item => Item.ProfileDetail[0].Month, Model.ProfileDetail[0].MonthsList, new { @class = "form-control", @placeholder = "Visa Net", style = "width: 100%;" })</td>
+                <td>@Html.TextBoxFor(Item => Item.ProfileDetail[0].Year)</td>
+                <td>@Html.DropDownListFor(Item => Item.ProfileDetail[0].ProcessorId, Model.ProfileDetail[0].Processors, new { @class = "form-control", @placeholder = "Visa Net", style = "width: 100%;" })</td>
+                @*<td>@Html.TextBoxFor(Item => Item.ProfileDetail[0].Amount)</td>*@
+                <td>
+                    <div>
+                        <div class="input-group">
+                            <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                            @Html.EditorFor(Item => Item.ProfileDetail[0].Amount)
+                        </div>
+                    </div>
+                </td>
+<td>@Html.TextBoxFor(Item => Item.ProfileDetail[0].Tickets)</td>
+                <td><button class="btn btn-primary" type="submit" name="submitButton" value="Update">@Pecuniaus.Resources.Common.Save</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+</div>
+

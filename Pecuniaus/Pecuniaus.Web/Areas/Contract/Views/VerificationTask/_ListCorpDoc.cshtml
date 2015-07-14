@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Pecuniaus.Models.Contract.OwnerModel>
+@using GridMvc.Html
+ @Html.Grid(Model).Named("OwnerGrid").Columns(columns =>
+           {
+               columns.Add(m => m.OwnerFirstName).Titled("Owner First Name");
+               columns.Add(m => m.OwnerLastName).Titled("Owner Last Name");
+               columns.Add(m => m.PassportNumber).Titled("Passport Number ID");
+               columns.Add(m => m.Phone1).Titled("Telephone Number");
+               columns.Add(m => m.Authorized).Titled("Is Authorized");
+               columns.Add(m => m.addressId, true);
+               columns.Add(m => m.contactId, true);
+               columns.Add(m => m.OwnerId, true);
+               columns.Add()
+    .Sanitized(false)
+    .Encoded(false)
+    .RenderValueAs(o => RenderActionLinks(o));
+
+           }).WithPaging(10).Selectable(true)
+
+@helper RenderActionLinks(Pecuniaus.Models.Contract.OwnerModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditCorpDoc(@m.Id);"><i class="fa fa-pencil-square-o"></i></a>
+}

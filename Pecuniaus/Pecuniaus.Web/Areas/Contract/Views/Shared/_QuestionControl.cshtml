@@ -1,0 +1,114 @@
+﻿@model Pecuniaus.Models.Contract.QuestionModel
+
+@{var qaid = "q_" + Model.QuestionId + "-" + Model.AnswerId;
+var hasPop = false; }
+<div class="form-group">
+
+    @if (Model.QuestionType == "none")
+    {
+        <div class="col-md-12"> @Html.Raw(@Model.QuestionDesc)</div>
+    }
+    else
+    {
+        <label for="@qaid" class="col-md-8 control-label" style="text-align:left">@Html.Raw(@Model.QuestionDesc) </label>
+        <div class="col-md-4">
+            @if (Model.QuestionType == "dropdown")
+            {
+                <select name="@qaid" id="@qaid" class="form-control">
+                    <option></option>
+                    <option value="Y" @(Model.AnswerDesc == "Y" ? "Selected" : "")>@Pecuniaus.Resources.Common.Yes</option>
+                    <option value="N" @(Model.AnswerDesc == "N" ? "Selected" : "")>@Pecuniaus.Resources.Common.No</option>
+                </select>
+            }
+
+            else if (Model.QuestionType == "dropdown-adv")
+            {
+                    @Html.DropDownList(qaid, Model.DropDown, "", new { @class = "form-control" })
+
+                @*<select name="@qaid" id="@qaid" class="form-control" disabled="disabled">
+                    <option></option>
+                    <option value="Y" @(Model.AnswerDesc == "Y" ? "Selected" : "")>Yes</option>
+                    <option value="N" @(Model.AnswerDesc == "N" ? "Selected" : "")>No</option>
+                </select>*@
+            }
+
+            else if (Model.QuestionType == "checkbox")
+            {
+                <label>
+                    <input class="checkbox-inline" type="checkbox" @(Model.AnswerDesc == "Y" ? "checked=checked" : "")
+                           onclick="javascript:document.getElementById('@qaid').value=(this.checked?'Y':'N');" />
+                    <input type="hidden" name="@qaid" id="@qaid" />
+                </label>
+            }
+            else if (Model.QuestionType == "radio")
+            {
+                <label class="radio-inline">
+                    <input type="radio" value="Y" name="@qaid" @(Model.AnswerDesc == "Y" ? "checked=checked" : "") /> @Pecuniaus.Resources.Common.Yes
+                </label>
+
+                <label class="radio-inline">
+                    <input type="radio" value="N" name="@qaid" @(Model.AnswerDesc == "N" ? "checked=checked" : "") /> @Pecuniaus.Resources.Common.No
+                </label>
+            }
+            else if (Model.QuestionType == "radionpop")
+            {
+                hasPop = true;
+                <label class="radio-inline">
+                    <input type="radio" value="Y" name="@qaid" @(Model.AnswerDesc == "Y" ? "checked=checked" : "") /> @Pecuniaus.Resources.Common.Yes
+                </label>
+
+                <label class="radio-inline">
+                    <input type="radio" value="N" name="@qaid" @(Model.AnswerDesc == "N" ? "checked=checked" : "") data-toggle="modal" data-target="#modNoPop" /> @Pecuniaus.Resources.Common.No
+                </label>
+
+            }
+            else if (Model.QuestionType == "text")
+            {
+                <input type="text" name="@qaid" id="@qaid" class="form-control" value="@Model.AnswerDesc" placeholder="Enter text.." />
+            }
+            else if (Model.QuestionType == "textdate")
+            {
+                <input type="text" name="@qaid" id="@qaid" class="form-control input-datepicker" value="@Model.AnswerDesc" placeholder="Enter text.." />
+            }
+
+            else
+            { }
+        </div>
+    }
+</div>
+
+@if (hasPop)
+{
+    <div id="modNoPop" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                @*<div class="modal-header">
+                        <div class="">
+                            <div class="block-options pull-right">
+                                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button"><i class="hi fa-1x hi-remove"></i></button>
+                            </div>
+                            <h2>Send Email</h2>
+                        </div>
+                    </div>*@
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label >@Pecuniaus.Resources.Common.Notes</label>
+                                <textarea class="form-control" cols="20" id="vc_q_pop"  placeholder="Enter text.." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-actions">
+                            <div class="col-xs-12 text-right">
+                                <input type="submit" class="btn btn-sm btn-primary" data-dismiss="modal" value="@Pecuniaus.Resources.Common.Add" onclick="PopQuesSubmit('vc_q_pop')">
+                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">@Pecuniaus.Resources.Common.Close</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

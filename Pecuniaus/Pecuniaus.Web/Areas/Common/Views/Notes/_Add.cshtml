@@ -1,0 +1,64 @@
+﻿@model Pecuniaus.Models.NotesModel
+<div class="row">
+    <div class="col-md-12">
+        @using (Ajax.BeginForm("ProcessNote", "Notes", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "dvmodalAddchild" }))
+        {    <div class="table-responsive">
+            <div class="block full">
+                <div id="example-datatable_wrapper" class="dataTables_wrapper">
+
+                    @Html.ValidationSummary()
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Common.NoteText</label>
+                                @Html.TextBoxFor(m => m.Note, new { Placeholder = "", @class = "form-control", id = "txtNote" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Common.NoteTypeID</label>
+                                @Html.DropDownListFor(model => model.NoteTypeId, Model.NoteTypes, null, new { @class = "form-control", style = "width: 100%;" })
+
+                                @*@Html.DropDownListFor(x => x.NoteTypeId, (SelectList)ViewBag.NoteTypes, new Dictionary<string, object> { { "data-placeholder", "Choose one.." }, { "class", "select-select2" }, { "style", "width: 100%;" } })*@
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Screen Name</label>*@
+                                @Html.HiddenFor(m => m.ScreenName)
+                            </div>
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Merchant ID</label>
+                                    @Html.TextBoxFor(m => m.MerchantId, new { Placeholder = "", @class = "form-control", id = "txtMerchantID" })*@
+                                @Html.HiddenFor(m => m.MerchantId)
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Contract ID</label>*@
+                                @Html.HiddenFor(m => m.ContractId)
+                            </div>
+                            <div class="col-md-6">
+                                @*<label for="example-nf-email">Workflow ID</label>*@
+                                @Html.HiddenFor(m => m.WorkFlowId)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+            <div class="row form-actions">
+                <div class="col-xs-12 text-right">
+                    <label for="example-nf-email">&nbsp;</label>
+                    <button class="btn btn-sm btn-success pop_addbtn_margn" type="submit" name="submitButton" value="Save"><i class="hi hi-check"></i>@Pecuniaus.Resources.Common.SaveNote</button>
+                    @*<a href="#mod_sendnotesemail" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-success pop_addbtn_margn" onclick="$(this).closest('form').submit();">@Pecuniaus.Resources.Common.SaveandSend</a>*@
+                    <button class="btn btn-sm btn-success pop_addbtn_margn" type="submit" name="submitButton" value="SaveandSend"><i class="hi hi-check"></i>@Pecuniaus.Resources.Common.SaveandSend</button>
+                    <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button">@Pecuniaus.Resources.Common.Close</button>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

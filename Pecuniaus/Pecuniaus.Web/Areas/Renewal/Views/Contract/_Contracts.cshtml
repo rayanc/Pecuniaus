@@ -1,0 +1,44 @@
+﻿@model Pecuniaus.Models.Contract.ContractModel 
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWContract);}
+<div id="dvGenBLA">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-8">
+                @using (Ajax.BeginForm("GenerateBLA", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.ReplaceWith,
+       UpdateTargetId = "dvGenBLA",
+   }, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <label class="col-md-5 control-label"> @Pecuniaus.Resources.Common.AdministrativeExpenses</label>
+                    <div class="col-md-3">
+                        @Html.EditorFor(m=>m.AdminExp)
+                        @*<input type="text" class="form-control" name="AdminExpenses">*@
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-success" name="button" type="submit" value="BLA" @(isFormDisabled ? "disabled" : "") > @Pecuniaus.Resources.Common.GenerateBLA</button>
+                    </div>
+                }
+            </div>
+            <div class="col-md-4">
+                <form action="Contract/DownloadIOU" method="post">
+                    <button class="btn btn-success" name="button" type="submit" value="IOU" @(isFormDisabled ? "disabled" : "") > @Pecuniaus.Resources.Common.GenerateIOU</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <object data="/Docs/Contract/@Model.FileName?@DateTime.Now.ToString("mmss")" type="application/pdf" width="100%" height="300">
+
+        <p>
+            It appears you don't have a PDF plugin for this browser.
+            You can <a href="/Docs/Contract/@Model.FileName?@DateTime.Now.ToString(" mmss")">
+    click here to
+    download the PDF file.
+</a>
+        </p>
+
+    </object>
+
+</div>

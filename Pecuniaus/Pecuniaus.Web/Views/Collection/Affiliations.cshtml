@@ -1,0 +1,202 @@
+﻿@model Pecuniaus.Web.Models.CollectionsModel
+@{
+    ViewBag.Title = "Affiliations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/scriptsbundle")
+
+<div id="page-content" style="min-height: 516px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>Merchant affiliations</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li>Collection Workflow</li>
+        <li><a href="">Affiliations</a></li>
+    </ul>
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="example-nf-email">Merchant : </label>
+
+            </div>
+            <div class="col-md-3">
+                <label for="example-nf-email">Merchant Id : Affiliations</label>
+
+            </div>
+
+            <div class="col-md-6"><div class="pull-right"><button type="button" class="btn btn-primary">Return to collection Screen</button></div></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="block-title">
+                        <h2><strong>Active </strong>Contracts</h2>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid">
+                            <thead>
+                                <tr role="row">
+                                    <th class="" tabindex="0" onclick="BindAffiliations('merchantName');" aria-controls="example-datatable" rowspan="1" colspan="1">Merchant Name</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Merchant ID</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">AEC Amount</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Owned Amount</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Pending Amount</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Retention Time</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Funding Date</th>
+                                    <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Merchant status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @*<tr>
+                                    <td>444</td>
+                                    <td>1</td>
+                                    <td>Card NET</td>
+                                    <td>XXXXX</td>
+                                    <td><span class="skype_c2c_print_container notranslate">(123) 458 - 4589</span><span data-ismobile="false" data-isrtl="false" data-isfreecall="false" data-numbertocall="+911234584589" onclick="SkypeClick2Call.MenuInjectionHandler.makeCall(this, event)" onmouseout="SkypeClick2Call.MenuInjectionHandler.hideMenu(this, event)" onmouseover="SkypeClick2Call.MenuInjectionHandler.showMenu(this, event)" tabindex="-1" dir="ltr" class="skype_c2c_container notranslate" id="skype_c2c_container"><span skypeaction="skype_dropdown" dir="ltr" class="skype_c2c_highlighting_inactive_common"><span id="non_free_num_ui" class="skype_c2c_textarea_span"><img width="0" height="0" src="resource://skype_ff_extension-at-jetpack/skype_ff_extension/data/call_skype_logo.png" class="skype_c2c_logo_img"><span class="skype_c2c_text_span">(123) 458 - 4589</span><span class="skype_c2c_free_text_span"></span></span></span></span></td>
+                                    <td>521</td>
+                                    <td>521</td>
+                                    <td>521</td>
+
+                                </tr>*@
+
+                                @{if (Model.ActiveContracts != null)
+                                {
+                                    foreach (var contract in Model.ActiveContracts)
+                                    {
+                                        <tr>
+                                            <td> @Html.DisplayFor(item => contract.merchantName)</td>
+                                            <td> @Html.DisplayFor(item => contract.merchantId)</td>
+                                            <td> @Html.DisplayFor(item => contract.aecAmount)</td>
+                                            <td> @Html.DisplayFor(item => contract.ownedAmount)</td>
+                                            <td> @Html.DisplayFor(item => contract.pendingAmount)</td>
+                                            <td> @Html.DisplayFor(item => contract.retentionTime)</td>
+                                            <td> @Html.DisplayFor(item => contract.fundingDate)</td>
+                                            <td> @Html.DisplayFor(item => contract.merchantStatus)</td>
+                                        </tr>
+                                    }
+                                }
+                                }
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="block-title">
+                        <h2><strong>Inactive </strong>Contracts</h2>
+                    </div>
+
+                    <div class="table-responsive">
+                        <span id="spanMessageActiveContract"></span>
+                            <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Merchant Name</th>
+                                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Merchant ID</th>
+                                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Creation Date</th>
+                                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Last date of evaluation</th>
+                                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Requested CC Volumes</th>
+                                        <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">Volume status</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>444</td>
+                                        <td>1</td>
+                                        <td>Card NET</td>
+                                        <td>XXXXX</td>
+                                        <td><span class="skype_c2c_print_container notranslate">(123) 458 - 4589</span><span data-ismobile="false" data-isrtl="false" data-isfreecall="false" data-numbertocall="+911234584589" onclick="SkypeClick2Call.MenuInjectionHandler.makeCall(this, event)" onmouseout="SkypeClick2Call.MenuInjectionHandler.hideMenu(this, event)" onmouseover="SkypeClick2Call.MenuInjectionHandler.showMenu(this, event)" tabindex="-1" dir="ltr" class="skype_c2c_container notranslate" id="skype_c2c_container"><span skypeaction="skype_dropdown" dir="ltr" class="skype_c2c_highlighting_inactive_common"><span id="non_free_num_ui" class="skype_c2c_textarea_span"><img width="0" height="0" src="resource://skype_ff_extension-at-jetpack/skype_ff_extension/data/call_skype_logo.png" class="skype_c2c_logo_img"><span class="skype_c2c_text_span">(123) 458 - 4589</span><span class="skype_c2c_free_text_span"></span></span></span></span></td>
+                                        <td>521</td>
+
+
+                                    </tr>
+                                    @{if (Model.InActiveContracts != null)
+                                    {
+                                        foreach (var inActivecontract in Model.InActiveContracts)
+                                        {
+                                            <tr>
+                                                <td> @Html.DisplayFor(item => (inActivecontract).merchantName)</td>
+                                                <td> @Html.DisplayFor(item => inActivecontract.merchantId)</td>
+                                                <td> @Html.DisplayFor(item => inActivecontract.creationDate)</td>
+                                                <td> @Html.DisplayFor(item => inActivecontract.lastDateofEvaluation)</td>
+                                                <td> @Html.DisplayFor(item => inActivecontract.requestedCCVolumes)</td>
+                                                <td> @Html.DisplayFor(item => inActivecontract.volumeStatus)</td>
+
+                                            </tr>
+                                        }
+                                    }
+                                    }
+                                </tbody>
+                            </table>
+                            <br>
+</div>
+
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+
+    </div>
+    <div style="display:none;">
+        <table>
+            <tbody id="divTemplateAffiliation">
+                <tr>
+                    <td>$Template.merchantName</td>
+                    <td>$Template.merchantId</td>
+                    <td>$Template.aecAmount</td>
+                    <td>$Template.ownedAmount</td>
+                    <td>$Template.pendingAmount</td>
+                    <td>$Template.retentionTime</td>
+                    <td>$Template.fundingDate</td>
+                    <td>$Template.merchantStatus</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Datatables Content -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+<script type="text/javascript">
+    function BindAffiliations(SortBy) {
+        var page = 1;
+
+        var searchText = $("#txtSearch").val();
+        var isDesc = localStorage.isDesc;
+        var jsonParams = '{"searchText":"' + searchText + '","sortOrder":"' + SortBy + '","isDesc":"' + isDesc + '","page":"' + page + '"}';
+        var templateId="divTemplateAffiliation";
+        var URL = "ActiveAffiliations";
+        var spanIdNoRecord="spanMessageActiveContract";
+        common.AjaxCall(templateId, URL, jsonParams, spanIdNoRecord);
+          
+        if (localStorage.isDesc == "true") {
+            localStorage.isDesc = false;
+        }
+        else if (localStorage.isDesc == "false") {
+            localStorage.isDesc = true;
+        }
+        return false;
+    }
+    </script>

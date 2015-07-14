@@ -1,0 +1,8 @@
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\libmp3lame.32.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\libmp3lame.64.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Contract.dll.config
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Contract.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Contract.pdb
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Contract\obj\Debug\Pecuniaus.Contract.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Contract\obj\Debug\Pecuniaus.Contract.pdb

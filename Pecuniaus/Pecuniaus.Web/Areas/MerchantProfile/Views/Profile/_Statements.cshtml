@@ -1,0 +1,32 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantStatementsDetailModel
+@using (Ajax.BeginForm("ProcessStatements", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q7", OnSuccess = "ReturnFileForDownload" }))
+{
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="row">
+            <div class="block top3head">
+                <div class="pull-right" style="margin-top:-8px;"> <a class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" href="#modal-searchpopup" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a></div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Pecuniaus.Resources.Common.From
+                        @Html.EditorFor(m => m.StatementsFrom)
+                    </div>
+                    <div class="col-md-3">
+                        @Pecuniaus.Resources.Common.To
+                        @Html.EditorFor(m => m.StatementsTo)
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5" style="margin-top:17px;">
+                        <div class="pull-left">
+                            <button class="btn btn-primary" type="submit" name="submitButton" value="Generate">@Pecuniaus.Resources.Common.Generate</button>
+                            <button class="btn btn-danger" type="submit" name="submitButton" value="Email">@Pecuniaus.Resources.Common.SendEmail</button>
+                        </div>
+                    </div>
+                </div><br />
+                <!-- END Datatables Content -->
+                <!-- All Boxes Content Start -->
+            </div>
+        </div>
+    </div>
+}

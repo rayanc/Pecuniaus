@@ -1,0 +1,42 @@
+body { padding:0px; margin:0px; color:#5f5f5f;font-family:Arial, Verdana;}
+.green_Text { color: #690;}
+td.red_Text {color: #ff0000;vertical-align:top!important }
+.fnt13 { font-size:12px}
+td.grayBG{background:#d7d7d7;padding-left:3px;border-bottom:#fff 1px solid;text-align:left}
+.block-title {
+    margin-bottom: 0px!important;
+}
+.block.full {
+    padding-left: 15px!important;
+    padding-right: 15px!important;
+     padding-bottom: 0px!important;
+}
+.block-title h1, .block-title h2, .block-title h3, .block-title h4, .block-title h5, .block-title h6 {
+    padding-top: 2px;
+ padding-bottom: 2px;
+}
+
+.table {
+margin-bottom:0px!important;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+ padding:5px!important;
+}
+table.indInfo {
+    width:100%;
+}
+table.indInfo > tbody > tr > td {
+    padding:3px 3px 3px 5px;
+    font-size:12px;
+   /*white-space: nowrap;*/
+}
+.table thead > tr > th {
+    font-size: 13px;
+    font-weight: 600;
+}

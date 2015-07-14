@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Pecuniaus.Renewal.Models.MerchantsDetail>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>List of merchants qualifying for renewals</strong></h2>
+                </div>
+                @*<div class="pull-right">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="example-input-small" class="col-sm-6 control-label">Merchant ID/Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="search" class="form-control input-sm" id="txtSearch">
+                                <button class="btn btn-sm btn-danger btn-search" type="button" data-toggle="modal" onclick="searchContract()"><i class="fa fa-search"></i>Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>*@
+
+
+                @{                    if (Model != null)
+                                      {
+                                          foreach (var item in Model)
+                                          {
+                    <div class="block">                       
+                        <table role="grid" class="table-condensed dataTable no-footer font-12" style="font-size: 12px; border-style: none;width:100%;">
+                            <tr role="row">
+                                <td>
+                                    <address>
+                                        <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rMerchantName</span>
+                                        <span class="txt_ellip">@Html.DisplayFor(modelItem => item.merchantName)</span>
+                                    </address>
+                                </td>
+
+                                <td>
+                                    <address>
+                                        <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rTaskName</span>
+                                        <span class="txt_ellip">@Html.DisplayFor(modelItem => item.taskName)</span>
+                                    </address>
+                                </td>
+                                <td>
+                                    <address>
+                                        <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rLoanedAmount</span>
+                                        <span class="txt_ellip">@Html.DisplayFor(modelItem => item.loanamount)</span>
+                                    </address>
+                                </td>
+                                <td>
+                                    <address>
+                                        <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rFundedDate</span>
+                                        <span class="txt_ellip"> @Html.DisplayFor(modelItem => item.fundedDate)</span>
+                                    </address>
+                                </td>
+                                <td>
+                                    <address>
+                                        <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.expectedturn</span>
+                                        <span class="txt_ellip">@Html.DisplayFor(modelItem => item.expectedturn)</span>
+                                    </address>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rMerchantId</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.merchantId)</span>
+
+                                </td>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rTaskStatus</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.taskstatus)</span>
+
+                                </td>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rOwendAmount</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.ownedAmount)</span>
+
+                                </td>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rPaidPercentage</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.paidpercent)</span>
+
+                                </td>
+                                <td>
+                                    <address>
+                                        <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rActualTurn</span>
+                                        <span class="txt_tr">@Html.DisplayFor(modelItem => item.actualturn)</span>
+                                    </address>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rEverInCollection</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.everInCollection)</span>
+
+                                </td>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rMerchantStatus</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.merchantStatus)</span>
+
+                                </td>
+                                <td>
+
+                                    <span class="txt_headr_tr">@Pecuniaus.Resources.Renewal.Renewal.rPaidAmountt</span>
+                                    <span class="txt_tr">@Html.DisplayFor(modelItem => item.paidamount)</span>
+
+                                </td>
+                                <td class="txt_headr_tr" colspan="2" >
+                                    <button onclick ="openDialog('#dvcontractdetails','#mod_details_show','@Url.Action("ContractInformation", "landing", new { area = "renewal", contractid = @item.contractId })')" data-toggle="modal"
+                                            class="btn btn-xs btn-primary " type="button">
+                                        @Pecuniaus.Resources.Renewal.Renewal.btnDetail
+                                    </button>
+                                    <button  onclick ="openDialog('#dvmodalAddsnooze','#mod_snooze_add','@Url.Action("Snooze", "renewal/landing", new { area = "", contractid = @item.contractId ,})')" data-toggle="modal" 
+                                            class="btn btn-xs btn-primary " type="button">
+                                        @Pecuniaus.Resources.Renewal.Renewal.btnSnooze
+                                    </button>
+                                    <button type="button" class="btn btn-xs btn-primary" id="btnComplete" 
+                                            onclick="CompleteContract('@item.contractId','@item.merchantId')">
+                                        @Pecuniaus.Resources.Renewal.Renewal.btnComplete</button>
+
+                                    <button onclick ="openDialog('#dvmodaldecline','#mod_decline_save','@Url.Action("DeclineReason", "renewal/landing", new { area = "", contractid = @item.contractId })')" data-toggle="modal"
+                                            class="btn btn-xs btn-danger" type="button">
+                                        @Pecuniaus.Resources.Renewal.Renewal.btnDecline
+                                    </button>
+                                   
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                                          }
+                                      }
+                }
+
+                <div id="mod_snooze_add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body" id="dvmodalAddsnooze">
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod_decline_save" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body" id="dvmodaldecline">
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mod_details_show" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body" id="dvcontractdetails">
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@using GridMvc.Columns
+@model GridMvc.IGrid
+@if (Model == null) { return; }
+@if (Model.RenderOptions.RenderRowsOnly)
+{
+    @RenderGridBody();
+}
+else
+{
+    <div class="grid-mvc" data-lang="@Model.Language" data-gridname="@Model.RenderOptions.GridName" data-selectable="@Model.RenderOptions.Selectable.ToString().ToLower()" data-multiplefilters="@Model.RenderOptions.AllowMultipleFilters.ToString().ToLower()">
+        <div class="grid-wrap">
+
+            <table class="grid-table table table-striped table-vcenter table-bordered table-hover">
+                @*<table class="grid-table table table-vcenter table-condensed table-bordered dataTable no-footer font-12">*@
+                @* Draw grid header *@
+                @*<thead>
+                        @RenderGridHeader()
+                    </thead>*@
+                <tbody>
+                    @RenderGridBody()
+                </tbody>
+            </table>
+            @RenderGridPager()
+        </div>
+    </div>
+}
+@helper RenderGridBody()
+{
+    if (!Model.ItemsToDisplay.Any())
+    {
+        <div class="col-md-12">
+            @Model.EmptyGridText
+        </div>
+        @*<tr class="grid-empty-text">
+                <td colspan="@Model.Columns.Count()">
+                </td>
+            </tr>*@
+    }
+    else
+    {
+        var altRow = false;
+        foreach (object item in Model.ItemsToDisplay)
+        {
+            altRow = !altRow;
+            <div class="row cursor popup_hover @(altRow ? "popup_rowbg" : "") ">
+                @*<div class="row  popup_hover">*@
+
+                @foreach (IGridColumn column in Model.Columns)
+{     <div class="col-md-6" onclick="SetSelectedMerchant($(this).parent('div').eq(0));">
+        @Html.Raw(@column.GetCell(item))
+    </div>
+}
+            </div>
+            @*<tr class="grid-row @Model.GetRowCssClasses(item)">
+                    @foreach (IGridColumn column in Model.Columns)
+                    {
+                        @column.CellRenderer.Render(column, column.GetCell(item))
+                    }
+                </tr>*@
+        }
+    }
+}
+@*@helper RenderGridHeader()
+    {
+        <tr>
+            @foreach (IGridColumn column in Model.Columns)
+            {
+                @column.HeaderRenderer.Render(column)
+            }
+        </tr>
+    }*@
+@helper RenderGridPager()
+{
+    if (Model.EnablePaging && Model.Pager != null)
+    {
+        <div class="grid-footer">
+            @Html.Partial(Model.Pager.TemplateName, Model.Pager)
+        </div>
+    }
+}

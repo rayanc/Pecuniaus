@@ -1,0 +1,5 @@
+﻿@model Pecuniaus.Models.Contract.BankStatementModel
+
+@{   Model.IsDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWContract);}
+
+@Html.Partial("~/Areas/Contract/Views/DataEntry/_AdPBankStatement.cshtml", Model)

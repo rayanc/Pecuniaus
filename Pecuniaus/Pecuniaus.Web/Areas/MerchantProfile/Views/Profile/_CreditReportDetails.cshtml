@@ -1,0 +1,184 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantCreditReportDetailModel
+<div class="row">
+    <div class="col-md-12">
+        <form action="" method="post" class="form-horizontal ">
+            <div class="block full">
+                <div class="block-title">
+                    <div class="row">
+                        <div class="col-md-8 ">
+                            <h1>@Pecuniaus.Resources.Common.Total</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.TotalCredit</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Total_TotalCredit.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Total_TotalCredit.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Total_TotalCredit.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Total_TotalCredit.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Total_TotalCredit.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Total_TotalCredit.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Total_TotalCredit.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Total_TotalCredit.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.Loans</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Total_Loans.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Total_Loans.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Total_Loans.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Total_Loans.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Total_Loans.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Total_Loans.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Total_Loans.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Total_Loans.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.CreditCards</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Total_CreditCards.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Total_CreditCards.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Total_CreditCards.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Total_CreditCards.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Total_CreditCards.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Total_CreditCards.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Total_CreditCards.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Total_CreditCards.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.Others</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Total_Others.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Total_Others.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Total_Others.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Total_Others.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Total_Others.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Total_Others.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Total_Others.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Total_Others.DebtIndex)
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form action="" method="post" class="form-horizontal ">
+            <div class="block full">
+                <div class="block-title">
+                    <div class="row">
+                        <div class="col-md-8 ">
+                            <h1>@Pecuniaus.Resources.Common.Business</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.TotalCredit</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Business_TotalCredit.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Business_TotalCredit.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Business_TotalCredit.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Business_TotalCredit.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Business_TotalCredit.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Business_TotalCredit.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Business_TotalCredit.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Business_TotalCredit.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.Loans</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Business_Loans.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Business_Loans.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Business_Loans.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Business_Loans.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Business_Loans.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Business_Loans.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Business_Loans.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Business_Loans.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.CreditCards</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Business_CreditCards.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Business_CreditCards.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Business_CreditCards.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Business_CreditCards.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Business_CreditCards.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Business_CreditCards.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Business_CreditCards.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Business_CreditCards.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.Others</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Business_Others.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Business_Others.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Business_Others.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Business_Others.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Business_Others.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Business_Others.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Business_Others.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Business_Others.DebtIndex)
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form action="" method="post" class="form-horizontal ">
+            <div class="block full">
+                <div class="block-title">
+                    <div class="row">
+                        <div class="col-md-8 ">
+                            <h1>@Pecuniaus.Resources.Common.Owner</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.TotalCredit</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Owner_TotalCredit.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Owner_TotalCredit.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Owner_TotalCredit.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Owner_TotalCredit.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Owner_TotalCredit.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Owner_TotalCredit.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Owner_TotalCredit.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Owner_TotalCredit.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.Loans</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Owner_Loans.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Owner_Loans.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Owner_Loans.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Owner_Loans.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Owner_Loans.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Owner_Loans.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Owner_Loans.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Owner_Loans.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.CreditCards</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Owner_CreditCards.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Owner_CreditCards.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Owner_CreditCards.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Owner_CreditCards.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Owner_CreditCards.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Owner_CreditCards.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Owner_CreditCards.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Owner_CreditCards.DebtIndex)
+                    </div>
+                    <div class="col-md-3" style="text-align:left; line-height:25px;">
+                        <h5><b>@Pecuniaus.Resources.MerchantProfile.CreditReport.Others</b></h5>
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.NumberOfLoans : @Html.DisplayFor(m => m.Owner_Others.NumberofLoans)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.ApprovedAmount : @Html.DisplayFor(m => m.Owner_Others.ApprovedAmount)  <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.OwnedAmount : @Html.DisplayFor(m => m.Owner_Others.OwnedAmount)     <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.MonthlyPayment : @Html.DisplayFor(m => m.Owner_Others.MonthlyPayment)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateAmount : @Html.DisplayFor(m => m.Owner_Others.LateAmount)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.AmountInLegal: @Html.DisplayFor(m => m.Owner_Others.AmountInLegal)   <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.LateIndex : @Html.DisplayFor(m => m.Owner_Others.LateIndex)    <br />
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.DebtIndex : @Html.DisplayFor(m => m.Owner_Others.DebtIndex)
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>

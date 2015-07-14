@@ -1,0 +1,56 @@
+﻿@model Tuple<Pecuniaus.Models.Contract.ScanDocumentModel, Pecuniaus.Models.Contract.AnnualSaleModel>
+@{
+    Layout = "~/Views/Shared/_LayoutBlank.cshtml";
+}
+<div class="widget">
+    <div class="widget-extra blue_bg">
+        <h3 class="widget-content-light">@Pecuniaus.Resources.Contract.DocumentScan.Documents</h3>
+    </div>
+    <div class="form-horizontal" style="margin:30px;">
+        @if (Model.Item2 != null && !string.IsNullOrEmpty(Model.Item2.AnnualSalesCalcFile) && Model.Item2.AnnualSalesCalcFile != "0")
+        {
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <a href="/Contract/DataEntry/Download?file=@Model.Item2.AnnualSalesCalcFile" target="_blank">Download Annual Sales Calculation File</a>
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-sm-12">
+                @Html.DropDownListFor(m => m.Item1.DocumentTypeID, Model.Item1.DocumentTypes, "", new { @class = "form-control mdocType", @Style = "Width:auto;", @data_placeholder = "Document Type" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div id="dvDocsListModal" data-source-url="@Url.Action("GetDocListModal", "DocumentScan",
+            new
+            {
+                area = "Contract",
+                MerchantID = Pecuniaus.UICore.SessionHelper.CurrentMerchantID,
+                ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+            })"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="widget">
+    <div class="widget-extra blue_bg">
+        <h3 class="widget-content-light">@Pecuniaus.Resources.Common.CreditReports</h3>
+    </div>
+    <div class="form-horizontal" style="margin:30px;">
+        <div data-ajax-grid="true" class="form-group clearfix" data-source-url="@Url.Action("ListCreditReport", "MerchantEvaluation")">
+            @{Html.RenderAction("ListCreditReport", "MerchantEvaluation");}
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            ajaxifyGridMvc("#dvDocsListModal");
+            $('.mdocType').on('change', function () {
+                GetDocsList($(this).val(), 'dvDocsListModal')
+            });
+        });
+    </script>
+}

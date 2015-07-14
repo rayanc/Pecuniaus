@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Pecuniaus.Web.Models.RecentlyVisitedModel>
+<li class="sidebar_darblubg">
+    <a class="sidebar-nav-menu open" href="#"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-notes_2 sidebar-nav-icon"></i>Recent</a>
+    <ul class="sidebar_infoblock" style="display:block;">
+        @{
+            if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <li style="cursor: pointer;">
+                        @Html.ActionLink(item.RecentlyVisited, "SrchRedirect", "Search", new {merchantId=item.merchantId, ttid=item.TaskTypeId , area="Common"}, null)
+                    </li>
+                }
+            }
+        }
+    </ul>
+</li>

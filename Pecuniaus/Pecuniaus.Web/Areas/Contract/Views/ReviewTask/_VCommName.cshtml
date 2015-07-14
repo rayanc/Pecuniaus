@@ -1,0 +1,62 @@
+﻿@model Pecuniaus.Models.Contract.CommercialNameVeriModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWReview);}
+
+@using (Ajax.BeginForm("CommNameVer",  null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "InitCommertialNameVeri()",
+                InsertionMode=InsertionMode.Replace,
+                UpdateTargetId = "tCommName"
+            }, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-md-4 col-lg-6 hidden-sm">
+            @Html.Partial("_PageMessage")
+            @Html.ValidationSummary()
+        </div>
+        <div class="col-md-8 col-lg-6 pull-right">
+            <div class="pull-right">
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+            </div>
+        </div>
+    </div>
+    @Html.Partial("~/Areas/Contract/Views/VerificationTask/_CommertialName.cshtml", Model)
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2>@Pecuniaus.Resources.Common.Documents</h2>
+            </div>
+
+            <div class="form-group">
+                @using (Html.BeginForm("UploadDoc", "DocumentScan", FormMethod.Post, new { id = "frmCommnDoc", enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    var doctypeId = Model.DocTypeId;
+                    <div class="widget-simple">
+                        <div class="col-md-12">
+                            <div>
+                                <a href="javascript:void(0)" data-addnewdoc title="@Pecuniaus.Resources.Common.AddNew"><i class="fa fa-book fa-2x"></i></a>
+                                <a href="javascript:void(0)" data-editdoc title="@Pecuniaus.Resources.Common.Edit"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                <div style="display:none" data-uploadcont>
+                                    <a href="javascript:void(0)" data-savedoc title="@Pecuniaus.Resources.Common.Save"><i class="fa fa-2x fa-floppy-o"></i></a>
+                                    <input type="file" name="file" style="display:inline" />
+                                    <a href="javascript:void(0)" data-canceldoc title="@Pecuniaus.Resources.Common.Cancel"><i class="hi fa-2x hi-remove"></i></a>
+                                </div>
+                                <input type="hidden" name="DocTypeId" value="@doctypeId" />
+                                <input type="hidden" name="DocId" data-docid value="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="dvComNameDoc" data-source-url="@Url.Action("GetDocListUpload", "DocumentScan",
+                    new {
+                        area = "Contract",
+                        DocType=doctypeId
+                    })"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+@if (Model != null)
+{
+  @Html.Grid(Model.Prevention).Named("grdRetrivePrevention").Columns(columns =>
+  {
+      columns.Add(data => data.contractId, true);
+      columns.Add(data => data.merchantName).Titled(@Pecuniaus.Resources.Collection.Collection.Merchant);
+      columns.Add(data => data.merchantId).Titled(@Pecuniaus.Resources.Collection.Collection.MerchantID);
+      columns.Add(data => data.pendingAmount).Titled(@Pecuniaus.Resources.Collection.Collection.PendingAmount);
+      columns.Add(data => data.fundingDate).Titled(@Pecuniaus.Resources.Collection.Collection.FundingDate);
+      columns.Add(data => data.expectedTurn).Titled(@Pecuniaus.Resources.Collection.Collection.ExpectedDate);
+      columns.Add(data => data.realTurn).Titled(@Pecuniaus.Resources.Collection.Collection.Realturn);
+      columns.Add(data => data.percentage).Titled(@Pecuniaus.Resources.Collection.Collection.Percentage);
+  }).WithPaging(5).Sortable()
+}

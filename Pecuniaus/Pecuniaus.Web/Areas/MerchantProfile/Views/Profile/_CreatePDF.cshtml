@@ -1,0 +1,324 @@
+﻿@model Pecuniaus.MerchantProfile.Models.CreditReportBase
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pecuniaus</title>
+    <meta name="description" content="Pecuniaus">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/plugins.css">
+    <link rel="stylesheet" href="~/Content/main.css">
+    <link rel="stylesheet" href="~/Content/data_report.css">
+</head>
+<body style="background: none; padding: 15px;">
+    <table class="htlogo" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody>
+            <tr>
+                <td colspan="2" align="center" class="slogan" style="padding-left: 0; vertical-align: middle;">
+                    <img src="~/img/logo1.png" width="368" height="84" alt="El Buró de Crédito Líder">
+                </td>
+            </tr>
+            <tr>
+                <td class="" rowspan="2" style="text-align: right; vertical-align: middle; padding-left: 15px;">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody>
+
+            <tr>
+                <td height="40" colspan="4" align="center" class="bluecolor"><strong>Reporte de Crédito Personal [Formato Completo Sin Gráficas]</strong></td>
+            </tr>
+            <tr>
+                <td height="35" align="left" class="redcolor"><strong>CONFIDENCIAL</strong></td>
+                <td align="center" class="redcolor"><strong>CONFIDENCIAL</strong></td>
+                <td align="right" class="redcolor"><strong>CONFIDENCIAL</strong></td>
+            </tr>
+            <tr>
+                <td height="14" colspan="3"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2>Información Consultada</h2>
+                </div>
+                <div class="row">
+                    <p class="green_Text">@Html.DisplayFor(m => m.ind.informationconsulted)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2>Consumidor Registrado</h2>
+                </div>
+                <div class="row">
+                    <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 12px;">
+                        <tbody>
+                            <tr>
+                                <td width="18%" height="28" class="grayBG">Nombres // Apellidos</td>
+                                <td class="text1" width="68%" colspan="5" style="border-bottom: 0; font-size: 15pt"><b>@Html.DisplayFor(m => m.ind.name) // @Html.DisplayFor(m => m.ind.lastName)</b>&nbsp;</td>
+                                <td class="pad1" width="12%" rowspan="8">
+                                    <img height="131" width="131" border="0" src='data:image/jpeg;base64,@Model.photo'></td>
+                            </tr>
+                            <tr>
+                                <td width="18%" height="28" class="grayBG">Fecha de Nacimiento</td>
+                                <td class="style1" width="32%" style="border-bottom: 0;"><span style="font-size: 11pt;"><b>@Html.DisplayFor(m => m.ind.dob)</b></span>&nbsp;[Día - Mes - Año]&nbsp; </td>
+                                <td width="8%" height="28" class="style2">Edad</td>
+                                <td class="style1" width="10%" colspan="3" style="border-bottom: 0; font-size: 11pt;">
+                                    <b>
+                                        @Html.DisplayFor(m => m.ind.age)
+                                    </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="28" class="grayBG">Lugar de Nacimiento</td>
+                                <td class="style1" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.placeofbirth)</td>
+                                <td height="28" class="style3">NAC</td>
+                                <td class="style1" colspan="3" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.nationality)</td>
+                            </tr>
+                            <tr>
+                                <td height="28" class="grayBG">Cédula Nueva CIE</td>
+                                <td class="style1" style="border-bottom: 0; font-size: 15pt"><b>001-1356924-8</b></td>
+                                <td height="28" class="style3">Sexo</td>
+                                <td class="style1" colspan="3" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.gender)</td>
+                            </tr>
+                            <tr>
+                                <td height="28" class="grayBG">Cédula Anterior CED</td>
+                                <td class="style1" style="border-bottom: 0">&nbsp;</td>
+                                <td height="28" class="style3">Madre</td>
+                                <td class="style1" colspan="3" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.motherName)</td>
+                            </tr>
+                            <tr>
+                                <td height="28" class="grayBG">Pasaporte</td>
+                                <td class="style1" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.passport)</td>
+                                <td height="28" class="style3">Padre</td>
+                                <td class="style1" colspan="3" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.fatherName)</td>
+                            </tr>
+                            <tr>
+                                <td height="28" class="grayBG">Ocupación</td>
+                                <td class="style1" style="border-bottom: 0">@Html.DisplayFor(m => m.ind.occupation)</td>
+                                <td height="28" class="style4">Cónyuge</td>
+                                <td class="style1" colspan="3" style="border-bottom: 0"></td>
+                            </tr>
+                            <tr>
+                                <td width="18%" height="28" class="grayBG">Comentario</td>
+                                <td class="style6" colspan="5">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    @{ if (Model.product != null)
+                       {
+                        <h2>Deudas Por Tipo de Producto = @Model.product.Count</h2>
+
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="gry_color_th" style="width: 30px;">Ref</th>
+                                            <th align="left" style="width: 150px;" class="gry_color_th">Tipo de Producto</th>
+                                            <th align="center" style="width: 30px;" class="gry_color_th"><span class="C_T000_0100">
+                                                <img src="~/data_report/icon_suma.gif" width="9" height="9" alt=""></span></th>
+                                            <th align="center" class="gry_color_th">FDR</th>
+                                            <th align="center" class="gry_color_th">Moneda</th>
+                                            <th class="gry_color_th" style="width: 150px;">Cr&eacute;dito Aprobado</th>
+                                            <th class="gry_color_th" style="width: 150px;">Total Adeudado</th>
+                                            <th class="gry_color_th" style="width: 150px;">Cuota</th>
+                                            <th class="gry_color_th" style="width: 150px;">Vencido</th>
+                                            <th class="gry_color_th" style="width: 150px;">En Legal</th>
+                                            <th class="gry_color_th" style="width: 150px; border-right: none !important;">Castigado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                           int productcount = 1;
+                           foreach (var item in Model.product)
+                           {
+                               foreach (var account in item.account)
+                               {
+                                            <tr>
+                                                <td class="text-center"><span class="C_C0C0_0110">
+                                                    <img alt="" src="~/data_report/CG.gif">@productcount</span></td>
+                                                <td align="left">@item.code</td>
+                                                <td align="center">@item.account.Count</td>
+                                                <td align="center">@account.fdr</td>
+                                                <td align="center">@account.currency</td>
+                                                <td align="right" class="text-center">@account.currency @account.totalapproved</td>
+                                                <td align="right" class="text-center">@account.currency @account.totaldue</td>
+                                                <td align="right" class="text-center">@account.quota</td>
+                                                <td align="right" class="text-center">&nbsp;</td>
+                                                <td align="right" class="text-center">&nbsp;</td>
+                                                <td align="right" class="text-center">&nbsp;</td>
+                                            </tr>
+                                   productcount++;
+                               }
+
+                           }
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                       }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    @{ if (Model.telphones != null)
+                       {
+                        <h2>Teléfonos Asociados = @Model.telphones.Count</h2>
+            
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table width="100%" class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                                    <thead>
+                                        <tr>
+                                            <th align="center" class="gry_color_th text-center">Ref</th>
+                                            <th align="center" class="gry_color_th text-center">Fecha Relación</th>
+                                            <th align="center" class="gry_color_th text-center">Teléfono</th>
+                                            <th align="left" class="gry_color_th" style="border-right: none !important;">Suscriptor // Dirección Actual</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ 
+                           int telcount = 1;
+                           foreach (var tel in Model.telphones)
+                           { 
+                                
+                                            <tr>
+                                                <td align="center">@telcount</td>
+                                                <td align="center" class="text-center">@tel.subscriptor</td>
+                                                <td align="center" class="text-center"><u>@tel.telephone</u></td>
+                                                <td align="left">@tel.subscriptor // @tel.address</td>
+                                            </tr>
+                               telcount++;
+                           }
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                       }  }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    @{ if (Model.address != null)
+                       { 
+                        <h2>Direcciones Asociadas = @Model.address.Count</h2>
+                        <div class="row">
+                            <div class="table-responsive">
+                                <table width="100%" class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                                    <thead>
+                                        <tr>
+                                            <th align="center" class="gry_color_th text-center">Ref</th>
+                                            <th align="center" class="gry_color_th text-center">Fecha Relación</th>
+                                            <th align="left" class="gry_color_th" style="border-right: none !important;">Dirección</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                           int count = 1;
+                           foreach (var add in Model.address)
+                           {
+                              
+                                            <tr>
+                                                <td align="center">@count</td>
+                                                <td align="center" class="text-center">@add.DateFetched</td>
+                                                <td align="left">@add.Value </td>
+                                            </tr>
+                               count++;
+                           }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                       }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    @{ if (Model.person != null)
+                       { 
+                        <h2>Total Personas Relacionadas = @Model.person.Count</h2>
+                    
+                        <div class="row">
+                            <div class="table-responsive">
+                                <p>
+                                    <button type="button" class="btn btn-success darkbluebtn">[F8] Crear Batch con todas las Personas Relacionadas</button>
+                                </p>
+                                <table width="100%" class="table table-striped table-vcenter table-bordered fnt13" id="general-table">
+                                    <thead>
+                                        <tr>
+                                            <th align="center" class="gry_color_th text-center">Ref</th>
+                                            <th align="center" class="gry_color_th text-center">Fecha Relación</th>
+                                            <th align="left" class="gry_color_th">Relación</th>
+                                            <th align="left" class="gry_color_th">Nombre</th>
+                                            <th align="center" class="gry_color_th text-center">Cédula Nueva</th>
+                                            <th align="left" class="gry_color_th" style="border-right: none !important;">Edad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                           foreach (var person in Model.person)
+                           {
+                               int personcount = 1;
+                                            <tr>
+                                                <td align="center">@personcount</td>
+                                                <td align="center" class="text-center"></td>
+                                                <td align="left">POSIBLE NODO FAMILIAR</td>
+                                                <td align="left" class="">@person.name // @person.lastname</td>
+                                                <td align="center" class="text-center">@person.newId</td>
+                                                <td align="left">@person.age</td>
+                                            </tr>
+                               personcount++;
+                           }
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                       }}
+                </div>
+            </div>
+        </div>
+        <p>
+            <strong>Fin del Reporte @Model.ind.informationconsulted</strong>
+            <br />
+            <strong>Consulta ID :</strong> @Model.ind.consultationId<br />
+            <strong>Fecha Creación Reporte : </strong>@Model.ind.timeofreport
+        </p>
+    </div>
+</body>
+</html>

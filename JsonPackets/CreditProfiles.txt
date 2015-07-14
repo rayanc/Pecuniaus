@@ -1,0 +1,13 @@
+[
+    {
+        "totalTickets": 10,
+        "retrievalSource": 1,
+        "totalAmount": 900000,
+        "startDate": "2014-03-02",
+        "endDate": "2014-04-02"
+    }
+]
+
+
+
+http://localhost:51480/Bridge/merchants/profiles/create?merchantId=1

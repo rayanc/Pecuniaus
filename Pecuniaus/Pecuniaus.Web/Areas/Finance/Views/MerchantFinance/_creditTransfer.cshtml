@@ -1,0 +1,84 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="block-title">
+            <h2>Credit Transference</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <span>@Pecuniaus.Resources.Finance.Finance.MerchantId</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" id="txtTMerchantId" class="form-control" />
+                        </div>                        
+                        <div class="col-md-3">
+                            <span>@Pecuniaus.Resources.Finance.Finance.ContractId</span>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" id="txtContractID" class="form-control" />
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <label id="lblerror" style="color: red;"></label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <input type="button" class="btn btn-sm btn-success" onclick="return Validate();" value="Ok" />
+                    <button class="btn btn-sm btn-danger" type="button" onclick="return setDefault();">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Validate() {
+        if ($('#txtContractID').val() == '') {
+            $('#lblerror').text('@Pecuniaus.Resources.Finance.Finance.ContractIdAlert');
+        } else {
+            $('#transferContractId').val($('#txtContractID').val());
+            $('#mod_transfer_show').modal('hide');
+        }
+    }
+
+    function setDefault()
+    {
+        $('#transferContractId').val('');
+        $('#mod_transfer_show').modal('hide');
+        $('#transferContractId').val('0');
+        $('.divCreditTransfer').hide();
+        $('.activityType').val('0');
+        $('#txtTransferAmount').val('0');
+        $('.divTransferAmount').hide();
+    }
+
+    $("#txtTMerchantId").blur(function () {
+        var merchantId = $.trim($("#txtTMerchantId").val());
+        var regEx = "^[0-9]*$";
+        if ((merchantId.length != 0) && (merchantId.match(regEx))) {
+            $.ajax({
+                type: "POST",
+                url: "/MerchantFinance/GetFundedContract",
+                dataType: "json",
+                data: { MerchantId: merchantId },
+                success: function (data) {         
+                    $("#txtContractID").val(data.contractId);
+                    $('#txtTransferAmount').val(data.TransferAmount);                   
+                   
+                }
+            });
+        } else return false;
+    });
+
+</script>

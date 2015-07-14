@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Pecuniaus.Collection.Models.ActiveContracts>
+@using GridMvc.Html
+@if (Model != null)
+{
+    @Html.Grid(Model).Named("grdRNCActiveContracts").Columns(columns =>
+    {
+        columns.Add(data => data.merchantName).Titled(@Pecuniaus.Resources.Collection.Collection.MerchantName);
+        columns.Add(data => data.merchantId).Titled(@Pecuniaus.Resources.Collection.Collection.MerchantID);
+        columns.Add(data => data.aecAmount).Titled(@Pecuniaus.Resources.Collection.Collection.AECAmount);
+        columns.Add(data => data.ownedAmount).Titled(@Pecuniaus.Resources.Collection.Collection.OwnedAmount);
+        columns.Add(data => data.pendingAmount).Titled(@Pecuniaus.Resources.Collection.Collection.PendingAmount);
+        columns.Add(data => data.retentionTime).Titled(@Pecuniaus.Resources.Collection.Collection.RetentionTime);
+        columns.Add(data => data.fundingDate).Titled(@Pecuniaus.Resources.Collection.Collection.FundingDate);
+        columns.Add(data => data.merchantStatus).Titled(@Pecuniaus.Resources.Collection.Collection.MerchantStatus);
+       
+    }).WithPaging(5).Sortable()
+    
+
+}

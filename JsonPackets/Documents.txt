@@ -1,0 +1,15 @@
+
+PUT: http://localhost:51480/Bridge/documents/UpdateDocuments
+
+User-Agent: Fiddler
+Host: localhost:51480
+Content-Length: 253
+Content-Type: application/json
+
+{"merchantId":2,
+"fileName":"NewDoc",
+"fileDetails":"C:\\New\\Doc",
+"uploadUserId":2,
+"DocumentId":4,
+"ContractId":4
+}

@@ -1,0 +1,17 @@
+﻿@model List<Pecuniaus.Notification.Models.ProcessorModel>
+@using GridMvc.Html
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(data => data.Name).Titled(@Pecuniaus.Resources.Notification.Processor.ProcessorName);
+    columns.Add(data => data.ProcessorCode).Titled(@Pecuniaus.Resources.Notification.Processor.ProcessorCode);
+    columns.Add(data => data.Description).Titled(@Pecuniaus.Resources.Notification.Processor.Description);
+    columns.Add()
+                 .Sanitized(false)
+                 .Encoded(false)
+                 .RenderValueAs(o => RenderActionLinks(o));
+}).WithPaging(5).Sortable(true)
+@helper RenderActionLinks(Pecuniaus.Notification.Models.ProcessorModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditProcessor(@m.ProcessorId);"><i class="fa fa-pencil-square-o"></i></a>
+
+}

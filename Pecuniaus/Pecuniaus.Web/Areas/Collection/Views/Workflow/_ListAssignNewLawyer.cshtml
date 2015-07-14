@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Pecuniaus.Collection.Models.LawyerModel>
+@using GridMvc.Html
+@if (Model != null)
+{
+    @Html.Grid(Model).Named("grdAssignNewLawyer").Columns(columns =>
+       {
+           columns.Add().Encoded(false).Sanitized(false).Sortable(false).RenderValueAs(m => Html.RadioButton("Select", "false", new { @class = "radio-item", data_id = m.lawyerId })).Titled(@Pecuniaus.Resources.Collection.Collection.Select);
+           columns.Add(data => data.lawyerId, true);
+           columns.Add(data => data.firstName).Titled(@Pecuniaus.Resources.Collection.Collection.FirstName).Sortable(true);
+           columns.Add(data => data.lastName).Titled(@Pecuniaus.Resources.Collection.Collection.LastName).Sortable(true);
+           columns.Add(data => data.companyName).Titled(@Pecuniaus.Resources.Collection.Collection.Company).Sortable(true);
+       }).WithPaging(5)
+}
+
+

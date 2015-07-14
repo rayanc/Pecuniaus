@@ -1,0 +1,324 @@
+﻿@model Pecuniaus.Web.Models.DataEntryModel
+@using HtmlHelpers.Extension
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQDataEntry);
+  if (Pecuniaus.UICore.SessionHelper.CurrentMerchantID == 0)
+  { isFormDisabled = false; }
+  }
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(), SearchType = "P", ShowSf = false })
+
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+
+<div id="page-content">
+
+    @using (Html.BeginForm("Index", "MerchantDataEntry", FormMethod.Post, new { @class = "a", role = "form", }))
+    {
+        <div class="content-header">
+            <div class="header-section">
+                @Html.Partial("_MerchantWorkflowHeader")
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>
+                            @Pecuniaus.Resources.Common.DataEntry
+                            <br>
+                            @*<small>Any sample text comes here</small>*@
+                        </h1>
+                        @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                        {
+                            <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                        }
+                        @Html.Partial("_PageMessage")
+                        @Html.ValidationSummary()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+             @Html.Partial("_PrequalbreadcrumbBase")
+            <li>@Pecuniaus.Resources.Common.DataEntry</li>
+        </ul>
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    <a href="#mod-kickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                        Kickback
+                    </a>
+                    <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Document
+                    </a>
+                    <button class="btn btn-success" type="submit" name="button" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Boxes Content Start -->
+                        { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+        <!-- Datatables Content -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="block-title">
+                        <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Merchant</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.HiddenFor(m => m.contractId)
+                                @Html.LabelFor(m => m.businessName)
+                                @Html.TextBoxFor(m => m.businessName, new { @class = "form-control", @placeholder = "Enter text.." })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.legalName)
+                                @Html.TextBoxFor(m => m.legalName, new { @class = "form-control", @placeholder = "Enter text.." })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.rnc)
+                                @Html.TextBoxFor(m => m.rnc, new { @class = "form-control", @placeholder = "Enter text.." })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+
+                                @Html.LabelFor(m => m.businessTypeId)
+                                <div class="col-md-12">
+                                    @foreach (var bt in Model.BusinessType)
+                                    {
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(m => m.businessTypeId, bt.Value, new { id = "" })
+                                            @bt.Text
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.address.AddressLine1)
+                                @Html.TextBoxFor(m => m.address.AddressLine1, new { @class = "form-control", @placeholder = "Enter text.." })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.address.city)
+                                @Html.TextBoxFor(m => m.address.city, new { @class = "form-control", @placeholder = "Enter text.." })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.address.stateId)
+                                @Html.DropDownListFor(m => m.address.stateId, Model.Provinces, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.HiddenFor(m => m.address.AddressId)
+                                @Html.LabelFor(m => m.address.phone1)
+                                @Html.EditorFor(m => m.address.phone1)
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.address.phone2)
+                                @Html.EditorFor(m => m.address.phone2)
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.address.email)
+                                @Html.TextBoxFor(m => m.address.email, new { @class = "form-control", @placeholder = "Enter text.." })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.propertyType)
+                                @Html.DropDownListFor(m => m.propertyType, Model.TypeOfProperties, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Rented" })
+
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.rentAmount)
+                                <div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.rentAmount)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.industryTypeId)
+                                @Html.DropDownListFor(m => m.industryTypeId, Model.IndustryTypes, "", new { @class = "select-select2", @style = "width: 100%;", @placeholder = "Industry Type" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.businessStartDate)
+                                @Html.EditorFor(m => m.businessStartDate)
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.annualSales)
+                                <div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.annualSales)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.loanAmountRequired)
+                                <div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.loanAmountRequired)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.affiliationNumber)
+                                @Html.TextBoxFor(m => m.affiliationNumber, new { @class = "form-control", @disabled = "disabled", @placeholder = "Enter text.." })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.PsalesRepId)
+                                @Html.DropDownListFor(m => m.PsalesRepId, Model.SalesReps, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Industry Type" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.SecsalesRepId)
+                                @Html.DropDownListFor(m => m.SecsalesRepId, Model.SalesReps, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Industry Type" })
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Processor</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+                </div>
+                <div id="dvEditProcessor" data-source-url="@Url.Action("AddProcessor")">
+                    @*@{ Html.RenderAction("AddProcessor");  }*@
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group" id="dvProcessor" data-source-url="@Url.Action("ListProcessors")">
+                        @{Html.RenderAction("ListProcessors");}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Owner</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+                </div>
+                <div id="dvEditOwner" data-source-url="@Url.Action("AddOwner")">
+                    @*          @{ Html.RenderAction("AddOwner");  }*@
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group" id="dvOwners" data-source-url="@Url.Action("ListOwners")">
+                        @{ Html.RenderAction("ListOwners");  }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Action("Popup", "Kickback", new { area = "Prequel", TaskTypeId = Pecuniaus.UICore.TaskTypes.PQDataEntry})
+</div>
+<!-- END Datatables Content -->
+<!-- All Boxes Content Start -->
+<!-- END Page Content -->
+
+@*@Html.Action("Popup", "Kickback", new { area = "Prequel" })*@
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/inputmask")
+
+    <script>
+        function OwnerUpdated() {
+            RefreshOwnerList();
+        };
+        function OwnerDeleted() {
+            RefreshOwnerList();
+        };
+
+        function EditOwner(ownerID) {
+            $('#dvEditOwner').load('@Url.Action("EditOwner")?id=' + ownerID);
+        }
+        function CEOwner() {
+            $('#dvEditOwner').load('@Url.Action("AddOwner")');
+        }
+        function RefreshOwnerList() {
+            var $dvOwners = $('#dvOwners');
+            var url = $dvOwners.attr("data-source-url");
+            $dvOwners.load(url);
+        }
+
+        function ProcessorUpdated() {
+            RefreshProcessorList();
+        };
+        function EditProcessor(ownerID) {
+            $('#dvEditProcessor').load('@Url.Action("EditProcessor")?ID=' + ownerID);
+        }
+        function ProcessorDeleted() {
+            RefreshProcessorList();
+        }
+        function CEProcessor() {
+            $('#dvEditProcessor').load('@Url.Action("AddProcessor")');
+        }
+
+        function RefreshProcessorList() {
+            var $dvProcessor = $('#dvProcessor');
+            var url = $dvProcessor.attr("data-source-url");
+            $dvProcessor.load(url);
+        }
+
+        function SelPropertyType(v)
+        {
+            if (v == "200002") {
+                $('#rentAmount').attr("disabled", "disabled");
+                $('#rentAmount').val("0.00");
+            }
+            else {
+                $('#rentAmount').removeAttr("disabled");
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(
+            function () {
+                var $dvEditProcessor = $('#dvEditProcessor');
+                $dvEditProcessor.load($dvEditProcessor.attr('data-source-url'));
+
+                var $dvEditOwner = $('#dvEditOwner');
+                $dvEditOwner.load($dvEditOwner.attr('data-source-url'));
+
+                ajaxifyGridMvc("#dvOwners");
+                ajaxifyGridMvc("#dvProcessor");
+
+                $('#propertyType').on('change', function () {
+                    SelPropertyType($(this).val());
+                });
+                SelPropertyType($('#propertyType :selected').val());
+
+            });
+    </script>}

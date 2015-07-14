@@ -1,0 +1,33 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractSalesRepresentativeModel
+@using (Ajax.BeginForm("ProcessContractSalesRep", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q11_q3" }))
+{
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="col-md-12" style="padding:20px 50px ;">
+        @Html.HiddenFor(m => m.ContractId)
+    </div>
+    @*<form class="form-horizontal">*@
+    <div class="form-group">
+        <div class="col-md-3">
+            @Html.LabelFor(m => m.SalesRepId)
+            @Html.DropDownListFor(m => m.SalesRepId, Model.AllSalesReps, new { @class = "form-control", @placeholder = "", style = "width: 100%;" })
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.IsPrimary)
+            @Html.CheckBoxFor(m => m.IsPrimary)
+        </div>
+        @if (Model.SalesRepId == 0)
+        {
+        <div class="col-md-3">
+            <button class="btn btn-primary" type="submit" name="submitButton" value="AddSalesRep">@Pecuniaus.Resources.Common.Add</button>
+        </div>
+        }
+        else
+        {
+        <div class="col-md-3">
+            <button class="btn btn-primary" type="submit" name="submitButton" value="UpdateSalesRep">@Pecuniaus.Resources.Common.Update</button>
+        </div>
+        }
+    </div>
+    @*</form>*@
+}

@@ -1,0 +1,32 @@
+﻿@model Pecuniaus.Models.Contract.TradeReferenceModel
+@{var isFormDisabled = Model.IsDisabled;}
+<div id="dvNewTradeReference">
+    @using (Ajax.BeginForm("AddTradeReference", null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "dvNewTradeReference",
+        OnSuccess = "TradeReferenceUpdated()",
+    }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.ReferenceName)
+                @Html.TextBoxFor(m => m.ReferenceName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.PhoneNumber)
+                @Html.EditorFor(m => m.PhoneNumber)
+            </div>
+          
+            <div class="col-md-3">
+                <label>&nbsp;</label>
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.AddNew" @(isFormDisabled ? "disabled" : "") />
+                </div>
+            </div>
+        </div>
+    }
+</div>

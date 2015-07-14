@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{227FCB7D-1B1F-4D0C-B316-95BAEB3A80F2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pecuniaus.Reports</RootNamespace>
+    <AssemblyName>Pecuniaus.Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.Data.v14.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.DataAccess.v14.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.Printing.v14.1.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.Mvc5.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.Web.Mvc5.v14.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v14.1">
+      <HintPath>..\..\..\..\..\..\..\reports\DevExpress 14.1\Components\Bin\Framework\DevExpress.Web.v14.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.XtraPrinting.v14.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.XtraReports.v14.1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.1.Extensions, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.XtraReports.v14.1.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.1.Service, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.XtraReports.v14.1.Service.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.1.Web, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 14.1\Components\Bin\Framework\DevExpress.XtraReports.v14.1.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\Bridge\packages\MySql.ConnectorNET.Data.6.8.3.2\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\AjaxLogin.js" />
+    <Content Include="Scripts\globalize.cultures.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.0.0.debug.js" />
+    <Content Include="Scripts\knockout-3.0.0.js" />
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\ReportViewer\Index.cshtml" />
+    <Content Include="Views\ReportViewer\_ViewReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ReportViewerController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Auditor_BadDebtRecoveryAccount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_BadDebtRecoveryAccount.Designer.cs">
+      <DependentUpon>Auditor_BadDebtRecoveryAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_Collection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_Collection.Designer.cs">
+      <DependentUpon>Auditor_Collection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_Contract_Activity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_Contract_Activity.Designer.cs">
+      <DependentUpon>Auditor_Contract_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_DAR_New_Renewalcs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_DAR_New_Renewalcs.Designer.cs">
+      <DependentUpon>Auditor_DAR_New_Renewalcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_Processing_Assets.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_Processing_Assets.Designer.cs">
+      <DependentUpon>Auditor_Processing_Assets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_Progress_New_Renewal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_Progress_New_Renewal.Designer.cs">
+      <DependentUpon>Auditor_Progress_New_Renewal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_RefundsEarrings.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_RefundsEarrings.Designer.cs">
+      <DependentUpon>Auditor_RefundsEarrings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Auditor_Research.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Auditor_Research.Designer.cs">
+      <DependentUpon>Auditor_Research.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Author_RefundsDone.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Author_RefundsDone.Designer.cs">
+      <DependentUpon>Author_RefundsDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Collection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Collection.Designer.cs">
+      <DependentUpon>Collection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Contracts_Contract.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Contracts_Contract.Designer.cs">
+      <DependentUpon>Contracts_Contract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Contracts_DeclinedByAvanzame.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Contracts_DeclinedByAvanzame.Designer.cs">
+      <DependentUpon>Contracts_DeclinedByAvanzame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Contracts_DeclinedByClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Contracts_DeclinedByClient.Designer.cs">
+      <DependentUpon>Contracts_DeclinedByClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Contracts_Pending.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Contracts_Pending.Designer.cs">
+      <DependentUpon>Contracts_Pending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Investigation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Investigation.Designer.cs">
+      <DependentUpon>Investigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Monthly MCA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Monthly MCA.Designer.cs">
+      <DependentUpon>Monthly MCA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Notes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Notes.Designer.cs">
+      <DependentUpon>Notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\PAFReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PAFReport.Designer.cs">
+      <DependentUpon>PAFReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Prequalification.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prequalification.Designer.cs">
+      <DependentUpon>Prequalification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Prequalifications_AcceptedOffers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prequalifications_AcceptedOffers.Designer.cs">
+      <DependentUpon>Prequalifications_AcceptedOffers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Prequalifications_Pending.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prequalifications_Pending.Designer.cs">
+      <DependentUpon>Prequalifications_Pending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Prequalification_DeclinedByAvanzame.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prequalification_DeclinedByAvanzame.Designer.cs">
+      <DependentUpon>Prequalification_DeclinedByAvanzame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Prequalification_DeclinedByClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prequalification_DeclinedByClient.Designer.cs">
+      <DependentUpon>Prequalification_DeclinedByClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Prequalification_Offers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Prequalification_Offers.Designer.cs">
+      <DependentUpon>Prequalification_Offers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Refund_Done.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Refund_Done.Designer.cs">
+      <DependentUpon>Refund_Done.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Refund_Pending.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Refund_Pending.Designer.cs">
+      <DependentUpon>Refund_Pending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Renewals.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Renewals.Designer.cs">
+      <DependentUpon>Renewals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Renewals_DeclinedByAvanzeMe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Renewals_DeclinedByAvanzeMe.Designer.cs">
+      <DependentUpon>Renewals_DeclinedByAvanzeMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Renewals_DeclinedByClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Renewals_DeclinedByClient.Designer.cs">
+      <DependentUpon>Renewals_DeclinedByClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Renewals_Pending.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Renewals_Pending.Designer.cs">
+      <DependentUpon>Renewals_Pending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ScoringReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ScoringReport.Designer.cs">
+      <DependentUpon>ScoringReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WorkFlowReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\WorkFlowReport.Designer.cs">
+      <DependentUpon>WorkFlowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WrittenOffContracts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\WrittenOffContracts.Designer.cs">
+      <DependentUpon>WrittenOffContracts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WSF_Report.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\WSF_Report.Designer.cs">
+      <DependentUpon>WSF_Report.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\Auditor_BadDebtRecoveryAccount.resx">
+      <DependentUpon>Auditor_BadDebtRecoveryAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_Collection.resx">
+      <DependentUpon>Auditor_Collection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_Contract_Activity.resx">
+      <DependentUpon>Auditor_Contract_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_DAR_New_Renewalcs.resx">
+      <DependentUpon>Auditor_DAR_New_Renewalcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_Processing_Assets.resx">
+      <DependentUpon>Auditor_Processing_Assets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_Progress_New_Renewal.resx">
+      <DependentUpon>Auditor_Progress_New_Renewal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_RefundsEarrings.resx">
+      <DependentUpon>Auditor_RefundsEarrings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Auditor_Research.resx">
+      <DependentUpon>Auditor_Research.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Author_RefundsDone.resx">
+      <DependentUpon>Author_RefundsDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Collection.resx">
+      <DependentUpon>Collection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Contracts_Contract.resx">
+      <DependentUpon>Contracts_Contract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Contracts_DeclinedByAvanzame.resx">
+      <DependentUpon>Contracts_DeclinedByAvanzame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Contracts_DeclinedByClient.resx">
+      <DependentUpon>Contracts_DeclinedByClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Contracts_Pending.resx">
+      <DependentUpon>Contracts_Pending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Investigation.resx">
+      <DependentUpon>Investigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Monthly MCA.resx">
+      <DependentUpon>Monthly MCA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Notes.resx">
+      <DependentUpon>Notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PAFReport.resx">
+      <DependentUpon>PAFReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prequalification.resx">
+      <DependentUpon>Prequalification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prequalifications_AcceptedOffers.resx">
+      <DependentUpon>Prequalifications_AcceptedOffers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prequalifications_Pending.resx">
+      <DependentUpon>Prequalifications_Pending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prequalification_DeclinedByAvanzame.resx">
+      <DependentUpon>Prequalification_DeclinedByAvanzame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prequalification_DeclinedByClient.resx">
+      <DependentUpon>Prequalification_DeclinedByClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Prequalification_Offers.resx">
+      <DependentUpon>Prequalification_Offers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Refund_Done.resx">
+      <DependentUpon>Refund_Done.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Refund_Pending.resx">
+      <DependentUpon>Refund_Pending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Renewals.resx">
+      <DependentUpon>Renewals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Renewals_DeclinedByAvanzeMe.resx">
+      <DependentUpon>Renewals_DeclinedByAvanzeMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Renewals_DeclinedByClient.resx">
+      <DependentUpon>Renewals_DeclinedByClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Renewals_Pending.resx">
+      <DependentUpon>Renewals_Pending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ScoringReport.resx">
+      <DependentUpon>ScoringReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\WorkFlowReport.resx">
+      <DependentUpon>WorkFlowReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\WrittenOffContracts.resx">
+      <DependentUpon>WrittenOffContracts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\WSF_Report.resx">
+      <DependentUpon>WSF_Report.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2385/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

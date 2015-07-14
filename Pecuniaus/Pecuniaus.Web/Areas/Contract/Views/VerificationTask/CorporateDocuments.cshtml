@@ -1,0 +1,122 @@
+﻿@model Pecuniaus.Models.Contract.CorporateDocVerificationModel
+@using GridMvc.Html
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWVerificationTask);}
+
+<div class="content-header">
+    <div class="header-section">
+        @Html.Partial("_Header")
+        <div class="row">
+            <div class="col-md-4 col-lg-6 hidden-sm">
+                <h1>
+                    @Pecuniaus.Resources.Common.VerificationTask<br>
+                    @*<small>Any sample text comes here</small>*@
+                </h1>
+                @Html.Partial("_PageMessage")
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="breadcrumb breadcrumb-top">
+    @Html.Partial("_breadcrumbBase")
+    <li><a href="@Url.Action("BankInformation", "VerificationTask")">Verification</a></li>
+    <li>@Pecuniaus.Resources.Contract.CorpDocVerification.CorporateDocumentVerification.</li>
+</ul>
+@using (Html.BeginForm("CorporateDocuments", "VerificationTask", FormMethod.Post, new { @class = "a form-horizontal", role = "form" }))
+{
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Document
+                </a>
+                <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Kickback
+                </a>
+                <button class="btn btn-success" type="submit" name="button" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Decline
+                </a>
+            </div>
+        </div>
+        @Html.Partial("_SubNav")
+    </div>
+
+    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+
+    <!-- Datatables Content -->
+    @Html.Partial("_CorpDocs", Model)
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full a form-horizontal">
+            <div class="block-title">
+                <h2>@Pecuniaus.Resources.Common.Owners</h2>
+            </div>
+           
+            <div id="dvAddCorpDoc" data-source-url="@Url.Action("AddCorpDoc")" data-source-edit-url="@Url.Action("UpdateCorpDoc")"></div>
+       
+            <div id="dvListCorpDoc" data-source-url="@Url.Action("ListCorpDoc")"></div>
+            
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2>@Pecuniaus.Resources.Common.Documents</h2>
+            </div>
+
+            <div class="form-group">
+                @using (Html.BeginForm("UploadDoc", "DocumentScan", FormMethod.Post, new { id = "frmCorpDoc", enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    var doctypeId = (int)Pecuniaus.Contract.DocumentTypes.LegalDocumentsOfTheCompany;
+                    <div class="widget-simple">
+                        <div class="col-md-12">
+                            <div>
+                                <a href="javascript:void(0)" data-addnewdoc title="@Pecuniaus.Resources.Common.AddNew"><i class="fa fa-book fa-2x"></i></a>
+                                <a href="javascript:void(0)" data-editdoc title="@Pecuniaus.Resources.Common.Edit"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                <div style="display:none" data-uploadcont>
+                                    <a href="javascript:void(0)" data-savedoc title="@Pecuniaus.Resources.Common.Save"><i class="fa fa-2x fa-floppy-o"></i></a>
+                                    <input type="file" name="file" style="display:inline" />
+                                    <a href="javascript:void(0)" data-canceldoc title="@Pecuniaus.Resources.Common.Cancel"><i class="hi fa-2x hi-remove"></i></a>
+                                </div>
+                                <input type="hidden" name="DocTypeId" value="@doctypeId" />
+                                <input type="hidden" name="DocId" data-docid value="0" />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div id="dvCorpDocPrev" data-source-url="@Url.Action("GetDocListUpload", "DocumentScan",
+                    new {
+                        area = "Contract",
+                        DocType=doctypeId
+                    })"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("Popup", "Kickback", new { area = "Contract", TaskTypeId = Pecuniaus.UICore.TaskTypes.CWVerificationTask})
+
+
+<!-- END Datatables Content -->
+@section Scripts {
+
+@Scripts.Render("~/bundles/inputmask")
+@Scripts.Render("~/bundles/ajaxform")
+<script src="@Url.Content("~/Areas/Contract/Scripts/CorpDocVeri.js")"></script>
+    <script>
+        $(function () {
+            InitCorpDocsVeri();
+        });
+    </script>
+}

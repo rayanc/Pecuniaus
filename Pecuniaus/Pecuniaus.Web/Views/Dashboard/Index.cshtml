@@ -1,0 +1,187 @@
+﻿@model Pecuniaus.Models.UserDashboardModel
+
+
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 1, SearchType = "PT", ShowSf = true })
+    @Html.Partial("_HeaderRight")
+</header>
+<!-- Main Container -->
+@*<div id="main-container">*@
+
+<!-- END Header -->
+<!-- Page content -->
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6">
+                    <h1>Dashboard</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<ul class="breadcrumb breadcrumb-top">
+            <li>Home</li>
+            <li><a href="">Dashboard</a></li>
+        </ul>*@
+
+    <!-- Datatables Content -->
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Widget -->
+            <div class="widget">
+                <div class="widget-extra blue_bg">
+                    @*<div class="widget-options">
+                            <div class="btn-group btn-group-xs notesmrgn"> <a href="#modal-searchpopup" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-default enable-tooltip"> <i class="fa fa-pencil"></i></a> <a title="" data-toggle="tooltip" class="btn btn-default" href="javascript:void(0)" data-original-title="Quick Settings"><i class="fa fa-cog"></i></a> </div>
+                        </div>*@
+                    <h3 class="widget-content-light">Task Activity</h3>
+                </div>
+                <div class="" style="height:250px;">
+                    @*<div class="col-md-12">*@
+                    <div class="table-responsive" id="gTaskActList" data-source-url="@Url.Action("TaskActivityList")">
+                        @{Html.RenderAction("TaskActivityList");}
+                    </div>
+                    @*</div>*@
+                </div>
+            </div>
+            <!-- END Widget -->
+        </div>
+        <div class="col-md-6">
+            <!-- Widget -->
+            <div class="widget">
+                <div class="widget-extra green_bg">
+                    <h3 class="widget-content-light">Collection Activity</h3>
+                </div>
+                <div class="" style="height:250px;">
+                    <div class="table-responsive" id="gCollActList" data-source-url="@Url.Action("CollectionActivityList")">
+                        @{Html.RenderAction("CollectionActivityList");}
+                    </div>
+
+                </div>
+            </div>
+            <!-- END Widget -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Widget -->
+            <div class="widget">
+                <div class="widget-extra bluee_bg">
+
+                    <h3 class="widget-content-light">Sales Performance</h3>
+                </div>
+                <div class="widget-simple" style="height:250px;">
+                    <div class="col-md-8">
+
+                        <table style="width:100%" class="table-condensed">
+                            <tr>
+                                <th>Description</th>
+                                <th>MCA Amount</th>
+                                <th>Legends</th>
+                            </tr>
+                            @{
+                                string data = string.Empty;
+                                string legend = string.Empty;
+                                var i = 0;
+
+                                var colors = new string[] { "#3366cc",
+                                                 "#dc3912",
+                                                 "#ff9900",
+                                                 "#109618",
+                                                 "#66aa00",
+                                                 "#dd4477",
+                                                 "#0099c6",
+                                                 "#990099",
+                                                 "#dc3911"
+                                             };
+
+                                foreach (var m in Model.TotalSales)
+                                {
+                                    <tr>
+                                        <td>@m.Description</td>
+                                        <td>@Pecuniaus.Resources.Common.CurrencySymbol @m.LoanedAmount</td>
+                                        <td class="text-center"><span style="background-color:@colors[i]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                                    </tr>
+                                    data += @m.LoanedAmount + ",";
+                                    legend += i + ":\'" + @m.Description + "\',";
+                                    i++;
+                                }
+                                data = data.TrimEnd(',');
+                            }
+                        </table>
+                        @*<div class="table-responsive" id="gSaleList" data-source-url="@Url.Action("SalePerformanceList")">
+                                @{Html.RenderAction("SalePerformanceList");}
+                            </div>*@
+                    </div>
+                    <div class="col-md-4 text-center">
+
+                        <span id="SalePie" style="margin-top:20px"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- END Widget -->
+        </div>
+        <div class="col-md-6">
+            <!-- Classic Chart Block -->
+            <div class="widget">
+                <div class="widget-extra blue_bg">
+
+                    <h3 class="widget-content-light">New Leads</h3>
+                </div>
+                <div class="" style="height:250px;">
+                    <div class="table-responsive" id="gNewLeadList" data-source-url="@Url.Action("NewLeadList")">
+                        @{Html.RenderAction("NewLeadList");}
+                    </div>
+                </div>
+            </div>
+            <!-- END Classic Chart Block -->
+        </div>
+    </div>
+    <!-- END Datatables Content -->
+</div>
+<!-- END Page Content -->
+<!-- Footer -->
+<!-- END Main Container -->
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script src="@Url.Content("~/Scripts/pages/compCharts.js")"></script>
+
+    <script>
+        $(function () {
+            ajaxifyGridMvc('#gTaskActList', TaskRowClick);
+            ajaxifyGridMvc('#gCollActList');
+            ajaxifyGridMvc('#gNewLeadList');
+
+            var data = [@data];
+
+            $("#SalePie").sparkline(data, {
+                type: 'pie',
+                width: '120px',
+                height: '120px',
+                sliceColors: [ @foreach(var c in  colors){<text>'@c',</text>}],
+                tooltipFormat: '<span style="color: {{color}}">&#9679;</span> {{offset:names}} ({{percent.1}}%)',
+                tooltipValueLookups: {
+                    names: {
+                        @Html.Raw(legend)
+                    }
+                }
+            });
+
+            TaskRowClick();
+        });
+
+        function TaskRowClick() {
+            pageGrids.grdTaskActivities.onRowSelect(function (e) {
+                window.location = "/Common/Search/SrchRedirect?merchantId=" + e.row.MerchantId + "&ttid=" + e.row.TaskTypeId;
+                $('#loading').modal('show');
+            });
+        }
+    </script>
+}

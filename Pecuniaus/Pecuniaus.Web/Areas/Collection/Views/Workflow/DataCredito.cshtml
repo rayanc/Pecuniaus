@@ -1,0 +1,135 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+
+    //ViewBag.Title = "Data Credito";
+}
+
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Collection.Collection.DataCredito</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+        <li><a href="@Url.Action("DataCredito", "Workflow")">@Pecuniaus.Resources.Collection.Collection.DataCredito</a></li>
+
+    </ul>
+    @*@if (Model.MerchantsDetail.merchantId > 0)
+        {*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="content-header tophdrbuttons">
+                    @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                    @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="example-nf-email">@Pecuniaus.Resources.Collection.Collection.Merchant: @Model.MerchantsDetail.merchantName </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="example-nf-email">@Pecuniaus.Resources.Collection.Collection.MerchantID: @Model.MerchantsDetail.merchantId</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pull-right">
+                                @if (permissions.Write)
+                                {
+                                    <button data-toggle="modal" id="btnrequest" class="btn btn-danger" type="button">@Pecuniaus.Resources.Collection.Collection.PullCreditReport</button> 
+                                }
+                                &nbsp;
+                                <button type="button" class="btn btn-primary" onclick="ReturnToCollectionScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToCollectionScreen</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block full">
+                                <div class="block-title">
+                                    <h2><strong>@Pecuniaus.Resources.Collection.Collection.Credit</strong> @Pecuniaus.Resources.Collection.Collection.Report</h2>
+
+                                </div>
+                                @if (Model.CreditPull != null)
+                                {
+                                    <div class="row">
+                                        @*<div class="col-md-3">
+                                                <button data-toggle="modal" id="btnrequest" class="btn btn-xs btn-danger pop_addbtn_margn" type="button">
+                                                    Pull Credit Reports
+                                                </button>
+                                            </div>*@
+                                        <div class="col-md-3">
+                                            @Html.LabelFor(m => m.CreditPull.Type)
+                                            @Html.DropDownListFor(m => m.CreditPull.typeid, Model.CreditPull.Type, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+                                        </div>
+                                        <div class="col-md-3">
+                                            <br />
+                                            <input type="checkbox" id="chkNoReport" name="chkNoReport" />
+                                            No Reports
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div>
+
+
+                                        <div class="form-group" id="divcreditreport" data-source-url="@Url.Action("ListCreditReport")">
+                                            @{Html.RenderAction("ListCreditReport");}
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- END Datatables Content -->
+                        <!-- All Boxes Content Start -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*}*@
+    <!-- Datatables Content -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ajaxifyGridMvc("#divcreditreport");
+            $("#btnrequest").click(function () {
+
+                if ($("#CreditPull_typeid").val() == '0') {
+                    alert('@Pecuniaus.Resources.Collection.Collection.PleaseSelectCreditPullType');
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: "/Workflow/InsertCreditReport",
+                        dataType: "html",
+                        data: { type: $("#CreditPull_typeid").val(), chkNoReport: $("#chkNoReport").prop("checked") },
+                        success: function (data) {
+                            // $("#divcreditreport").html(data);
+                            window.location.href = "@Url.Action("DataCredito", "Workflow")";
+                        },
+                        error: function (ex) {
+                            alert('Failed');
+                        }
+                    });
+                    return false;
+                }
+
+            })
+        });
+    </script>
+}

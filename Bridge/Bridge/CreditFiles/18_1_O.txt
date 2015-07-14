@@ -1,0 +1,7105 @@
+{
+	c : {
+		'DCR' : {
+			'Seguridad' : {
+				'@Descripcion' : 'Datos Relacionados a la consulta del usuario',
+				'IdUsuario' : 'PAOLA.CANARIO.AMD',
+				'NombreUsuario' : 'PAOLA VANESSA CANARIO POLANCO',
+				'Afiliado' : 'AVANZAME DOMINICANA, LTD',
+				'Oficina' : 'AVANZAME DOMINICANA, LTD                          ',
+				'Departamento' : 'AVANZAME DOMINICANA, LTD',
+				'FechaHora' : '08-12-2014 03:49:11',
+				'DireccionIp' : '14.96.138.57',
+				'UsuarioSistema' : null,
+				'ConsultaId' : '123863076',
+				'InformacionConsultada' : ' RNC: 103157531'
+			},
+			'ErrorHandling' : {
+				'Id' : '0',
+				'Description' : 'Satisfactorio'
+			},
+			'Foto' : null,
+			'Empresa' : {
+				'Nombre' : 'EGO VANITY STORE SRL',
+				'NombreComercial' : 'EGO VANITY STORE',
+				'RNC' : '1-03-15753-1',
+				'Siglas' : null,
+				'TipoEmpresa' : 'SR',
+				'ActividadComercial' : 'VENTA AL POR MENOR DE CALZADO EXCEPTO EL ORTOPEDIC',
+				'FechaConstitucion' : '13-09-2002',
+				'Edad' : null
+			},
+			'AnalisisCrediticio' : {
+				'CantidadTotalCuentas' : {
+					'Moneda' : [{
+							'@Id' : 'RD',
+							'Cuentas' : '40',
+							'Cerradas' : '23',
+							'Abiertas' : '17',
+							'Normal' : '17',
+							'EnAtraso' : null,
+							'AcuerdoPago' : null,
+							'EnLegal' : null,
+							'Castigado' : null
+						}, {
+							'@Id' : 'US',
+							'Cuentas' : '11',
+							'Cerradas' : '11',
+							'Abiertas' : null,
+							'Normal' : null,
+							'EnAtraso' : null,
+							'AcuerdoPago' : null,
+							'EnLegal' : null,
+							'Castigado' : null
+						}
+					],
+					'Totales' : {
+						'Cuentas' : '51',
+						'Cerradas' : '34',
+						'Abiertas' : '17',
+						'Normal' : '17',
+						'EnAtraso' : null,
+						'AcuerdoPago' : null,
+						'EnLegal' : null,
+						'Castigado' : null
+					}
+				},
+				'AnalisisCreditos' : {
+					'Moneda' : [{
+							'@Id' : 'RD',
+							'MasReciente' : {
+								'Fecha' : '11-2014',
+								'Anos' : '2014.11',
+								'Monto' : '$55,083'
+							},
+							'MasAntiguo' : {
+								'Fecha' : '09-2005',
+								'Anos' : '2005.9',
+								'Monto' : '$20,000'
+							},
+							'MenorAprobado' : {
+								'Fecha' : null,
+								'Anos' : null,
+								'Monto' : null
+							},
+							'MayorAdeudado' : {
+								'Fecha' : '12-2013',
+								'Anos' : '2014.1',
+								'Monto' : '$8,000,000'
+							}
+						}, {
+							'@Id' : 'US',
+							'MasReciente' : {
+								'Fecha' : '07-2013',
+								'Anos' : '2013.7',
+								'Monto' : '$188,000'
+							},
+							'MasAntiguo' : {
+								'Fecha' : '10-2011',
+								'Anos' : '2011.10',
+								'Monto' : '$150,000'
+							},
+							'MenorAprobado' : {
+								'Fecha' : null,
+								'Anos' : null,
+								'Monto' : null
+							},
+							'MayorAdeudado' : {
+								'Fecha' : '05-2013',
+								'Anos' : '2013.6',
+								'Monto' : '$199,194'
+							}
+						}
+					]
+				},
+				'AnalisisAtrasos' : {
+					'Moneda' : [{
+							'@Id' : 'RD',
+							'MasReciente' : {
+								'Fecha' : '10-2013',
+								'Anos' : '2013.10',
+								'DiasAtraso' : '30',
+								'Monto' : '$4,000,000'
+							},
+							'MasAntiguo' : {
+								'Fecha' : '08-2011',
+								'Anos' : '2011.8',
+								'DiasAtraso' : '30',
+								'Monto' : '$9,117'
+							},
+							'MayorMontoAtraso' : {
+								'Fecha' : '10-2013',
+								'Anos' : '2013.10',
+								'DiasAtraso' : '30',
+								'Monto' : '$4,000,000'
+							}
+						}, {
+							'@Id' : 'US',
+							'MasReciente' : {
+								'Fecha' : '02-2014',
+								'Anos' : '2014.2',
+								'DiasAtraso' : '30',
+								'Monto' : '$71,516'
+							},
+							'MasAntiguo' : {
+								'Fecha' : '09-2012',
+								'Anos' : '2012.9',
+								'DiasAtraso' : '30',
+								'Monto' : '$846'
+							},
+							'MayorMontoAtraso' : {
+								'Fecha' : '06-2013',
+								'Anos' : '2013.6',
+								'DiasAtraso' : '30',
+								'Monto' : '$149,929'
+							}
+						}
+					]
+				},
+				'PeorAtraso' : {
+					'Moneda' : [{
+							'@Id' : 'RD',
+							'Fecha' : '01-2013',
+							'Anos' : '2013.1',
+							'DiasAtraso' : 'LEGAL',
+							'CreditoAprobado' : '$20,000',
+							'MontoAtraso' : '$120,750',
+							'Producto' : 'SERVICIOS'
+						}, {
+							'@Id' : 'US',
+							'Fecha' : '11-2013',
+							'Anos' : '2013.11',
+							'DiasAtraso' : '60',
+							'CreditoAprobado' : '$84,344',
+							'MontoAtraso' : '$84,881',
+							'Producto' : 'Préstamo'
+						}
+					]
+				}
+			},
+			'DesgloseCreditos' : {
+				'Producto' : [{
+						'@Id' : 'Tarjeta de Crédito',
+						'@Cod' : 'TCR',
+						'Cuenta' : [{
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '04-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '200000',
+								'TotalAdeudado' : '180594',
+								'Cuota' : '13604',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '05-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '200000',
+								'TotalAdeudado' : '181103',
+								'Cuota' : '13643',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '04-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '600000',
+								'TotalAdeudado' : '744480',
+								'Cuota' : '56503',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'SOBREGIRO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '04-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '200000',
+								'TotalAdeudado' : '209885',
+								'Cuota' : '15863',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '04-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '200000',
+								'TotalAdeudado' : '184936',
+								'Cuota' : '13932',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '09-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '200000',
+								'TotalAdeudado' : '183730',
+								'Cuota' : '13841',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '10-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '200000',
+								'TotalAdeudado' : '178852',
+								'Cuota' : '13473',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO POPULAR DOMINICANO [BPD]',
+								'FechaApertura' : '10-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '100000',
+								'TotalAdeudado' : '43935',
+								'Cuota' : '3536',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}
+						]
+					}, {
+						'@Id' : 'Préstamo',
+						'@Cod' : 'PRE',
+						'Cuenta' : [{
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO MULTIPLE BHD LEON, S.A.',
+								'FechaApertura' : '12-2013',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '8000000',
+								'TotalAdeudado' : '5910901',
+								'Cuota' : '276194',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'PRESTAMO VIGENTE',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO DE RESERVAS [BANRESERVAS]',
+								'FechaApertura' : '10-2014',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '5000000',
+								'TotalAdeudado' : '5000000',
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'VIGENTE',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO SANTA CRUZ',
+								'FechaApertura' : '09-2012',
+								'FechaReportado' : '11-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '4000000',
+								'TotalAdeudado' : '2224561',
+								'Cuota' : '113221',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'DESEMBOLSADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANESCO BANCO MULTIPLE, S. A.',
+								'FechaApertura' : '06-2012',
+								'FechaReportado' : '01-2013',
+								'MesConsolidado' : '12-2012',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '136000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201101',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201207',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201209',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M22' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201212',
+										'@PDV' : 'L',
+										'#text' : '1'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANESCO BANCO MULTIPLE, S. A.',
+								'FechaApertura' : '06-2012',
+								'FechaReportado' : '01-2013',
+								'MesConsolidado' : '12-2012',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '65000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201101',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201207',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201209',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M22' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201212',
+										'@PDV' : 'L',
+										'#text' : '1'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANESCO BANCO MULTIPLE, S. A.',
+								'FechaApertura' : '01-2013',
+								'FechaReportado' : '07-2013',
+								'MesConsolidado' : '06-2013',
+								'FechaUltimaTransaccion' : '06-2013',
+								'CreditoAprobado' : '198000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201306',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANESCO BANCO MULTIPLE, S. A.',
+								'FechaApertura' : '07-2013',
+								'FechaReportado' : '03-2014',
+								'MesConsolidado' : '02-2014',
+								'FechaUltimaTransaccion' : '02-2014',
+								'CreditoAprobado' : '188000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201402',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '04-2011',
+								'FechaReportado' : '08-2011',
+								'MesConsolidado' : '07-2011',
+								'FechaUltimaTransaccion' : '07-2011',
+								'CreditoAprobado' : '2000000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '200908',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '200909',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '200910',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '200911',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '200912',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201001',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201002',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201003',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201004',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201005',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201006',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201007',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201008',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201009',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201010',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201011',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201012',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201101',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201104',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201105',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201106',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201107',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '08-2011',
+								'FechaReportado' : '10-2011',
+								'MesConsolidado' : '09-2011',
+								'FechaUltimaTransaccion' : '09-2011',
+								'CreditoAprobado' : '2000000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '200910',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '200911',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '200912',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201001',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201002',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201003',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201004',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201005',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201006',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201007',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201008',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201009',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201010',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201011',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201012',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201101',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201108',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201109',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '10-2011',
+								'FechaReportado' : '04-2012',
+								'MesConsolidado' : '03-2012',
+								'FechaUltimaTransaccion' : '03-2012',
+								'CreditoAprobado' : '150000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201004',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201005',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201006',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201007',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201008',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201009',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201010',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201011',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201012',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201101',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201110',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201112',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201202',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201203',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '04-2012',
+								'FechaReportado' : '08-2012',
+								'MesConsolidado' : '07-2012',
+								'FechaUltimaTransaccion' : '07-2012',
+								'CreditoAprobado' : '150000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201008',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201009',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201010',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201011',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201012',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201101',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201204',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201205',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201207',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '05-2012',
+								'FechaReportado' : '12-2013',
+								'MesConsolidado' : '11-2013',
+								'FechaUltimaTransaccion' : '11-2013',
+								'CreditoAprobado' : '4000000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201205',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201207',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201306',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M20' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201310',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M24' : {
+										'@F' : '201311',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '06-2012',
+								'FechaReportado' : '12-2013',
+								'MesConsolidado' : '11-2013',
+								'FechaUltimaTransaccion' : '11-2013',
+								'CreditoAprobado' : '2000000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201207',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201306',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M20' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201311',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '08-2012',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : '08-2013',
+								'CreditoAprobado' : '150000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M23' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201308',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '08-2012',
+								'FechaReportado' : '12-2013',
+								'MesConsolidado' : '11-2013',
+								'FechaUltimaTransaccion' : '11-2013',
+								'CreditoAprobado' : '2000000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201306',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M20' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201310',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M24' : {
+										'@F' : '201311',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO SANTA CRUZ',
+								'FechaApertura' : '03-2012',
+								'FechaReportado' : '03-2013',
+								'MesConsolidado' : '03-2013',
+								'FechaUltimaTransaccion' : '02-2013',
+								'CreditoAprobado' : '150000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201203',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201204',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201205',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201207',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201303',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO SANTA CRUZ',
+								'FechaApertura' : '07-2012',
+								'FechaReportado' : '02-2013',
+								'MesConsolidado' : '01-2013',
+								'FechaUltimaTransaccion' : '01-2013',
+								'CreditoAprobado' : '65000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201301',
+										'@PDV' : 'L',
+										'#text' : '1'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO SANTA CRUZ',
+								'FechaApertura' : '02-2013',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : '08-2013',
+								'CreditoAprobado' : '65000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201308',
+										'@PDV' : 'L',
+										'#text' : '1'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'U.S. $',
+									'#text' : 'US'
+								},
+								'Afiliado' : 'BANCO SANTA CRUZ',
+								'FechaApertura' : '03-2013',
+								'FechaReportado' : '12-2013',
+								'MesConsolidado' : '11-2013',
+								'FechaUltimaTransaccion' : '10-2013',
+								'CreditoAprobado' : '84344',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : '1',
+								'VecesAtraso60' : '1',
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201309',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M23' : {
+										'@F' : '201310',
+										'@PDV' : '1',
+										'#text' : '1'
+									},
+									'M24' : {
+										'@F' : '201311',
+										'@PDV' : '2',
+										'#text' : '2'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BANCO LEON',
+								'FechaApertura' : '09-2010',
+								'FechaReportado' : '01-2011',
+								'MesConsolidado' : '12-2010',
+								'FechaUltimaTransaccion' : '12-2010',
+								'CreditoAprobado' : '2000000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '200901',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '200902',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '200903',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '200904',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '200905',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '200906',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '200907',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '200908',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '200909',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '200910',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '200911',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '200912',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201001',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201002',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201003',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201004',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201005',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201006',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201007',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201008',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201009',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201010',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201011',
+										'@PDV' : 'C'
+									},
+									'M24' : {
+										'@F' : '201012'
+									}
+								}
+							}
+						]
+					}, {
+						'@Id' : 'Crédito Comercial',
+						'@Cod' : 'CCO',
+						'Cuenta' : [{
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'PERAVIA MOTORS, CXA.',
+								'FechaApertura' : '03-2008',
+								'FechaReportado' : '10-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '8400',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201308',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'JH ELECTRO ALAMBRES, S.R.L.',
+								'FechaApertura' : '07-2014',
+								'FechaReportado' : '07-2014',
+								'MesConsolidado' : '07-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '65609',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201209',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M3' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201312',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201402',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201403',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201404',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201405',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201407',
+										'#text' : '0'
+									}
+								}
+							}
+						]
+					}, {
+						'@Id' : 'SERVICIOS',
+						'@Cod' : 'SRV',
+						'Cuenta' : [{
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'EMPRESA DISTRIBUIDORA DE ELECTRICIDAD DEL ESTE, S.A.',
+								'FechaApertura' : '11-2014',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '55083',
+								'TotalAdeudado' : '55083',
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'EMPRESA DISTRIBUIDORA DE ELECTRICIDAD DEL ESTE, S.A.',
+								'FechaApertura' : '11-2014',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '11-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '22704',
+								'TotalAdeudado' : '22704',
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201411',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'BROWNSVILLE BUSINESS CORPORATION',
+								'FechaApertura' : '10-2014',
+								'FechaReportado' : '10-2014',
+								'MesConsolidado' : '10-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '7034',
+								'TotalAdeudado' : '7034',
+								'Cuota' : '7034',
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201304',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201402',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201404',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201407',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201409',
+										'@PDV' : 'C'
+									},
+									'M24' : {
+										'@F' : '201410',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'EMPRESA DISTRIBUIDORA DE ELECTRICIDAD DEL ESTE, S.A.',
+								'FechaApertura' : '09-2014',
+								'FechaReportado' : '10-2014',
+								'MesConsolidado' : '09-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '29357',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201305',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201409',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'HILARIA JOSEFINA MARMOLEJOS ALMONTE',
+								'FechaApertura' : '09-2005',
+								'FechaReportado' : '01-2013',
+								'MesConsolidado' : '01-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '20000',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : '1',
+								'EstatusUltimo' : 'Registro Modificado en Virtud del Cumplimiento del Artículo 68, de la Ley 172-13.',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201102',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201103',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201104',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201105',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201106',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201107',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201108',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201205',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M17' : {
+										'@F' : '201206',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M18' : {
+										'@F' : '201207',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M19' : {
+										'@F' : '201208',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M20' : {
+										'@F' : '201209',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M21' : {
+										'@F' : '201210',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M22' : {
+										'@F' : '201211',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M23' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M24' : {
+										'@F' : '201301',
+										'@PDV' : 'J',
+										'#text' : '8'
+									}
+								}
+							}
+						]
+					}, {
+						'@Id' : 'Producto de Telecomunicaciones',
+						'@Cod' : 'TEL',
+						'Cuenta' : [{
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '01-2006',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '12-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : null,
+								'TotalAdeudado' : '43512',
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.1',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201308',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M9' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201406',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201408',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201411',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201412',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '01-2006',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '12-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : null,
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201307'
+									},
+									'M8' : {
+										'@F' : '201308'
+									},
+									'M9' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M10' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201406',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201408',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201411',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201412',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '1'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'TRICOM',
+								'FechaApertura' : '06-2011',
+								'FechaReportado' : '12-2014',
+								'MesConsolidado' : '12-2014',
+								'FechaUltimaTransaccion' : '11-2014',
+								'CreditoAprobado' : '252332',
+								'TotalAdeudado' : '31454',
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201302',
+										'#text' : '0'
+									},
+									'M3' : {
+										'@F' : '201303',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M11' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M12' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M13' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201402',
+										'#text' : '0'
+									},
+									'M15' : {
+										'@F' : '201403',
+										'#text' : '0'
+									},
+									'M16' : {
+										'@F' : '201404',
+										'#text' : '0'
+									},
+									'M17' : {
+										'@F' : '201405',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201406',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201407',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201408',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201409',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201410',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201411',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201412',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '07-2007',
+								'FechaReportado' : '02-2014',
+								'MesConsolidado' : '02-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '66162',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201208',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M18' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M19' : {
+										'@F' : '201309',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M21' : {
+										'@F' : '201311',
+										'#text' : '0'
+									},
+									'M22' : {
+										'@F' : '201312',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201401',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201402',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '01-2006',
+								'FechaReportado' : '08-2014',
+								'MesConsolidado' : '08-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '45844',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201310',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201311',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201312',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201401',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201402',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201403',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201404',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201405',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201406',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201407',
+										'@PDV' : 'C'
+									},
+									'M24' : {
+										'@F' : '201408',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '05-2007',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '09-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '3475',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M3' : {
+										'@F' : '201112',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201201',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201202',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201205',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201309',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '10-2008',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '09-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '3080',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M3' : {
+										'@F' : '201112',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201201',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201202',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201205',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201309',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '01-2006',
+								'FechaReportado' : '08-2014',
+								'MesConsolidado' : '08-2014',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : null,
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'NORMAL',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201307',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201310',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201311',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201312',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201401',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201402',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201403',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201404',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201405',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201406',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201407',
+										'@PDV' : 'C'
+									},
+									'M24' : {
+										'@F' : '201408',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '07-2008',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '09-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '3149',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M3' : {
+										'@F' : '201112',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201201',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M5' : {
+										'@F' : '201202',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M6' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201205',
+										'#text' : '0'
+									},
+									'M9' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201307',
+										'#text' : '0'
+									},
+									'M23' : {
+										'@F' : '201308',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201309',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '05-2008',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '09-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : null,
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M3' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201201',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201205'
+									},
+									'M9' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201307'
+									},
+									'M23' : {
+										'@F' : '201308'
+									},
+									'M24' : {
+										'@F' : '201309',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '03-2012',
+								'FechaReportado' : '09-2013',
+								'MesConsolidado' : '09-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '256',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : '2',
+								'VecesAtraso120' : '1',
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201307',
+										'@PDV' : 'S',
+										'#text' : '3'
+									},
+									'M23' : {
+										'@F' : '201308',
+										'@PDV' : 'S',
+										'#text' : '3'
+									},
+									'M24' : {
+										'@F' : '201309',
+										'@PDV' : 'J',
+										'#text' : '8'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'TRICOM',
+								'FechaApertura' : '05-2013',
+								'FechaReportado' : '11-2013',
+								'MesConsolidado' : '11-2013',
+								'FechaUltimaTransaccion' : '08-2013',
+								'CreditoAprobado' : '12587',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'ACTIVA',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201306',
+										'#text' : '0'
+									},
+									'M20' : {
+										'@F' : '201307',
+										'@PDV' : 'L',
+										'#text' : '1'
+									},
+									'M21' : {
+										'@F' : '201308',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201309',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201310',
+										'#text' : '0'
+									},
+									'M24' : {
+										'@F' : '201311',
+										'#text' : '0'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '12-2009',
+								'FechaReportado' : '08-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '8397',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201307'
+									},
+									'M24' : {
+										'@F' : '201308'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '12-2009',
+								'FechaReportado' : '08-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '3475',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'#text' : '0'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201307'
+									},
+									'M24' : {
+										'@F' : '201308'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '03-2010',
+								'FechaReportado' : '08-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : '3578',
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'#text' : '0'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'#text' : '0'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'#text' : '0'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'#text' : '0'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'#text' : '0'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201307'
+									},
+									'M24' : {
+										'@F' : '201308'
+									}
+								}
+							}, {
+								'Estatus' : {
+									'@Des_Estatus' : 'Activo',
+									'#text' : '0'
+								},
+								'Moneda' : {
+									'@Des_Moneda' : 'R.D. $',
+									'#text' : 'RD'
+								},
+								'Afiliado' : 'CLARO CODETEL',
+								'FechaApertura' : '12-2010',
+								'FechaReportado' : '08-2013',
+								'MesConsolidado' : '08-2013',
+								'FechaUltimaTransaccion' : null,
+								'CreditoAprobado' : null,
+								'TotalAdeudado' : null,
+								'Cuota' : null,
+								'TotalAtraso' : null,
+								'VecesAtraso30' : null,
+								'VecesAtraso60' : null,
+								'VecesAtraso90' : null,
+								'VecesAtraso120' : null,
+								'EstatusUltimo' : 'CANCELADO',
+								'FDR' : '0.0',
+								'HistorialPago' : {
+									'M1' : {
+										'@F' : '201109',
+										'@PDV' : 'C'
+									},
+									'M2' : {
+										'@F' : '201110',
+										'@PDV' : 'C'
+									},
+									'M3' : {
+										'@F' : '201111',
+										'@PDV' : 'C'
+									},
+									'M4' : {
+										'@F' : '201112',
+										'@PDV' : 'C'
+									},
+									'M5' : {
+										'@F' : '201201',
+										'@PDV' : 'C'
+									},
+									'M6' : {
+										'@F' : '201202',
+										'@PDV' : 'C'
+									},
+									'M7' : {
+										'@F' : '201203',
+										'@PDV' : 'C'
+									},
+									'M8' : {
+										'@F' : '201204',
+										'@PDV' : 'C'
+									},
+									'M9' : {
+										'@F' : '201205',
+										'@PDV' : 'C'
+									},
+									'M10' : {
+										'@F' : '201206',
+										'@PDV' : 'C'
+									},
+									'M11' : {
+										'@F' : '201207',
+										'@PDV' : 'C'
+									},
+									'M12' : {
+										'@F' : '201208',
+										'@PDV' : 'C'
+									},
+									'M13' : {
+										'@F' : '201209',
+										'@PDV' : 'C'
+									},
+									'M14' : {
+										'@F' : '201210',
+										'@PDV' : 'C'
+									},
+									'M15' : {
+										'@F' : '201211',
+										'@PDV' : 'C'
+									},
+									'M16' : {
+										'@F' : '201212',
+										'@PDV' : 'C'
+									},
+									'M17' : {
+										'@F' : '201301',
+										'@PDV' : 'C'
+									},
+									'M18' : {
+										'@F' : '201302',
+										'@PDV' : 'C'
+									},
+									'M19' : {
+										'@F' : '201303',
+										'@PDV' : 'C'
+									},
+									'M20' : {
+										'@F' : '201304',
+										'@PDV' : 'C'
+									},
+									'M21' : {
+										'@F' : '201305',
+										'@PDV' : 'C'
+									},
+									'M22' : {
+										'@F' : '201306',
+										'@PDV' : 'C'
+									},
+									'M23' : {
+										'@F' : '201307'
+									},
+									'M24' : {
+										'@F' : '201308'
+									}
+								}
+							}
+						]
+					}
+				]
+			},
+			'PersonasRelacionadas' : {
+				'Persona' : {
+					'Nombres' : 'HIPOLITO IVAN',
+					'Apellidos' : 'ALMONTE DE LOS SANTOS',
+					'CedulaNueva' : '00101753119',
+					'CedulaVieja' : null,
+					'Edad' : '47.4'
+				}
+			},
+			'Direcciones' : {
+				'Dir' : [{
+						'@Fecha' : '03-12-2014',
+						'#text' : 'C\\\\ VICENTE YABAR ANDUEZA 12 BO. LOS RESTAURADORES SANTO DOMINGO DE GUZ RD RD '
+					}, {
+						'@Fecha' : '03-12-2014',
+						'#text' : 'AV JOSE HORACIO RODRIGUEZ 13 ENS. LA VEGA LA VEGA VE'
+					}, {
+						'@Fecha' : '02-12-2014',
+						'#text' : 'SAN MARTIN 1 VILLA JUANA ZONA URBANA/SANTO DOMINGO '
+					}, {
+						'@Fecha' : '02-12-2014',
+						'#text' : 'BIENVENIDO CREALES 8006 LOS ROSALES ZONA URBANA/HIGUEY '
+					}, {
+						'@Fecha' : '02-12-2014',
+						'#text' : 'EL CONDE 370 CIUDAD COLONIAL ZONA URBANA/SANTO DOMINGO '
+					}, {
+						'@Fecha' : '01-12-2014',
+						'#text' : 'VICENTE YABAR MANGANAGUA SANTO DOMINGO DE GUZM¿N (    '
+					}, {
+						'@Fecha' : '01-12-2014',
+						'#text' : 'BELLA VISTA AVE SARASOTA                   00  2DO NIVEL  BELLA VISTA MALL 8B SANTO DOMINGO DISTRITO NACIONAL        '
+					}, {
+						'@Fecha' : '03-11-2014',
+						'#text' : 'PADRE VICENTE YABAR ARZUETA NO.12    '
+					}, {
+						'@Fecha' : '20-10-2014',
+						'#text' : 'JOSE HORACIO RODRIGUEZ 13 LA VEGA (CENTRO CIUD PLAZA '
+					}, {
+						'@Fecha' : '05-09-2014',
+						'#text' : 'CALLE/9, No. 14, C) 9 # 14, EDF. TORRE B ERONESA , APTO. 401 , MIRADOR NORTE , SA 271 DISTRITO NACIONAL '
+					}, {
+						'@Fecha' : '24-06-2014',
+						'#text' : 'CARR MELLA 1 URB. LA IMAGEN DE LA VIRGEN SALVALEON DE HIGUEY AL'
+					}, {
+						'@Fecha' : '24-01-2014',
+						'#text' : 'C/CONDE #372 ESQ. SANCHEZ ZONA COLONIAL 107 SANTO DOMINGO '
+					}, {
+						'@Fecha' : '24-01-2014',
+						'#text' : 'CONDE 372,ESQ. SANCHEZ ZONA COLONIAL SANTO DOMINGO '
+					}, {
+						'@Fecha' : '24-01-2014',
+						'#text' : 'C/PADRE VICENTE YABAL ALZUELTA #12 MANGANAGUA SANTO DOMINGO '
+					}, {
+						'@Fecha' : '07-01-2014',
+						'#text' : 'AV.WINSTOR CHURCHIL  NUMERO 17B  EDIFICIO PLAZA  LAS AMERICAS AV.WINSTOR CHURCHIL  NUMERO 17B  EDIFICIO PLAZA  LAS  AMERICAS  DISTRITO NACIONAL        '
+					}, {
+						'@Fecha' : '02-10-2013',
+						'#text' : 'VIEJO ARROYO HONDO AVE JOHN F KENNEDY 00    GALERIAS 360 98 SANTO DOMINGO DISTRITO NACIONAL        '
+					}
+				]
+			},
+			'Telefonos' : {
+				'Tel' : [{
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095373705'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8095378477'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8094758080'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8094766492'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8099330018'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'LACHAPELL ORTIZ, CESAR ALEXANDER',
+						'@Direccion' : 'Alma Rosa II',
+						'#text' : '8092738893'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8295471103'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8295471105'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8295471106'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'BANCO DE RESERVAS DE LA REPUBLICA DOMINICANA BANCO DE SERVICIOS MULTIPLES',
+						'@Direccion' : 'PRADERA HERMOSA',
+						'#text' : '8295472833'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'SUAREZ FELIZ, RODOLFO',
+						'@Direccion' : 'Villas Agricolas',
+						'#text' : '8096214076'
+					}, {
+						'@Tipo' : 'R',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8096214454'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8097016602'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'SOFTWAREONE SW1 DOMINICAN REPUBLIC SRL, SOFTWAREONE SW1 DOMINICAN REPUBLIC SRL',
+						'@Direccion' : 'PARAISO',
+						'#text' : '8295473230'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'SETMARES GROUP SRL, SETMARES GROUP SRL',
+						'@Direccion' : 'LA ALTAGRACIA',
+						'#text' : '8099330455'
+					}, {
+						'@Tipo' : 'INALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558700'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV SAN VICENTE DE PAUL',
+						'#text' : '8095942657'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV SAN VICENTE DE PAUL',
+						'#text' : '8095957161'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ EL CONDE',
+						'#text' : '8092212882'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095520542'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'BELLA VISTA',
+						'#text' : '8295471101'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'SETMARES GROUP SRL',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8092424351'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV SARASOTA',
+						'#text' : '8095323162'
+					}, {
+						'@Tipo' : 'INALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8293839390'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8095650279'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : '',
+						'@Direccion' : '',
+						'#text' : '8092289491'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095310103'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'ARELIS MERCEDES TORIBIO MEJIA',
+						'@Direccion' : '',
+						'#text' : '8095370128'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095370725'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'AV JOSE HORACIO RODRIGUEZ',
+						'#text' : '8092424704'
+					}, {
+						'@Tipo' : 'GSM',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L 63 ENS. PIANTINI SANTO DOMINGO DN RD',
+						'#text' : '8097607764'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558704'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558705'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558706'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558707'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558708'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558709'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558710'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558711'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558712'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558713'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558714'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558715'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558716'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558717'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558718'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558719'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297602775'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297602776'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'ASODUVEMAFA',
+						'@Direccion' : 'AV INDEPENDENCIA',
+						'#text' : '8297603237'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605188'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605189'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605190'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605192'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605193'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605194'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605195'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605196'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'RANCHUELO',
+						'@Direccion' : 'CARR CABEZA DE TORO',
+						'#text' : '8297605197'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297605412'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297605414'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297605931'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297606228'
+					}, {
+						'@Tipo' : 'INALAMBRICO',
+						'@Suscriptor' : 'BAVARO ELECTRO IMPORT',
+						'@Direccion' : 'AV BOLIVAR',
+						'#text' : '8297606260'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'Transporte Espino',
+						'@Direccion' : 'CARR SAMANA SANCHEZ',
+						'#text' : '8297607232'
+					}, {
+						'@Tipo' : 'LINEA MOVIL',
+						'@Suscriptor' : 'Transporte Espino',
+						'@Direccion' : 'CARR SAMANA SANCHEZ',
+						'#text' : '8297607233'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607750'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607751'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607752'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607753'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607754'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607755'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607756'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607757'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607758'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607759'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607760'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607761'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607762'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607763'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607764'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607765'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607766'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607767'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607768'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297607769'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8299866285'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'IZNAJAR CONSTRUCTION S.R.L',
+						'@Direccion' : 'AV 27 DE FEBRERO',
+						'#text' : '8096834274'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558701'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558702'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8297558703'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095663016'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'BANCA CARLOS SPORTD',
+						'@Direccion' : 'C\\\\ C',
+						'#text' : '8095755627'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095813012'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095964242'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095966176'
+					}, {
+						'@Tipo' : 'PSTN',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA 12 BO. LOS RESTAURADORES SANTO DOMINGO DN RD',
+						'#text' : '8097405108'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'MEDINA TORRES, MARGARITA',
+						'@Direccion' : 'Las Caobas',
+						'#text' : '8095618252'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8099221636'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'JULIA ESPINAL NUNEZ',
+						'@Direccion' : 'AV REAL SUR',
+						'#text' : '8095526039'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095181364'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095310128'
+					}, {
+						'@Tipo' : 'ADSL',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA 12 BO. LOS RESTAURADORES SANTO DOMINGO DN RD',
+						'#text' : '8094662023'
+					}, {
+						'@Tipo' : 'ADSL',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'AV JUAN PABLO DUARTE 1 URB. VILLA OLGA SANTIAGO DE LOS CABA ST RD',
+						'#text' : '8097244766'
+					}, {
+						'@Tipo' : 'ADSL',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'CARR MELLA 1 URB. LA IMAGEN DE LA VIRGEN SALVALEON DE HIGUEY AL RD',
+						'#text' : '8095675077'
+					}, {
+						'@Tipo' : 'ALAMBRICO',
+						'@Suscriptor' : 'EVELYN POLANCO LARA',
+						'@Direccion' : 'C\\\\ DIONISIO MEJIA',
+						'#text' : '8095546732'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'C\\\\ VICENTE YABAR ANDUEZA',
+						'#text' : '8095310103'
+					}, {
+						'@Tipo' : 'LINEA FIJA',
+						'@Suscriptor' : 'EGO VANITY STORE S A',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L',
+						'#text' : '8093811600'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'VALDEZ ALCANTARA, WALKIN',
+						'@Direccion' : 'CIUDAD DEL ALMIRANTE',
+						'#text' : '8098720404'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'LINA ROSARIO HINOJOSA',
+						'@Direccion' : 'C\\\\ LAS CAOBAS 9 BO. LOS JARDINES DEL NORTE, SANTO DOMINGO DE GUZ, DN, RD',
+						'#text' : '8095666176'
+					}, {
+						'@Tipo' : 'GSM',
+						'@Suscriptor' : 'EGO VANITY STORE',
+						'@Direccion' : 'AV WINSTON CHURCHILL PLAZA L 63 ENS. PIANTINI SANTO DOMINGO DN RD',
+						'#text' : '8097607764'
+					}, {
+						'@Tipo' : '',
+						'@Suscriptor' : 'EGO VANNITY STORE',
+						'@Direccion' : 'AV JOSE HORACIO RODRIGUEZ',
+						'#text' : '8092424704'
+					}, {
+						'@Tipo' : 'CELULARES',
+						'@Suscriptor' : 'NUNEZ,RAMONA',
+						'@Direccion' : '1 C MA SANCHEZ CALLE LA VEGA',
+						'#text' : '8093301910'
+					}, {
+						'@Tipo' : 'CELULARES',
+						'@Suscriptor' : 'NUNEZ,RAMONA',
+						'@Direccion' : '1 C MA SANCHEZ CALLE LA VEGA',
+						'#text' : '8093301910'
+					}, {
+						'@Tipo' : 'INALAMBRICO',
+						'@Suscriptor' : 'YOVANNY REGALADO ROBLES',
+						'@Direccion' : '',
+						'#text' : '8093833820'
+					}, {
+						'@Tipo' : 'INALAMBRICO',
+						'@Suscriptor' : 'YOVANNY REGALADO ROBLES',
+						'@Direccion' : '',
+						'#text' : '8093833820'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'SANCHEZ, ROSANNA MERCEDES',
+						'@Direccion' : 'Centro Ciudad',
+						'#text' : '8092776469'
+					}, {
+						'@Tipo' : 'TEL',
+						'@Suscriptor' : 'SANCHEZ, ROSANNA MERCEDES',
+						'@Direccion' : 'Centro Ciudad',
+						'#text' : '8092776469'
+					}
+				]
+			}
+		}
+	}
+}

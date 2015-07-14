@@ -1,0 +1,38 @@
+﻿@model Pecuniaus.Renewal.Models.ScoringData
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Scoring Data</title>
+    <style>
+        .display-label {
+            float: left;
+            clear: left;
+            /*width: 200px;*/
+            font-weight: bold;
+            margin: 5px;
+        }
+
+            .display-label::after {
+                content: ":";
+            }
+
+        .display-field {
+            float: left;
+            clear: right;
+            margin: 5px; /*margin-left:20px;*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @Html.DisplayForModel()
+    </div>
+</body>
+</html>

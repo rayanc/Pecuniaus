@@ -1,0 +1,46 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@RenderSection("CSS", required: false)
+
+<header class="navbar navbar-default">
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+
+    </ul>
+    @Html.Partial("_HeaderRight")
+</header>
+<!-- Page content -->
+<div id="page-content">
+    @RenderBody()
+</div>
+
+    @Html.DevExpress().GetStyleSheets( 
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout }, 
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Editors }, 
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.HtmlEditor }, 
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.GridView }, 
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.PivotGrid },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Chart },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.Report }
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Scheduler },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.TreeList },
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Spreadsheet }
+)
+@Html.DevExpress().GetScripts(
+        //new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        //new Script { ExtensionSuite = ExtensionSuite.HtmlEditor },
+        //new Script { ExtensionSuite = ExtensionSuite.GridView },
+        //new Script { ExtensionSuite = ExtensionSuite.PivotGrid },
+        //new Script { ExtensionSuite = ExtensionSuite.Editors },
+        //new Script { ExtensionSuite = ExtensionSuite.Chart },
+    new Script { ExtensionSuite = ExtensionSuite.Report }
+        //new Script { ExtensionSuite = ExtensionSuite.Scheduler },
+        //new Script { ExtensionSuite = ExtensionSuite.TreeList },
+        //new Script { ExtensionSuite = ExtensionSuite.Spreadsheet }
+)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/bootstrapbundle")
+}

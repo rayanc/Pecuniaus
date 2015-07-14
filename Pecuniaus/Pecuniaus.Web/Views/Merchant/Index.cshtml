@@ -1,0 +1,265 @@
+﻿@model Pecuniaus.Web.Models.MerchantsModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQMerchantReview);}
+@if (Pecuniaus.UICore.SessionHelper.CurrentMerchantID <= 0)
+{
+    isFormDisabled = false;
+}
+@using HtmlHelpers.Extension
+@{var businessTypes = new Pecuniaus.Web.HelperClasses.CommonFunctions().RetrieveGeneralTypes("1002");}
+@{
+    //ViewBag.Title = "Pecuniaus";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 1, SearchType = "PT", ShowSf = true })
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+<!-- Main Container -->
+@*<div id="main-container">*@
+
+<!-- END Header -->
+<!-- Page content -->
+<div id="page-content">
+    @using (Html.BeginForm("", "Merchant", new AjaxOptions { HttpMethod = "Post", OnSuccess = "Success" }))
+    {
+        <div class="content-header">
+            <div class="header-section">
+                @Html.Partial("_MerchantWorkflowHeader")
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>
+                            Merchant Review<br>
+
+                            @*@if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                                {
+                                    <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                                }*@
+                            @*<small>Any sample text comes here</small>*@
+                        </h1>
+
+                        @Html.Partial("_PageMessage")
+                        @Html.ValidationSummary()
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+            @Html.Partial("_PrequalbreadcrumbBase")
+            <li>@Pecuniaus.Resources.Common.MerchantReview</li>
+        </ul>
+
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    @if (Pecuniaus.UICore.SessionHelper.CurrentMerchantID > 0)
+                    {
+                        <a href="@Url.Action("Index", new { rstmrchnt = 0 })" class="btn btn-default">
+                            @Pecuniaus.Resources.Common.AddNew
+                        </a>
+                    }
+                    <button class="btn btn-success" type="submit" name="action:Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                    <button class="btn btn-primary" type="submit" name="action:Save" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Save</button>
+                    @if (Pecuniaus.UICore.SessionHelper.CurrentMerchantID > 0)
+                    {
+                        <a href="#mod_declinereview" class="btn btn-danger" data-toggle="modal" data-target="#mod_declinereview" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Decline
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- All Boxes Content Start -->
+        { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+        <!-- Datatables Content -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="table-responsive">
+                        <div id="example-datatable_wrapper" class="dataTables_wrapper">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-sm-2">
+                                        <label for="example-nf-email">RNC</label>
+                                        <input type="text" id="txtDRNC" class="form-control" placeholder="Enter text.." />
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="example-nf-email">Business Name</label>
+                                        <input type="text" id="txtDBusinessName" class="form-control" placeholder="Enter text.." />
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="example-nf-email">Legal Name</label>
+                                        <input type="text" id="txtDLegalName" class="form-control" placeholder="Enter text.." />
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="example-nf-email">Owner Name</label>
+                                        <input type="text" id="txtDOwnerName" class="form-control" placeholder="Enter text.." />
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="example-nf-email">&nbsp;</label>
+                                        <button id="btnDuplicateMerchantSearch" type="button" class="btn btn-success form-control darkbluebtn"><i class="fa fa-search"></i> Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="divMerchantSearch">
+                                @*@{Html.Partial("MerchantSearch");}*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <!-- Normal Form Title -->
+                    <div class="block-title">
+                        <h2><strong>Editing</strong> Information Trade</h2>
+                    </div>
+                    <!-- END Normal Form Title -->
+                    <!-- Normal Form Content -->
+                    <div class="form-horizontal form-bordered">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                @Html.HiddenFor(model => model.merchantId, new { @class = "form-control", id = "txthdnMerchantId" })
+                                <label for="example-nf-email">Business Name</label>
+                                @Html.TextBoxFor(model => model.businessName, new { Placeholder = "", @class = "form-control", id = "txtBusinessName" })
+                            </div>
+                            <div class="col-md-6">
+                                <label for="example-nf-email">Legal Name</label>
+                                @Html.TextBoxFor(model => model.legalName, new { Placeholder = "", @class = "form-control", id = "txtLegalName" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.LabelFor(model => model.businessTypeId)
+                                <div class="col-md-12">
+
+                                    @foreach (var bE in businessTypes)
+                                    {
+                                        <label class="radio-inline">
+
+                                            @Html.RadioButtonFor(model => model.businessTypeId, bE.keyId, new { id = "" })
+
+                                            @bE.description
+                                        </label>
+                                    }
+
+                                    @*@Html.CustomRadioButtonList("TypeofBusinessentity",
+                                        new SelectList(new Pecuniaus.Web.HelperClasses.CommonFunctions().RetrieveGeneralTypes("1002"), "keyId", "description"), "", "radio-inline", 1)*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="example-nf-email">Business Start Date</label>
+                                @Html.EditorFor(model => model.businessStartDate, null, new { @class = "form-control", id = "txtBusinessStartDate" })
+                            </div>
+                            <div class="col-md-6">
+                                <label for="example-nf-email">RNC Number</label>
+                                @Html.TextBoxFor(model => model.rnc, new { Placeholder = "Please enter..", @class = "form-control", id = "txtRNCNumber" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.industryTypeId)
+                                @Html.DropDownListFor(model => model.industryTypeId, (SelectList)ViewBag.IndustryTypes, "", new { @class = "select-select2", id = "drpIndustry", @style = "width: 100%;", @placeholder = "Industry Type" })
+                            </div>
+                            <div class="col-md-6">
+                                <label for="example-nf-email">Owner Name</label>
+                                @*<input type="text" placeholder="Enter text.." class="form-control" id="txtOwnerNameFrm">*@
+                                @Html.TextBoxFor(model => model.ownerName, new { Placeholder = "Please enter..", @disabled = "disabled", @class = "form-control", id = "txtOwnerNameFrm" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label for="example-nf-email">Sales Respentative</label>
+                                @Html.DropDownListFor(model => model.salesRepId, (SelectList)@ViewBag.SalesRep, new Dictionary<string, object> { { "data-placeholder", "Choose one.." }, { "class", "select-select2" }, { "style", "width: 100%;" } })
+                            </div>
+                            <div class="col-md-6"> </div>
+                        </div>
+                    </div>
+                    <!-- END Normal Form Content -->
+                </div>
+            </div>
+        </div>
+        <!-- END Datatables Content -->
+        <!-- All Boxes Content Start -->
+    }
+    <div id="mod_declinereview" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" data-source-url="@Url.Action("Decline", "Merchant", new
+                                                    {
+                                                        MerchantID= Pecuniaus.UICore.SessionHelper.CurrentMerchantID,
+                                                        ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+                                                    })">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END Page Content -->
+<!-- END Main Container -->
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        //Global Variables
+        var urlFetchNotes = '@Html.Raw(Url.Action("List", "Notes", new { area = "Common", mode = 'P', merchantId = @Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }))';
+        var urlAddNote = '@Html.Raw(Url.Action("AddNote", "Common", new { area = "" }))';
+        var urlSaveNote = '@Html.Raw(Url.Action("SaveNote", "Common", new { area = "" }))';
+        var urlFetchSFMerchants = '@Html.Raw(Url.Action("SearchResult", "Search", new { area = "Common", showTemp=1 }))';
+        var urlLoadSFMerchantANDSetRecentVisit = '@Html.Raw(Url.Action("AddRecentVisit", "Common", new { area = "" }))';
+        var urlFindANDLoadSFMerchant = '@Html.Raw(Url.Action("SearchResultInJson", "Common", new { area = "" }))';
+        var urlFetchMerchantSearch = '@Html.Raw(Url.Action("SearchResult", "Common", new { area = "" }))';
+        var urlFetchDuplicateMerchantSearch = '@Html.Raw(Url.Action("SearchDuplicateMerchant", "Merchant", new { area = "" }))';
+        var urlLoadMerchantInfo = '@Html.Raw(Url.Action("SearchMerchantInfo", "Merchant", new { area = ""}))';
+        var TempMerchants = '@Html.Raw(Session["SFMerchants"])';
+        var TempDupMerchants = '@Html.Raw(Session["SFDupMerchants"])';
+
+        $(document).ready(function () {
+
+            $("#lnkmodal-sf-list").click(function () {
+                var MerchantInfo, TaskName, TaskStatus;
+                MerchantInfo = $("#txtSearchMerchantIDName").val();
+                TaskType = $("#Search #TaskNameList option:selected").text();//$("#select2-results-1 li.selected").attr("value");
+                TaskStatus = $("#Search #TaskStatusList option:selected").text();//$("#select2-results-2 li.selected").attr("value");
+                //FetchMerchantSearch(MerchantInfo, TaskType, TaskStatus);
+            });
+            $("#btnDuplicateMerchantSearch").click(function () {
+                var RNC, BusinessName, LegalName, OwnerName;
+                RNC = $("#txtDRNC").val();
+                BusinessName = $("#txtDBusinessName").val();
+                LegalName = $("#txtDLegalName").val();
+                OwnerName = $("#txtDOwnerName").val();
+
+                FetchDuplicateMerchantSearch(RNC, BusinessName, LegalName, OwnerName);
+            });
+
+            $("#mod_declinereview").on('shown.bs.modal', function (e) {
+                var $modl = $(this);
+                var $modBody = $modl.find('.modal-body');
+                var loadURL = $modBody.attr("data-source-url");
+                $modBody.load(loadURL);
+            });
+
+        });
+
+    </script>
+}
+

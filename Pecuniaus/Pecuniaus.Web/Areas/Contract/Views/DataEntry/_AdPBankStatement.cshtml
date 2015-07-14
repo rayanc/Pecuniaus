@@ -1,0 +1,43 @@
+﻿@model Pecuniaus.Models.Contract.BankStatementModel
+@{var isFormDisabled = Model.IsDisabled;}
+
+<div id="dvNewStatement">
+    @using (Ajax.BeginForm("AddStatement", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewStatement",
+       OnSuccess = "StatementUpdated()",
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+        @Html.ValidationSummary()
+
+
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.StatementMonth)
+                @Html.DropDownListFor(m => m.StatementMonthId, Model.StatementMonths, "", new { @class = "form-control", @data_placeholder = "Statement Month" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.StatementYear)
+                @Html.DropDownListFor(m => m.StatementYear, Model.StatementYears, "", new { @class = "form-control", @data_placeholder = "Statement Year" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Amount)
+                <div >
+                    <div class="input-group">
+                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                        @Html.EditorFor(m => m.Amount)
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label>&nbsp;</label>
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.AddNew" @(isFormDisabled ? "disabled" : "") />
+                </div>
+            </div>
+        </div>
+    }
+</div>

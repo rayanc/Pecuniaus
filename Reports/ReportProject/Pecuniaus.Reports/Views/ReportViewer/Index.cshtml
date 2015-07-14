@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>Reports</h2>
+<select id="Reports">
+    <option value="0">-Select-</option>
+    <option value="1">Collection</option>
+    <option value="2">Contracts</option>
+    <option value="3">Contracts Declined By Avanzame</option>
+    <option value="4">Contracts Declined By Client</option>
+    <option value="5">Contracts Pending</option>
+    <option value="6">Investigation</option>
+    <option value="7">Monthly MCA</option>
+    <option value="8">Notes</option>
+    <option value="9">PAF Report</option>
+    <option value="10">Prequalifications</option>
+    <option value="11">Prequalification Declined By AvanzeMe</option>
+    <option value="12">Prequalification Declined By Client</option>
+    <option value="13">Prequalification Offers</option>
+    <option value="14">Prequalifications Pending</option>
+    <option value="15">Prequalification AcceptedOffers</option>
+    <option value="16">Refund Done</option>
+    <option value="17">Refund Pending</option>
+    <option value="18">Renewals</option>
+    <option value="19">Renewals Pending</option>
+    <option value="20">Renewals Declined By AvanzeMe</option>
+    <option value="21">Renewals Declined By Client</option>
+    <option value="22">Scoring Report</option>
+    <option value="23">WorkFlow Report</option>
+    <option value="24">WrittenOff Contracts</option>
+    <option value="25">WSF Report</option>
+    <option value="26">Auditor Bad Debt Recovery Account</option>
+    <option value="27">Auditor Collection</option>
+    <option value="28">Auditor Contract Activity</option>
+    <option value="29">Auditor DAR New Renewal</option>
+    <option value="30">Auditor Processing Assets</option>
+    <option value="31">Auditor Progress New Renewal</option>
+    <option value="32">Author RefundsDone</option>
+    <option value="33">Auditor RefundsEarrings</option>
+    <option value="34">Auditor Research</option>
+    <option value="35">Monthly Portfolio del Avance</option>
+    <option value="36">Monthly INGRESO</option>
+    <option value="37">Monthly Saldos de avance</option>
+    <option value="38">Monthly DAR Pendiente</option>
+    <option value="39">Monthly Procesamiento - Saldo del avance 2013</option>
+    <option value="40">Monthly Procesamiento - DAR PENDIENTE</option>
+    <option value="41">Daily DAR PENDIENTE</option>
+    <option value="42">Daily Saldos de avance</option>
+    <option value="43">Daily Portafolio del avance</option>
+    <option value="44">Daily Ingreso</option>
+    <option value="45">Daily Procesamiento - Saldo del avance 2013</option>
+    <option value="46">Daily Procesamiento - DAR PENDIENTE</option>
+</select>
+<br />
+
+<div id="dvRepView">
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#Reports').on('change', function () {
+            v = $(this).val();
+            var url = '@Url.Action("ShowReport")/' + v;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                async: false,
+                success: function (result) {
+                    $("#dvRepView").html(result);
+                }
+            });
+        });
+    });
+</script>

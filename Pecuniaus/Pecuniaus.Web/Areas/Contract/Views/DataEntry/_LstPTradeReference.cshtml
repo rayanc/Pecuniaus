@@ -1,0 +1,33 @@
+﻿@model Tuple<Pecuniaus.Models.User.GroupPermission, IEnumerable<Pecuniaus.Models.Contract.TradeReferenceModel>>
+
+@{var isFormDisabled = Model.Item1.IsFormDisabled;}
+
+@using GridMvc.Html
+
+@Html.Grid(Model.Item2).Columns(columns =>
+    {
+        //  columns.Add(m => m.ProcessorComparID).Titled("Select");
+        columns.Add(m => m.ReferenceId, true);
+        columns.Add(m => m.ReferenceName).Titled(Pecuniaus.Resources.Contract.DataEntry.NameOfTheReference );
+        columns.Add(m => m.PhoneNumber).Titled(Pecuniaus.Resources.Contract.DataEntry.TelephoneNumber);        
+        if(!isFormDisabled)
+        { 
+        columns.Add()
+               .Sanitized(false)
+               .Encoded(false)
+               .RenderValueAs(o => RenderActionLinks(o));
+        }
+    }).WithPaging(10).Sortable()
+
+@helper RenderActionLinks(Pecuniaus.Models.Contract.TradeReferenceModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditTradeReference(@m.Id);"><i class="fa fa-pencil-square-o"></i></a>
+    @Html.Raw(Ajax.ActionLink("[Delete]",
+                         "DelTradeReference",
+                  new { ID = m.Id },
+                new AjaxOptions
+                 {
+                     OnSuccess = "TradeReferenceDeleted()",
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+}

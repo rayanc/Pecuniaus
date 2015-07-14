@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Pecuniaus.Web.Models.ProcessorModel>
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQDataEntry);}
+
+@using GridMvc.Html
+@Html.Grid(Model).Columns(columns =>
+    {
+        //  columns.Add(m => m.ProcessorComparID).Titled("Select");
+        columns.Add(m => m.processorId, true);
+        columns.Add(m => m.processorName).Titled("Processor");
+        columns.Add(m => m.processorNumber).Titled("Processor Number");
+        columns.Add(m => m.FirstProcessedDate).Titled("First Processed Date").Format("{0:d}");
+        if (!isFormDisabled)
+        {
+            columns.Add()
+                   .Sanitized(false)
+                   .Encoded(false)
+                   .RenderValueAs(o => RenderActionLinks(o));
+        }
+    }).WithPaging(10).Sortable()
+
+@helper RenderActionLinks(Pecuniaus.Web.Models.ProcessorModel m)
+{
+
+    <a href="Javascript:void(0);" title="Edit" onclick="EditProcessor(@m.ID);"><i class="fa fa-pencil-square-o"></i></a>
+    @Html.Raw(Ajax.ActionLink("[Delete]",
+                 "DelProcessor",
+                  new { ID = m.ID },
+                new AjaxOptions
+                 {
+                     OnSuccess = "ProcessorDeleted()",
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+}

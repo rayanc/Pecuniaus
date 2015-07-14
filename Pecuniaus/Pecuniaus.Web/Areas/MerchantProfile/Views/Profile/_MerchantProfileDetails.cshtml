@@ -1,0 +1,195 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantBusinessModel
+@*@{
+    var permissionsBusiness = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Business);
+    var permissionsLandlord = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Landlord);
+    var permissionsContacts = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Contacts);
+    var permissionsOwners = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Owners);
+    var permissionsProfiles = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Profiles);
+    var permissionsDocuments = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Documents);
+    var permissionsActivity = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Activity);
+    var permissionsStatements = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Statements);
+    var permissionsHistory = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_History);
+    var permissionsRiskEvaluation = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_RiskEvaluation);
+    var permissionsContracts = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Contracts);
+    var permissionsCollections = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Collections);
+    var permissionsAffiliations = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Affiliations);
+    var permissionsCreditReports = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_CreditReport);
+}*@
+    <div class="col-md-12">
+        <div class="block full">
+            <div id="faq2" class="panel-group">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.MerchantInformation</h2>
+                </div>
+                <div class="row top3head">
+                    <div class="col-md-4">
+                        <h3>@Pecuniaus.Resources.Common.MerchantID : @Html.DisplayFor(model => model.MerchantID) </h3>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>@Pecuniaus.Resources.Common.Status : @Html.DisplayFor(m => m.MerchantStatus) </h3>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>@Pecuniaus.Resources.Common.ContractStatus : @Html.DisplayFor(m => m.ContractStatus) </h3>
+                    </div>
+                </div>
+                <div class="row top3head">
+                    <div class="col-md-3">
+                        <h3>@Pecuniaus.Resources.Common.ContractID : @Html.DisplayFor(model => model.ContractId) </h3>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>@Pecuniaus.Resources.Common.LoanedAmount : @Html.DisplayFor(model => model.LoanedAmount) </h3>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>@Pecuniaus.Resources.Common.OwnedAmount : @Html.DisplayFor(m => m.OwnedAmount) </h3>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>@Pecuniaus.Resources.Common.PaidAmount : @Html.DisplayFor(m => m.PaidAmount) </h3>
+                    </div>
+                </div>
+                @*@if (permissionsBusiness.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q1" onclick="loadBusiness();">@Pecuniaus.Resources.Common.Business</a></h4>
+                    </div>
+                    <div id="faq2_q1" class="panel-collapse collapse in">
+                        @Html.Partial("_Business",Model)
+                    </div>
+                </div>
+                @*}
+                @if (permissionsLandlord.Read)
+                {*@ 
+                @if(Pecuniaus.MerchantProfile.Controllers.ProfileController.RentFlag=="Rented")
+                { 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q2" onclick="loadLandlord();">@Pecuniaus.Resources.Common.LandLord</a></h4>
+                    </div>
+                    <div id="faq2_q2" class="panel-collapse collapse">
+                    </div>
+                </div>
+                }
+                @*}
+                @if (permissionsContacts.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q3" onclick="loadContacts();">@Pecuniaus.Resources.Common.Contacts</a></h4>
+                    </div>
+                    <div id="faq2_q3" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsOwners.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q4" onclick="loadOwners();">@Pecuniaus.Resources.Common.Owners</a></h4>
+                    </div>
+                    <div id="faq2_q4" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsProfiles.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q5" onclick="loadProfiles();">@Pecuniaus.Resources.Common.Profiles</a></h4>
+                    </div>
+                    <div id="faq2_q5" class="panel-collapse collapse">                        
+                    </div>
+                </div>
+                @*}
+                @if (permissionsDocuments.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q6" onclick="loadDocuments();">@Pecuniaus.Resources.Common.Documents</a></h4>
+                    </div>
+                    <div id="faq2_q6" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsActivity.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q7" onclick="loadActivities();">@Pecuniaus.Resources.Common.Activity</a></h4>
+                    </div>
+                    <div id="faq2_q7" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsStatements.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q8" onclick="loadStatements();">@Pecuniaus.Resources.Common.Statements</a></h4>
+                    </div>
+                    <div id="faq2_q8" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsHistory.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q9" onclick="loadHistory();">@Pecuniaus.Resources.Common.History</a></h4>
+                    </div>
+                    <div id="faq2_q9" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsRiskEvaluation.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q10" onclick="loadRiskEvolution();">@Pecuniaus.Resources.Common.RiskEvaluation</a></h4>
+                    </div>
+                    <div id="faq2_q10" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsContracts.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q11" onclick="loadContracts();">@Pecuniaus.Resources.Common.Contracts</a></h4>
+                    </div>
+                    <div id="faq2_q11" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsCollections.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q13" onclick="loadCollections();">@Pecuniaus.Resources.Common.Collections</a></h4>
+                    </div>
+                    <div id="faq2_q13" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsAffiliations.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q14" onclick="loadAffiliation();">@Pecuniaus.Resources.Common.Affiliations</a></h4>
+                    </div>
+                    <div id="faq2_q14" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}
+                @if (permissionsCreditReports.Read)
+                {*@ 
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q15" onclick="loadCreditReports();">@Pecuniaus.Resources.Common.CreditReports</a></h4>
+                    </div>
+                    <div id="faq2_q15" class="panel-collapse collapse">
+                    </div>
+                </div>
+                @*}*@
+            </div>
+        </div>
+    </div>

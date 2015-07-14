@@ -1,0 +1,22 @@
+
+PUT: http://localhost:51480/Bridge/questions/UpdateAnswers
+
+User-Agent: Fiddler
+Host: localhost:51480
+Content-Length: 253
+Content-Type: application/json
+
+[
+    {
+        "questionId": "1",
+        "answerId": "1",
+        "answerDesc": "ABC",
+        "contractId": "1"
+    },
+  {
+        "questionId": "1",
+        "answerId": "2",
+        "answerDesc": "XYZ",
+        "contractId": "1"
+    }
+]

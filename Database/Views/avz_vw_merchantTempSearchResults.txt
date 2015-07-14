@@ -1,0 +1,53 @@
+CREATE 
+ 
+VIEW `avz_vw_merchantTempSearchResults` AS
+    SELECT 
+        `mrc`.`LegalName` AS `merchantName`,
+        `mrc`.`LegalName` AS `legalName`,
+        `mrc`.`BusinessName` AS `businessName`,
+        `mrc`.`RNCNumber` AS `RNCNumber`,
+        CONCAT(`repsal`.`FirstName`,
+                ' ',
+                `repsal`.`LastName`) AS `assignedSalesRep`,
+        '' AS `ownerName`,
+        `mrc`.`SalesRepId` AS `salesRepId`,
+        IFNULL(`tsktyp`.`TaskName`, 'Merchant Review') AS `taskName`,
+        IFNULL(`tsktyp`.`TaskTypeId`, 0) AS `taskTypeId`,
+        `wrk`.`WorkFlowName` AS `workFlowName`,
+        `tsk`.`WorkflowId` AS `WorkflowId`,
+        `cont`.`ContractId` AS `contractid`,
+        `tsk`.`AssignedUserId` AS `assigneduserId`,
+        `mrc`.`MerchantId_TMP` AS `merchantId`,
+        IFNULL(`tskst`.`StatusId`, 0) AS `taskStatusId`,
+        IFNULL(`tskst`.`StatusName`, 'Assigned') AS `tasKStatus`,
+        '20001' AS `merchantStatusId`,
+        IFNULL(`contst`.`StatusId`, 0) AS `contractStatusId`,
+        'Prequalification' AS `merchantStatus`,
+        `contst`.`StatusName` AS `contractStatus`,
+        `mrc`.`InsertUserId` AS `insertUserId`,
+        `tsk`.`TaskId` AS `taskId`,
+        `tsk`.`EndDatte` AS `CompletionDate`,
+        `tsk`.`AssignedDate` AS `AssignedDate`,
+        CONCAT(`usrcnt`.`FirstName`,
+                ' ',
+                `usrcnt`.`LastName`) AS `UserName`,
+        `ind`.`Name` AS `IndustryType`,
+        '0' AS `PassportNbr`,
+        '0' AS `ProcessorNumber`,
+        '' AS `ProcessorName`
+    FROM
+        ((((((((((((`tmp_tb_merchants` `mrc`
+        LEFT JOIN `tb_tasks` `tsk` ON ((`tsk`.`MerchantIDTMP` = `mrc`.`MerchantId_TMP`)))
+        LEFT JOIN `lkp_tb_industrytypes` `ind` ON ((`ind`.`IndustryTypeId` = `mrc`.`IndustryTypeId`)))
+        LEFT JOIN `tb_salesrep` `sal` ON ((`tsk`.`AssignedUserId` = `sal`.`UserId`)))
+        LEFT JOIN `tb_contacts` `repsal` ON ((`sal`.`Contactid` = `repsal`.`ContactId`)))
+        LEFT JOIN `tb_tasktypes` `tsktyp` ON ((`tsk`.`TaskTypeId` = `tsktyp`.`TaskTypeId`)))
+        LEFT JOIN `lkp_tb_entitytypes` `ent` ON ((`ent`.`EntitytypeID` = `mrc`.`BusinessTypeId`)))
+        LEFT JOIN `tb_workflows` `wrk` ON ((`tsk`.`WorkflowId` = `wrk`.`WorkFlowId`)))
+        LEFT JOIN `lkp_tb_statuses` `tskst` ON ((`tsk`.`StatusId` = `tskst`.`StatusId`)))
+        LEFT JOIN `tb_contracts` `cont` ON ((`cont`.`MerchantId` = `mrc`.`MerchantId`)))
+        LEFT JOIN `lkp_tb_statuses` `contst` ON ((`cont`.`StatusId` = `contst`.`StatusId`)))
+        LEFT JOIN `tb_users` `usr` ON ((`usr`.`ID` = `tsk`.`AssignedUserId`)))
+        LEFT JOIN `tb_contacts` `usrcnt` ON ((`usrcnt`.`ContactId` = `usr`.`contactid`)))
+    WHERE
+        ISNULL(`mrc`.`MerchantId`)

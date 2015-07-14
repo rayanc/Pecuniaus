@@ -1,0 +1,64 @@
+﻿@model Pecuniaus.Collection.Models.MDScanDocumentModel
+@using (Ajax.BeginForm("SaveUploadedDocument", "Workflow", new AjaxOptions() { HttpMethod = "POST" }, new { id = "frmScanDoc", enctype = "multipart/form-data", @class = "form-horizontal", role = "form", UpdateTargetId = "faq2_q6" }))
+{
+    <div class="row">
+        <div class="">
+            <div class="block full" id="dvUpload">
+                <div class="block-title">
+                    <h2><strong>@Pecuniaus.Resources.Common.Upload</strong> @Pecuniaus.Resources.Common.Documents</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.HiddenFor(model => model.isUploadSignedDoc)
+                        @if (Model.isUploadSignedDoc == false)
+                        {
+                            @Html.DropDownListFor(m => m.DocumentTypeID, Model.DocumentTypes, "", new { @class = "select-select2 docType", @style = "width: 100%;", @data_placeholder = "Document Type" })
+                        }
+                    </div>
+                    <div class="col-md-7">
+                        <div class="pull-right">
+                            <input type="file" name="file" id="file" class="btn btn-success" onchange="previewUploadDoc(this)" />
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="pull-right">
+                            <button value="Save" name="submitButton" type="submit" class="btn btn-primary">@Pecuniaus.Resources.Common.Save</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="widget-simple">
+                        <div class="col-md-12">
+                            <div class="form-group" id="dvDocGrid" data-source-url="@Url.Action("GetDocList", "Workflow", new { area = "Collection" })">
+                            </div>
+                            <div class="progress progress-striped active">
+                                <div aria-valuemax="100" aria-valuemin="0" id="barUpload" role="progressbar" class="progress-bar progress-bar-success"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                </div>
+            </div>
+            <div class="block full" id="dvPreview" style="display:none">
+                <div class="block-title">
+                    <h2><strong>@Pecuniaus.Resources.Collection.Collection.ViewDocument</strong> </h2>
+                </div>
+
+                <div class="row">
+                    <div class="widget-simple">
+                        <div class="col-md-12">
+                            <div class="form-group" id="dvPreviewDoc" data-source-url="@Url.Action("GetPreviewDoc", "Workflow",  new { area = "Collection" })">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                </div>
+            </div>
+        </div>
+    </div>
+}

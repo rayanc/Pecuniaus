@@ -1,0 +1,36 @@
+﻿@model Pecuniaus.Models.Contract.BankInfoVerificationModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2>@Pecuniaus.Resources.Common.CWBankInformationVerification</h2>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.HiddenFor(m => m.BankDetailId, new { @id = "BankDetailId" })
+                    @*@Html.HiddenFor(m => m.merchantId)
+                        @Html.HiddenFor(m => m.contractId)*@
+                    @Html.LabelFor(m => m.BankID)
+                    @Html.DropDownListFor(m => m.BankID, Model.Banks, "", new { @class = "form-control", @style = "width: 100%;", @data_placeholder = "Bank Name", @id = "ddlBankInformation" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.AccountNumber)
+                    @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control", @placeholder = "Enter text..", @id = "txtAccNo" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.BankCode)
+                    @Html.TextBoxFor(m => m.BankCode, new { @class = "form-control", @placeholder = "Enter text..", @id = "txtBankCode" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.LabelFor(m => m.AccountName)
+                    @Html.TextBoxFor(m => m.AccountName, new { @class = "form-control", @placeholder = "Enter text..", @id = "txtaccName" })
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+</div>

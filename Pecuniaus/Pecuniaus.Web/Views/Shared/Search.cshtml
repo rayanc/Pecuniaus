@@ -1,0 +1,34 @@
+﻿@model Pecuniaus.Web.Models.SearchModel
+
+<div class="col-xs-3">
+    <input type="text" placeholder="Merchant ID/Name" class="form-control" id="txtSearchMerchantIDName">
+</div>
+<div class="col-xs-3">
+    @Html.DropDownListFor(model => model.TaskNameList, new SelectList(Model.TaskNameList, "keyId", "description"), null, new Dictionary<string, object> { { "data-placeholder", "Task Name" }, { "class", "select-select2" }, { "style", "width: 100%;" } })
+    @*@Html.DropDownList("TaskNames", null, new Dictionary<string, object> { { "data-placeholder", "Task Name" }, { "class", "select-select2" }, { "style", "width: 100%;" } })
+        <select id="example-select2" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Task Name">
+                <option></option>
+                <option value="Task Name 1">Task Name 1</option>
+                <option value="Task Name 2">Task Name 2</option>
+                <option value="Task Name 3">Task Name 3</option>
+                <option value="Task Name 4">Task Name 4</option>
+                <option value="Task Name 5">Task Name 5</option>
+            </select>*@
+    @*</select>*@
+</div>
+<div class="col-xs-3">
+    @Html.DropDownListFor(model => model.TaskStatusList, new SelectList(Model.TaskStatusList, "keyId", "description"), null, new Dictionary<string, object> { { "data-placeholder", "Task Status" }, { "class", "select-select2" }, { "style", "width: 100%;" } })
+    @*@Html.DropDownList("TaskStatus", null, new Dictionary<string, object> { { "data-placeholder", "Task Status" }, { "class", "select-select2" }, { "style", "width: 100%;" } })
+        <select id="example-select2" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Task Status">
+                <option></option>
+                <option value="Task Status 1">Task Status 1</option>
+                <option value="Task Status 2">Task Status 2</option>
+                <option value="Task Status 3">Task Status 3</option>
+                <option value="Task Status 4">Task Status 4</option>
+                <option value="Task Status 5">Task Status 5</option>
+            </select>*@
+</div>
+<div class="col-xs-2 remove-padding">
+    @*<button type="button" class="btn btn-danger" onclick="FetchMerchantSearch();">Search</button>*@
+    <a href="#modal-sf-list" id="lnkmodal-sf-list" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-danger btn-search"><i class="fa fa-search"> Search</i></a>
+</div>

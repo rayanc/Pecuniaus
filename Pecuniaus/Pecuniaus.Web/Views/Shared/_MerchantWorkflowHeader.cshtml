@@ -1,0 +1,102 @@
+﻿@{var actionName = ViewContext.RouteData.GetRequiredString("controller").ToLower();}
+<div class="row header-section circles-header-section">
+    <div class="circles">
+        <div class="@(actionName == "merchant" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "Merchant", new { area = "" })">
+                            Merchant <br>
+                            Review
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "merchantdocumentscan" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "MerchantDocumentScan", new { area = "" })">
+                            @Pecuniaus.Resources.Common.Document<br>
+                            @Pecuniaus.Resources.Common.Scanning
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "merchantdataentry" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "MerchantDataEntry", new { area = "" })">
+                            @Pecuniaus.Resources.Common.Data <br>
+                            @Pecuniaus.Resources.Common.Entry
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "merchantcreditvolume" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "MerchantCreditVolume", new { area = "" })">
+                            @Pecuniaus.Resources.Common.MCCV
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "merchantevaluation" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "MerchantEvaluation", new { area = "" })">
+                            @Pecuniaus.Resources.Common.MerchatEvaluation
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "offercreation" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "OfferCreation", new { area = "prequel" }) ">
+                            Offer <br>
+                            Creation
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="@(actionName == "offeracceptance" ? "circle_block active_circle" : "circle_block")">
+            <div>
+                <div>
+                    <div>
+                        <!-- BEG Content -->
+                        <a href="@Url.Action("Index", "OfferAcceptance", new { area = "prequel" })">
+                            Offer <br>
+                            Acceptance
+                        </a>
+                        <!-- END Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

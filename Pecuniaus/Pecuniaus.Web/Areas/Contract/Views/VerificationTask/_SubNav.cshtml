@@ -1,0 +1,15 @@
+﻿@{var actionName = ViewContext.RouteData.GetRequiredString("action").ToLower();}
+
+<div class="row">
+    <div class="pull-left">
+        <ul class="nav nav-pills">
+            <li @(actionName == "bankinformation" ? "class=active" : "")>@Html.ActionLink("Bank Info Verification", "BankInformation") </li>
+            @if (Pecuniaus.UICore.SessionHelper.IsMerchantPropertyRented)
+            {
+                <li @(actionName == "landlord" ? "class=active" : "")>@Html.ActionLink("Land Lord Verification", "LandLord")</li>
+            }
+            <li @(actionName == "corporatedocuments" ? "class=active" : "")>@Html.ActionLink("Corp Doc. Verification", "CorporateDocuments")</li>
+            <li @(actionName == "commercialname" ? "class=active" : "")>@Html.ActionLink("Commercial name Verification", "CommercialName")</li>
+        </ul>
+    </div>
+</div>

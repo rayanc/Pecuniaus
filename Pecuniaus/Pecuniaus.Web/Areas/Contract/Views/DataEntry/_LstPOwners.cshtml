@@ -1,0 +1,42 @@
+﻿@model Tuple<Pecuniaus.Models.User.GroupPermission, IEnumerable<Pecuniaus.Models.Contract.OwnerModel>>
+
+@{var isFormDisabled = Model.Item1.IsFormDisabled;}
+
+@using GridMvc.Html
+@Html.Grid(Model.Item2).Columns(columns =>
+           {
+               columns.Add(m => m.OwnerId, true);
+               columns.Add(m => m.OwnerFirstName).Titled(Pecuniaus.Resources.Contract.DataEntry.Name);
+               columns.Add(m => m.Phone1).Titled(Pecuniaus.Resources.Contract.DataEntry.Phone);
+               columns.Add(m => m.AddressLine1).Titled(Pecuniaus.Resources.Contract.DataEntry.Address);
+               columns.Add(m => m.City).Titled(Pecuniaus.Resources.Contract.DataEntry.City);
+               columns.Add(m => m.State).Titled(Pecuniaus.Resources.Contract.DataEntry.State);
+               columns.Add(m => m.StateID, true);               
+               columns.Add(m => m.Zip).Titled(Pecuniaus.Resources.Contract.DataEntry.ZipCode);
+               columns.Add(m => m.Authorized).Titled(Pecuniaus.Resources.Contract.DataEntry.Authorized);
+               columns.Add(m => m.addressId, true);
+               columns.Add(m => m.contactId, true);
+if(!isFormDisabled)
+{ 
+               columns.Add()
+                   .Sanitized(false)
+                   .Encoded(false)
+                   .RenderValueAs(o => RenderActionLinks(o));
+}
+           }).WithPaging(10).Sortable(true)
+
+@helper RenderActionLinks(Pecuniaus.Models.Contract.OwnerModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditOwner(@m.Id);"><i class="fa fa-pencil-square-o"></i></a>
+    @Html.Raw(@Ajax.ActionLink("[Delete]",
+                 "DelOwner",
+                  new { id = m.Id },
+                new AjaxOptions
+                 {
+                     OnSuccess = "OwnerDeleted()",
+                     //    UpdateTargetId="CustomerList", // <-- DOM element ID to update
+                     // InsertionMode = InsertionMode., // <-- Replace the content of DOM element
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+
+}

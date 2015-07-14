@@ -1,0 +1,210 @@
+﻿
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWContract);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CW_Contract);
+}
+
+<div class="content-header">
+    <div class="header-section">
+        @Html.Partial("_Header")
+        <div class="row">
+            <div class="col-md-4 col-lg-6 hidden-sm">
+                <h1>
+                    Contract<br>
+                </h1>
+                @Html.Partial("_PageMessage")
+
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    @Html.Partial("_breadcrumbBase")
+    <li>@Pecuniaus.Resources.Common.Contract</li>
+</ul>
+<div class="content-header tophdrbuttons">
+    <div class="row">
+        <div class="pull-right">
+            <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank"  @(isFormDisabled ? "disabled" : "")>
+                @Pecuniaus.Resources.Common.Document
+            </a>
+            @*<a href="@Url.Action("Index", "MerchantEvaluation", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                @Pecuniaus.Resources.Common.PQMerchantEvaluation
+            </a>*@
+            @if (permissions.Write)
+            {<a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                @Pecuniaus.Resources.Common.Kickback
+            </a>
+
+                <form method="post" style="display:inline">
+                    <button class="btn btn-success" type="submit" name="button" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                </form>
+            @*<input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />*@
+            <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                @Pecuniaus.Resources.Common.Decline
+            </a>}
+        </div>
+    </div>
+</div>
+<!-- All Boxes Content Start -->
+@{ Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+<div class="row">
+    <div class="col-md-12">
+        <div  class="form-horizontal ">
+            <div class="block full">
+                <div class="block-title">
+                    <h2> @Pecuniaus.Resources.Common.GenerateContract</h2>
+                </div>
+                <div id="dvContAcor" class="panel-group" data-ajax-accordrev="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_doc">@Pecuniaus.Resources.Common.DocumentScanning</a></h4>
+                        </div>
+                        <div id="cntRevw_doc" class="panel-collapse collapse" data-source-url="@Url.Action("Documents")" data-success-callback="ajaxifyGridMvc('#dvdocgrid');">
+                            <div class="panel-body">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_VerCall">@Pecuniaus.Resources.Common.VerificationCall</a></h4>
+                        </div>
+                        <div id="cntRevw_VerCall" class="panel-collapse collapse" data-source-url="@Url.Action("VerificationCall")">
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_DE">@Pecuniaus.Resources.Common.DataEntry</a></h4>
+                        </div>
+                        <div id="cntRevw_DE" class="panel-collapse collapse" data-source-url="@Url.Action("DataEntry")">
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_Veri">@Pecuniaus.Resources.Common.VerificationTask</a></h4>
+                        </div>
+                        <div id="cntRevw_Veri" class="panel-collapse collapse" data-source-url="@Url.Action("VerificationTask")">
+                            <div class="panel-body"></div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#faq1_q5">@Pecuniaus.Resources.Common.Contracts</a></h4>
+                        </div>
+                        <div id="faq1_q5" class="panel-collapse collapse" data-source-url="@Url.Action("Contracts")">
+                            <div class="panel-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Popup", "Kickback", new { area = "Contract", TaskTypeId = Pecuniaus.UICore.TaskTypes.CWContract})
+
+
+@*@section Scripts {
+    <script>
+
+        $(document).ajaxComplete(function () {
+            $(document).on('change', '.docType', function () {
+                GetImageData($(this).val(), "imgprvw");
+            });
+        });
+
+    </script>
+}*@
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/ajaxform")
+    <script>
+        //Scan
+        $("div[data-ajax-accordRev=true]").on('show.bs.collapse', function (e) {
+            var $target = $(e.target)
+
+            var url = $target.attr('data-source-url');
+            if (url != 'undefined') {
+
+                var $body = $target.find('.panel-body');
+                if ($.trim($body.html()).length == 0) {
+                    $body.load(url, function () {
+                        if ($target.attr('id') == 'cntRevw_doc') {
+                            $(document).on('change', '.docType', function () {
+                                GetDocsList($(this).val(), "dvDocGrid");
+                            });
+                            ajaxifyGridMvc("#dvDocGrid");
+                            $('#frmScanDoc').ajaxForm({
+                                complete: function (xhr) {
+                                    var $file = $("#file")
+                                    resetFormInputElement($file);
+                                    LoadGrid();
+                                }
+                            });
+                        }
+
+                        else if ($target.attr('id') == 'cntRevw_DE') {
+                            AjaxInitDE();
+                        }
+                        else if ($target.attr('id') == 'cntRevw_Veri') {
+                            SetVeriTabs();
+                            //InitBankInfo()
+                            //InitCorpDocsVeri();
+                            //InitCommertialNameVeri();
+                            ///*LL*/
+                            //$('.qrWR:checked').each(function () {
+                            //    SetCtrlAttr(this);
+                            //});
+
+                            //$('.qrWR').on('change', function () {
+                            //    SetCtrlAttr(this);
+                            //});
+                        }
+                        else if ($target.attr('id') == 'cntRevw_VerCall') {
+                            AjaxInitVeriCall();
+                            InitVeriCall();
+                        }
+
+
+                    });
+                }
+            }
+
+        });
+
+        function EditDoc(id) {
+            $('#file').show();
+            $('#lkAddNew').hide();
+            $('#hDocID').val(id);
+        }
+
+        function LoadGrid() {
+            var selectedItem = $(".docType :selected").val();
+
+            var $dv = $("#dvDocGrid");
+            var url = $dv.attr('data-source-url') + '?docType=' + selectedItem;
+            $dv.load(url);
+
+            if (selectedItem > 0) {
+                $('#file').hide();
+                //$('#lkAddNew').show();
+                $('#hDocID').val('0');
+            }
+        }
+
+    </script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/VeriCall.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/DataEntry.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/BankInfo.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/CorpDocVeri.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/CorpDocVeri.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/CommertialNameVeri.js")"></script>
+
+}

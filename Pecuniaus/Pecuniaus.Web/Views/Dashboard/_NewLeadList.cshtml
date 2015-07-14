@@ -1,0 +1,11 @@
+﻿@model  IEnumerable<Pecuniaus.Models.NewLead>
+@using GridMvc.Html
+
+@Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(m => m.LegalName).Titled("Legal Name");
+               columns.Add(m => m.LeadSource).Titled("Lead Source");
+
+           }).WithPaging(4).Sortable(true)
+
+

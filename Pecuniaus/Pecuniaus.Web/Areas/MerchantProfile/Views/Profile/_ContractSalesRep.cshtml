@@ -1,0 +1,64 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractModel
+@{
+    var permissionsContracts = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Contracts);
+}
+<div class="panel-body">
+    <div class="row">
+        <div class="block top3head">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-right">
+@*@if (permissionsContracts.Edit)
+                        {*@
+                        <button class="btn btn-primary" type="button" onclick="loadContractSalesRepDetailstoAdd();">@Pecuniaus.Resources.Common.AddNew</button>
+@*}*@
+                        <button class="btn btn-primary" type="button">@Pecuniaus.Resources.Common.Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                    <thead>
+                        <tr role="row">
+@*@if (permissionsContracts.Edit)
+                        {*@
+                            <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Edit</th>
+@*}*@
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.SaleRepID</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.SalesRepName</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.IsPrimary</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.TypeofSale</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.TypeofAgreement</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.Commission</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Contracts.RenewalCommission</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var modItem in Model.SalesRep)
+                        {
+                            <tr>
+@*@if (permissionsContracts.Edit)
+                        {*@
+                                <td><input type="radio" id="example-checkbox1" name="example-checkbox1" value="option1" onclick="loadContractSalesRepDetails(@Html.DisplayFor(Item => modItem.SalesRepId));"></td>
+@*}*@
+                                <td>@Html.DisplayFor(item => modItem.SalesRepId)</td>
+                                <td>@Html.DisplayFor(item => modItem.SalesRepName)</td>
+                                <td>@Html.DisplayFor(item => modItem.IsPrimary)</td>
+                                <td>@Html.DisplayFor(item => modItem.SaleType)</td>
+                                <td>@Html.DisplayFor(item => modItem.AgreementType)</td>
+                                <td>@Html.DisplayFor(item => modItem.Commission)</td>
+                                <td>@Html.DisplayFor(item => modItem.RenewalCommission)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+            </div>
+            <div id="salesrepdetails">
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+    </div>
+</div>

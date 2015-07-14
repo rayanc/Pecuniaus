@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Pecuniaus.Models.SearchResultModel>
+
+@using GridMvc.Html
+
+<div class="">
+    @Html.Grid(Model, "SearchGridTemp").Columns(columns =>
+{
+    columns.Add()
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(o => RenderCol1(o));
+
+    columns.Add()
+        .Sanitized(false)
+        .Encoded(false)
+        .RenderValueAs(o => RenderCol2(o));
+
+}).WithPaging(5)
+
+    @helper RenderCol1(Pecuniaus.Models.SearchResultModel m)
+{
+    <address>
+        <input type="hidden" value="@m.MerchantId" data-taskid="@m.TaskTypeId" id="MPMerchantID" name="MPMerchantID" />
+        <strong>Merchant Name</strong> @m.businessName<br>
+        <strong>Merchant ID:</strong> @m.MerchantId<br>
+    </address>
+
+    @*<a href="?merchantid=@m.MerchantId" title="">@m.MerchantName</a>*@
+}
+    @helper RenderCol2(Pecuniaus.Models.SearchResultModel m)
+{
+
+    <address>
+        <strong>Legal Name:</strong> @m.legalName<br>
+        <strong>Merchant Status:</strong> @m.merchantStatus<br>
+    </address>
+    @*<a href="?merchantid=@m.MerchantId" title="">@m.MerchantName</a>*@
+}
+
+
+</div>
+
+@*@model IEnumerable<Pecuniaus.MerchantProfile.Models.MerchantsModel>
+
+        <table>
+            @{
+    if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr onclick="SetSelectedMerchant($(this));">
+                <td>
+                    <div class="row popup_rowbg">
+                        <div class="col-md-12">
+                            <address>
+                                <strong>Merchant Name: </strong> @Html.DisplayFor(modelItem => item.merchantName)<br>
+                                <strong>Merchant ID:</strong> <span id="lblMerchantID">@Html.DisplayFor(modelItem => item.merchantId)</span>    <br>
+    <strong>Sales Rep:</strong> @Html.DisplayFor(modelItem => item.salesRepId)<br>
+</address>
+                        </div>
+                        @*<div class="col-md-6">
+                                <address>
+                                    <strong>Task Name: </strong> @Html.DisplayFor(modelItem => item.processor)<br>
+                                    <strong>Task Status :</strong> @Html.DisplayFor(modelItem => item.processorCompany) <br>
+                                </address>
+                            </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+}*@

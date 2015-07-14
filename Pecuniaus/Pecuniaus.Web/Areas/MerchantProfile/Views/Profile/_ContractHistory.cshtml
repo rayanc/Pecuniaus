@@ -1,0 +1,52 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractModel
+@using (Ajax.BeginForm("ProcessContractHistory", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q11_q4" }))
+{
+@Html.Partial("_PageMessage")
+@Html.ValidationSummary()
+<div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    @Pecuniaus.Resources.Common.From
+                    @Html.EditorFor(m => m.HistoryDetail.HistoryStartDate)
+                </div>
+                <div class="col-md-3">
+                    @Pecuniaus.Resources.Common.To
+                    @Html.EditorFor(m => m.HistoryDetail.HistoryEndDate)
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5" style="margin-top:17px;">
+                    <div class="pull-left">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="FilterHistory">@Pecuniaus.Resources.Common.Search</button>
+                        <button class="btn btn-danger" type="button">@Pecuniaus.Resources.Common.Clear</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                    <thead>
+                        <tr role="row">
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.History.Date</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.History.Field</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.History.OldValue</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.History.NewValue</th>
+                        </tr>
+                    </thead>
+                    <tbody>                        
+                        @foreach (var modItem in Model.HistoryDetail.HistoryDetail)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(item => modItem.HistoryDate)</td>
+                                <td>@Html.DisplayFor(item => modItem.Field)</td>
+                                <td>@Html.DisplayFor(item => modItem.OldValue)</td>
+                                <td>@Html.DisplayFor(item => modItem.NewValue)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+</div>
+}

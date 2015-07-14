@@ -1,0 +1,17 @@
+﻿@model List<Pecuniaus.User.Models.GroupModel>
+@using GridMvc.Html
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(data => data.GroupName).Titled(@Pecuniaus.Resources.User.Group.GroupName);
+    columns.Add(data => data.GroupTypeName).Titled(@Pecuniaus.Resources.User.Group.GroupType);
+    columns.Add(data => data.IsActive).Titled(@Pecuniaus.Resources.User.Group.IsActive);
+    columns.Add()
+                 .Sanitized(false)
+                 .Encoded(false)
+                 .RenderValueAs(o => RenderActionLinks(o));
+}).WithPaging(5).Sortable(true)
+@helper RenderActionLinks(Pecuniaus.User.Models.GroupModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditGroup(@m.GroupID);"><i class="fa fa-pencil-square-o"></i></a>
+}

@@ -1,0 +1,81 @@
+﻿@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWVerificationTask);}
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "", @class = "form-horizontal", role = "form" }))
+{
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_Header")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        @Pecuniaus.Resources.Common.VerificationTask<br>
+                    </h1>
+                    @Html.Partial("_PageMessage")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="breadcrumb breadcrumb-top">
+        @Html.Partial("_breadcrumbBase")
+        <li>@Pecuniaus.Resources.Common.VerificationTask</li>
+    </ul>
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Document
+                </a>
+                <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Kickback
+                </a>
+
+                <button class="btn btn-success" type="submit" name="button" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Decline
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="nav nav-pills" role="tablist" id="VeriTabs">
+                <li role="presentation"><a href="#tBankInfo" aria-controls="tBankInfo" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.BankInfoVerification</a></li>
+                <li role="presentation"><a href="#tLLVeri" aria-controls="tLLVeri" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.LandLordVerification</a></li>
+                <li role="presentation"><a href="#tCorpDoc" aria-controls="tCorpDoc" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.CorpDocVerification</a></li>
+                <li role="presentation"><a href="#tCommName" aria-controls="tCommName" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.CommercialnameVerification</a></li>
+            </ul>
+        </div>
+    </div>
+
+    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="tBankInfo" data-url="@Url.Action("BankInfoVer")">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tLLVeri" data-url="@Url.Action("LandLordVer")">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tCorpDoc" data-url="@Url.Action("CorpDocVer")">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tCommName" data-url="@Url.Action("CommNameVer")">
+        </div>
+    </div>
+
+
+}
+@Html.Action("Popup", "Kickback", new { area = "Contract", TaskTypeId = Pecuniaus.UICore.TaskTypes.CWVerificationTask })
+
+@section Scripts {
+@Scripts.Render("~/bundles/inputmask")
+@Scripts.Render("~/bundles/ajaxform")
+
+
+<script src="@Url.Content("~/Areas/Contract/Scripts/VeriCall.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/BankInfo.js")"></script>
+    <script src="@Url.Content("~/Areas/Contract/Scripts/CorpDocVeri.js")"></script>
+    @*<script src="@Url.Content("~/Areas/Contract/Scripts/CorpDocVeri.js")"></script>*@
+    <script src="@Url.Content("~/Areas/Contract/Scripts/CommertialNameVeri.js")"></script>
+    <script>
+        $(function () {
+            SetVeriTabs();
+        });
+    </script>
+}

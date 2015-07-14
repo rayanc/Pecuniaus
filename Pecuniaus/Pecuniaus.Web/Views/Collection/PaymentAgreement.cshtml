@@ -1,0 +1,107 @@
+﻿@model List<Pecuniaus.Web.Models.CollectionPaymentAgreementModel>
+
+@{
+    ViewBag.Title = "Payment Agreement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-content" style="min-height: 516px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>Merchant Documents</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li>Collection Workflow</li>
+        <li><a href="">Merchant Documents</a></li>
+    </ul>
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="example-nf-email">Merchant :@ViewBag.MerchantName</label>
+
+            </div>
+            <div class="col-md-3">
+                <label for="example-nf-email">Merchant Id :@ViewBag.MerchantID </label>
+
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-primary">Return to collection Screen</button>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="table-responsive">
+            @if (Model != null && Model.Count > 0)
+            {
+                <table style="font-size:12px" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" role="grid">
+                    <thead>
+                        <tr role="row">
+                           
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1">
+                                @Html.DisplayNameFor(model => model[0].StartDate)
+                            </th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1"> @Html.DisplayNameFor(model => model[0].EndDate)</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1"> @Html.DisplayNameFor(model => model[0].Status)</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1"> @Html.DisplayNameFor(model => model[0].IntervalofDays)</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1"> @Html.DisplayNameFor(model => model[0].DateofPayment)</th>
+                            <th class="" tabindex="0" aria-controls="example-datatable" rowspan="1" colspan="1"> Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StartDate)
+                                    <span id="spanDocumentId" style="display:none;">@Html.DisplayFor(modelItem => item.collectionId)</span>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EndDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IntervalofDays)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateofPayment)
+                                </td>
+
+                                <td>
+                                    <div class="col-md-6" style="width:100%;">
+                                        <div class="pull-right">
+                                            <button type="button" class="btn btn-primary">Upload Signed Document</button>
+                                            <button type="button" class="btn btn-primary">Edit</button>
+
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+            }
+        </div>
+
+
+
+    </div>
+    <!-- Datatables Content -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>

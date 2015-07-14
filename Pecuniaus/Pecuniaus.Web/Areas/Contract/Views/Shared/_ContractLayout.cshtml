@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@RenderSection("CSS", required: false)
+
+<header class="navbar navbar-default">
+    <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+    </ul>
+    @*<ul class="nav navbar-nav-custom topsearchBox">
+        <li>
+            <div class="form-group">
+                <div id="Search">
+                    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 2, SearchType = "P" })
+                </div>
+            </div>
+        </li>
+    </ul>*@
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 2, SearchType = "P" })
+
+
+    @Html.Partial("_HeaderRight")
+</header>
+<!-- Page content -->
+<div id="page-content">
+    @RenderBody()
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Contract")
+    @RenderSection("scripts", required: false)
+}

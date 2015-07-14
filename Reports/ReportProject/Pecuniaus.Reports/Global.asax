@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="Pecuniaus.Reports.MvcApplication" Language="C#" %>

@@ -1,0 +1,53 @@
+﻿@model Pecuniaus.Models.Contract.CommercialNameVeriModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-horizontal ">
+            <div class="block full">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.CWCommercialNameVerification</h2>
+                </div>
+                @Html.HiddenFor(m => m.addressId)
+                <div class="form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.BusinessName)
+                        @Html.TextBoxFor(m => m.BusinessName, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.telephone)
+                        @Html.TextBoxFor(m => m.telephone, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.City)
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.StateId)
+                        @Html.DropDownListFor(m => m.StateId, Model.States, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <div class="widget-simple">
+                        @Html.HiddenFor(m => m.DocTypeId, new { id = "hComNameDocTId" })
+                        <div id="dvComNameDoc" data-source-url="@Url.Action("GetDocListModal", "DocumentScan",
+                    new {
+                        area = "Contract",
+                        MerchantID = Pecuniaus.UICore.SessionHelper.CurrentMerchantID,
+                        ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+                    })"></div>
+                    </div>
+                </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantModel
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_LandingPage);
+}
+@*@if (permissions.Read)
+{*@
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        @Pecuniaus.Resources.Common.Merchant @Pecuniaus.Resources.Common.Profile<br>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li><a href="">@Pecuniaus.Resources.Common.MerchantProfile</a></li>
+    </ul>
+    <!-- All Boxes Content Start -->
+    <!-- Datatables Content -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block">
+                <!-- Normal Form Title -->
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.Search @Pecuniaus.Resources.Common.Merchant</h2>
+                </div>
+                <!-- END Normal Form Title -->
+                <!-- Normal Form Content -->
+                <form class="form-horizontal form-bordered">
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.merchantID)
+                            @Html.TextBoxFor(model => model.merchantID, new { @class = "form-control", @placeholder = "Enter text.." })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.merchantStatusID)
+                            @Html.DropDownListFor(model => model.merchantStatusID, Model.merchantStatuses, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.processorID)
+                            @Html.DropDownListFor(model => model.processorID, Model.Processors, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.processorNumber)
+                            @Html.TextBoxFor(model => model.processorNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ownerName)
+                            @Html.TextBoxFor(model => model.ownerName, new { @class = "form-control", @placeholder = "Enter text.." })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.legalName)
+                            @Html.TextBoxFor(model => model.legalName, new { @class = "form-control", @placeholder = "Enter text.." })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.businessName)
+                            @Html.TextBoxFor(model => model.businessName, new { @class = "form-control", @placeholder = "Enter text.." })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ownerID)
+                            @Html.TextBoxFor(model => model.ownerID, new { @class = "form-control", @placeholder = "Enter text.." })
+                        </div>
+                        <div class="col-md-2">
+                            <label for="example-nf-email">&nbsp;</label>
+                            <a href="#modal-sf-listMP" id="lnkMerchantProfileSearch" data-toggle="modal" data-placement="bottom" class="btn btn-success form-control darkbluebtn"> @Pecuniaus.Resources.Common.Search</a>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="example-nf-email">&nbsp;</label>
+                            <button class="btn btn-danger form-control" type="button"> @Pecuniaus.Resources.Common.Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- END Normal Form Content -->
+            </div>
+        </div>
+    </div>
+    <div class="row" id="details">
+    </div>
+
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+    <script>
+    </script>
+@*}*@

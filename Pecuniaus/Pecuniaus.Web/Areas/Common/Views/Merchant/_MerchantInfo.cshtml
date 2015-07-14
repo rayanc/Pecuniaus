@@ -1,0 +1,86 @@
+﻿@model Pecuniaus.Models.MerchantModel
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="widget">
+            <div class="widget-extra blue_bg">
+                <div class="widget-options">
+                    <div class="btn-group btn-group-xs notesmrgn">
+                        @if (Pecuniaus.UICore.SessionHelper.CurrentMerchantID > 0)
+                        {
+                            <a href="#modal-notes" data-toggle="modal" data-placement="bottom"  class="btn btn-sm btn-default enable-tooltip"> <i class="fa fa-pencil"></i></a>
+                        }
+
+                        <a title="" data-toggle="tooltip" class="btn btn-default" href="javascript:void(0)" data-original-title="Quick Settings"><i class="fa fa-cog"></i></a>
+                    </div>
+                </div>
+                <h3 class="widget-content-light">Merchant Information</h3>
+            </div>
+            <div class="widget-simple">
+                <div class="row">
+                    <div class="col-md-6">
+                        <address>
+                            <strong>Merchant ID: </strong> @Model.MerchantID<br>
+                            <strong>Merchant Name: </strong> @Model.MerchantName<br>
+                            <strong>Legal Name:</strong> @Model.LegalName <br>
+
+                        </address>
+                    </div>
+                    <div class="col-md-6">
+                        <address>
+                            <strong>Assigned Agent:</strong> @Model.assignedUser<br>
+                            <strong>Industry Type:</strong> @Model.industrytype <br>
+                            <strong>Property Type:</strong> @Model.merchantpropertytype <br>
+                        </address>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <address>
+                            <strong>Business Name: </strong> @Model.BusinessName<br>
+                            <strong>RNC:</strong> @Model.Rnc<br>
+                            <strong>Contract ID:</strong> @Model.ContractId <br>
+                        </address>
+                    </div>
+                    <div class="col-md-6">
+                        <address>
+                            <strong>MCA Amount:</strong> @Html.DisplayFor(m => m.ownedamount)<br>
+                            <strong>Paid Amount:</strong> @Html.DisplayFor(m => m.paidamount) <br>
+                            <strong>Balance Amount:</strong> @Html.DisplayFor(m => m.balanceamount) <br>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="widget">
+            <div class="widget-extra green_bg">
+                <h3 class="widget-content-light">Owner Information</h3>
+            </div>
+            <div class="widget-simple" style="min-height:199px">
+                <div class="col-md-6">
+                    <address>
+                        <strong>Owner Name: </strong> @Model.OwnerName  <br>
+                        <strong>Address:</strong> @Model.OwnerAddress <br>
+                        <strong>ID/Passport Number: </strong> @Model.Ssn <br>
+                        <strong>Phone Number:</strong> @Model.phoneNumber<br>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div id="modal-notes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body" id="dvNotesList" data-source-url="@Url.Action("List", "Notes", new { area = "Common", mode="P", merchantID = Model.MerchantID })">
+                </div>
+            </div>
+        </div>
+    </div>*@
+

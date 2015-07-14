@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "Collection Workflow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/scriptsbundle")
+<div id="page-content" style="min-height: 516px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Common.Collections</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li><a href="">@Pecuniaus.Resources.Common.ContractWorkflow</a></li>
+    </ul>
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <button id="buttonSave" type="button" class="btn btn-primary">@Pecuniaus.Resources.Common.Save</button>
+            </div>
+        </div>
+    </div>
+    <!-- Datatables Content -->
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Widget -->
+            <div class="widget">
+                <div class="widget-extra blue_bg">
+                    <h3 class="widget-content-light">@Pecuniaus.Resources.Common.Contract <strong>@Pecuniaus.Resources.Common.Information</strong></h3>
+                </div>
+                <div class="widget-simple">
+                    <h4><strong>@Pecuniaus.Resources.Collection.Collection.CollectionState:</strong></h4>
+                   
+   <div class="col-md-6">
+            <address>
+               
+                <strong>Merchant I: </strong> @ViewBag.ContractInformation.MerchantName<br>
+                <strong>Contract II: </strong>>@ViewBag.ContractInformation.Contract<br>
+                <strong>Funding Data:</strong> @ViewBag.ContractInformation.FundingDate <br>
+                <strong>Monthly Average:</strong> @ViewBag.ContractInformation.MonthlyAverage<br>
+                <strong>CC volumne used in offers:</strong> @ViewBag.ContractInformation.CCVolumeUsed<br>
+                @*<strong>Merchant I: </strong> Robert Ryan<br>
+                    <strong>Merchant II: </strong> Robert Ryan<br>
+                    <strong>Contract II: </strong> Robert Ryan<br>
+                    <strong>Funding Data:</strong> Ryan <br>
+                    <strong>Monthly Average:</strong> 20<br>
+                    <strong>CC volumne used in of:</strong> 20<br>*@
+
+            </address>
+        </div>
+        <div class="col-md-6">
+            <address>
+
+
+                <strong>AEC: </strong> @ViewBag.ContractInformation.AEC<br>
+                <strong>Owner :</strong> @ViewBag.ContractInformation.OwnerName <br>
+                <strong>Retention :</strong> @ViewBag.ContractInformation.Retention <br>
+                <strong>Time :</strong> @ViewBag.ContractInformation.Time <br>
+                <strong>Pending amount :</strong> @ViewBag.ContractInformation.PendingAmount <br>
+            </address>
+        </div> 
+  
+                   
+                </div>
+            </div>
+            <!-- END Widget -->
+        </div>
+        <div class="col-md-6">
+            <!-- Widget -->
+            <div class="widget">
+                <div class="widget-extra green_bg">
+                    <h3 class="widget-content-light">@Pecuniaus.Resources.Common.Owner <strong>@Pecuniaus.Resources.Common.Information </strong></h3>
+                </div>
+                <div class="widget-simple">
+                    <div class="col-md-6">
+                        <address>
+                            <strong>@Pecuniaus.Resources.Common.Name:</strong>@ViewBag.OwnerInformation.OwnerFirstName<br>
+                            <strong>@Pecuniaus.Resources.Common.LastName:</strong> @ViewBag.OwnerInformation.OwnerLastName <br>
+                            <strong>@Pecuniaus.Resources.Common.ID:</strong> @ViewBag.OwnerInformation.OwnerId<br>
+                        </address>
+                    </div>
+                    <div class="col-md-6">
+                        <address>
+                            <strong>@Pecuniaus.Resources.Common.Address: </strong> @ViewBag.OwnerInformation.AddressLine1<br>@ViewBag.OwnerInformation.AddressLine2
+                            <strong>@Pecuniaus.Resources.Common.Telephone:</strong> @ViewBag.OwnerInformation.Phone1 <br>
+                            <strong>@Pecuniaus.Resources.Common.CellPhone:</strong> Close <br>@ViewBag.OwnerInformation.CellNumber
+
+                            <br>
+                            <br>
+                            <br>
+                            
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <!-- END Widget -->
+        </div>
+    </div>
+    <div class="tophdrbuttons1">
+        <div class="row">
+            <div class="pull-right">
+                <button type="button" class="btn btn-primary">@Pecuniaus.Resources.Collection.Collection.DataCredito</button>
+                <button type="button" class="btn btn-info">@Pecuniaus.Resources.Collection.Collection.Affilition</button>
+                <button type="button" class="btn btn-warning">@Pecuniaus.Resources.Common.Documents</button>
+                <button type="button" class="btn btn-danger">@Pecuniaus.Resources.Collection.Collection.Landlord</button>
+                <button type="button" class="btn btn-info">@Pecuniaus.Resources.Collection.Collection.Payment</button>
+                <button type="button" class="btn btn-success">@Pecuniaus.Resources.Collection.Collection.Legal</button>
+                <button type="button" class="btn btn-primary">@Pecuniaus.Resources.Common.Save</button>
+                <button type="button" class="btn btn-danger">@Pecuniaus.Resources.Common.Decline</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>@Pecuniaus.Resources.Collection.Collection.Generate </strong> @Pecuniaus.Resources.Collection.Collection.Letter</h2>
+                </div>
+                <div class="row">
+                    <div class="widget-simple">
+                        <div class="form-group clearfix">
+                            <label class="col-md-3 control-label" for="example-select">@Pecuniaus.Resources.Collection.Collection.Activity</label>
+                            <div class="col-md-6">
+                                <select id="example-select" name="example-select" class="form-control" size="1">
+                                    <option value="0">Contacted by telephonet</option>
+                                    <option value="1">Contacted by email</option>
+                                    <option value="2">Invstigative visit</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="example-textarea-input">@Pecuniaus.Resources.Collection.Collection.Note</label>
+                            <div class="col-md-6">
+                                <textarea id="example-textarea-input" name="example-textarea-input" rows="9" class="form-control" placeholder=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+

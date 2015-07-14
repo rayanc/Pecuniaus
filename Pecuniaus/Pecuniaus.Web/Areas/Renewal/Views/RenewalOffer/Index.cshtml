@@ -1,0 +1,640 @@
+﻿@model Pecuniaus.Models.Contract.MerchantInformationOfferModel
+
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWOfferCreation);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.RW_OfferCreation);
+}
+
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 1, SearchType = "PT", ShowSf = true })
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+<!-- Main Container -->
+@*<div id="main-container">*@
+
+<!-- END Header -->
+<!-- Page content -->
+<div id="page-content">
+    @using (Html.BeginForm("index", "RenewalOffer", FormMethod.Post, new { @class = "a", role = "form" }))
+    {
+        <div class="content-header">
+            <div class="header-section">
+                @Html.Partial("_RenewalWorkflowHeader")
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>Offer Creation
+                            <br>
+                        </h1>
+                        @Html.Partial("_PageMessage")
+                        <label for="errMessage" style="color: red;"></label>
+                        @Html.ValidationSummary()
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="breadcrumb breadcrumb-top">
+            <li>@Pecuniaus.Resources.Common.Contract</li>
+            <li>@Pecuniaus.Resources.Renewal.Renewal.renewalWorkflow</li>
+            <li><a href="#">@Pecuniaus.Resources.Common.OfferCreation</a> </li>
+        </ul>
+
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    @if (permissions.Write)
+                    {
+                        <a href="@Url.Action("ScanDoc", "DocumentScan", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Document
+                        </a>
+                        <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Kickback
+                        </a>
+                        <button class="btn btn-success" id="btnComplete" type="submit" name="button" onclick="return ValidateOffer();" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete </button>
+                        <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                        <a href="#mod_decline" id="btnDecline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Decline
+                        </a>}
+                </div>
+            </div>
+        </div>
+        <!-- All Boxes Content Start -->
+                    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.UICore.SessionHelper.CurrentMerchantID }); }
+
+        <!-- Datatables Content -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="form-group">
+                                    <div class=" col-md-3">
+                                        @if ((isFormDisabled))
+                                        {
+                                            <input type="hidden" id="hdnButtonStatus" value="disabled" />
+                                        }
+                                        else
+                                        {
+                                            <input type="hidden" id="hdnButtonStatus" value="enabled" />
+                                        }
+
+                                        @Html.LabelFor(m => m.businessName) :
+                                        @Html.TextBoxFor(m => m.businessName, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.address.addressLine1) :
+                                        @Html.TextBoxFor(m => m.address.addressLine1, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.score) :
+                                        @Html.TextBoxFor(m => m.score, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.finalscore) :
+                                        @Html.TextBoxFor(m => m.finalscore, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+                                    <div class=" col-md-3">
+                                        @Html.LabelFor(m => m.address.state) :
+                                        @Html.TextBoxFor(m => m.address.state, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>
+                                            @Html.CheckBoxFor(m => m.AddManulMccv, new { id = "chkManual", onclick = "EnableReason();" })
+                                            @*<input type="checkbox" id="chkManual" onclick="EnableReason();">*@
+                                            Add Manual MCCV
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.LabelFor(m => m.yearlysales)
+                                        <div class="input-group">
+                                            <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                            @Html.EditorFor(m => m.yearlysales, new { htmlAttributes = new { id = "grossYearlySales" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.LabelFor(m => m.avgmccv)
+                                        <div class="input-group">
+                                            <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                            @Html.EditorFor(m => m.avgmccv, new { htmlAttributes = new { @id = "averageMCCV", @readonly = "readonly" } })
+                                            @Html.HiddenFor(m => m.SelectedOfferId)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div id="divReason" class="col-md-12">
+                                        @Html.LabelFor(m => m.reason)
+                                        @Html.TextBoxFor(m => m.reason, new { @class = "form-control", @placeholder = "Enter text.." })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="SelectedOfferId" id="hdnSelOffer" value="@Model.SelectedOfferId" />
+    }
+    <div id="dvEditOffer">
+        @{ Html.RenderAction("AddOffer");  }
+    </div>
+    <div>
+        <div class="form-group" id="dvOffers">
+            @{ Html.RenderAction("ListOffers");  }
+        </div>
+    </div>
+
+    <div id="mod_SendOfferEmail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" data-source-url="@Url.Action("SendEmail", "RenewalOffer", new
+                                                    {
+                                                        area = "Renewal",
+                                                        workflowid = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(),
+                                                        contractid = Pecuniaus.UICore.SessionHelper.ContractID
+                                                    })">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@Html.Action("Popup", "Kickback", new { area = "Renewal", TaskTypeId = Pecuniaus.UICore.TaskTypes.RWOfferCreation })
+
+
+<!-- END Page Content -->
+<!-- Footer -->
+<!-- END Main Container -->
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/inputmask")
+
+    <script>
+
+        $(document).ready(function () {
+            ajaxifyGridMvc("#dvOffers");
+            EnableReason() ;
+        });
+
+        function SetSelected(v) { 
+           
+            $('#SelectedOfferId').val(v);
+        };
+        
+        function ValidateOffer() {
+            var selectedOffer = $("input:radio[name=Selectedoffer]:checked").val();
+            if (selectedOffer == undefined) {
+                jQuery("label[for='errMessage']").html("Please select Offer");
+                return false;
+            }
+            else {
+                jQuery("label[for='errMessage']").html("");
+                return true;
+            }
+        };
+        function EnableReason() {
+            if ($("#chkManual").prop('checked') == true) {
+                $("#divReason").show();
+                $("#averageMCCV").removeAttr("readonly" );
+
+            }
+            else {
+                $("#divReason").hide();
+                $("#averageMCCV").attr('readonly','readonly');
+            }
+        }
+
+        function OfferUpdated() {
+            RefreshOfferList();
+        };
+
+        function OfferDeleted() {
+            RefreshOfferList();
+        };
+
+        function EditOffer(offerID) {
+            $('#dvEditOffer').load('@Url.Action("EditOffer")?id=' + offerID);
+            RefershSliders();
+        }
+        function CEOffer() {
+            $('#dvEditOffer').load('@Url.Action("AddOffer")');
+            RefershSliders();
+        }
+
+        function RefershSliders() {
+            $("#slLoanAmt .input-slider1").slider('refresh');
+            $("#slPropotion .input-slider1").slider('refresh');
+            $("#slRetention .input-slider1").slider('refresh');
+            $("#slTime .input-slider1").slider('refresh');
+        }
+
+        function RefreshOfferList() {
+            $('#dvOffers').load('@Url.Action("ListOffers")');
+            RefershSliders();
+        }
+        function SendEmail() {
+            var values = $("#sEmList>option").map(function () { return $(this).val(); });
+            var url = "/RenewalOffer/GenratePDF";
+            $.post(url, { email: '' + values + '' }, function (result) {
+
+                $('#mod_sendemail').modal('hide');
+            });
+
+        }
+    </script>
+
+    <script>
+        var $slLoanAmt;
+        var $slPropotion;
+        var $slRetention;
+        var $slTime;
+        var MaxTurn=@Model.MaxTurn;
+        var MaxSalesTaken= @Model.SalesTaken;
+        var i=0;
+
+        $(document).ready(function () {
+
+            InitializeSliders();
+        });
+
+        $(document).ajaxComplete(function () {
+
+            InitializeSliders();
+        });
+
+        function InitializeSliders()
+        {
+            @if (Model.TurnMinPrice != null && Model.TurnMinPrice.Count > 0)
+            {
+                  <text>
+
+            $slLoanAmt = $("#slLoanAmt .input-slider1").slider();
+            $slPropotion = $("#slPropotion .input-slider1").slider();
+            $slRetention = $("#slRetention .input-slider1").slider();
+            $slTime = $("#slTime .input-slider1").slider();
+
+            $("#slTime .input-slider1").on('slideStop', function (ev) {
+                CalcMCA();
+            });
+
+            $('#slLoanAmt .input-slider1').on('slideStop', function (ev) {
+                Calc();
+            });
+
+            $('#slPropotion .input-slider1').on('slideStop', function (ev) {
+                Calc();
+            });
+
+            $('#slRetention .input-slider1').on('slideStop', function (ev) {
+                Calc();
+            });
+
+
+            $('#txtTime').on('change paste', function(){
+                $slTime.data('slider').setValue(parseFloat($(this).val()));
+                CalcMCA();
+            });
+
+            $('#txtret').on('change paste', function(){
+                $slRetention.data('slider').setValue(parseInt($(this).val()));
+                Calc();
+            });
+
+            $('#txtprop').on('change paste', function(){
+                $slPropotion.data('slider').setValue(parseFloat($(this).val()));
+                Calc();
+            });
+
+            $('#loanAmount').on('change paste', function(){
+                var v=parseFloat(FixComma($(this).val()));
+                $slLoanAmt.data('slider').setValue(v);
+                Calc();
+            });
+
+            </text>
+            }
+            else
+            {
+           <text> DisableControls2(); </text>
+
+            }
+
+        }
+
+        function FixComma(v)
+        {
+            if(v!=undefined){
+                return  v.toString().replace(/,/g,'');
+            }
+            return v
+        }
+        function CalcMCA()
+        {
+            $('#txtTime').css('background-color', 'white');
+            $('#txtSalesTaken').css('background-color', 'white');
+            $('#txtprop').css('background-color', 'white');
+            if($('#hdnButtonStatus').val()=="enabled")
+            {
+                EnableButtons();
+            }
+            var loadAmt = $slLoanAmt.slider('getValue');
+            var propotion = $slPropotion.slider('getValue');
+            var ret = $slRetention.slider('getValue');
+            var time = $slTime.slider('getValue');
+
+            var mccv = $('#averageMCCV').val();
+            var sales =$('#grossYearlySales').val();
+
+            mccv= parseFloat(FixComma(mccv));
+            sales=parseFloat(FixComma(sales));
+            loadAmt=parseFloat(FixComma(loadAmt));
+
+
+            var monthlypay = (mccv * ret) / 100;
+            var yearlypay = monthlypay * 12;
+            var salesTaken = (yearlypay / sales) * 100;
+            var ownedAmount = (monthlypay * time);
+            var mcaAmount= (ownedAmount / propotion);
+
+            loadAmt=FixDecimals2(mcaAmount);
+            salesTaken = salesTaken ? salesTaken : 0;
+
+            $slLoanAmt.data('slider').setValue(parseFloat(mcaAmount));
+            //       $slLoanAmt.slider('setValue', mcaAmount);
+            $('#loanAmount').val(FixDecimals2(mcaAmount));
+            $('#monthlypayment').val(FixDecimals2(monthlypay));
+            $('#yearly').val(FixDecimals2(yearlypay));
+            $('#ownedAmount').val(FixDecimals2(ownedAmount));
+            $('#txtprop').val(FixDecimals(propotion));
+            $('#txtTime').val(FixDecimals2(time));
+            //  debugger;
+            $('#txtSalesTaken').val(FixDecimals2(salesTaken));
+            $('retention').val(FixDecimals2(ret));
+            $('txtret').val(FixDecimals2(ret));
+
+            if(loadAmt <=104000)
+            {
+                $('#loanAmount').css('background-color', 'red');
+                DisableControls();
+            }
+            else
+            {
+                $('#loanAmount').css('background-color', 'white');
+            }
+
+            if(salesTaken > MaxSalesTaken)
+            {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtSalesTaken').css('background-color', 'red');
+
+            }
+            if (time >= MaxTurn ) {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtTime').css('background-color', 'red');
+            }
+            else
+            {
+                @{var fRow = true;}
+                @foreach (var tp in Model.TurnMinPrice)
+                {
+                    if (fRow)
+                    {
+                            <text>
+                if(Math.round(time) == @tp.MaxTime  && propotion <= @tp.minPrice )
+                {
+
+                            if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+            </text>
+                    }
+                    else
+                    { <text>
+        else if(Math.round(time) == @tp.MaxTime  &&  propotion <= @tp.minPrice )
+            {
+
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+
+            </text>
+                    }
+                    fRow = false;
+                }
+
+        }
+        }
+
+
+
+        function Calc() {
+
+
+            $('#txtTime').css('background-color', 'white');
+            $('#txtSalesTaken').css('background-color', 'white');
+            $('#txtprop').css('background-color', 'white');
+            if($('#hdnButtonStatus').val()=="enabled")
+            {
+                EnableButtons();
+            }
+            var loadAmt = $slLoanAmt.slider('getValue');
+            var propotion = $slPropotion.slider('getValue');
+            var ret = $slRetention.slider('getValue');
+            var time = $slTime.slider('getValue');
+
+            var mccv = $('#averageMCCV').val();
+            var sales =$('#grossYearlySales').val();
+
+            mccv= parseFloat(FixComma(mccv));
+            sales=parseFloat(FixComma(sales));
+            loadAmt=parseFloat(FixComma(loadAmt));
+
+            var ownedAmount = (propotion * loadAmt);
+            var monthlypay = (mccv * ret) / 100;
+            var yearlypay =  monthlypay * 12;
+            var term = ownedAmount / monthlypay;
+            var salesTaken = ((yearlypay / sales) * 100);
+
+
+            salesTaken = salesTaken ? salesTaken : 0;
+
+            $('#txtTime').val(FixDecimals2(term));
+            $('#monthlypayment').val(FixDecimals2(monthlypay));
+            $('#yearly').val(FixDecimals2(yearlypay));
+            $('#ownedAmount').val(FixDecimals2(ownedAmount));
+
+            $('#loanAmount').val(FixDecimals2( loadAmt));
+            $('#txtprop').val(FixDecimals(propotion));
+            // debugger;
+            $('#txtSalesTaken').val(FixDecimals2(salesTaken));
+            $('retention').val(FixDecimals2(ret));
+            $('#txtret').val(FixDecimals2(ret));
+
+            $slTime.data('slider').setValue(parseFloat(term));
+
+            //          $slTime.slider('setValue', term);
+
+            if(loadAmt <=104000)
+            {
+                $('#loanAmount').css('background-color', 'red');
+                DisableControls();
+            }
+            else
+            {
+                $('#loanAmount').css('background-color', 'white');
+            }
+
+            if(salesTaken > MaxSalesTaken)
+            {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtSalesTaken').css('background-color', 'red');
+            }
+            if (term >= MaxTurn ) {
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtTime').css('background-color', 'red');
+            }
+            else
+            {
+                @{var firstRow = true;}
+                @foreach (var tp in Model.TurnMinPrice)
+                {
+                    if (firstRow)
+                    {
+                            <text>
+                if(Math.round(term) == @tp.MaxTime  && propotion <= @tp.minPrice )
+                {
+
+                            if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+            </text>
+                    }
+                    else
+                    { <text>
+        else if(Math.round(term) == @tp.MaxTime  &&  propotion <= @tp.minPrice )
+            {
+
+                if($('#hdnButtonStatus').val()=="enabled")
+                {
+                    DisableControls();
+                }
+                $('#txtprop').css('background-color', 'red');
+            }
+
+            </text>
+                    }
+                    firstRow = false;
+                }
+        }
+        }
+
+
+
+        function CopyTerm()
+        {
+            var term=  $('#txtTime').val();
+            $slTime.data('slider').setValue(parseFloat(term));
+
+            //     $slTime.slider('setValue', term);
+        }
+
+        function DisableControls()
+        {
+            $('input[type="submit"]').attr('disabled','disabled');
+            $('#btnComplete').attr('disabled','disabled');
+            $('#btnDecline').attr('disabled','disabled');
+            $('#btnKickback').attr('disabled','disabled');
+            //  $('#btnSendEmail').attr('disabled','disabled');
+            $('#btnDocument').attr('disabled','disabled');
+        }
+        
+        function DisableControls2()
+        {
+            //$('input[type="submit"]').attr('disabled','disabled');
+            $('#btnComplete').attr('disabled','disabled');
+            //$('#btnDecline').attr('disabled','disabled');
+            //$('#btnKickback').attr('disabled','disabled');
+            ////  $('#btnSendEmail').attr('disabled','disabled');
+            //$('#btnDocument').attr('disabled','disabled');
+        }
+
+        function EnableButtons()
+        {
+            $('input[type="submit"]').removeAttr("disabled");
+            $('#btnComplete').removeAttr("disabled");
+            $('#btnDecline').removeAttr("disabled");
+            $('#btnKickback').removeAttr("disabled");
+            // $('#btnSendEmail').removeAttr("disabled");
+            $('#btnDocument').removeAttr("disabled");
+        }
+
+        function ParseCurrency(num)
+        {
+            if(num!=undefined){
+                return  num.toString().replace(/,/g,'');
+            }
+            return num;
+        }
+        function FixDecimals2(num)
+        {
+            if(num!=undefined){
+                return  num.toFixed(2);
+            }
+            return num;
+        }
+
+        function FixDecimals(num)
+        {
+            if(num!=undefined){
+                return Math.round(num * 1000) / 1000;
+            }
+            return num;
+        }
+
+    </script>
+}

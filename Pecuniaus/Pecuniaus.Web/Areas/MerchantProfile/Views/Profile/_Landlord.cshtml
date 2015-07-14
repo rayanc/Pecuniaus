@@ -1,0 +1,363 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantLandlordModel
+@{
+    var permissionsLandlord = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Landlord);
+}
+@using (Ajax.BeginForm("UpdateLandlord", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q2", InsertionMode = InsertionMode.Replace, OnSuccess = "RefreshLandlord();" }))
+{
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    @*@if (permissionsLandlord.Edit)
+                        {*@
+                    <button class="btn btn-primary" type="submit">@Pecuniaus.Resources.Common.Save</button>
+                    @*}*@
+                    <button class="btn btn-danger cancel" type="reset">@Pecuniaus.Resources.Common.Cancel</button>
+                    <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                    @*<a class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" href="#modal-searchpopup" data-original-title="" title="" onclick="FetchNotes();">@Pecuniaus.Resources.Common.Notes</a>*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.TypeofPropertyId)
+                                @Html.DropDownListFor(m => m.TypeofPropertyId, Model.PropertyTypes, new { @class = "form-control", @placeholder = "Type of Property", style = "width: 100%;" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => m.LandlordCompanyName)
+                                @Html.TextBoxFor(m => m.LandlordCompanyName, new { @class = "form-control", @placeholder = "Landlord Company Name" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.landlordFirstName)
+                                @Html.TextBoxFor(m => m.landlordFirstName, new { @class = "form-control", @placeholder = "First Name" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.landlordLastName)
+                                @Html.TextBoxFor(m => m.landlordLastName, new { @class = "form-control", @placeholder = "Last Name" })
+                            </div>
+
+                            <div class="col-md-3">
+                                @Html.LabelFor(m => m.MonthlyRentAmount)
+                                @*@Html.TextBoxFor(m => m.MonthlyRentAmount, new { @class = "form-control", @placeholder = "Rented Amount" })*@
+                                <div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.MonthlyRentAmount, new { @class = "form-control", @placeholder = "Rented Amount" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.LandlordAddress.Address)
+                                @Html.TextBoxFor(m => m.LandlordAddress.Address, new { @class = "form-control", @placeholder = "" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.LandlordAddress.City)
+                                @Html.TextBoxFor(m => m.LandlordAddress.City, new { @class = "form-control", @placeholder = "" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.LandlordAddress.Email)
+                                @Html.TextBoxFor(m => m.LandlordAddress.Email, new { @class = "form-control", @placeholder = "" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.LandlordAddress.Phone1)
+                                @Html.EditorFor(m => m.LandlordAddress.Phone1)
+                            </div>
+                            <div class="col-md-2">
+                                @Html.LabelFor(m => m.LandlordAddress.Cell)
+                                @Html.EditorFor(m => m.LandlordAddress.Cell)
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <br>
+                        </div>
+                        <div class="row">
+                            <div class="form-horizontal col-md-12">
+                            
+                                <legend><i class="fa fa-angle-right"></i>@Pecuniaus.Resources.Common.LandlordExperience</legend>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        A. ". Good morning (Good afternoon) I speak on behalf of the company Dominican Advance; my name is <b></b>." How are you today?
+                                    </div>
+                                </div>                                
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        [Record]
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 form-inline">
+                                        1. The purpose of this call is to give us reference rental history of one of his tenants:
+                            <div>
+                                Name: @Html.TextBoxFor(m => m.Questions.OwnerFirstName, new { @class = "form-control", ReadOnly = "readonly" }) @Html.TextBoxFor(m => m.Questions.OwnerLastName, new { @class = "form-control", ReadOnly = "readonly" })
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.OwnerName, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.OwnerName, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+                                        <div>
+                                            At:@Html.TextBoxFor(m => m.Questions.MerchantAddress, new { @class = "form-control", ReadOnly = "readonly" })
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.Questions.Answers.MerchantAddress, "true", new { @class = "qrWR" })
+                                                @Pecuniaus.Resources.Common.Right
+                                            </label>
+                                            &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.MerchantAddress, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 form-inline">
+                                        "First I would like to verify certain information about you and your company."
+                            <div>2. I please confirm your full name?</div>
+                                        <div>
+                                            Name: @Html.TextBoxFor(m => m.Questions.LLFirstName, new { @class = "form-control", ReadOnly = "readonly" })
+                                            @Html.TextBoxFor(m => m.Questions.LLLastName, new { @class = "form-control", ReadOnly = "readonly" })
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.Questions.Answers.LandlordName, "true", new { @class = "qrWR" })
+                                                @Pecuniaus.Resources.Common.Right
+                                            </label>
+                                            &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.LandlordName, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        In case of a company to complete the following:
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 form-inline">
+                                        3. We confirm please What is the name of your company ?:
+                            <div>
+                                Name: @Html.TextBoxFor(m => m.Questions.LegalName, new { @class = "form-control", ReadOnly = "readonly" })
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.LegalName, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Right
+                                </label>
+                                &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.LegalName, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                            </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 form-inline">
+                                        "Now I would like to verify certain information regarding the property in question."<br />
+                                        <div>4. Could you confirm when the contract started ?:</div>
+                                        <div>
+                                            Month and year
+                                            <input type="text" class="form-control" readonly="readonly" />
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.Questions.Answers.ContractStartDate, "true", new { @class = "qrWR" })
+                                                @Pecuniaus.Resources.Common.Right
+                                            </label>
+                                            &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.ContractStartDate, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                                        </div>
+                                        <div>
+                                            Does this contract is automatically renewed when it expires?
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.ContractAutoRenew, "true", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Yes
+                                </label>
+                                            &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.ContractAutoRenew, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.No
+                                </label>
+                                        </div>
+                                        <div>
+                                            When does it expire? Expiration date:
+                                            <input type="text" class="form-control" readonly="readonly" />
+                                            <label>
+                                                @Html.RadioButtonFor(m => m.Questions.Answers.ContractExpiryDate, "true", new { @class = "qrWR" })
+                                                @Pecuniaus.Resources.Common.Right
+                                            </label>
+                                            &nbsp;&nbsp;
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Questions.Answers.ContractExpiryDate, "false", new { @class = "qrWR" })
+                                    @Pecuniaus.Resources.Common.Wrong
+                                </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        5. It is possible to renew the contract at the end ?:
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.ContractRenewAtEnd, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                                        &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.ContractRenewAtEnd, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12 form-inline">
+                                        6. What is the monthly rental amount ?: @Html.TextBoxFor(m => m.Questions.RentedAmount, new { @class = "form-control", ReadOnly = "readonly" })
+                                        <label>
+                                            @Html.RadioButtonFor(m => m.Questions.Answers.RentedAmount, "true", new { @class = "qrWR" })
+                                            @Pecuniaus.Resources.Common.Right
+                                        </label>
+                                        &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.RentedAmount, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Wrong
+                            </label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        7. Do you find current with payments ?:
+                                        <label>
+                                            <input type="radio" name="q7" />
+                                            Yes</label>&nbsp;&nbsp;
+                                        <label>
+                                            <input type="radio" name="q7" />
+                                            No</label>
+                                        <br />
+                                        If not, to what month is the day? Month: *
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        8. If the tenant is updated with rent payments, would you continue renting ?: 
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.ContinueRent, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                                        &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.ContinueRent, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        9. Would you agree if third the amount of rent paid by the tenant late ?: 
+                        
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.AgreeRentLate, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                                        &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.AgreeRentLate, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        10. Do you own any part shape of the lessee's business ?: 
+
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.LessesBusiness, "true", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.Yes
+                            </label>
+                                        &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.Questions.Answers.LessesBusiness, "false", new { @class = "qrWR" })
+                                @Pecuniaus.Resources.Common.No
+                            </label>
+
+                                    </div>
+                                </div>
+                                <div class="x2az">
+                                    @Html.LabelFor(m => m.Questions.scriptFile, new { @class = "col-md-4 control-label" })
+
+                                    <div class="col-md-4">
+                                        @Html.HiddenFor(m => m.Questions.scriptFile)
+                                        @*<input type="file" name="file" class="btn btn-success" />
+                            <br />*@
+                                        <div class="form-group">
+                                            <audio controls class="">
+                                                <source src="@Model.Questions.ScriptFilePath@Model.Questions.scriptFile" type="audio/mp3" />
+                                                <!-- <source src="media/guitar.ogg" type="audio/ogg" />-->
+
+                                                <p>Your browser does not support HTML 5 audio element</p>
+
+                                            </audio>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END Datatables Content -->
+        <!-- All Boxes Content Start -->
+    </div>
+}
+<style type="text/css">
+    form-group
+    {
+        margin-bottom: 15px !important;
+        padding-bottom: 15px !important;
+    }
+</style>
+
+<script>
+    $(document).ready(
+            function () {
+                $('.qrWR:checked').each(function () {
+                    SetCtrlAttr(this);
+                });
+
+                $('.qrWR').on('change', function () {
+                    SetCtrlAttr(this);
+                });
+            });
+    function SetCtrlAttr(s) {
+        var $rdo = $(s);
+        var $ctrls = $rdo.parent().siblings("input[type=text],select");
+        if ($rdo.val() == "true") {
+            $ctrls.attr('readonly', 'readonly');
+        }
+        else {
+            $ctrls.removeAttr('readonly');
+        }
+
+    }
+
+</script>

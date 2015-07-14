@@ -1,0 +1,28 @@
+﻿@model  IEnumerable<Pecuniaus.Models.Contract.DocumentModel>
+
+@using GridMvc.Html
+
+
+@Html.Grid(Model, "_ScanGridTmp").Columns(columns =>
+{
+    columns.Add()
+      .Sanitized(false)
+      .Encoded(false)
+      .RenderValueAs(o => RenderCol1(o));
+
+}).WithPaging(1)
+
+@helper RenderCol1(Pecuniaus.Models.Contract.DocumentModel m)
+{
+    <a href="javascript:void(0)" onclick="EditDoc(@m.DocumentId)">@Pecuniaus.Resources.Contract.DocumentScan.Edit</a>
+    if (m.FileDetails.StartsWith("image"))
+    {
+        <img src='/ScanDocuments/@m.FileName' class="img-responsive" />
+    }
+    else
+    {
+        <object data='/ScanDocuments/@m.FileName' style='width:100%;height:100%;min-height:450px' type="@m.FileDetails"><p><a href='/ScanDocuments/@m.FileName'>@Pecuniaus.Resources.Contract.DocumentScan.ViewDoc</a></p></object>
+    }
+
+    @*<a href="?merchantid=@m.MerchantId" title="">@m.MerchantName</a>*@
+}

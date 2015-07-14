@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Pecuniaus.User.Models.TaskAssignmentModel>
+@using HtmlHelpers.Extension
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="table-responsive" style="overflow:auto;" id="divTaskMgt">
+                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                    <thead>
+                        <tr role="row">
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.UserName</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.PQDataEntry</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center">@Pecuniaus.Resources.User.TaskManagement.PQMerchantEvaluation</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.PQMerchantReview</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.PQMonthlyCreditCardVolumes</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.PQOfferAcceptance</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.PQOfferCreation</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.PQScanDocument</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center">@Pecuniaus.Resources.User.TaskManagement.CWContract</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.CWDataEntry</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.CWFinalValidation</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.CWFunding</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.CWReview</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.CWScanDocument</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center">@Pecuniaus.Resources.User.TaskManagement.CWVerificationCall</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.CWVerificationTask</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.RWContract</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.RWDocumentVerification</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.RWFinalValidation</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.RWFunding</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center">@Pecuniaus.Resources.User.TaskManagement.RWListofmerchants</th>
+                            <th aria-label="Actions" colspan="1" rowspan="1" class="text-center sorting">@Pecuniaus.Resources.User.TaskManagement.RWMerchantEvaluation</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.RWOfferCreation</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.User.TaskManagement.RWRenewalReview</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var modItem in Model)
+                        {
+                            <tr>
+                                <td><a href="#" data-toggle="modal" data-placement="bottom" onclick="ShowAssignmentDetails(@Html.DisplayFor(Item => modItem.UserID))">@Html.DisplayFor(item => modItem.UserName)</a></td>
+                                <td>@Html.DisplayFor(Item => modItem.PQDataEntry)</td>
+                                <td>@Html.DisplayFor(Item => modItem.PQMerchantEvaluation)</td>
+                                <td>@Html.DisplayFor(Item => modItem.PQMerchantReview)</td>
+                                <td>@Html.DisplayFor(Item => modItem.PQMonthlyCreditCardVolumes)</td>
+                                <td>@Html.DisplayFor(Item => modItem.PQOfferAcceptance)</td>
+                                <td>@Html.DisplayFor(Item => modItem.PQOfferCreation)</td>
+                                <td>@Html.DisplayFor(Item => modItem.PQScanDocument)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWContract)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWDataEntry)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWFinalValidation)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWFunding)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWReview)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWScanDocument)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWVerificationCall)</td>
+                                <td>@Html.DisplayFor(Item => modItem.CWVerificationTask)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWContract)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWDocumentVerification)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWFinalValidation)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWFunding)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWListofmerchants)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWMerchantEvaluation)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWOfferCreation)</td>
+                                <td>@Html.DisplayFor(Item => modItem.RWRenewalReview)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+            </div>
+            @using (Ajax.BeginForm("ProcessUser", "User", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "divTaskMgt", InsertionMode = InsertionMode.Replace }, new { id = "frmUserAssignmentDIV" }))
+            {
+                <div id="taskassignmentdetails">
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+﻿@model Decimal?
+@{
+    var value = "";
+    if (Model.HasValue)
+    {
+        value = Model.Value.ToString("C");
+    }
+}
+@value

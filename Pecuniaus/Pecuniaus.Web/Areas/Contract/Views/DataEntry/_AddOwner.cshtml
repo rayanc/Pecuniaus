@@ -1,0 +1,5 @@
+﻿@model Pecuniaus.Models.Contract.OwnerModel
+
+@{Model.IsDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWDataEntry);}
+
+@Html.Partial("_AdPOwner", Model)

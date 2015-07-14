@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AE9BF60E-706A-47B7-B5D0-B475591625D9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pecuniaus.Renewal</RootNamespace>
+    <AssemblyName>Pecuniaus.Renewal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlHelpers.Extension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\HtmlHelpers.Extension.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Pecuniaus.ApiHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Pecuniaus.ApiHelper\bin\Debug\Pecuniaus.ApiHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Pecuniaus.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Models\bin\Debug\Pecuniaus.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Pecuniaus.Resources, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Pecuniaus.Resources\bin\Debug\Pecuniaus.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="Pecuniaus.UICore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\UICore\bin\Debug\Pecuniaus.UICore.dll</HintPath>
+    </Reference>
+    <Reference Include="Pecuniaus.Utilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Pecuniaus.Utilities\bin\Debug\Pecuniaus.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\FinalVerificationController.cs" />
+    <Compile Include="Controllers\FundingController.cs" />
+    <Compile Include="Controllers\DocumentScanController.cs" />
+    <Compile Include="Controllers\KickbackController.cs" />
+    <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\RenewalEvaluationController.cs" />
+    <Compile Include="Controllers\RenewalOfferController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="DocumentTypes.cs" />
+    <Compile Include="Models\BankNameModel.cs" />
+    <Compile Include="Models\CreditPullModel.cs" />
+    <Compile Include="Models\CreditReportBase.cs" />
+    <Compile Include="Models\CreditReportModel.cs" />
+    <Compile Include="Models\DeclineModel.cs" />
+    <Compile Include="Models\FinalVerificationModel.cs" />
+    <Compile Include="Models\GeneralModel.cs" />
+    <Compile Include="Models\MerchantsDetail.cs" />
+    <Compile Include="Models\FundingModel.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
+    <Compile Include="Models\RenewalModel.cs" />
+    <Compile Include="Models\RetrieveMerchantInformationModel.cs" />
+    <Compile Include="Models\ScanDocumentModel.cs" />
+    <Compile Include="Models\ScoringData.cs" />
+    <Compile Include="Models\SnoozeModel.cs" />
+    <Compile Include="RenewalAreaRegistration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\OfferSesssionRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Landing\_DeclineRenewal.cshtml" />
+    <Content Include="Views\Landing\_RenewalListing.cshtml" />
+    <Content Include="Views\Landing\_Snooze.cshtml" />
+    <Content Include="Views\Landing\Index.cshtml" />
+    <Content Include="Views\DocumentScan\Index.cshtml" />
+    <Content Include="Views\Funding\Index.cshtml" />
+    <Content Include="Views\Shared\_RenewalWorkflowHeader.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Landing\_ContractInformation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FinalVerification\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\RenewalEvaluation\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Index.cshtml" />
+    <Content Include="Views\RenewalOffer\_AddOffer.cshtml" />
+    <Content Include="Views\RenewalOffer\_ListOffer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_ListOfferTemp.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="Views\Contract\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Review\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Review\_Evaluluation.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Review\_ListOffer.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Review\_ScanDoc.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\DocumentScan\_ListDocs.cshtml" />
+    <Content Include="Views\Shared\_ScanGridTmp.cshtml" />
+    <Content Include="Views\Shared\_ScanGridPager.cshtml" />
+    <Content Include="Views\Review\_ListDocs.cshtml" />
+    <Content Include="Views\Contract\_Contracts.cshtml" />
+    <Content Include="Views\RenewalEvaluation\CreditPull.cshtml" />
+    <Content Include="Views\RenewalEvaluation\ListCreditReport.cshtml" />
+    <Content Include="Views\Review\CreditPull.cshtml" />
+    <Content Include="Views\Review\ListCreditReport.cshtml" />
+    <Content Include="Views\Review\_MCCVInformation.cshtml" />
+    <Content Include="Views\Review\_AddOffer.cshtml" />
+    <Content Include="Views\RenewalEvaluation\ScoringData.cshtml" />
+    <Content Include="Views\Review\ScoringData.cshtml" />
+    <Content Include="Views\RenewalEvaluation\CreatePDF.cshtml" />
+    <Content Include="Views\Review\CreatePDF.cshtml" />
+    <None Include="Properties\PublishProfiles\Renewl.pubxml" />
+    <Content Include="Views\RenewalOffer\Index.cshtml" />
+    <Content Include="Views\RenewalOffer\_SendEmail.cshtml" />
+    <Content Include="Views\Kickback\_Popup.cshtml" />
+    <Content Include="Views\DocumentScan\ScanDoc.cshtml" />
+    <Content Include="Views\DocumentScan\_ListDocsModal.cshtml" />
+    <Content Include="Views\DocumentScan\_ListDocsUpload.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3251</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2956/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,44 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantCreditReportDetailModel
+@*@using (Ajax.BeginForm("ProcessCreditReport", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q15" }, new { id = "frmMerchantContacts" }))
+{*@
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="form-group form-actions"> </div>
+        <div class="row">
+            <div class="col-md-12">
+                @*<div class="row">
+                        <div class="col-md-12">
+                            <center>
+                                <legend></i> Credit Card report</legend>
+                            </center>
+                        </div>
+                    </div>*@
+                <div class="row">
+                    <div class="col-md-3">
+                        @Pecuniaus.Resources.Common.Select @Pecuniaus.Resources.Common.Contract
+                        @Html.DropDownListFor(m => m.ContractId, Model.AllContracts, new { @class = "form-control", @placeholder = "Visa Net", style = "width: 100%;", onchange = "loadCreditReportSelect($(this).val());" })
+                    </div>
+                    <div class="col-md-3">
+                        @Pecuniaus.Resources.MerchantProfile.CreditReport.Evaluation
+                        @Html.DropDownListFor(m => m.ReportId, Model.AllContractCreditReports, new { @class = "form-control", @placeholder = "Visa Net", style = "width: 100%;" })
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit" name="submitButton" value="Search" onclick="loadCreditReportData();">@Pecuniaus.Resources.Common.Search</button>
+                            @*<button class="btn btn-danger" type="button">@Pecuniaus.Resources.Common.Cancel</button>*@
+                            <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="creditReportDetails"></div>
+            </div>
+        </div>
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+    </div>
+@*}*@
+@*</div>*@

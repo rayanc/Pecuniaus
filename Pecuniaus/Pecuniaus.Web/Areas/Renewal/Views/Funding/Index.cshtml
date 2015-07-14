@@ -1,0 +1,269 @@
+﻿@model Pecuniaus.Renewal.Models.FundingModel
+@{
+    ViewBag.Title = "Pecuniaus";
+    Layout = "~/Views/Shared/_Layout.cshtml";      
+}
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWFunding);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.RW_Funding);
+}
+
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = Pecuniaus.UICore.WorkflowTypes.Renewal, SearchType = "PT", ShowSf = true })
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_RenewalWorkflowHeader")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Common.Funding<br>
+                    </h1>
+                    @Html.Partial("_PageMessage")
+                    @Html.ValidationSummary()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Renewal.Renewal.renewalWorkflow</li>
+        <li><a href="#">@Pecuniaus.Resources.Common.Funding</a></li>
+    </ul>
+
+    @using (Html.BeginForm("index", "Funding", FormMethod.Post, new { id = "frmScanDoc", enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+        <div>
+            @Html.HiddenFor(m => m.documentId)
+            @Html.HiddenFor(m => m.documentTypeID)
+            @Html.HiddenFor(m => m.fileName)
+            @Html.HiddenFor(m => m.filePath)
+        </div>
+        <div class="col-md-12">
+            @Html.ValidationSummary()
+        </div>
+
+
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+
+                    @if (permissions.Write)
+                    {
+@*<a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                        Kickback
+                    </a>*@
+                        <a href="@Url.Action("ScanDoc", "DocumentScan", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Document
+                        </a>
+                        <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Kickback
+                        </a>
+                        <button type="submit" class="btn btn-success" name="Command" value="complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                        <button type="submit" class="btn btn-primary" name="Command" value="save" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Save</button>
+                        <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                            @Pecuniaus.Resources.Common.Decline
+                        </a>}
+                </div>
+            </div>
+        </div>
+
+        <!-- All Boxes Content Start -->
+                    
+                    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.UICore.SessionHelper.CurrentMerchantID }); }
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal ">
+                    <div class="block full">
+                        <div class="block-title">
+                            <div class="row">
+                                <div class="col-md-8 ">
+                                    <h1>@Pecuniaus.Resources.Contract.Funding.FundingTask</h1>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <button class="btn btn-primary" type="button" style="margin-top: 4px;">Send Request for Funding </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.bankName)</div>
+                            @*<div class=" col-md-5">@Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Name" })</div>*@
+                            <div class=" col-md-5">@Html.DropDownListFor(m => m.bankId, Model.Banklist, "", new { @class = "form-control", @data_placeholder = "-- Select--" })   </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-4">@Html.LabelFor(m => m.accountNumber)</div>
+                            <div class="col-md-5">@Html.TextBoxFor(m => m.accountNumber, new { @class = "form-control", @placeholder = "text comes here" }) </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.accountName)</div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(m => m.accountName, new { @class = "form-control", @placeholder = "text comes here" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.mcaAmount)</div>
+
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                    @Html.EditorFor(m => m.mcaAmount)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.expenseAmount) </div>
+
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                    @Html.EditorFor(m => m.expenseAmount)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.totalFundingAmount)</div>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                    @Html.EditorFor(m => m.totalFundingAmount, new { htmlAttributes = new { @readonly = "readonly" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.ownerName) </div>
+                            <div class="col-md-5">@Html.TextBoxFor(m => m.ownerName, new { @class = "form-control", @placeholder = "text comes here" }) </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.contractReviewed)</div>
+                            <div class="col-md-5">@Html.CheckBoxFor(m => m.contractReviewed, new { @class = "", @placeholder = "" }) </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.contractFunded)</div>
+                            <div class="col-md-5">
+                                @if (Model.contractReviewed)
+                                {
+                                    @Html.CheckBoxFor(m => m.contractFunded, new { @class = "", @placeholder = "" })}
+                                else
+                                {
+                                    @Html.CheckBoxFor(m => m.contractFunded, new { @class = "", @placeholder = "", @disabled = "disabled", @checked = false })
+                                }
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class=" col-md-4">@Html.LabelFor(m => m.wireTransfer)</div>
+                            <div class=" col-md-5">
+                                <input type="file" name="file" id="file" class="btn btn-success" onchange="showimagepreview(this)" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="widget-simple">
+                                <div class="widget-simple">
+
+
+                                    <img id="imgprvw" class="img-responsive greenBorder img-thumbnail" src="@(String.IsNullOrEmpty(Model.filePath) ? "/ScanDocuments/NoImage.jpg" : Model.filePath)" alt="Uploaded image preview">
+
+
+                                    @*@if (!string.IsNullOrEmpty(Model.FileDetails) && Model.FileDetails.StartsWith("image"))
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                       <object id="pdfdoc" data="@Model.filePath" type="application/pdf" width="100%" height="300">
+                                        <p>
+                                                    It appears you don't have a PDF plugin for this browser.
+                                                    You can <a href="@Model.filePath">click here to
+                                                        download the PDF file.
+                                                    </a>
+                                                </p>
+
+                                        </object>
+                                    }*@
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        @Html.Action("Popup", "Kickback", new { area = "Renewal", TaskTypeId = Pecuniaus.UICore.TaskTypes.RWFunding })
+        
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/inputmask")
+        @Scripts.Render("~/bundles/scriptsbundle")
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script type="text/javascript">
+            function showimagepreview(input) {
+                if (input.files && input.files[0]) {
+                    var filerdr = new FileReader();
+                    filerdr.onload = function (e) {
+                        $('#imgprvw').attr('src', e.target.result);
+                        $('#imgprvw').show();
+
+                        //if (input.files[0].type.indexOf("image/") > -1) {
+                        //    $('#imgprvw').attr('src', e.target.result);
+                        //    $('#imgprvw').show();
+                        //}
+                        //else {
+
+                        //    $('#imgprvw').hide();
+                        //    $('#pdfdoc').show();
+                        //    $('#pdfdoc').attr('data', e.target.result);
+
+                        //}
+                    }
+                    filerdr.readAsDataURL(input.files[0]);
+                }
+            }
+
+
+
+            function Complete() {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Complete")',
+                    //      data: form.serialize(),
+                    success: function (data, textStatus, xhr) {
+                        window.location.href = data.redirectToUrl;
+                        //At this point I would like to redirect
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        $(".error-summary").html(xhr.responseText);
+                    }
+                });
+            }
+
+            $("input:checkbox").click(function () {
+                if ($('#contractReviewed').is(':Checked')) {
+                    $('#contractFunded').removeAttr("disabled");
+                    return true;
+                }
+                else {
+                    $('#contractFunded').attr("disabled", true);
+                    $('#contractFunded').removeAttr('checked');
+                }
+            });
+            jQuery('#mcaAmount ,#expenseAmount').on('input', function () {
+                $('#totalFundingAmount').val(parseFloat($('#mcaAmount').val()) - parseFloat($('#expenseAmount').val()))
+            });
+        </script>
+    }
+</div>
+`

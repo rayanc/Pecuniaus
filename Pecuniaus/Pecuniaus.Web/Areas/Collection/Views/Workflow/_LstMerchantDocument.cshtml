@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Pecuniaus.Collection.Models.MerchantDocumentModel>
+@using GridMvc.Html
+@if (Model != null)
+{
+    @Html.Grid(Model).Named("grdMerchantDocuments").Columns(columns =>
+    {
+      columns.Add(data => data.DocumentId, true);
+      columns.Add(data => data.Selected).Encoded(false).Sanitized(false).Sortable(false).RenderValueAs(m => Html.CheckBox("Select", m.Selected, new { @class = "check-item", data_id = m.DocumentId })).Titled(@Pecuniaus.Resources.Collection.Collection.Select);
+      columns.Add(data => data.FileName).Titled(@Pecuniaus.Resources.Collection.Collection.DocumentName).Sortable(true);
+      columns.Add(data => data.DocumentName).Titled(@Pecuniaus.Resources.Collection.Collection.DocumentType).Sortable(true);
+      columns.Add(data => data.UploadedDate).Titled(@Pecuniaus.Resources.Collection.Collection.UploadedDate).Sortable(true);
+      columns.Add(data => data.UploadedBy).Titled(@Pecuniaus.Resources.Collection.Collection.UploadedBy).Sortable(true);
+      columns.Add().Sanitized(false).Encoded(false).RenderValueAs(o => RenderActionLinks(o)).Titled("View Document");
+  }).WithPaging(5)
+     @helper RenderActionLinks(Pecuniaus.Collection.Models.MerchantDocumentModel m)
+    {
+    <a href="Javascript:void(0);" title="View Document" onclick="GetPreviewDoc(@m.DocumentId);"><i class="fa fa-pencil-square-o"></i></a>
+}
+    
+}

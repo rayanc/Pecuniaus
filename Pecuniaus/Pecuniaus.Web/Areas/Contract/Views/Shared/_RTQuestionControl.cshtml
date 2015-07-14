@@ -1,0 +1,44 @@
+﻿@model Pecuniaus.Models.Contract.QuestionModel
+
+@{var qaid = "q_" + Model.QuestionId + "-" + Model.AnswerId;}
+<div class="form-group">
+    <label for="@qaid" class="col-md-4 control-label">@Model.QuestionDesc </label>
+    <div class="col-md-4">
+        @if (Model.QuestionType == "dropdown")
+        {
+            <select name="@qaid" id="@qaid" class="form-control" disabled ="disabled" >
+                <option></option>
+                <option value="Y" @(Model.AnswerDesc == "Y" ? "Selected" : "")>Yes</option>
+                <option value="N" @(Model.AnswerDesc == "N" ? "Selected" : "")>No</option>
+            </select>
+        }
+        else if (Model.QuestionType == "dropdown-adv")
+        {
+            @Html.DropDownList(qaid, Model.DropDown, "", new { @class = "form-control" ,@disabled ="disabled"})           
+        }
+
+        else if (Model.QuestionType == "checkbox")
+        {
+            <label >
+                <input class="checkbox-inline" disabled ="disabled"   type="checkbox" @(Model.AnswerDesc == "Y" ? "checked=checked" : "")
+                       onclick="javascript:document.getElementById('@qaid').value=(this.checked?'Y':'N');" />
+                <input type="hidden" name="@qaid" id="@qaid" />
+            </label>
+        }
+        else if (Model.QuestionType == "radio")
+        {
+            <label class="radio-inline">
+                <input type="radio" value="Y" disabled ="disabled"  name="@qaid" @(Model.AnswerDesc == "Y" ? "checked=checked" : "") /> Yes
+            </label>
+            
+            <label class="radio-inline">
+                <input class="radio-inline" type="radio" value="N" disabled ="disabled"  name="@qaid" @(Model.AnswerDesc == "N" ? "checked=checked" : "") /> No
+            </label>
+        }
+        else
+        {
+            <input type="text" name="@qaid" id="@qaid" class="form-control" disabled ="disabled"   value="@Model.AnswerDesc" placeholder="Enter text.." />
+        }
+    </div>
+
+</div>

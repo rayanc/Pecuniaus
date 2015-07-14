@@ -1,0 +1,32 @@
+﻿@model Tuple<Pecuniaus.Models.User.GroupPermission, IEnumerable<Pecuniaus.Models.Contract.BankStatementModel>>
+  @{var isFormDisabled = Model.Item1.IsFormDisabled;}
+
+    @using GridMvc.Html
+
+    @Html.Grid(Model.Item2).Columns(columns =>
+    {
+        columns.Add(m => m.StatementId, true);
+        columns.Add(m => m.StatementMonth).Titled(Pecuniaus.Resources.Contract.DataEntry.StatementMonth);
+        columns.Add(m => m.StatementYear).Titled(Pecuniaus.Resources.Contract.DataEntry.StatementYear);
+        columns.Add(m => m.Amount).Titled(Pecuniaus.Resources.Contract.DataEntry.Amount).Format("{0:C}");
+
+        if (!isFormDisabled) {
+        columns.Add()
+               .Sanitized(false)
+               .Encoded(false)
+               .RenderValueAs(o => RenderActionLinks(o));
+        }
+    }).WithPaging(10).Sortable()
+
+    @helper RenderActionLinks(Pecuniaus.Models.Contract.BankStatementModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditStatement(@m.Id);"><i class="fa fa-pencil-square-o"></i></a>
+    @Html.Raw(Ajax.ActionLink("[Delete]",
+                         "DelStatement",
+                  new { ID = m.Id },
+                new AjaxOptions
+                 {
+                     OnSuccess = "StatementDeleted()",
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+}

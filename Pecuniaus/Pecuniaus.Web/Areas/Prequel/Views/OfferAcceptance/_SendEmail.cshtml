@@ -1,0 +1,107 @@
+﻿@model Pecuniaus.Models.Prequel.Email
+
+
+@*@using (Ajax.BeginForm("SendEmail", "OfferCreation", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "dvmodalAddsnooze",
+            OnSuccess = "$('#mod_decline').modal('hide');",            
+        }, new { @class = "form-horizontal", role = "form" , id="emailForm" }))
+{
+    *@
+
+@using (Html.BeginForm("SendEmail", "OfferAcceptance", FormMethod.Post,
+    new { encType = "multipart/form-data", id = "frmmail", name = "frmmail" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2><strong>Send</strong> Email</h2>
+                </div>
+                <div>
+                    @Html.ValidationSummary()
+                </div>
+                <div class="row">
+
+                    @Html.LabelFor(m => m.EmailList)
+                    @Html.ListBoxFor(m => m.SelectedEmail, new MultiSelectList(Model.EmailList, "Value", "Text"), new { row = 5, id = "lstEmail", Multiple = "multiple", style = "width: 100%;" })
+
+
+                </div>
+                <br />
+                <div class="row">
+                    @Html.LabelFor(m => m.SelectedEmail)
+                    <input type="text" id="txEmail" class="form-control" />
+                </div>
+                <br />
+                <div class="row">
+                    <input type="button" class="btn btn-success" value="Add Email" onclick="ValidateEmail()" />
+
+                    <input type="button" value="Remove Email" class="btn btn-success" onclick="$('#lstEmail').find(':selected').remove();" />
+                    <br />
+                </div>
+                <div class="row">
+                    <div style="text-align: right">
+                        <button class="btn btn-success" type="submit" name="button" value="Send Email">@Pecuniaus.Resources.Common.SendEmail</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    
+    <script>
+        $("#frmmail").submit(function (e) {
+            $("#lstEmail option").prop("selected", "selected");
+        });
+
+        function ValidateEmail() {
+            var isValid = true;
+            var filter = /^[\w\-\.\+]+\@@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+            if ($('#txEmail').val().indexOf(';') == -1) {
+                if (filter.test($('#txEmail').val())) {
+                    $('#lstEmail').find('option').each(function () {
+                        if ($(this).text() == $('#txEmail').val()) {
+                            alert('Email already in list');
+                            isValid = false;
+                            return false;
+                        }
+                    });
+                    if (isValid)
+                        $('#lstEmail').append('><option>' + ($('#txEmail').val() + '</option>'));
+                }
+                else {
+                    alert("Enter Valid Email");
+                    return false;
+                }
+            }
+            else {
+                var arr = $('#txEmail').val().split(';');
+                $.each(arr, function (index, item) {
+                    if (filter.test(item)) {
+                        $('#lstEmail').find('option').each(function () {
+                            if ($(this).text() == item) {
+                                alert('Email already in list');
+                                isValid = false;
+                                return false;
+                            }
+                        });
+                        if (isValid)
+                            $('#lstEmail').append('><option>' + (item + '</option>'));
+                    }
+                    else {
+                        alert("Enter Valid Email");
+                        return false;
+                    }
+                });
+            }
+        }
+
+    </script>
+}
+

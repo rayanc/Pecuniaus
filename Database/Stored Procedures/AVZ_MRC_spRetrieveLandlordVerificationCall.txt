@@ -1,0 +1,40 @@
+-- ================================================
+-- Name: avz_con_RetriveVeriCall
+-- 
+-- Description : To Retrieve Contract Verification Call Questions
+-- 
+-- Parameters : ContractId
+-- 
+-- Author  : 
+-- 
+-- Creation Date : 01-01-2015
+-- ================================================
+drop procedure if exists `AVZ_MRC_spRetrieveLandlordVerificationCall`;
+DELIMITER $$
+
+#call AVZ_MRC_spRetrieveLandlordVerificationCall (165, 'Landlord')
+CREATE PROCEDURE AVZ_MRC_spRetrieveLandlordVerificationCall
+(
+	iNMerchantID bigint,
+	iNEntity varchar(20)	
+
+)
+BEGIN
+
+	Declare filename varchar(200);
+
+	select  ScriptFile into filename from tb_verificationScript where EntityFor=iNEntity and ContractId =avz_gen_fnRetrieveActiveContract(iNMerchantID) limit 1;
+ 
+	Select 
+		vq.questionId, Description as questionDesc, questionType, answerId, IFNULL(AnswerText, 'true') as answerDesc,filename as scriptFile
+	from
+		tb_verificationquestions vq
+		left join tb_verificationanswers va on vq.QuestionId=va.QuestionId And va.ContractId = avz_gen_fnRetrieveActiveContract(iNMerchantID)		
+	where    
+		vq.Entity=iNEntity and isActive = 1 ;
+
+	
+
+END;
+
+

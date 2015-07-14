@@ -1,0 +1,87 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantDocumentsDetailModel
+@{
+    var permissionsDocuments = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Documents);
+}
+@using (Ajax.BeginForm("ProcessDocuments", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q6", InsertionMode = InsertionMode.Replace, OnSuccess = "FadeOutAlertMessage();" }))
+{
+    @Html.Partial("_PageMessage")
+    @Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="form-group form-actions">
+            <div class="col-xs-12">
+                <div class="pull-right">
+                    @*@if (permissionsDocuments.Edit)
+                    {*@
+                        <button class="btn btn-primary" type="button" onclick="loadNewDocumentUpload();">@Pecuniaus.Resources.Common.Upload</button>
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="Delete">@Pecuniaus.Resources.Common.Delete</button>
+                    @*}*@
+                    @*<button class="btn btn-danger" type="reset">@Pecuniaus.Resources.Common.Cancel</button>*@
+                    <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                    @*<a class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" href="#modal-searchpopup" data-original-title="" title="">Notes</a>*@
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.DocumentTypeId, Model.DocumentTypes, new { @class = "form-control", @placeholder = "Document Type", style = "width: 100%;" })
+                    </div>
+                    <div class="col-md-9">
+                        <div class="pull-left">
+                            <button class="btn btn-primary" type="submit" name="submitButton" value="Search">@Pecuniaus.Resources.Common.Search</button>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- END Datatables Content -->
+                <!-- All Boxes Content Start -->
+                <br>
+                <br>
+                <div class="table-responsive">
+                    <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px">
+                        <thead>
+                            <tr role="row">
+                                @*@if (permissionsDocuments.Edit)
+                                {*@
+                                    <th aria-sort="ascending" colspan="1" rowspan="1" class="text-center sorting_disabled">@Pecuniaus.Resources.Common.Select</th>
+                                @*}*@
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Documents.DocumentName</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Documents.DocumentType</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Documents.UploadDate</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Documents.UploadedBy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var modItem in Model.Documents)
+                            {
+                                <tr>
+                                    @*<td><input type="checkbox" id="example-checkbox1" name="example-checkbox1" value="option1"></td>*@
+                                    @*@if (permissionsDocuments.Edit)
+                                    {*@
+                                        <td><input type="checkbox" id="DeleteIt" name="DeleteIt" value="@Html.DisplayFor(Item => modItem.DocumentId)"></td>
+                                    @*}*@
+                                    @*<td>@Html.DisplayFor(Item => modItem.DocumentName)</td>*@
+                                    @*<td><a href="#">@Html.DisplayFor(Item => modItem.DocumentName)</a></td>*@
+                                    <td>@Html.ActionLink(modItem.DocumentName, "DocumentDownload", new { fileName = modItem.DocumentName }, new { target = "_blank" })</td>
+                                    <td>@Html.DisplayFor(Item => modItem.DocumentType)</td>
+                                    <td>@Html.DisplayFor(Item => modItem.UploadDate)</td>
+                                    <td>@Html.DisplayFor(Item => modItem.UploadedBy)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+
+            </div>
+
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+    </div>
+}
+<div id="DocumentUpload"></div>

@@ -1,0 +1,74 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractModel
+@using (Ajax.BeginForm("ProcessContractActivity", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q11_q2" }))
+{
+@Html.Partial("_PageMessage")
+@Html.ValidationSummary()
+<div class="panel-body">
+    <div class="row">
+        <div class="block top3head">
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.ActivityDetail.ProcessorTypeId)
+                    @Html.DropDownListFor(m => m.ActivityDetail.ProcessorTypeId, Model.ActivityDetail.Processors, new { @class = "form-control", @placeholder = "Visa Net", style = "width: 100%;" })
+                </div>
+                <div class="col-md-2">
+                    @Pecuniaus.Resources.Common.From
+                    @Html.EditorFor(m => m.ActivityDetail.ActivityFrom)
+                </div>
+                <div class="col-md-2">
+                    @Pecuniaus.Resources.Common.To
+                    @Html.EditorFor(m => m.ActivityDetail.ActivityTo)
+                </div>
+                <div class="col-md-5" style="margin-top:17px;">
+                    <div class="pull-right">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="FilterActivities">@Pecuniaus.Resources.Common.Search</button>
+                        @*<button class="btn btn-danger" type="reset">@Pecuniaus.Resources.Common.Clear</button>*@
+                        <button class="btn btn-primary" type="button" id="btnExport" onclick="ExportContractActivities();">@Pecuniaus.Resources.Common.ExporttoExcel</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table role="grid" class="table table-vcenter table-condensed table-bordered dataTable no-footer font-12" style="font-size:12px" id="tblContractActivity">
+                    <thead>
+                        <tr role="row">
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Date</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Processor</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Retention</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Total</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Price</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Capital</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.IncomeThroughProcessor</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.OtherIncome</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.TypeOfActivity</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Contact</th>
+                            <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Activities.Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var modItem in Model.ActivityDetail.ActivityDetail)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(item => modItem.ProcessedDate)</td>
+                                <td>@Html.DisplayFor(item => modItem.ProcessorName)</td>
+                                <td>@Html.DisplayFor(item => modItem.RetentionPercentage)%</td>
+                                <td>@Html.DisplayFor(item => modItem.Total)</td>
+                                <td>@Html.DisplayFor(item => modItem.Price)</td>
+                                <td>@Html.DisplayFor(item => modItem.Capital)</td>
+                                <td>@Html.DisplayFor(item => modItem.ProcessorIncome)</td>
+                                <td>@Html.DisplayFor(item => modItem.OtherIncome)</td>
+                                <td>@Html.DisplayFor(item => modItem.TypeofActivity)</td>
+                                <td>@Html.DisplayFor(item => modItem.Contract)</td>
+                                <td>@Html.DisplayFor(item => modItem.Note)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <br>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+    </div>
+</div>
+}

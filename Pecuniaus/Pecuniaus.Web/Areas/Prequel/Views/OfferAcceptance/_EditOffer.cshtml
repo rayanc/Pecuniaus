@@ -1,0 +1,48 @@
+﻿@model Pecuniaus.Models.Contract.OfferModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQOfferAcceptance);}
+<div id="dvNewOffer">
+    @using (Ajax.BeginForm("UpdateOffer", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewOffer",
+       OnSuccess = "OfferUpdated()",
+   }, new { @class = "a", role = "form" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @*<div style="padding:40px; margin:20px 0" class="block full">*@
+                <div style="padding: 40px;" class="block full">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.ValidationSummary()
+                                @Html.HiddenFor(m => m.Id)
+                                @Html.HiddenFor(m => m.offerId)
+                                @Html.HiddenFor(m => m.offerId)
+                                @Html.HiddenFor(m => m.turn)
+                                @Html.HiddenFor(m => m.monthlypayment)
+                                @Html.HiddenFor(m => m.yearly)
+                                @Html.HiddenFor(m => m.ownedAmount)
+                                @Html.HiddenFor(m => m.salestaken)
+                                @Html.HiddenFor(m => m.loanAmount)
+                                @Html.HiddenFor(m => m.retention)
+                                @Html.HiddenFor(m => m.offerexpirationDate)
+                                @Html.HiddenFor(m => m.offerCreationDate)
+                                @Html.HiddenFor(m => m.IsSelected)
+                                @Html.LabelFor(m => m.proportion) :<br>
+                                @Html.TextBoxFor(m => m.proportion, new { @class = "form-control", @id = "txtPrice", @placeholder = "Enter text.." })
+                            </div>
+
+                        </div>
+                    </div>
+                    @if (Model.IsUpdate)
+                    {
+                        <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Update" @(isFormDisabled ? "disabled" : "") />
+                        <button class="btn btn-primary" onclick="CEOffer()">@Pecuniaus.Resources.Common.Cancel</button>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

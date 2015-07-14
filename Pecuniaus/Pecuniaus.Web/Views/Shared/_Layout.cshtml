@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Pecuniaus</title>
+    <meta name="description" content="Pecuniaus">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+    <script>
+        var SiteBaseURL = '@Url.Content("~/")'; @*Special case to handle base url for subfolder applications.*@
+    </script>
+
+    @Styles.Render("~/bundles/stylesbundle")
+    @Styles.Render("~/bundles/GridMvc")
+
+    @RenderSection("CSS", required: false)
+    @Scripts.Render("~/bundles/modernizrbundle")
+
+    @*@Styles.Render("~/Content/themes/base/css")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+</head>
+<body>
+    <div id="page-container" class="sidebar-visible-lg sidebar-no-animations">
+        <!-- Main Sidebar -->
+        <div id="sidebar">
+            <div class="sidebar-scroll">
+                <!-- Sidebar Content -->
+                <div class="sidebar-content">
+                    <!-- Brand -->
+                    <div class="logo">
+                        <img src="~/images/logo.png" alt="">
+                    </div>
+                    <!-- END Brand -->
+                    @{ //var workFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID();
+                        var controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString().ToLower();
+                        string area = HttpContext.Current.Request.RequestContext.RouteData.DataTokens.ContainsKey("area") ? HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString().ToLower() : "";
+
+                        var seletedModule = 0;
+                        if (controllerName == "dashboard")
+                        {
+                            seletedModule = 1;
+                        }
+                        else if (area == "prequel" || ((area == "") &&
+                            (controllerName == "merchant"
+                            || controllerName == "profile"
+                            || controllerName == "merchantdocumentscan"
+                            || controllerName == "merchantdataentry"
+                            )
+                            ))
+                        {
+                            seletedModule = 2;
+                        }
+                        else if (area == "contract")
+                        {
+                            seletedModule = 3;
+                        }
+                        else if (area == "renewal")
+                        {
+                            seletedModule = 4;
+                        }
+                        else if (area == "merchantprofile")
+                        {
+                            seletedModule = 5;
+                        }
+                        else if (area == "collection")
+                        {
+                            seletedModule = 6;
+                        }
+                        else if (area == "finance")
+                        {
+                            seletedModule = 7;
+                        }
+                        else if (area == "user")
+                        {
+                            seletedModule = 9;
+                        }
+                        else if (area == "notification")
+                        {
+                            seletedModule = 10;
+                        }
+
+                    }
+                    <!-- Sidebar Navigation -->
+                    <ul class="sidebar-nav">
+                        @Html.Action("RecentVisits", "Common", new { area = "" })
+
+                        <li> <a href="@Url.Action("Index", "Dashboard", new { area = "", rstmrchnt = 0 })" @(seletedModule == 1 ? "class=active" : "")><i class="gi gi-stopwatch sidebar-nav-icon"></i>Dashboard</a> </li>
+                        <li> <a href="@Url.Action("Index", "Merchant", new { area = "", rstmrchnt = 0 })" @(seletedModule == 2 ? "class=active" : "")><i class="gi gi-share_alt sidebar-nav-icon"></i>Prequal Workflow</a> </li>
+                        <li> <a href="@Url.Action("Index", "DocumentScan", new { area = "Contract", rstmrchnt = 0 })" @(seletedModule == 3 ? "class=active" : "")><i class="gi gi-film sidebar-nav-icon"></i>Contract Workflow</a> </li>
+                        <li> <a href="@Url.Action("Index", "Landing", new { area = "Renewal", rstmrchnt = 0 })" @(seletedModule == 4 ? "class=active" : "")><i class="gi gi gi-history sidebar-nav-icon"></i>Renewal Workflow</a> </li>
+                        <li> <a href="@Url.Action("Index", "Profile", new { area = "MerchantProfile", rstmrchnt = 0 })" @(seletedModule == 5 ? "class=active" : "")><i class="gi gi gi-user sidebar-nav-icon"></i>Merchant Profile</a> </li>
+                        <li> <a href="@Url.Action("Index", "Workflow", new { area = "Collection", rstmrchnt= 0 })" @(seletedModule == 6 ? "class=active" : "")><i class="gi hi hi-th sidebar-nav-icon"></i>Collection</a> </li>
+                        <li> <a href="@Url.Action("Index", "MerchantFinance", new { area = "Finance", rstmrchnt = 0 })" @(seletedModule == 7 ? "class=active" : "")><i class="gi gi gi-signal sidebar-nav-icon"></i>Finance</a> </li>
+                        <li> <a href="@Url.Action("Index", "ReportViewer", new { area = "Reports", rstmrchnt = 0 })" @(seletedModule == 7 ? "class=active" : "")><i class="gi gi gi-signal sidebar-nav-icon"></i>Reports</a> </li>
+                        @if (Pecuniaus.UICore.SessionHelper.CurrentGroupID == 5)
+                        {
+                            @*<li> <a href="#"><i class="gi gi gi-notes sidebar-nav-icon"></i>Reports</a> </li>*@
+                            <li> <a href="@Url.Action("Index", "Account", new { area = "User" })" @(seletedModule == 9 ? "class=active" : "")><i class="gi gi-address_book sidebar-nav-icon"></i>User Management</a> </li>
+                            <li> <a href="@Url.Action("Index", "Notification", new { area = "Notification", rstmrchnt = 0 })" @(seletedModule == 10 ? "class=active" : "")><i class="gi gi gi-settings  sidebar-nav-icon"></i>System Administration</a> </li>
+                        }
+                    </ul>
+
+                    <!-- END Sidebar Navigation -->
+                </div>
+                <!-- END Sidebar Content -->
+            </div>
+        </div>
+        <!-- END Main Sidebar -->
+
+        <div id="main-container">
+            @RenderBody()
+            <!-- Footer -->
+            <footer class="clearfix">
+                <div class="pull-left"> 2014  &copy; Pecuniaus </div>
+            </footer>
+            <!-- END Footer -->
+        </div>
+        <!-- Pop Search Start -->
+        <div id="modal-searchpopup" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body" id="modal-search-noteschild"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pop Search End-->
+    <!-- SF Search Start -->
+    <div id="modal-sf-list" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="">
+                        <div class="block-options pull-right">
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" id="btnModalClose"><i class="hi fa-1x hi-remove"></i></button>
+                        </div>
+                        <h2>Merchant Listing</h2>
+                    </div>
+                </div>
+                <div class="modal-body" id="modal-sf-listchild" data-source-url="@Url.Action("SearchResult", "Search", new { area = "Common", SearchType ="T"})">
+                </div>
+
+            </div>
+            @*@{Html.RenderAction("MerchantListing");}*@
+        </div>
+    </div>
+    <div id="modal-sf-listMP" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="">
+                        <div class="block-options pull-right">
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" id="btnMPModalClose"><i class="hi fa-1x hi-remove"></i></button>
+                        </div>
+                        <h2>Merchant Listing</h2>
+                    </div>
+                </div>
+                <div class="modal-body" id="modal-sf-listchildMP" data-source-url="@Url.Action("MerchantProfileSearch", "Profile", new { area = "MerchantProfile" })">
+                </div>
+
+            </div>
+            @*@{Html.RenderAction("MerchantListing");}*@
+        </div>
+    </div>
+    <div id="modal-sf-listMPActivities" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="">
+                        <div class="block-options pull-right">
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" id="btnMPModalACTClose"><i class="hi fa-1x hi-remove"></i></button>
+                        </div>
+                        <h2>Activity Details</h2>
+                    </div>
+                </div>
+                <div class="modal-body" id="modal-sf-listchildMPActivitieschild" data-source-url="">
+                </div>
+
+            </div>
+            @*@{Html.RenderAction("MerchantListing");}*@
+        </div>
+    </div>
+    <div id="modal-sf-listUserAssignments" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="">
+                        <div class="block-options pull-right">
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" id="btnMPModalUSRASGNClose"><i class="hi fa-1x hi-remove"></i></button>
+                        </div>
+                        <h2>Assignment Details</h2>
+                    </div>
+                </div>
+                <div class="modal-body" id="modal-sf-listUserAssignmentschild" data-source-url="">
+                </div>
+
+            </div>
+            @*@{Html.RenderAction("MerchantListing");}*@
+        </div>
+    </div>
+
+    <!-- SF Search End-->
+
+    <div id="mod_notes_add" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="dvmodalAddchild" data-source-url="@Url.Action("Add", "Notes", new
+                                                                         {
+                                                                             area = "Common",
+                                                                             mode = "P",
+                                                                             merchantID = Pecuniaus.UICore.SessionHelper.CurrentMerchantID,
+                                                                             WorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(),
+                                                                             ContractID = Pecuniaus.UICore.SessionHelper.ContractID,
+                                                                             ScreenName = Pecuniaus.UICore.SessionHelper.GetScreenName()
+                                                                         })">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mod_decline" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" data-source-url="@Url.Action("Decline", "contract", new
+                                                    {
+                                                        area = "Common",
+                                                        WorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(),
+                                                        ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+                                                    })">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mod_sendemail" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div id="mod_sendemail" class="modal-body" data-source-url="@Url.Action("SendEmail", "OfferCreation", new
+                                                    {
+                                                        area = "Prequel",
+                                                        WorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(),
+                                                        ContractID = Pecuniaus.UICore.SessionHelper.ContractID
+                                                    })">
+                    Loading...
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-notes" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body" id="dvNotesList" data-source-url="@Url.Action("List", "Notes", new {
+                                                                         area = "Common",
+                                                                         SesionWorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID() })">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loading" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog  modal-vertical-centered" style="width:75px">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa fa-spinner fa-3x fa-spin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Page Container -->
+    @*@Scripts.Render("~/bundles/scriptsbundle")*@
+    @RenderSection("scripts", required: false)
+    <script>$(function () { TablesDatatables.init(); });</script>
+</body>
+</html>

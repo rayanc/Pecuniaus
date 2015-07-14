@@ -1,0 +1,49 @@
+﻿@model Pecuniaus.Web.Models.CreditPullModel
+<div class="row">
+    <div class="col-md-3">
+        <button data-toggle="modal" id="btnrequest" class="btn btn-xs btn-danger pop_addbtn_margn" type="button">
+            Pull Credit Reports
+        </button>
+    </div>
+    <div class="col-md-3">
+        @Html.LabelFor(m => m.Type)
+        @Html.DropDownListFor(m => m.typeid, Model.Type, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+    </div>
+    <div class="col-md-3">
+        <input type="checkbox" id="example-checkbox1" name="example-checkbox1" value="option1">
+        No Reports
+    </div>
+ </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnrequest").click(function () {
+            if ($("#typeid").val() == '0') {
+                alert('Please Select credit pull type');
+                return false;
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/MerchantEvaluation/InsertCreditReport",
+                    dataType: "html",
+                    data: { type: $("#typeid").val() },
+                    success: function (data) {
+                        $("#divcreditreport").html(data);
+                    },
+                    error: function (ex) {
+                        alert('Failed');
+                    }
+                });
+                return false;
+            }
+            
+        })
+    });
+</script>
+
+
+
+
+
+
+

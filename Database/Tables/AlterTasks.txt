@@ -1,0 +1,15 @@
+ALTER TABLE `tb_tasks` 
+DROP FOREIGN KEY `FK_Merchant_tb_tasks_MID`;
+ALTER TABLE `tb_tasks` 
+CHANGE COLUMN `EndDatte` `EndDatte` DATETIME NULL ,
+CHANGE COLUMN `MerchantId` `MerchantId` BIGINT(20) NULL ,
+CHANGE COLUMN `ContractId` `ContractId` BIGINT(20) NULL DEFAULT '1000' ,
+CHANGE COLUMN `ModifyUserId` `ModifyUserId` BIGINT(20) NULL ,
+CHANGE COLUMN `ModifyDate` `ModifyDate` DATETIME NULL ,
+CHANGE COLUMN `AffiliationFlag` `AffiliationFlag` TINYINT(1) NULL ;
+ALTER TABLE `tb_tasks` 
+ADD CONSTRAINT `FK_Merchant_tb_tasks_MID`
+  FOREIGN KEY (`MerchantId`)
+  REFERENCES `tb_merchants` (`MerchantId`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

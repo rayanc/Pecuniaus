@@ -1,0 +1,255 @@
+﻿@model Pecuniaus.Models.Contract.VerificationCallModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2>@Pecuniaus.Resources.Common.VerificationCall</h2>
+                @Html.HiddenFor(m => m.MerchantDetails.MerchantId)
+        </div>
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="col-md-12">@Pecuniaus.Resources.Common.WelcomeCall</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        A. ". Good morning (Good afternoon) I speak from Dominican AvanzaMe, my name is <b>@Html.DisplayFor(m => m.UserFullName)</b>." How are you today?
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        B. "The purpose of our call is to give a warm welcome to forward, and confirm the terms of the agreement will take place with our company, and of course, answer any questions you may have. This call is brief and will be recorded for documentation purposes and to ensure the quality of serivicio is this a good time to talk? "
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        C. START RECORDING
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        1. "Confirm if your name" @Html.TextBoxFor(m => m.MerchantDetails.OwnerFirstName, new { @class = "form-control"})&nbsp;@Html.TextBoxFor(m => m.MerchantDetails.OwnerLastName, new { @class = "form-control", @placeholder = "Owner Last Name", @readonly = "readonly" })&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.OwnerName, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.OwnerName, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        2. "It would be so kind as to tell me their ID @Html.TextBoxFor(m => m.MerchantDetails.OwnerPassport, new { @class = "form-control", @placeholder = "Owner Passport", @readonly = "readonly" })&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.OwnerPassport, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.OwnerPassport, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        3. "What is the social Reason trade agreement being negotiated with Avance?" @Html.TextBoxFor(m => m.MerchantDetails.LegalName, new { @class = "form-control", @placeholder = "Owner Passport", @readonly = "readonly" })
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.LegalName, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.LegalName, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        4. "What is the trade name of your business?" @Html.TextBoxFor(m => m.MerchantDetails.BusinessName, new { @class = "form-control", @readonly = "readonly" })
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.BusinessName, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.BusinessName, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        5. "Do you have legal authority to sign the agreement with Advance <b>@Html.DisplayFor(m => m.MerchantDetails.LegalName)</b> name?" *
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.IsAuthorised, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.IsAuthorised, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        6. "When was that he became owner or authorized representative of @Html.EditorFor(m => m.MerchantDetails.BusinessStartDate, new { htmlAttributes = new { @readonly = "readonly" } })
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.BusinessStartDate, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.BusinessStartDate, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        7. "Can you confirm an estimate of your annual sales, this including cash, credit cards, debit cards and checks? @Html.TextBoxFor(m => m.MerchantDetails.GrossAnnualSales, new { @class = "form-control", @readonly = "readonly" })
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.GrossAnnualSales, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.GrossAnnualSales, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        8. "What commercial use @Html.DropDownListFor(m => m.MerchantDetails.TypeOfAdvanceId, Model.AdvanceTypes, "", new { @class = "form-control", @readonly = "readonly" }) advancing commercial capital received Progress?"
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.TypeOfAdvanceId, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.TypeOfAdvanceId, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        9. We confirm the terms of agreement that will be conducting the agreement:
+                        <br />
+                        <div>
+                            • Monto CET: @Html.TextBoxFor(m => m.MerchantDetails.LoanAmount, new { @class = "form-control", @readonly = "readonly" })
+                            <label>
+                                @Html.RadioButtonFor(m => m.VcAnswers.LoanAmount, "true")
+                                @Pecuniaus.Resources.Common.Right
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.VcAnswers.LoanAmount, "false")
+                                @Pecuniaus.Resources.Common.Wrong
+                            </label>
+                        </div>
+                        <div>
+                            • DAR (Amount Due): @Html.TextBoxFor(m => m.MerchantDetails.OwnedAmount, new { @class = "form-control", @readonly = "readonly" })
+                            <label>
+                                @Html.RadioButtonFor(m => m.VcAnswers.OwnedAmount, "true" )
+                                @Pecuniaus.Resources.Common.Right
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.VcAnswers.OwnedAmount, "false" )
+                                @Pecuniaus.Resources.Common.Wrong
+                            </label>
+                        </div>
+                        <div>
+                            • % Retention TC: @Html.TextBoxFor(m => m.MerchantDetails.RetensionPct, new { @class = "form-control", @readonly = "readonly" })
+
+                            <label>
+                                @Html.RadioButtonFor(m => m.VcAnswers.RetensionPct, "true")
+                                @Pecuniaus.Resources.Common.Right
+                            </label>
+                            &nbsp;&nbsp;
+                            <label>
+                                @Html.RadioButtonFor(m => m.VcAnswers.RetensionPct, "false")
+                                @Pecuniaus.Resources.Common.Wrong
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        Similarly we confirm that AvanzaMe will be retaining the% TC mentioned via card processors has been settled until the total amount due of @Pecuniaus.Resources.Common.CurrencySymbol @Html.TextBoxFor(m => m.MerchantDetails.OwnedAmount, new { @class = "form-control", @readonly = "readonly" }) (DAR).
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.TCCardProcessor, "true" )
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.TCCardProcessor, "false" )
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        Also confirm that this contract will correspond amount of administrative costs (closing) @Html.EditorFor(m => m.MerchantDetails.AdminExp, new { htmlAttributes = new { @readonly = "readonly" } })
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.AdminExp, "true", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Right
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.AdminExp, "false", new { @class = "qrWR" })
+                            @Pecuniaus.Resources.Common.Wrong
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 form-inline">
+                        He has accepted the trade?
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.AcceptedTrade, "true")
+                            Yes
+                        </label>
+                        &nbsp;&nbsp;
+                        <label>
+                            @Html.RadioButtonFor(m => m.VcAnswers.AcceptedTrade, "false", new { @data_toggle = "modal", @data_target = "#modNoPop" })
+                          No
+                        </label>
+                        @*<label> <input type="radio" name="accept" /> Yes</label>&nbsp;&nbsp; <label> 
+                        <input type="radio" name="accept" data-toggle="modal" data-target="#modNoPop" />  No</label>*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ScriptFile, new { @class = "col-md-4 control-label" })
+
+                    <div class="col-md-4">
+                        @Html.HiddenFor(m => m.ScriptFile)
+                        <input type="file" name="file" class="btn btn-success" />
+                        <br />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 "></div>
+                    <div class="col-md-4">
+                        <audio controls>
+                            <source src="@Model.ScriptFilePath@Model.ScriptFile?r=@Model.RandStr" type="audio/mpeg" />
+                            <!-- <source src="media/guitar.ogg" type="audio/ogg" />-->
+
+                            <p>Your browser does not support HTML 5 audio element</p>
+
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Pecuniaus.Collection.Models.InActiveContracts>
+@using GridMvc.Html
+@if (Model != null)
+{
+    @Html.Grid(Model).Named("grdOwnerInActiveContracts").Columns(columns =>
+    {
+        columns.Add(data => data.merchantName).Titled(@Pecuniaus.Resources.Collection.Collection.MerchantName);
+        columns.Add(data => data.creationDate).Titled(@Pecuniaus.Resources.Collection.Collection.CreationDate);
+        columns.Add(data => data.lastDateofEvaluation).Titled(@Pecuniaus.Resources.Collection.Collection.LastDateofEvaluation);
+        columns.Add(data => data.requestedCCVolumes).Titled(@Pecuniaus.Resources.Collection.Collection.RequestedCCVolumes);
+        columns.Add(data => data.volumeStatus).Titled(@Pecuniaus.Resources.Collection.Collection.VolumeStatus);
+        columns.Add().Titled(@Pecuniaus.Resources.Collection.Collection.RequestProcessor).Sanitized(false).Encoded(false).RenderValueAs(o => RenderActionLinks(o));
+    }).WithPaging(5).Sortable()
+  @helper RenderActionLinks(Pecuniaus.Collection.Models.InActiveContracts m)
+{
+     <button type="button" class="btn btn-primary" onclick="SendRequesttoProcessor(18);">@Pecuniaus.Resources.Collection.Collection.RequestProcessor</button>
+    
+}
+}
+<script>
+    function SendRequesttoProcessor(id) {
+         $.ajax({
+            type: "POST",
+            url: "/Workflow/SendRequesttoProcessor",
+            dataType: "json",
+            data: { merchantid: id },
+            success: function (data) {
+                alert('Succesfully sent the request ');
+                
+            },
+            error: function (ex) {
+                alert(ex);
+            }
+        });
+        return false;
+    }
+
+    
+</script>

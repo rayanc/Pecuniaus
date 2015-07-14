@@ -1,0 +1,67 @@
+﻿@model Pecuniaus.Web.Models.CreditVolumesModel
+
+<div id="dvNewCreditVolume">
+    @using (Ajax.BeginForm("EditCreditVolume", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewCreditVolume",
+       OnSuccess = "CreditVolumesUpdated()",
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.creditcardActivityId)
+        <div class="form-group clearfix">
+            <div class="col-md-3">
+
+                @Html.LabelFor(m => m.ProcessorTypes)
+                @Html.DropDownListFor(m => m.processorTypeId, Model.ProcessorTypes, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.ProcessorByMerchants)
+                @Html.DropDownListFor(model => model.processorId, Model.ProcessorByMerchants, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.month)
+                @Html.DropDownListFor(model => model.month, Model.ListMonths, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.year)
+                @Html.DropDownListFor(model => model.year, Model.ListYears, "", new { @class = "form-control", @data_placeholder = "ProcessorName" })
+            </div>
+            <br />
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.totalAmount)
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+
+                        @Html.EditorFor(m => m.totalAmount, new { @class = "form-control", @placeholder = "00.00" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.totalTickets)
+                @Html.TextBoxFor(m => m.totalTickets, new { @class = "form-control", @placeholder = "00" })
+
+            </div>
+        </div>
+        <div class="pull-right">
+            @Html.HiddenFor(m => m.ProcessorName)
+            @Html.HiddenFor(m => m.processorRNC)
+            <input type="submit" class="btn btn-primary" id="btnupdate" value=@Pecuniaus.Resources.Common.Update>
+            <button class="btn btn-danger" type="button"  onclick="CEProcessor()">@Pecuniaus.Resources.Common.Cancel</button>
+        </div>
+
+        
+    }
+</div>
+<script type="text/javascript">
+    $("#btnupdate").click(function () {
+        $('#ProcessorName').val($("#processorTypeId option:selected").text());
+        $('#processorRNC').val($("#processorId option:selected").text());
+        return true;
+    })
+</script>
+

@@ -1,0 +1,13 @@
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Bridge.DataAccess.dll.config
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Bridge.DataAccess.dll
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Bridge.DataAccess.pdb
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\MySql.Data.dll
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\obj\Debug\Bridge.DataAccess.csprojResolveAssemblyReference.cache
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\obj\Debug\Bridge.DataAccess.Properties.Resources.resources
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\obj\Debug\Bridge.DataAccess.csproj.GenerateResource.Cache
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\obj\Debug\Bridge.DataAccess.dll
+D:\Harish\Harish\MCA\trunk\Bridge\Bridge.DataAccess\obj\Debug\Bridge.DataAccess.pdb

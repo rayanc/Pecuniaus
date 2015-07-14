@@ -1,0 +1,100 @@
+﻿@model Pecuniaus.User.Models.GroupModel
+
+@using HtmlHelpers.Extension
+
+
+<div id="divUsers" style="min-height: 614px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>User Management</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="@Url.Action("Index", "Account")">User Management</a></li>
+    </ul>
+    <div class="block">
+        <!-- Search Styles Title -->
+        <div class="block-title">
+            <ul class="nav nav-tabs">
+                <li><a href="@Url.Action("Index", "Account")">@Pecuniaus.Resources.User.User.UserMenuName</a></li>
+                <li><a href="@Url.Action("Index", "UserProfile")">@Pecuniaus.Resources.User.UserProfile.UserProfileMenuName</a></li>
+                <li id="liGroup" class="active"><a href="@Url.Action("Index", "Group")">@Pecuniaus.Resources.User.Group.GroupMenuName</a></li>
+                <li id="liGroupPermission"><a href="@Url.Action("Index", "GroupPermission")">@Pecuniaus.Resources.User.GroupPermission.GroupPermissionMenuName</a></li>
+                <li id="liTaskManagement"><a href="@Url.Action("Index", "TaskManagement")">@Pecuniaus.Resources.User.TaskManagement.TaskManagementMenuName</a></li>
+
+            </ul>
+        </div>
+        <!-- END Search Styles Title -->
+        <!-- Search Styles Content -->
+        <div class="tab-content">
+            <div id="divGroup" class="tab-pane active">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block full">
+                            <div class="block-title">
+                                <h2>Groups</h2>
+                            </div>
+                            @*<div id="dvEditGroup" data-source-url="@Url.Action("AddGroup")">
+                            </div>*@
+                            <div id="dvEditGroup">
+                                @{ Html.RenderAction("AddGroup");  }
+                            </div>
+                            <div class="table-responsive" id="dvGroupsListing" data-source-url="@Url.Action("ListGroups")">
+                                @{ Html.RenderAction("ListGroups");  }
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="group" class="tab-pane"> </div>
+            <div id="divGroup-permissions" style="display:none;" data-source-url="@Url.Action("Index","GroupPermission")" class=" tab-pane"> </div>
+        </div>
+        <!-- END Search Styles Content -->
+    </div>
+    <!-- All Boxes Content Start -->
+</div>
+<script type="text/javascript">
+        $(document).ready(
+          function () {
+              AddGroup();
+              ajaxifyGridMvc("#dvGroupsListing");
+          });
+        $("#divGroup-permissions").click(function () {
+            $("#divGroup").hide();
+            $("#divGroup-permissions").show();
+            if (!$("#liGroupPermission").hasClass("active")) {
+                $("#liGroupPermission").addClass("active")
+            }
+            if ($("#liGroup").hasClass("active")) {
+                $("#liGroupPermission").removeClass("active")
+            }
+            var $divGroupPermission = $('#divGroup-permissions');
+            var url = $divGroupPermission.attr("data-source-url");
+            $divGroupPermission.load(url);
+            
+        });
+        function GroupUpdated() {
+            BindGroups();
+        }
+
+        function EditGroup(groupID) {
+            $('#dvEditGroup').load('@Url.Action("EditGroup")?id=' + groupID);
+        }
+
+        function AddGroup() {
+            var $dvEditGroup = $('#dvEditGroup');
+            $dvEditGroup.load($dvEditGroup.attr('data-source-url'));
+        }
+        function BindGroups() {
+            var $dvGroupsListing = $('#dvGroupsListing');
+            var url = $dvGroupsListing.attr("data-source-url");
+            $dvGroupsListing.load(url);
+        }
+</script>

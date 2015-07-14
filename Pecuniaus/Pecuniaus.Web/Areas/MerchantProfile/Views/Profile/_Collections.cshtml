@@ -1,0 +1,76 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantCollectionDetailModel
+@using (Ajax.BeginForm("ProcessCollection", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q13" }, new { id = "frmMerchantCollections" }))
+{
+@Html.Partial("_PageMessage")
+@Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Pecuniaus.Resources.Common.From
+                        @Html.EditorFor(m => m.StartDate)
+                    </div>
+                    <div class="col-md-3">
+                        @Pecuniaus.Resources.Common.To
+                        @Html.EditorFor(m => m.EndDate)
+                    </div>
+                    @*<div class="col-md-1"></div>*@
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" type="submit" name="submitButton" value="Search">@Pecuniaus.Resources.Common.Search</button>
+                            @*<button class="btn btn-danger" type="reset">@Pecuniaus.Resources.Common.Clear</button>*@
+                            <a href="#modal-notes" class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" data-original-title="" title="">@Pecuniaus.Resources.Common.Notes</a>
+                            @*<a class="btn btn-sm btn-success enable-tooltip notesbtn" data-placement="bottom" data-toggle="modal" href="#modal-searchpopup" data-original-title="" title="">Notes</a>*@
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="table-responsive" style="overflow:auto;">
+                    <table role="grid" class="table table-vcenter table-condensed table-bordered" style="font-size:12px">
+                        <thead>
+                            <tr role="row">
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.ContractID</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.Status</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.CollectionID</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.CollectionType</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.DateEntered</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.DateRemoved</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.AECAmount</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.AmountWhenRemovedfromCollection</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.AffiliationID</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.OwnedAmount</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.RetentionTime</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.FundingDate</th>
+                                <th colspan="1" rowspan="1" aria-controls="example-datatable" tabindex="0" class="">@Pecuniaus.Resources.MerchantProfile.Collections.MerchantStatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var modItem in Model.CollectionDetail)
+                    {
+                                <tr>
+                                    <td>@Html.DisplayFor(item => modItem.ContractId)</td>
+                                    <td>@Html.DisplayFor(item => modItem.ContractStatus)</td>
+                                    <td>@Html.DisplayFor(item => modItem.CollectionId)</td>
+                                    <td>@Html.DisplayFor(item => modItem.CollectionType)</td>
+                                    <td>@Html.DisplayFor(item => modItem.DateEntered)</td>
+                                    <td>@Html.DisplayFor(item => modItem.DateRemoved)</td>
+                                    <td>@Html.DisplayFor(item => modItem.AECAmount)</td>
+                                    <td>@Html.DisplayFor(item => modItem.AmountWhenRemovedFromCollection)</td>
+                                    <td>@Html.DisplayFor(item => modItem.AffiliationId)</td>
+                                    <td>@Html.DisplayFor(item => modItem.OwnedAmount)</td>
+                                    <td>@Html.DisplayFor(item => modItem.RetentionTime)</td>
+                                    <td>@Html.DisplayFor(item => modItem.FundingDate)</td>
+                                    <td>@Html.DisplayFor(item => modItem.MerchantStatus)</td>
+                                </tr>
+                    }
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+                <!-- END Datatables Content -->
+                <!-- All Boxes Content Start -->
+            </div>
+        </div>
+    </div>
+}

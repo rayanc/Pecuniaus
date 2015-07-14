@@ -1,0 +1,60 @@
+﻿<div id="page-content" style="min-height: 378px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>System Administration<br>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li>System Administration</li>
+        <li><a href="#">Email Template</a></li>
+    </ul>
+    <!-- All Boxes Content Start -->
+    <!-- Datatables Content -->
+
+    <div class="row">
+
+        <div class="block full">
+            <div class="panel-group" id="faq2">
+
+                @*<div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#divNotification" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">Notification</a></h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="divNotification">
+                            <div class="panel-body">Notification tab is under construction, Processor info tab is woking. </div>
+                        </div>
+                    </div>*@
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i><a href="#divEmailTemplates" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">Email Templates</a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="divEmailTemplates">
+                        @{ Html.RenderAction("Index", "EmailTemplate");  }
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><i class="fa fa-angle-right"></i><a href="#divProcessor" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">Processor Info</a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="divProcessor">
+                        <div class="panel-body">
+                            @{ Html.RenderAction("Index", "Processor");  }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+<!-- END Datatables Content -->
+<!-- All Boxes Content Start -->
+</div>
+

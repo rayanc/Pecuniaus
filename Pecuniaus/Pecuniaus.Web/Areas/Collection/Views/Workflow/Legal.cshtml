@@ -1,0 +1,190 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+    // ViewBag.Title = "Legal";
+}
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Collection.Collection.Legal</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+        <li><a href="@Url.Action("Legal", "Workflow")">@Pecuniaus.Resources.Collection.Collection.Legal</a></li>
+    </ul>
+    @if (Model.MerchantsDetail.merchantId > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="content-header tophdrbuttons">
+                        @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                        @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="example-nf-email" style="margin-top:10px; margin-left:20px;">@Pecuniaus.Resources.Collection.Collection.Merchant: @Model.MerchantsDetail.merchantName  </label>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="example-nf-email" style="margin-top:10px; margin-left:20px;">@Pecuniaus.Resources.Collection.Collection.MerchantID: @Model.MerchantsDetail.merchantId </label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                @if (permissions.Write)
+                                {
+                                    <button type="button" class="btn btn-primary" onclick="CreateNewLawyer();">@Pecuniaus.Resources.Collection.Collection.CreateNewLawyer</button> 
+                                } &nbsp;
+                                    <button type="button" class="btn btn-primary" onclick="ReturnToCollectionScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToCollectionScreen</button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="panel-group" id="faq2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#faq2_q2" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">@Pecuniaus.Resources.Collection.Collection.AssignedLawyers</a></h4>
+                                </div>
+                                <div class="panel-collapse collapse in" id="faq2_q2">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <div class="form-group" id="dvAssignedLawyers" data-source-url="@Url.Action("ListAssignedLawyers")">
+                                                @{Html.RenderAction("ListAssignedLawyers");}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a href="#faq2_q3" data-parent="#faq2" data-toggle="collapse" class="accordion-toggle">@Pecuniaus.Resources.Collection.Collection.AssignNewLawyer</a></h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="faq2_q3">
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            @*@if (Model.LawyersToAssign != null)
+                                                {
+                                                    if (Model.LawyersToAssign.lawyerModel != null && Model.LawyersToAssign.lawyerModel.Count > 0)
+                                                    {*@
+                                            <div class="form-group">
+                                                <div class="tophdrbuttons1">
+                                                    <div class="row">
+                                                        <div class="pull-right">
+                                                            @if (permissions.Write)
+                                                            {
+                                                                <button type="button" class="btn btn-primary" id="btSave" onclick="SaveAssignNewLawyer();">@Pecuniaus.Resources.Common.Save</button>
+                                                                <button type="button" class="btn btn-danger" id="btCancel" onclick="CancelAssignNewLawyer();">@Pecuniaus.Resources.Common.Cancel</button>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="form-group" id="dvAssignNewLawyer" data-source-url="@Url.Action("ListAssignNewLawyer")">
+                                                    @{Html.RenderAction("ListAssignNewLawyer");}
+                                                </div>
+                                                <div class="form-group" id="dvDocuments" data-source-url="@Url.Action("ListDocuments")">
+                                                    @{Html.RenderAction("ListDocuments");}
+                                                </div>
+                                            </div>
+                                            @*}
+                                                }*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            ajaxifyGridMvc("#dvAssignedLawyers");
+            ajaxifyGridMvc("#dvAssignNewLawyer");
+            ajaxifyGridMvc("#dvDocuments");
+            $('input[type=checkbox]').attr("checked", false);
+            $('input[type=radio]').attr("checked", false);
+
+            var tbody = $("#dvAssignNewLawyer tr.grid-row");
+            if (tbody.children().length == 0) {
+                $('#btSave').attr('disabled', 'disabled');
+                $('#btCancel').attr('disabled', 'disabled');
+
+            }
+            else {
+                $('#btSave').removeAttr('disabled', 'disabled');
+                $('#btCancel').removeAttr('disabled', 'disabled');
+            }
+        });
+
+        function SaveAssignNewLawyer() {
+            var check = $("input[type=checkbox]:checked");
+            var radio = $("input[type=radio]:checked");
+            if (check.length > 0 && radio.length > 0) {
+                if (confirm("@Pecuniaus.Resources.Collection.Collection.AreyousuretoassignnewLawyer")) {
+                    var chckedlist = "";
+                    var lawyerId = "";
+                    $('#dvDocuments table tr').each(function () {
+                        if ($(this).find("input[id*='Select']").length > 0) {
+                            if ($(this).find("input[id*='Select']")[0].checked == true) {
+                                var DocumentId = $(this).find("input[id*='Select']").attr("data-id");
+                                chckedlist += DocumentId + ",";
+                            }
+                        }
+                    });
+                    $('#dvAssignNewLawyer table tr').each(function () {
+                        if ($(this).find("input[id*='Select']").length > 0) {
+                            if ($(this).find("input[id*='Select']")[0].checked == true) {
+                                lawyerId = $(this).find("input[id*='Select']").attr("data-id");
+                            }
+                        }
+                    });
+                    $.getJSON("/Workflow/AssignNewLawyer", { chckedlist: chckedlist.substring(0, chckedlist.length - 1), merchantID: $("#MerchantsDetail_merchantId").val().trim(), contractID: $("#MerchantsDetail_contractId").val().trim(), lawyerID: lawyerId }, function (response) {
+                        if (response) {
+                            window.location.href = "@Url.Action("Legal", "Workflow")"
+                        }
+                    });
+                }
+            }
+            else if (radio.length == 0) {
+                alert("@Pecuniaus.Resources.Collection.Collection.NoLawyerSelected");
+            }
+            else { alert("@Pecuniaus.Resources.Collection.Collection.NoDocumentSelected"); }
+            return false
+        }
+
+        function CancelAssignNewLawyer() {
+            var check = $("input[type=checkbox]:checked");
+            var radio = $("input[type=radio]:checked");
+            if (check.length > 0 || radio.length > 0) {
+                if (confirm("@Pecuniaus.Resources.Collection.Collection.CancelChanges")) {
+                    $('input[type=checkbox]').attr("checked", false);
+                    $('input[type=radio]').attr("checked", false);
+                }
+            }
+            @*else {
+                alert("@Pecuniaus.Resources.Collection.Collection.PleaseSelect")
+            }*@
+        }
+        function CreateNewLawyer() {
+            // var queryString = "merchantID=" + $("#merchantId").val().trim() + "&contractID=" + $("#contractId").val().trim();
+            window.location.href = "@Url.Action("CreateNewLawyer", "Workflow")";
+        }
+    </script>
+}

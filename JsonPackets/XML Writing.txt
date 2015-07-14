@@ -1,0 +1,78 @@
+//XmlWriterSettings settings = new XmlWriterSettings();
+            //settings.Indent = true;
+            //settings.CloseOutput = true;
+            //settings.OmitXmlDeclaration = false;
+            //StringBuilder builder = new StringBuilder();
+            //XmlWriter writer = XmlWriter.Create(builder, settings);
+            //writer.WriteStartElement("root");
+            //foreach (QuestionsModel ans in listAnswers)
+            //{
+            //    writer.WriteStartElement("answers");
+            //    writer.WriteElementString("questionId", Convert.ToString(ans.questionId));                
+            //    writer.WriteElementString("answerId", Convert.ToString(ans.answerId));
+            //    writer.WriteElementString("answerDesc", ans.answerDesc);
+            //    writer.WriteElementString("contractId", Convert.ToString(ans.contractId));
+            //    writer.WriteEndElement();
+            //}
+            //writer.WriteEndElement();
+            //writer.Flush();
+
+            //string strXML = builder.ToString();
+
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.CloseOutput = true;
+            settings.OmitXmlDeclaration = false;
+            StringBuilder sbAnswerXml = new StringBuilder();
+            XmlWriter writer = XmlWriter.Create(sbAnswerXml, settings);
+            writer.WriteStartElement("answerslist");
+            foreach (QuestionsModel ans in listAnswers)
+            {                
+                writer.WriteStartElement("answers");
+                writer.WriteAttributeString("AnswerId", Convert.ToString(ans.answerId));
+                writer.WriteAttributeString("QuestionId", Convert.ToString(ans.questionId));                
+                writer.WriteAttributeString("AnswerText", ans.answerDesc);
+                writer.WriteAttributeString("ContractId", Convert.ToString(ans.contractId));
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+            writer.Flush();            
+
+            //StringBuilder sbAnswerXml = new StringBuilder();
+            //StringWriter swAnswerXml = new StringWriter(sbAnswerXml);
+            //XmlTextWriter xtwAnswerXml = new XmlTextWriter(swAnswerXml);
+
+            //xtwAnswerXml.Formatting = Formatting.Indented;
+            //xtwAnswerXml.WriteProcessingInstruction("xml", "version='1.0' encoding='UTF-8'");
+            //xtwAnswerXml.WriteStartElement("answersList");
+
+            //foreach (QuestionsModel ans in listAnswers)
+            //{
+            //    xtwAnswerXml.WriteStartElement("answers");
+
+            //    xtwAnswerXml.WriteStartElement("questionId");
+            //    xtwAnswerXml.WriteString(Convert.ToString(ans.questionId));
+            //    xtwAnswerXml.WriteEndElement();
+
+            //    xtwAnswerXml.WriteStartElement("answerId");
+            //    xtwAnswerXml.WriteString(Convert.ToString(ans.answerId));
+            //    xtwAnswerXml.WriteEndElement();
+
+            //    xtwAnswerXml.WriteStartElement("answerDesc");
+            //    xtwAnswerXml.WriteString(ans.answerDesc);
+            //    xtwAnswerXml.WriteEndElement();
+
+            //    xtwAnswerXml.WriteStartElement("contractId");
+            //    xtwAnswerXml.WriteString(Convert.ToString(ans.contractId));
+            //    xtwAnswerXml.WriteEndElement();
+
+            //    xtwAnswerXml.WriteEndElement();
+            //    //end of ROOT
+            //}
+            //xtwAnswerXml.WriteEndElement();
+            ////end of R
+            //xtwAnswerXml.Close();
+            
+            return questionsRepository.InsUpdateAnswers(sbAnswerXml.ToString());   
+            //return true;

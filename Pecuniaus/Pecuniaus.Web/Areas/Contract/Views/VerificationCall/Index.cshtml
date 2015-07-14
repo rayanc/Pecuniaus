@@ -1,0 +1,77 @@
+﻿@model Pecuniaus.Models.Contract.VerificationCallModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWVerificationCall);
+var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CW_VerificatonCall);
+}
+@using (Html.BeginForm("Index", "VerificationCall", FormMethod.Post, new { @class = "a", role = "form", @enctype = "multipart/form-data" }))
+{
+
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_Header")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        @Pecuniaus.Resources.Common.VerificationCall<br>
+                        @*<small>Any sample text comes here</small>*@
+                    </h1>
+                    @Html.Partial("_PageMessage")
+
+                    @Html.ValidationSummary()
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        @Html.Partial("_breadcrumbBase")
+        <li>
+            @Pecuniaus.Resources.Common.VerificationCall
+        </li>
+    </ul>
+
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Document
+                </a>
+                @if (permissions.Write)
+                {              <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Kickback
+                </a>
+
+                    <button class="btn btn-success" name="button" type="submit" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                    
+                    
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>}
+            </div>
+        </div>
+    </div>
+    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+    <!-- Datatables Content -->
+
+    @Html.Partial("_VeriCall", Model)
+
+}
+
+@Html.Partial("_NoPop")
+
+@Html.Action("Popup", "Kickback", new { area = "Contract", TaskTypeId = Pecuniaus.UICore.TaskTypes.CWVerificationCall})
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/inputmask")
+
+    <script src="@Url.Content("~/Areas/Contract/Scripts/VeriCall.js")"></script>
+    <script>
+        $(document).ready(
+            function () {
+                InitVeriCall();
+            });
+
+    </script>
+}

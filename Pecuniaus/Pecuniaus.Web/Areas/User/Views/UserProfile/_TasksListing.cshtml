@@ -1,0 +1,351 @@
+﻿@model Pecuniaus.User.Models.UsertimeTableModel
+@using HtmlHelpers.Extension
+<style>
+    input[type="checkbox"] {
+        margin-left:20px;
+    }
+</style>
+ 
+<div id="divTasks">
+    @{
+       
+             
+         if(Model.lstTimeTableDetails!=null && Model.lstTimeTableDetails.Count>0)
+         {
+        <div class="row form-group"></div>
+       
+        <div class="table-responsive">
+            <table id="tblTimetableDetails" role="grid" class="table table-vcenter" style="font-size:13px">
+                <tbody>
+                    <tr>
+                        <td><strong>@Pecuniaus.Resources.User.UserProfile.Workflow</strong></td>
+                        <td><strong>@Pecuniaus.Resources.User.UserProfile.Contract</strong></td>
+                        <td><strong>@Pecuniaus.Resources.User.UserProfile.Monday</strong></td>
+                        <td><strong> @Pecuniaus.Resources.User.UserProfile.Tuesday</strong></td>
+                        <td><strong> @Pecuniaus.Resources.User.UserProfile.Wednesday</strong></td>
+                        <td><strong> @Pecuniaus.Resources.User.UserProfile.Thursday</strong></td>
+                        <td><strong> @Pecuniaus.Resources.User.UserProfile.Friday</strong></td>
+                        <td><strong> @Pecuniaus.Resources.User.UserProfile.Saturday</strong></td>
+                        <td><strong> @Pecuniaus.Resources.User.UserProfile.Sunday</strong></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.HiddenFor(timetable => timetable.UserTimeTableID) </td>
+                        <td>Works?</td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsMondayWork, new { @class = "chkcenter" }) </td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsTuesdayWork, new { @class = "chkcenter" })  </td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsWednesdayWork, new { @class = "chkcenter" })</td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsThursdayWork, new { @class = "chkcenter" }) </td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsFridayWork, new { @class = "chkcenter" })   </td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsSaturdayWork, new { @class = "chkcenter" }) </td>
+                        <td> @Html.CheckBoxFor(timetable => timetable.IsSundayWork, new { @class = "chkcenter" })   </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>From</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.MondayFromTime, new { @class = "time_element Fromtime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.TuesdayFromTime, new { @class = "time_element Fromtime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.WednesdayFromTime, new { @class = "time_element Fromtime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.ThursdayFromTime, new { @class = "time_element Fromtime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.FridayFromTime, new { @class = "time_element Fromtime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.SaturdayFromTime, new { @class = "time_element Fromtime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.SundayFromTime, new { @class = "time_element Fromtime_element" })</td>
+
+
+                    </tr>
+
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>To</td>
+
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.MondayToTime, new { @class = "time_element Totime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.TuesdayToTime, new { @class = "time_element Totime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.WednesdayToTime, new { @class = "time_element Totime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.ThursdayToTime, new { @class = "time_element Totime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.FridayToTime, new { @class = "time_element Totime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.SaturdayToTime, new { @class = "time_element Totime_element" })</td>
+                        <td class="time_pick">@Html.TextBoxFor(timetable => timetable.SundayToTime, new { @class = "time_element Totime_element" })</td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <td colspan="9"><strong>Tasks</strong></td>
+
+                    </tr>
+                   
+
+                    @{for (int i = 0; i < Model.lstTimeTableDetails.Count;i++ )
+                      {
+
+                        <tr>
+
+                            <td colspan="2">
+                                @Html.DisplayTextFor(t => Model.lstTimeTableDetails[i].TaskName)
+                                      
+                        </td>
+
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Monday, new
+                           { @*@class = "chkcenter",*@ @style = "width:auto;",
+                                                       @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                       @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                       @usertimetabledetailsid= Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                           })
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Tuesday, new
+                           { @*@class = "chkcenter",*@ @style = "width:auto;",
+                                                       @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                       @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                       @usertimetabledetailsid = Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                                                       
+                           })
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Wednesday, new
+                           { @*@class = "form-control",*@ @style = "width:auto;",
+                                                          @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                          @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                          @usertimetabledetailsid = Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                           })
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Thursday, new
+                           { @*@class = "form-control",*@ @style = "width:auto;",
+                                                          @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                          @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                          @userTimetableDetailsID = Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                           })
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Friday, new
+                           { @*@class = "form-control",*@ @style = "width:auto;",
+                                                          @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                          @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                          @usertimetabledetailsid = Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                           })
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Saturday, new
+                           { @*@class = "form-control",*@ @style = "width:auto;",
+                                                          @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                          @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                          @usertimetabledetailsid = Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                           })
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(t => Model.lstTimeTableDetails[i].Sunday, new
+                           { @*@class = "form-control",*@ @style = "width:auto;",
+                                                          @tasktypeid = Model.lstTimeTableDetails[i].TaskTypeID,
+                                                          @usertimetableid = Model.lstTimeTableDetails[i].UserTimetableID,
+                                                          @usertimetabledetailsid = Model.lstTimeTableDetails[i].UserTimetableDetailsID
+                           })
+                        </td>
+                    </tr>
+
+                      }
+                    }
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="form-group form-actions">
+            <div class="pull-right">
+                <button type="submit" id="btnSave" name="submitButton" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Save</button>
+                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-angle-right"></i>Cancel</button>
+            </div>
+
+        </div>
+        }
+    }
+
+</div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //  $(".time_element").timepicki(); { 'step': 60 }
+            $('.time_element').timepicker({ 'timeFormat': 'h:i A', 'step': 60 });
+            if ($('.Fromtime_element').val() == '') {
+                $('.Fromtime_element').val('08:00 AM');
+            }
+            if ($('.Totime_element').val() == '')
+            {
+                $('.Totime_element').val('05:00 PM');
+            }
+           
+        });
+
+        function alertMessage()
+        {
+            
+        }
+        function ModuleRightsUpdated()
+        {
+            
+        }
+
+        $("#btnSave").click(function ()
+        {
+            
+            var UsertimeTableModel = {
+                UserTimeTableID: $("#UserTimeTableID").val(),
+                UserID: $("#UserID").val(),
+                WorkFlowID: $("#WorkFlowID").val(),
+                lstTimeTableDetails: null,
+                IsMondayWork: $("#IsMondayWork").prop("checked"),
+                IsTuesdayWork: $("#IsTuesdayWork").prop("checked"),
+                IsWednesdayWork: $("#IsWednesdayWork").prop("checked"),
+                IsThursdayWork: $("#IsThursdayWork").prop("checked"),
+                IsFridayWork: $("#IsFridayWork").prop("checked"),
+                IsSaturdayWork: $("#IsSaturdayWork").prop("checked"),
+                IsSundayWork: $("#IsSundayWork").prop("checked"),
+                MondayFromTime: $("#MondayFromTime").val(),
+                MondayToTime: $("#MondayToTime").val(),
+                TuesdayFromTime: $("#TuesdayFromTime").val(),
+                TuesdayToTime: $("#TuesdayToTime").val(),
+                WednesdayFromTime: $("#WednesdayFromTime").val(),
+                WednesdayToTime: $("#WednesdayToTime").val(),
+                ThursdayFromTime: $("#ThursdayFromTime").val(),
+                ThursdayToTime: $("#ThursdayToTime").val(),
+                FridayFromTime: $("#FridayFromTime").val(),
+                FridayToTime: $("#FridayToTime").val(),
+                SaturdayFromTime: $("#SaturdayFromTime").val(),
+                SaturdayToTime: $("#SaturdayToTime").val(),
+                SundayFromTime: $("#SundayFromTime").val(),
+                SundayToTime: $("#SundayToTime").val()
+            };
+            
+            var lstTimetableDetailsOnly = [];
+            $('#tblTimetableDetails tbody tr').each(function (i, row) {
+                if (i <5) return;
+             
+                var $actualrow = $(row);
+                var WorkFlowID, UserID, TaskTypeID, UserTimetableID=0, UserTimetableDetailsID=0, monday = false, tuesday = false, wednesday = false;
+                var thursday = false, friday = false, saturday = false, sunday = false;
+                
+                WorkFlowID = $("#WorkFlowID").val();
+                
+                $actualrow.find('input[type=checkbox]').each(function (index, value) {
+                
+                    TaskTypeID = $(value).attr("tasktypeid");
+
+                    if (typeof (TaskTypeID) === "undefined" || TaskTypeID == '') {
+                        TaskTypeID = $(value).prop("usertimetableid");
+                    }
+
+                    UserTimetableDetailsID = $(value).attr("usertimetabledetailsid");
+                    UserTimetableID = $(value).attr("usertimetableid");
+                    if (typeof (UserTimetableID) === "undefined" || UserTimetableID == '') {
+                        UserTimetableID = $(value).prop("usertimetableid");
+                    }
+                   
+                    switch (index) {
+                        case 0:
+                            {
+
+                                monday = $(value).prop('checked');
+                                if (typeof (monday) === "undefined") {
+                                    monday = false;
+                                }
+                                break;
+                            }
+                        case 1:
+                            {
+                                tuesday = $(value).prop('checked');
+                                if (typeof (tuesday) === "undefined") {
+                                    tuesday = false;
+                                }
+                                break;
+                            }
+                        case 2:
+                            {
+                                wednesday = $(value).prop('checked');
+                                if (typeof (wednesday) === "undefined") {
+                                    wednesday = false;
+                                }
+                                break;
+                            }
+                        case 3:
+                            {
+                                thursday = $(value).prop('checked');
+                                if (typeof (thursday) === "undefined") {
+                                    thursday = false;
+                                }
+                                break;
+                            }
+                        case 4:
+                            {
+                                friday = $(value).prop('checked');
+                                if (typeof (friday) === "undefined") {
+                                    friday = false;
+                                }
+                                break;
+                            }
+                        case 5:
+                            {
+                                saturday = $(value).prop('checked');
+                                if (typeof (saturday) === "undefined") {
+                                    saturday = false;
+                                }
+                                break;
+                            }
+                        case 6:
+                            {
+                                sunday = $(value).prop('checked');
+                                if (typeof (sunday) === "undefined") {
+                                    sunday = false;
+                                }
+                                break;
+                            }
+                    }// end switch
+                });//end of each checkbox
+
+                /*
+                  var WorkFlowID, UserID,taskTypeID, monday = false, tuesday = false, wednesday = false;
+                var thursday = false, friday = false, saturday = false,sunday=false;
+                */
+                lstTimetableDetailsOnly.push(
+           {
+               UserTimetableDetailsID: UserTimetableDetailsID,
+               UserTimetableID: UserTimetableID,
+               userID: UserID = $("#UserID").val(),
+               TaskTypeID: TaskTypeID,
+               Monday: monday,
+               Tuesday: tuesday,
+               Wednesday: wednesday,
+               Thursday: thursday,
+               Friday: friday,
+               Saturday: saturday,
+               Sunday: sunday
+           });
+
+            });// end of each row
+
+            
+            UsertimeTableModel.lstTimeTableDetails = lstTimetableDetailsOnly;
+            var URL = "userprofile/AddUpdateUserTimeTable";
+            var jsonParams = JSON.stringify(UsertimeTableModel);
+            $.ajax({
+                url: URL,
+                type: "POST",
+                data: jsonParams,
+                processData: false,
+                contentType: "application/json; charset=UTF-8",
+                complete: alertMessage
+            });
+
+        });
+
+
+    </script>
+

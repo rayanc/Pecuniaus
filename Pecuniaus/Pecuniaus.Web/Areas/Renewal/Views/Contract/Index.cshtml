@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWContract);
+  var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.RW_Contract);
+}
+<div id="page-content">
+    <header class="navbar navbar-default">
+        <!-- Left Header Navigation -->
+        <ul class="nav navbar-nav-custom">
+            <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+
+        </ul>
+        @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = Pecuniaus.UICore.WorkflowTypes.Renewal, SearchType = "PT", ShowSf = true })
+
+        <!-- END Left Header Navigation -->
+        <!-- Right Header Navigation -->
+        @Html.Partial("_HeaderRight")
+        <!-- END Right Header Navigation -->
+    </header>
+
+
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_RenewalWorkflowHeader")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Common.Contract<br>
+                    </h1>
+                    @Html.Partial("_PageMessage")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Contract</li>
+        <li>@Pecuniaus.Resources.Renewal.Renewal.renewalWorkflow</li>
+        <li><a href="#">@Pecuniaus.Resources.Renewal.Renewal.Contract</a></li>
+    </ul>
+
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                @if (permissions.Write)
+                {
+                    <a href="@Url.Action("ScanDoc", "DocumentScan", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Document
+                    </a>
+                    <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Kickback
+                    </a>
+                    
+                    <form method="post" style="display:inline">
+                    <button class="btn btn-success" type="submit" @(isFormDisabled ? "disabled" : "") >@Pecuniaus.Resources.Common.Complete</button>
+                    </form>
+                    
+                    @*<input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />*@
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>}
+            </div>
+        </div>
+    </div>
+
+    <!-- All Boxes Content Start -->
+    @{ Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.UICore.SessionHelper.CurrentMerchantID}); }
+    <div class="row">
+        <div class="col-md-12">
+                        
+                <div class="block full">
+                    <div class="block-title">
+                        <h2>@Pecuniaus.Resources.Common.Contract</h2>
+                    </div>
+
+                    <div id="dvContAcor" class="panel-group" data-ajax-accord="true">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="fa fa-angle-right"></i><a class="accordion-toggle" data-toggle="collapse" data-parent="#cntRevw" href="#cntRevw_q1">@Pecuniaus.Resources.Renewal.Renewal.RenewalEvaluation</a></h4>
+                            </div>
+                            <div id="cntRevw_q1" class="panel-collapse collapse ">
+                                <div class="panel-body">
+                                    @{Html.RenderAction("Evaluluation", "Review", new { area = "Renewal" });}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="fa fa-angle-right"></i><a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_q2">@Pecuniaus.Resources.Renewal.Renewal.DocumentScanning</a></h4>
+                            </div>
+                            <div id="cntRevw_q2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    @{Html.RenderAction("Documents", "Review", new { area = "Renewal" });}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="fa fa-angle-right"></i><a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#cntRevw_q3">@Pecuniaus.Resources.Renewal.Renewal.OfferList</a></h4>
+                            </div>
+                            <div id="cntRevw_q3" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    @{Html.RenderAction("ListOffersContract", "Review", new { area = "Renewal" });}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><i class="fa fa-angle-right"></i><a class="accordion-toggle" data-toggle="collapse" data-parent="#dvContAcor" href="#faq1_q4">@Pecuniaus.Resources.Common.Contract</a></h4>
+                            </div>
+                            <div id="faq1_q4" class="panel-collapse collapse" data-source-url="@Url.Action("Contracts")">
+                                <div class="panel-body">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            
+        </div>
+    </div>
+</div>
+@Html.Action("Popup", "Kickback", new { area = "Renewal", TaskTypeId = Pecuniaus.UICore.TaskTypes.RWContract })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">        
+        $(function () {
+            ajaxifyGridMvc("#dvDocGrid");
+            $(".docType").change(function () {
+                LoadGrid();
+
+            });
+        });
+        function LoadGrid() {
+            var selectedItem = $(".docType :selected").val();
+            var $dv = $("#dvDocGrid");
+            var url = $dv.attr('data-source-url') + '?docType=' + selectedItem;
+            $dv.load(url);
+        }
+
+        function ReloadDocGrid(divId) {
+            var $targetDiv = $(divId);
+            var loadLink = $targetDiv.attr('data-source-url');
+            $targetDiv.load(loadLink);
+        }
+
+        $(document).ready(function () {
+            $('#btngeneratescore').hide();
+            $('#divCreditReport').hide();
+            $('#btnSaveEvaluation').hide();
+            $('.clsEditOffer').hide();
+            $('.clsDeleteOffer').hide();
+        });
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@model Pecuniaus.Renewal.Models.ScanDocumentModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.RWRenewalReview);}
+
+
+
+@using (Html.BeginForm("index", "DocumentScan", FormMethod.Post, new { id = "frmScanDoc", enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block-title">
+                    <h2>@Pecuniaus.Resources.Common.UploadDocuments</h2>
+                </div>
+                <div class="row">
+                    <div class="pull-right">
+                        <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-simple">
+                        <div class="pull-left col-md-4">
+                            @Html.DropDownListFor(m => m.DocumentTypeID, Model.DocumentTypes, "", new { @class = "form-control docType" })
+                        </div>
+                        <div class="pull-right col-md-4">
+
+                            <a href="Javascript:void(0)" id="lkAddNew" style="display: none">@Pecuniaus.Resources.Common.AddNew</a>
+
+                            @Html.HiddenFor(m => m.DocumentID, new { id = "hDocID" })
+                            <input type="file" name="file" id="file" class="btn btn-success" style="display: none" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="widget-simple">
+                        <div class="form-group" id="dvDocGrid" data-source-url="@Url.Action("GetDocList", "DocumentScan", new { area = "Renewal" })">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+

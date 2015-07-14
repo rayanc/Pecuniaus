@@ -1,0 +1,151 @@
+﻿@model Pecuniaus.Finance.Models.SearchFinanceModel
+@using GridMvc.Html
+
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.Finance);
+}
+
+@using (Html.BeginForm("Index", "MerchantFinance", FormMethod.Post, new { id = "frmFinance", @class = "form-horizontal", role = "form", }))
+{
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        <strong>@Pecuniaus.Resources.Finance.Finance.FinanceTitle</strong><br>
+                    </h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>Home</li>
+        <li><a href="@Url.Action("Index", "MerchantFinance", new { area = "Finance" })">@Pecuniaus.Resources.Finance.Finance.FinanceTitle</a></li>
+    </ul>
+    <!-- All Boxes Content Start -->
+    <!-- Datatables Content -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div id="faq2" class="panel-group">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q2">@Pecuniaus.Resources.Finance.Finance.SearchActivity</a></h4>
+                        </div>
+                        <div id="faq2_q2" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="block">
+                                            <!-- Normal Form Title -->
+                                            <div class="block-title">
+                                                <h2>@Pecuniaus.Resources.Finance.Finance.SearchActivity</h2>
+                                            </div>
+                                            <!-- END Normal Form Title -->
+                                            <!-- Normal Form Content -->
+                                            <form class="form-horizontal form-bordered">
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.merchantId)
+                                                        @Html.TextBoxFor(model => model.merchantId, new { @class = "form-control", @placeholder = "" })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.activityTypeId)
+                                                        @Html.DropDownListFor(model => model.activityTypeId, Model.activityType, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Choose one.." })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.dateOfActivity)
+                                                        @Html.TextBoxFor(model => model.dateOfActivity, new { @class = "form-control input-datepicker" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.affiliationId)
+                                                        @Html.TextBoxFor(model => model.affiliationId, new { @class = "form-control", @placeholder = "" })
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @Html.LabelFor(model => model.processorId)
+                                                        @Html.DropDownListFor(model => model.processorId, Model.processorCompany, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Choose one.." })
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="example-nf-email">&nbsp;</label>
+                                                        @if (permissions.Read)
+                                                        {
+                                                            <button type="submit" name="command" value="search" class="btn btn-success form-control">@Pecuniaus.Resources.Common.Search</button>
+
+                                                        }
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="example-nf-email">&nbsp;</label>
+                                                        @if (permissions.Write)
+                                                        {
+                                                            <button type="submit" id="btExportToExcel" name="command" value="excel" class="btn btn-primary form-control">@Pecuniaus.Resources.Common.ExporttoExcel</button>
+
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!-- END Normal Form Content -->
+                                        </div>
+
+                                        <div class="form-group" id="mylists" data-source-url="@Url.Action("SearchGrid")">
+                                            @{Html.RenderAction("SearchGrid");}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="dvAddFinance">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2" href="#faq2_q3">@Pecuniaus.Resources.Finance.Finance.AddActivity</a></h4>
+                        </div>
+                        <div id="faq2_q3" class="panel-collapse collapse">
+                            @Html.Partial("_AddFinance", Model)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="details">
+    </div>
+}
+<!-- END Datatables Content -->
+<!-- All Boxes Content Start -->
+@section Scripts {
+@Scripts.Render("~/bundles/inputmask")
+
+
+    <script>
+        $(document).ready(
+               function () {
+                   var url = window.location.href;
+                   if (url.indexOf('AddFinance') != -1) {
+                       $("#faq2_q2").removeClass('in');
+                       $("#faq2_q3").addClass('in');
+                   }
+                   else {
+                       $("#faq2_q2").addClass('in');
+                       $("#faq2_q3").removeClass('in');
+                   }
+                   ajaxifyGridMvc("#mylists");
+
+                   var tbody = $("#dvfinanceList tr.grid-row");
+                   if (tbody.children().length == 0) {
+                       $('#btExportToExcel').attr('disabled', 'disabled');
+                   }
+                   else { $('#btExportToExcel').removeAttr('disabled', 'disabled'); }
+
+                   
+               });
+
+        function RefreshActitityList() {            
+            $('#mylists').load('@Url.Action("SearchGrid")');
+       }
+    </script>
+}

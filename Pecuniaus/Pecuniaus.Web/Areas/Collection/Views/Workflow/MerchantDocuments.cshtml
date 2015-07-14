@@ -1,0 +1,139 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+    // ViewBag.Title = "MerchantDocuments";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-content" style="min-height: 516px;">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Collection.Collection.MerchantDocuments</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+        <li><a href="@Url.Action("MerchantDocuments", "Workflow")">@Pecuniaus.Resources.Collection.Collection.MerchantDocuments</a></li>
+    </ul>
+    @if (Model.MerchantsDetail.merchantId > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="content-header tophdrbuttons">
+                        @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                        @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Collection.Collection.Merchant: @Model.MerchantsDetail.merchantName</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="example-nf-email">@Pecuniaus.Resources.Collection.Collection.MerchantID: @Model.MerchantsDetail.merchantId </label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="pull-right">
+                                    @if (permissions.Write)
+                                    {
+                                        <button type="button" class="btn btn-info uploaddoc" id="btUploadNewDocument">@Pecuniaus.Resources.Common.Upload</button>
+                                        <button type="button" class="btn btn-warning" onclick="DeleteMerchantDocuments();">@Pecuniaus.Resources.Common.Delete</button>
+                                        <button type="button" class="btn btn-danger" onclick="CancelMerchantDocuments();">@Pecuniaus.Resources.Common.Cancel</button>
+                                    }
+                                    <button type="button" class="btn btn-primary" onclick="ReturnToCollectionScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToCollectionScreen</button>
+                                </div>
+                            </div>
+                        </div>        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block full">
+                                    <div class="block-title">
+                                        <h2><strong>@Pecuniaus.Resources.Collection.Document.Documents</strong></h2>
+                                    </div>
+                                    <div class="form-group" id="dvMerchantDocuments" data-source-url="@Url.Action("LstMerchantDocument")">
+                                        @*@{Html.RenderAction("LstMerchantDocument");}*@
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="faq2_q6" style="display:block">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div>
+                        <div id="DocumentUpload"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    <!-- Datatables Content -->
+    <!-- END Datatables Content -->
+    <!-- All Boxes Content Start -->
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            ajaxifyGridMvc("#dvMerchantDocuments");
+            $("#faq2_q6").css("display", "none");
+            LoadMerchantDocumentsGrid();
+            $("#faq2_q6 #DocumentUpload").empty();
+            $("#faq2_q6 #DocumentUpload").load('@Url.Action("UploadDocument", "Workflow")?UploadSignedDocument=' + "btUploadNewDocument");
+            SetDocScans();
+        });
+
+        function DeleteMerchantDocuments() {
+            var check = $("input[type=checkbox]:checked");
+            if (check.length > 0) {
+                if (confirm("@Pecuniaus.Resources.Collection.Collection.DeleteMerchantDocument")) {
+                    var chckedlist = "";
+                    $('#dvMerchantDocuments table tr').each(function () {
+                        if ($(this).find("input[id*='Select']").length > 0) {
+                            if ($(this).find("input[id*='Select']")[0].checked == true) {
+                                var DocumentId = $(this).find("input[id*='Select']").attr("data-id");
+                                chckedlist += DocumentId + ",";
+                                var temp = $(this);
+                                temp.remove();
+                            }
+                        }
+                    });
+                    $.getJSON("/Workflow/DeleteMerchantDocuments", { chckedlist: chckedlist }, function (response) {
+                        window.location.href = "@Url.Action("MerchantDocuments", "Workflow")";
+                    });
+                }
+            }
+            else {
+                alert("@Pecuniaus.Resources.Collection.Collection.NoMerchantDocumentSelected")
+            }
+            return false
+        }
+
+        function CancelMerchantDocuments() {
+            var check = $("input[type=checkbox]:checked");
+            $('input[type=checkbox]').attr("checked", false);
+            @*if (check.length > 0) {
+                if (confirm("@Pecuniaus.Resources.Collection.Collection.CancelChanges")) {
+                    $('input[type=checkbox]').attr("checked", false);
+                }
+            }
+            else {
+                alert("@Pecuniaus.Resources.Collection.Collection.NoMerchantDocumentSelected")
+            }*@
+        }
+    </script>
+}

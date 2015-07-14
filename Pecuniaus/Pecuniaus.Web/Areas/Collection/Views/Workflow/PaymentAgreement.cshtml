@@ -1,0 +1,155 @@
+﻿@model Pecuniaus.Collection.Models.CollectionsModel
+@using GridMvc.Html
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CollectionWorkflow);
+}
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Common.PaymentAgreement</h1>
+                    @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                    {
+                        <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Collection.Collection.CollectionWorkflow</li>
+        <li><a href="@Url.Action("PaymentAgreement", "Workflow")">@Pecuniaus.Resources.Common.PaymentAgreement</a></li>
+    </ul>
+    @if (Model.MerchantsDetail.merchantId > 0)
+    {
+        using (Html.BeginForm("SavePaymentDetails", "Workflow", FormMethod.Post, new { id = "frmPayment", @class = "form-horizontal", role = "form", }))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block full">
+                        <div class="content-header tophdrbuttons">
+                            @Html.HiddenFor(model => model.MerchantsDetail.merchantId)
+                            @Html.HiddenFor(model => model.MerchantsDetail.contractId)
+                            @Html.HiddenFor(model => model.MerchantsDetail.realTurn)
+                            @Html.HiddenFor(model => model.CollectionPaymentAgreement.merchantId)
+                            @Html.HiddenFor(model => model.CollectionPaymentAgreement.contractId)
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="example-nf-email" style="margin-top:10px; margin-left:20px;">@Pecuniaus.Resources.Collection.Collection.Merchant: @Model.MerchantsDetail.merchantName </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="example-nf-email" style="margin-top:10px; margin-left:20px;">@Pecuniaus.Resources.Collection.Collection.MerchantID: @Model.MerchantsDetail.merchantId </label>
+                                </div>
+                                <div class="pull-right">
+                                    @if (permissions.Write)
+                                    {
+                                        <button class="btn btn-danger uploaddoc" type="button" id="btUploadSignedDocument">@Pecuniaus.Resources.Collection.PaymentAgreement.UploadSignedDocument</button>
+                                        <button class="btn btn-primary" type="submit">@Pecuniaus.Resources.Common.Save</button>
+                                    }
+                                    <button type="button" class="btn btn-primary" onclick="ReturnToCollectionScreen();">@Pecuniaus.Resources.Collection.Collection.ReturnToCollectionScreen</button>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <br>
+                            </div>
+                            <div id="divFAQ" style="">
+                                @Html.ValidationSummary()
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        @Html.LabelFor(m => m.CollectionPaymentAgreement.dateOfAgreement)
+                                        @Html.TextBoxFor(m => m.CollectionPaymentAgreement.dateOfAgreement, new { @class = "form-control input-datepicker  firstcal", @placeholder = "MM/DD/YYYY" })
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.LabelFor(m => m.CollectionPaymentAgreement.startDate)
+                                        @Html.TextBoxFor(m => m.CollectionPaymentAgreement.startDate, new { @class = "form-control input-datepicker", @placeholder = "MM/DD/YYYY" })
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.LabelFor(m => m.CollectionPaymentAgreement.endDate)
+                                        @Html.TextBoxFor(m => m.CollectionPaymentAgreement.endDate, new { @class = "form-control input-datepicker secondcal", @placeholder = "MM/DD/YYYY" })
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.LabelFor(m => m.CollectionPaymentAgreement.intervalofDays)
+                                        @Html.TextBoxFor(m => m.CollectionPaymentAgreement.intervalofDays, new { @class = "form-control", @placeholder = "" })
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <br>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="block full">
+                                        <div class="block-title">
+                                            <h2><strong>@Pecuniaus.Resources.Collection.PaymentAgreement.Payment</strong> @Pecuniaus.Resources.Collection.PaymentAgreement.Details</h2>
+                                        </div>
+                                        <div class="form-group" id="dvPaymentAgreement" data-source-url="@Url.Action("ListCollectionPaymentAgreement")">
+                                            @{Html.RenderAction("ListCollectionPaymentAgreement");}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row" id="faq2_q6" style="display:block">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div>
+                        <div id="DocumentUpload"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            ajaxifyGridMvc("#dvPaymentAgreement");
+            $("#faq2_q6").css("display", "none");
+
+        });
+
+        $("#CollectionPaymentAgreement_dateOfAgreement").change(function () {
+            var date = new Date($("#CollectionPaymentAgreement_dateOfAgreement").val());
+            var realTurn = $("#MerchantsDetail_realTurn").val();
+
+            if (realTurn > 0) {
+                if (realTurn <= 12) {
+                    var month = date.getMonth();
+                    month = month + realTurn + 1;
+                    date.setMonth(month);
+                }
+                else {
+
+                    var realturnMonth = (realTurn % 12)
+                    month = date.getMonth() + realturnMonth + 1;
+                    date.setMonth(month);
+                    var realTurnYear = realTurn / 12;
+                    realTurnYear = Math.floor(realTurnYear);
+                    var year = date.getFullYear();
+                    year = year + realTurnYear;
+                    if (realturnMonth > 12)
+                    { year = year + 1 }
+                    date.setFullYear(year);
+                }
+                $("#CollectionPaymentAgreement_endDate").val(date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear());
+            }
+        });
+        function Save() {
+            if ($("#frmScanDoc").valid()) {
+                window.location.href = "@Url.Action("PaymentAgreement", "Workflow")";
+            }
+        }
+    </script>
+}
+
+

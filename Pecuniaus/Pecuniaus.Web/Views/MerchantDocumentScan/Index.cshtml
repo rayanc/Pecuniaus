@@ -1,0 +1,114 @@
+﻿@model Pecuniaus.Web.Models.MerchantScanDocumentModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQScanDocument);}
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = Pecuniaus.UICore.SessionHelper.GetWorkFlowID(), SearchType = "P" })
+
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+<div id="page-content">
+
+    @using (Html.BeginForm("Index", "MerchantDocumentScan", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+        <div class="content-header">
+            <div class="header-section">
+                @Html.Partial("_MerchantWorkflowHeader")
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>
+                            @Pecuniaus.Resources.Common.ScanDocument <br>
+                            <small>
+                            </small>
+                        </h1>
+
+                        @Html.Partial("_PageMessage")
+
+                        @Html.ValidationSummary()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+            @Html.Partial("_PrequalbreadcrumbBase")
+            <li>@Pecuniaus.Resources.Common.ScanDocument</li>
+        </ul>
+
+
+        @Html.HiddenFor(m => m.DocumentID)
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    <button class="btn btn-success" name="button" type="submit" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                    <button type="submit" class="btn btn-primary" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Save</button>
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- All Boxes Content Start -->
+        {Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID });}
+        <!-- Datatables Content -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block full">
+                    <div class="block-title">
+                        <h2><strong>@Pecuniaus.Resources.Common.Upload</strong> @Pecuniaus.Resources.Common.Documents</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="widget-simple">
+                            <div class="pull-right">
+                                <input type="file" name="file" id="file" class="btn btn-success" @(isFormDisabled ? "disabled" : "") /> </div> </div> </div> <div class="row"> <div class="widget-simple">   @*<div class="progress progress-striped active">
+                                    <div aria-valuemax="100" aria-valuemin="0" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                </div>*@   <div class="widget-simple"> @*<img id="imgprvw" class="img-responsive greenBorder img-thumbnail" src="/ScanDocuments/@Model.FileName" alt="Uploaded image preview">*@   @if (Model.FileDetails.StartsWith("image")) { <img src='/ScanDocuments/@Model.FileName' class="img-responsive" /> } else { <object data='/ScanDocuments/@Model.FileName' style='width:100%;height:100%;min-height:450px' type="@Model.FileDetails"><p><a href='/ScanDocuments/@Model.FileName'>View Doc</a></p></object> } </div> </div> </div> @*<div class="row">
+                        </div>*@   </div> </div> </div> <!-- END Datatables Content --> <!-- All Boxes Content Start --> } </div>
+@section Scripts { 
+    @Scripts.Render("~/bundles/scriptsbundle") 
+    @Scripts.Render("~/bundles/jqueryval") 
+                             <script type="text/javascript">
+                                 $(function () {
+$(".docType").change(function () {
+$.ajax({
+    url: '/MerchantDocumentScan/GetImage/?docType=' + 11,
+    type: 'GET',
+    dataType: 'json',
+    success: function (data) {
+        $('#imgprvw').attr('src', data.FilePath);
+        $('#DocumentID').val(data.DocumentID);
+    }, error: function (x, y, z) { //     alert(x + '\n' + y + '\n' + z);
+ }
+ });
+ });
+ });
+                                 //function showimagepreview(input) { 
+                                 //    if (input.files && input.files[0]) { 
+                                 //        var filerdr = new FileReader(); 
+                                 //        filerdr.onload = function (e) { 
+                                 //            $('#imgprvw').attr('src', e.target.result); 
+                                 //        } 
+                                 //        filerdr.readAsDataURL(input.files[0]); 
+                                 //    } 
+                                 //} </script>  
+                            @*<script src="http://malsup.github.com/jquery.form.js"></script>*@   <script>
+        //Global Variables
+        var urlFetchNotes = '@Html.Raw(Url.Action("Notes", "Common"))';
+        var urlAddNote = '@Html.Raw(Url.Action("AddNote", "Common"))';
+        var urlSaveNote = '@Html.Raw(Url.Action("SaveNote", "Common"))';
+        var urlFetchSFMerchants = '@Html.Raw(Url.Action("MerchantListing", "Merchant"))';
+        var urlLoadSFMerchantANDSetRecentVisit = '@Html.Raw(Url.Action("AddRecentVisit", "Common"))';
+        var urlFindANDLoadSFMerchant = '@Html.Raw(Url.Action("SearchResultInJson", "Common"))';
+        var urlFetchMerchantSearch = '@Html.Raw(Url.Action("SearchResult", "Common"))';
+        var urlFetchDuplicateMerchantSearch = '@Html.Raw(Url.Action("SearchDuplicateMerchant", "Merchant"))';
+
+
+
+    </script>
+}

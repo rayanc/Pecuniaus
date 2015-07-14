@@ -1,0 +1,19 @@
+﻿@model Pecuniaus.Models.Contract.LandlordInformationModel
+
+@Html.HiddenFor(m => m.LandlordId)
+<div class="col-md-3">
+    @Html.LabelFor(m => m.CompanyName)
+    @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @placeholder = "Enter text.." })
+</div>
+<div class="col-md-3">
+    @Html.LabelFor(m => m.FirstName)
+    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "Enter text.." })
+</div>
+<div class="col-md-3">
+    @Html.LabelFor(m => m.LastName)
+    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Enter text.." })
+</div>
+<div class="col-md-3">
+    @Html.LabelFor(m => m.PhoneNumber)
+    @Html.EditorFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+</div>

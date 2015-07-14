@@ -1,0 +1,87 @@
+﻿@model Pecuniaus.Models.Contract.LandLordVeriModel
+
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWVerificationTask);
+//if (Model.MerchantDetails.RentFlag != 200001)
+//{
+//    isFormDisabled = true;
+//}
+}
+
+@using (Html.BeginForm("LandLord", "VerificationTask", FormMethod.Post, new { @class = "a", role = "form", @enctype = "multipart/form-data" }))
+{
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_Header")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        @Pecuniaus.Resources.Common.VerificationTask<br>
+                        @*<small>Any sample text comes here</small>*@
+                    </h1>
+                    @Html.Partial("_PageMessage")
+                    @Html.ValidationSummary()
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        @Html.Partial("_breadcrumbBase")
+        <li><a href="@Url.Action("BankInformation", "VerificationTask")">@Pecuniaus.Resources.Common.Verification</a></li>
+        <li> @Pecuniaus.Resources.Common.LandLordVerification</li>
+    </ul>
+
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Document
+                </a>
+                <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Kickback
+                </a>
+                <button class="btn btn-success" name="button" type="submit" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />                
+                <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Decline
+                </a>
+            </div>
+        </div>
+        @Html.Partial("_SubNav")
+    </div>
+    <!-- All Boxes Content Start -->
+
+    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.Contract.Repository.SessionVariables.CurrentMerchantID }); }
+
+    <!-- Datatables Content -->
+
+    @Html.Partial("_LandLord",Model)
+}
+@Html.Action("Popup", "Kickback", new { area = "Contract", TaskTypeId = Pecuniaus.UICore.TaskTypes.CWVerificationTask})
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/inputmask")
+    <script>
+        $(document).ready(
+            function () {
+                $('.qrWR:checked').each(function () {
+                    SetCtrlAttr(this);
+                });
+
+                $('.qrWR').on('change', function () {
+                    SetCtrlAttr(this);
+                });
+            });
+        function SetCtrlAttr(s) {
+            var $rdo = $(s);
+            var $ctrls = $rdo.parent().siblings("input[type=text],select");
+            if ($rdo.val() == "true") {
+                $ctrls.attr('readonly', 'readonly');
+            }
+            else {
+                $ctrls.removeAttr('readonly');
+            }
+
+        }
+    </script>
+}

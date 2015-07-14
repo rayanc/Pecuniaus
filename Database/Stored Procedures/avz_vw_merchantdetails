@@ -1,0 +1,64 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `avz_access`@`101.%` 
+    SQL SECURITY DEFINER
+VIEW `avz_vw_merchantdetails` AS
+    select 
+        `mrc`.`MerchantId` AS `merchantId`,
+        `cont`.`ContractId` AS `contractid`,
+        `mrc`.`LegalName` AS `merchantName`,
+        `mrc`.`LegalName` AS `legalName`,
+        `mrc`.`BusinessName` AS `businessName`,
+        `mrc`.`BusinessStartDate` AS `businessStartDate`,
+        `mrc`.`BusinessTypeId` AS `BusinessTypeId`,
+        `mrc`.`BusinessWebSite` AS `businessUrl`,
+        `mrc`.`RNCNumber` AS `RNCNumber`,
+        concat(`repsal`.`FirstName`,
+                ' ',
+                `repsal`.`LastName`) AS `assignedSalesRep`,
+        concat(`owncont`.`FirstName`,
+                ' ',
+                `owncont`.`LastName`) AS `ownerName`,
+        `mrc`.`SalesRepId` AS `salesRepId`,
+        `tsktyp`.`TaskName` AS `taskName`,
+        `wrk`.`WorkFlowName` AS `workFlowName`,
+        `tsk`.`WorkflowId` AS `WorkflowId`,
+        `tsk`.`AssignedUserId` AS `assigneduserId`,
+        `tsk`.`AssignedDate` AS `assignedDate`,
+        `mrc`.`IndustryTypeId` AS `industryTypeId`,
+        `owncont`.`SSN` AS `SSN`,
+        `owncont`.`CellPhone` AS `phoneNumber`,
+        `ent`.`Name` AS `TypeofBusinessentity`,
+        concat(`add`.`Address1`,
+                ' ',
+                `add`.`Address2`,
+                ' ',
+                `add`.`State`,
+                ' ',
+                `add`.`City`,
+                ' ',
+                `add`.`Country`) AS `address`,
+        `tskst`.`StatusId` AS `taskStatusId`,
+        `tskst`.`StatusName` AS `tasKStatus`,
+        `mrcst`.`StatusId` AS `merchantStatusId`,
+        `contst`.`StatusId` AS `contractStatusId`,
+        `mrcst`.`StatusName` AS `merchantStatus`,
+        `contst`.`StatusName` AS `contractStatus`,
+        `mrc`.`InsertUserId` AS `insertUserId`,
+        ifnull(`tsktyp`.`TaskTypeId`, 0) AS `taskTypeId`,
+		 `tsk`.`TaskId` AS `taskId`
+    from
+        (((((((((((((`tb_merchants` `mrc`
+        join `tb_salesrep` `sal` ON ((`mrc`.`SalesRepId` = `sal`.`SalesRepId`)))
+        join `tb_salesrep_contact` `repsal` ON ((`sal`.`Contactid` = `repsal`.`ContactId`)))
+        left join `tb_tasks` `tsk` ON ((`tsk`.`MerchantId` = `mrc`.`MerchantId`)))
+        left join `tb_tasktypes` `tsktyp` ON ((`tsk`.`TaskTypeId` = `tsktyp`.`TaskTypeId`)))
+        left join `tb_workflows` `wrk` ON ((`tsk`.`WorkflowId` = `wrk`.`WorkFlowId`)))
+        left join `tb_owners` `own` ON ((`own`.`OwnerId` = `mrc`.`OwnerId`)))
+        left join `lkp_tb_entitytypes` `ent` ON ((`ent`.`EntitytypeID` = `mrc`.`BusinessTypeId`)))
+        left join `tb_contacts` `owncont` ON ((`owncont`.`ContactId` = `own`.`ContactId`)))
+        left join `tb_addresses` `add` ON ((`add`.`AddressId` = `owncont`.`AddressId1`)))
+        left join `lkp_tb_statuses` `tskst` ON ((`tsk`.`StatusId` = `tskst`.`StatusId`)))
+        left join `tb_contracts` `cont` ON ((`cont`.`MerchantId` = `mrc`.`MerchantId`)))
+        left join `lkp_tb_statuses` `mrcst` ON ((`mrc`.`StatusId` = `mrcst`.`StatusId`)))
+        left join `lkp_tb_statuses` `contst` ON ((`cont`.`StatusId` = `contst`.`StatusId`)))

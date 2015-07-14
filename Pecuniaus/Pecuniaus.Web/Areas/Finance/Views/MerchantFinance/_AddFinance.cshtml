@@ -1,0 +1,300 @@
+﻿@model Pecuniaus.Finance.Models.SearchFinanceModel
+@using GridMvc.Html
+@{
+    var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.Finance);
+}
+@using (Ajax.BeginForm("AddFinance", "MerchantFinance", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q2"}))
+{
+    <div id="errors">
+        @Html.ValidationSummary()
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <!-- Normal Form Title -->
+                    <div class="block-title">
+                        <h2>@Pecuniaus.Resources.Finance.Finance.AddActivity</h2>
+                    </div>
+                    <!-- END Normal Form Title -->
+                    <!-- Normal Form Content -->
+                    <form class="form-horizontal form-bordered">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.addFinance.merchantId)
+                                @Html.TextBoxFor(model => model.addFinance.merchantId, new { @class = "form-control", @placeholder = "", @Value = (Model.addFinance.merchantId > 0 ? Model.addFinance.merchantId.ToString() : string.Empty) })
+                            </div>
+                            <div class="col-md-3">
+                                <input type="hidden" id="hdnContracttype" />                                
+                                @Html.LabelFor(model => model.addFinance.contractId)
+                                @Html.TextBoxFor(model => model.addFinance.contractId, new { @class = "form-control", @placeholder = "", @Value = (Model.addFinance.contractId > 0 ? Model.addFinance.contractId.ToString() : string.Empty) })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.addFinance.dateOfActivity)
+                                @Html.TextBoxFor(model => model.addFinance.dateOfActivity, new { @class = "form-control input-datepicker" })
+                            </div>                            
+                            <div class="col-md-3 divCreditTransfer">
+                                @Html.LabelFor(model => model.addFinance.transferContractId)                                
+                                @Html.TextBoxFor(model => model.addFinance.transferContractId, new { @class = "form-control", @id="transferContractId", @readonly = "readonly"})
+                            </div>
+                            <div class="col-md-3 divPendingAmount">
+                                @Html.LabelFor(model => model.addFinance.pendingAmount)
+                                @Html.TextBoxFor(model => model.addFinance.pendingAmount, new { @class = "form-control", @id = "txtpPendingAmount", @readonly = "readonly" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.addFinance.activityTypeId)
+                                @Html.DropDownListFor(model => model.addFinance.activityTypeId, Model.addFinance.activityType, "", new { @class = "form-control activityType", @style = "width: 100%;", @placeholder = "Choose one.." })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.addFinance.amount)
+                                <div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(model => model.addFinance.amount, new { @class = "form-control", @placeholder = "Enter text.." })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.addFinance.processorId)
+                                @Html.DropDownListFor(model => model.addFinance.processorId, Model.addFinance.processorCompany, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Choose one..", })
+                            </div>
+                            <div class="col-md-3 divTransferAmount">
+                                @Html.LabelFor(model => model.addFinance.TransferAmount)                                
+                                @Html.TextBoxFor(model => model.addFinance.TransferAmount,  new { @class = "form-control", @id="txtTransferAmount" ,@readonly = "readonly"})
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.addFinance.notes)
+                                @Html.TextAreaFor(model => model.addFinance.notes, new { @class = "form-control", @placeholder = "", @rows = "9" })
+                            </div>
+                            <div class="col-md-2">
+                                @if (permissions.Write)
+                                {
+                                    <label for="example-nf-email">&nbsp;</label>
+                                    <button type="submit" id ="btnSaveactivity" class="btn btn-success form-control" onclick="return Save();">@Pecuniaus.Resources.Common.Save</button>
+                                }
+                            </div>
+                            <div class="col-md-2">
+                                @if (permissions.Write)
+                                {
+                                    <label for="example-nf-email">&nbsp;</label>
+                                    <button class="btn btn-primary form-control" name="cancel" onclick="Cancel();">@Pecuniaus.Resources.Common.Cancel</button>
+                                }
+                            </div>
+                        </div>
+                        @*<div class="form-group form-actions">
+                                <div class="col-xs-12">
+                                    <button type="button" class="btn btn-success">Save</button>
+                                    <button type="button" class="btn btn-primary">cancel</button>
+                                </div>
+                            </div>*@
+
+                    </form>
+                    <!-- END Normal Form Content -->
+                </div>
+
+                @if (Model.addFinance != null && Model.addFinance.finance != null)
+                {
+                    @Html.Grid(Model.addFinance.finance).Columns(columns =>
+                                           {
+                                               columns.Add(data => data.dateOfActivity).Titled(@Pecuniaus.Resources.Finance.Finance.Date);
+                                               columns.Add(data => data.processorName).Titled(@Pecuniaus.Resources.Finance.Finance.ProcessorCompany);
+                                               columns.Add(data => data.activityType).Titled(@Pecuniaus.Resources.Finance.Finance.ActivityType);
+                                               columns.Add(data => data.totalAmount).Titled(@Pecuniaus.Resources.Finance.Finance.Amount);
+                                               columns.Add(data => data.notes).Titled(@Pecuniaus.Resources.Finance.Finance.Note).SetWidth(200);
+                                           }).WithPaging(5).Sortable()
+
+                }
+            </div>
+        </div>
+    </div>    
+   
+}
+
+<div id="mod_transfer_show" class="modal fade" tabindex="-1" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="dvcreditTransfer" data-source-url="@Url.Action("creditTransfer", "MerchantFinance", new {area = "Finance"})">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    
+<div style="display:none">    
+    <button id="btnTrigger" type="button" data-toggle="modal" data-target="#mod_transfer_show" ></button>   
+</div>
+
+<script type="text/javascript">
+
+
+    function Cancel() {
+        
+        $("#errors").css("display", "none");
+        $("#addFinance_merchantId").val("");
+        $("#addFinance_contractId").val("");
+        $("#addFinance_dateOfActivity").val("");
+        $("#addFinance_amount").val("");
+        $("#addFinance_notes").val("");
+
+        $("#transferContractId").val("");
+        $("#txtTransferAmount").val("0");
+
+        $('#addFinance_activityTypeId option:selected').removeAttr('selected');
+        $("#s2id_addFinance_activityTypeId span.select2-chosen").text("Choose one..");
+        //$("[id^=select2-chosen-]").text("Choose one..");
+        $('#s2id_addFinance_activityTypeId a').addClass('select2-default');
+
+        $('#addFinance_processorId option:selected').removeAttr('selected');
+        $("#s2id_addFinance_processorId span.select2-chosen").text("Choose one..");
+        //$("[id^=select2-chosen-]").text("Choose one..");
+        $('#s2id_addFinance_processorId a').addClass('select2-default');
+        return false;
+    }
+
+    function Save() {
+        $("#errors").css("display", "block");
+        $('#addFinance_processorId').removeAttr('disabled');
+        if ($('.activityType').val() == '6') {
+            var amount = Number($("#addFinance_amount").val().replace(/[^0-9\.-]+/g, ""));
+            var transferAmount = Number($("#txtTransferAmount").val().replace(/[^0-9\.-]+/g, ""));
+            if (parseFloat(amount) > parseFloat(transferAmount)) {
+                //alert('Amount should not be greater than Credit Transference Amount');
+                alert('@Pecuniaus.Resources.Finance.Finance.CreditTransferenceAlert');
+                return false;
+            }
+        }return true;
+    }
+
+    $("#addFinance_merchantId").blur(function () {        
+        var merchantId = $.trim($("#addFinance_merchantId").val());
+        GetFundedContract(merchantId);        
+       
+    });
+
+    function GetFundedContract(merchantId)
+    {
+        var regEx = "^[0-9]*$";
+        if ((merchantId.length != 0) && (merchantId.match(regEx))) {
+            $.ajax({
+                type: "POST",
+                url: "/MerchantFinance/GetFundedContract",
+                dataType: "json",
+                data: { MerchantId: merchantId },
+                success: function (data) {               
+                   
+                    $("#addFinance_contractId").val(data.contractId);
+                    $("#hdnContracttype").val(data.contractTypeId);
+                    $("#txtpPendingAmount").val(data.pendingAmount);
+                    
+                    if (data.processorId > 0) {
+                        $('#addFinance_processorId').attr('disabled', 'disabled');
+                        $("#addFinance_processorId").val(data.processorId);
+                    }
+                    else {
+                        $('#addFinance_processorId').removeAttr('disabled');                        
+                    }
+                    
+
+                    if ($('.activityType').val() == '6') {
+                        $('.divCreditTransfer').show();
+                        $('.divTransferAmount').show();
+                        $('.divPendingAmount').hide();                        
+
+                    } else if ($('.activityType').val() == '5') {
+
+                        //if ($("#hdnContracttype").val() == 13200) {
+                        //    $('.divPendingAmount').show();
+                        //}
+                        //else {
+                        //    $('#btnSaveactivity').attr('disabled', 'disabled');
+                        //    $('.activityType').val('0');
+                        //    $('.divPendingAmount').hide();
+                        //}
+                        $('.divPendingAmount').show();
+                        $('.divCreditTransfer').hide();
+                        $('.divTransferAmount').hide();
+                    }
+                    else {
+                        $('.divCreditTransfer').hide();
+                        $('.divTransferAmount').hide();
+                        $('.divPendingAmount').hide();
+                        $('#transferContractId').val(0);
+                        $('#txtTransferAmount').val(0);
+
+                    }
+                }
+            });
+        }
+
+    }
+    $(document).ready(function () {
+        $('#txtContractID').val('');
+        $('.divCreditTransfer').hide();
+        $('.divTransferAmount').hide();
+        $('.divPendingAmount').hide();
+        var merchantId = $.trim($("#addFinance_merchantId").val());
+        GetFundedContract(merchantId);
+      
+       
+        
+        if ($('.activityType').val() == '6') {
+            $('.divCreditTransfer').show();
+            $('.divTransferAmount').show();
+        }
+        $('.activityType').on('change', function () {
+            $('#btnSaveactivity').removeAttr('disabled');
+            $('#txtContractID').val('');
+            
+            if ($(this).val() == '6') {               
+                $('.divCreditTransfer').show();
+                $('.divTransferAmount').show();
+                $('.divPendingAmount').hide();
+                $("#btnTrigger").click();
+                
+            } else if ($(this).val() == '5') {
+
+                //if ($("#hdnContracttype").val() == 13200) {
+                    //$('.divPendingAmount').show();
+               // }
+                //else {
+                   // $('#btnSaveactivity').attr('disabled', 'disabled');
+                    //$('.activityType').val('0');
+                //}     
+                $('.divPendingAmount').show();
+                $('.divCreditTransfer').hide();
+                $('.divTransferAmount').hide();
+				$('#transferContractId').val(0);
+                $('#txtTransferAmount').val(0);
+            }
+            else {
+                $('.divCreditTransfer').hide();
+                $('.divTransferAmount').hide();
+                $('.divPendingAmount').hide();
+                $('#transferContractId').val(0);
+                $('#txtTransferAmount').val(0);
+                
+            }
+        });
+
+
+        $("#mod_transfer_show").on('shown.bs.modal', function (e) {           
+            var $model = $(this);
+            var $modBody = $model.find('.modal-body');
+            var loadURL = $modBody.attr("data-source-url");
+            $modBody.load(loadURL);
+        });        
+        
+    });
+
+    
+
+</script>
+
+
+

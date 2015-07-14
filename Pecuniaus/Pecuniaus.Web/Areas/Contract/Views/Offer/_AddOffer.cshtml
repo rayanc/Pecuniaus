@@ -1,0 +1,215 @@
+﻿@model Pecuniaus.Models.Contract.OfferModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQOfferCreation);}
+<div id="dvNewOffer">
+    @using (Ajax.BeginForm(Model.IsUpdate ? "UpdateOffer" : "AddOffer", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewOffer",
+       OnSuccess = "OfferUpdated()",
+   }, new { @class = "a", role = "form" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div style="padding: 40px;" class="block full">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary()
+
+                        <div class="form-group">
+
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.loanAmount) :<br>
+
+                                <div>
+                                    <div class="input-group pull-right">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.loanAmount)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.ownedAmount) :<br>
+
+                                <div>
+                                    <div class="input-group pull-right">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.ownedAmount, new { htmlAttributes = new { @readonly = "readonly" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.proportion) :<br>
+                                <div>
+                                    <div>
+                                        @Html.TextBoxFor(m => m.proportion, new { @class = "form-control", @id = "txtprop", @placeholder = "Enter text.." })
+                                        @Html.HiddenFor(m => m.yearly, new { htmlAttributes = new { id = "txtYearlyPayment" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.retention) %:
+                                <div>
+                                    <div>
+                                        @Html.TextBoxFor(m => m.retention, new { @class = "form-control", @id = "txtret", @readonly = "readonly", @placeholder = "Enter text.." })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                @Html.HiddenFor(m => m.Id)
+                                @Html.HiddenFor(m => m.offerId)
+                                @Html.LabelFor(m => m.turn) :<br>
+                                @Html.TextBoxFor(m => m.turn, new { @class = "form-control", @id = "txtTime", @placeholder = "Enter text.." })
+                            </div>
+                            <div class="col-md-4">
+                                % @Html.LabelFor(m => m.salestaken) :<br>
+
+                                <div>
+
+                                    @Html.TextBoxFor(m => m.salestaken, new { @class = "form-control", @id = "txtSalesTaken", @readonly = "readonly", @placeholder = "Enter text.." })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                @Html.LabelFor(m => m.monthlypayment) :<br>
+                                <div>
+                                    <div class="input-group pull-right">
+                                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                                        @Html.EditorFor(m => m.monthlypayment, new { htmlAttributes = new { @readonly = "readonly" } })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="padding: 40px; margin: 20px 0" class="block full">
+                    <div class="form-horizontal form-bordered">
+                        <div class="form-group" id="slTime">
+                            <label class="col-md-3 control-label" for="example-select">@Pecuniaus.Resources.Common.Time</label>
+                            <div class="col-md-9">
+                                <div class="slider slider-horizontal">
+                                    <div class="slider-track">
+                                        <div class="slider-selection"></div>
+                                        <div class="slider-handle round"></div>
+                                        <div class="slider-handle round" tabindex="0"></div>
+                                    </div>
+                                    <div class="tooltip top hide" style="top: -30px; left: 332px;">
+                                        <div class="tooltip-arrow"></div>
+                                        <div class="tooltip-inner">100 : 900</div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.TurnSl, new
+                           {
+                               @class = "form-control input-slider1",
+                               @placeholder = "Enter text..",
+                               data_slider_tooltip = "show",
+                               data_slider_orientation = "horizontal",
+                               data_slider_value = (@Model.turn),
+                               data_slider_step = "0.01",
+                               data_slider_max = "15",
+                               data_slider_min = "1",
+                               @style = "display: none;"
+                           })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group" id="slLoanAmt">
+                            <label class="col-md-3 control-label" for="example-select">@Pecuniaus.Resources.Common.MCAAmount</label>
+                            <div class="col-md-9">
+                                <div class="slider slider-horizontal">
+                                    <div class="slider-track">
+                                        <div class="slider-selection"></div>
+                                        <div class="slider-handle round"></div>
+                                        <div class="slider-handle round"></div>
+                                    </div>
+                                    <div class="tooltip top hide" style="top: -30px; left: 342.474px;">
+                                        <div class="tooltip-arrow"></div>
+                                        <div class="tooltip-inner">250 : 687</div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.LoanAmountSL, new
+                           {
+                               @class = "form-control input-slider1",
+                               @id = "ex111",
+                               @placeholder = "Enter text..",
+                               data_slider_tooltip = "show",
+                               data_slider_orientation = "horizontal",
+                               data_slider_value = (@Model.loanAmount),
+                               data_slider_step = "1000",
+                               data_slider_max = "6000000",
+                               data_slider_min = "1000",
+                               @style = "display: none;"
+                           })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="slPropotion">
+                            <label class="col-md-3 control-label" for="example-select">@Pecuniaus.Resources.Common.Proportion</label>
+                            <div class="col-md-9">
+                                <div class="slider slider-horizontal">
+                                    <div class="slider-track">
+                                        <div class="slider-selection"></div>
+                                        <div class="slider-handle round"></div>
+                                        <div class="slider-handle round"></div>
+                                    </div>
+                                    <div class="tooltip top hide" style="top: -30px; left: 332px;">
+                                        <div class="tooltip-arrow"></div>
+                                        <div class="tooltip-inner">100 : 900</div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.ProportionSL, new
+                       {
+                           @class = "form-control input-slider1",
+                           @placeholder = "Enter text..",
+                           data_slider_tooltip = "show",
+                           data_slider_orientation = "horizontal",
+                           data_slider_value = (@Model.proportion),
+                           data_slider_step = "0.001",
+                           data_slider_max = "2.1",
+                           data_slider_min = "1",
+                           @style = "display: none;"
+                       })
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group" id="slRetention">
+                            <label class="col-md-3 control-label" for="example-select">@Pecuniaus.Resources.Common.Retention %</label>
+                            <div class="col-md-9">
+                                <div class="slider slider-horizontal">
+                                    <div class="slider-track">
+                                        <div class="slider-selection"></div>
+                                        <div class="slider-handle round"></div>
+                                        <div class="slider-handle round"></div>
+                                    </div>
+                                    <div class="tooltip top hide" style="top: -30px; left: 332px;">
+                                        <div class="tooltip-arrow"></div>
+                                        <div class="tooltip-inner">100 : 900</div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.RetentionSl, new
+                       {
+                           @class = "form-control input-slider1",
+                           @placeholder = "Enter text..",
+                           data_slider_tooltip = "show",
+                           data_slider_orientation = "horizontal",
+                           data_slider_value = (@Model.retention),
+                           data_slider_step = "1",
+                           data_slider_max = "100",
+                           data_slider_min = "1",
+                           @style = "display: none;"
+                       })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

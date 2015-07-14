@@ -1,0 +1,25 @@
+﻿@model Pecuniaus.Models.Contract.CorporateDocVerificationModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2>@Pecuniaus.Resources.Contract.CorpDocVerification.CorporateDocumentVerification</h2>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.NameOfCompany)
+                    @Html.TextBoxFor(m => m.NameOfCompany, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.RNCNumber)
+                    @Html.TextBoxFor(m => m.RNCNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.AddressDesc)
+                    @Html.TextBoxFor(m => m.AddressDesc, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

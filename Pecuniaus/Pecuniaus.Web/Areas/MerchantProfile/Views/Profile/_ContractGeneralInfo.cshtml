@@ -1,0 +1,67 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractModel
+@{
+    var permissionsContracts = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.MP_Contracts);
+}
+@using (Ajax.BeginForm("ProcessContractGeneralInformation", "Profile", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "faq2_q11_q1" }))
+{
+@Html.Partial("_PageMessage")
+@Html.ValidationSummary()
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    @Html.HiddenFor(m => m.ContractId)
+                    @Html.LabelFor(m => m.ContractNumber)
+                    @Html.DisplayFor(m => m.ContractNumber, new { @class = "form-control", @placeholder = "" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.LoanedAmount)<br />
+                    @Html.DisplayFor(m => m.LoanedAmount, new { @class = "form-control", @placeholder = "" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.OwnedAmount)<br />
+                    @Html.DisplayFor(m => m.OwnedAmount, new { @class = "form-control", @placeholder = "" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.ContractStatus)
+                    @Html.DisplayFor(m => m.ContractStatus, new { @class = "form-control", @placeholder = "" })
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.FundingDate)
+                    @Html.DisplayFor(m => m.FundingDate, new { @class = "form-control", @placeholder = "text here" })
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.RetentionPercentage)
+                    @Html.TextBoxFor(m => m.RetentionPercentage, new { @class = "form-control", @placeholder = "" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.AdministrativeExpenses)<br />
+                    @Html.DisplayFor(m => m.AdministrativeExpenses, new { @class = "form-control", @placeholder = "" })
+                </div>
+                @*@if (permissionsContracts.Edit)
+                        {*@
+                    <div class="col-md-1" style="margin-top:16px;">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="UpdateGeneralInfo">@Pecuniaus.Resources.Common.Save</button>
+                    </div>
+                @*}*@
+                    <div class="col-md-2" style="margin-top:16px; margin-right:10px;">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="ScannedContract">@Pecuniaus.Resources.MerchantProfile.Contracts.ScannedContract</button>
+                    </div>
+                    <div class="col-md-1" style="margin-top:16px;">
+                        <button class="btn btn-primary" type="submit" name="submitButton" value="ScannedIOU">@Pecuniaus.Resources.MerchantProfile.Contracts.ScannedIOU</button>
+                    </div>
+            </div>
+            <div class="col-md-12">
+                <div class="widget-simple">
+                    @Html.LabelFor(m => m.RetentionChangeReason)*<br>
+                    @Html.TextAreaFor(m => m.RetentionChangeReason, new { @class = "form-control", @placeholder = "", rows = "4" })
+                </div>
+            </div>
+            <!-- END Datatables Content -->
+            <!-- All Boxes Content Start -->
+        </div>
+    </div>
+}

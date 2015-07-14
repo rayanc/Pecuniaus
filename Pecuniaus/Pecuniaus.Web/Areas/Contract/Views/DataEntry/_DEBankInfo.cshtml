@@ -1,0 +1,31 @@
+﻿@model Pecuniaus.Models.Contract.DataEntryModel
+@{var isFormDisabled = Model.IsDisabled;}
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Bank</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.BankID)
+                @Html.DropDownListFor(m => m.BankID, Model.Banks, "", new { @class = "form-control", @style = "width: 100%;", @data_placeholder = "Bank Name", @id = "ddlBankInformation" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.AccountNumber)
+                @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.AccountName)
+                @Html.TextBoxFor(m => m.AccountName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.BankCode)
+                @Html.TextBoxFor(m => m.BankCode, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+        </div>
+    </div>
+</div>

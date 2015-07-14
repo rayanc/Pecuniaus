@@ -1,0 +1,100 @@
+﻿
+@model Pecuniaus.Notification.Models.ProcessorModel
+<div id="dvNewProcessor">
+    @using GridMvc.Html
+    @using (Ajax.BeginForm("AddUpdateProcessor", "Processor", new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewProcessor",
+       OnSuccess = "ProcessorUpdated()",
+
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+        @Html.Partial("_PageMessage")
+        @Html.ValidationSummary()
+        <div id="divMessageforProcessor" class="validation-summary-errors" style="display:none;">
+            <ul><li>This processor name is already exist, please try with different processor name.</li></ul>
+        </div>
+
+        @Html.HiddenFor(m => m.IsUpdate);
+        @Html.HiddenFor(m => m.ProcessorId)
+        <div class="row form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(u => u.Name)
+                @Html.TextBoxFor(u => u.Name, new { @class = "form-control", @placeholder = "Enter Processor Name" })
+            </div>
+            <div class="col-md-3">
+
+                @Html.LabelFor(u => u.ProcessorCode)
+
+                @Html.TextBoxFor(u => u.ProcessorCode, new { @class = "form-control", @placeholder = "Enter Processor Code" })
+
+
+            </div>
+            <div class="col-md-3">
+
+                @Html.LabelFor(u => u.Description)
+
+                @Html.TextAreaFor(u => u.Description, new { @class = "form-control", @placeholder = "Enter Description." })
+
+
+            </div>
+            <div style="padding:20px 0 0" class="col-md-2">
+                @Html.CheckBoxFor(u => u.IsActive, new { @class = "form-control", @style = "width:auto;" })
+                @Html.LabelFor(u => u.IsActive)
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row form-group">
+        </div>
+        <div class="form-group form-actions">
+            <div class="pull-right">
+                @if (Model.IsUpdate)
+                {
+                    <button type="submit" class="btn btn-sm btn-primary" name="submitButton" value="@Pecuniaus.Resources.Common.Update"><i class="fa fa-angle-right"></i> @Pecuniaus.Resources.Common.Update</button>
+                    <button class="btn btn-primary" onclick="CEGroup()">@Pecuniaus.Resources.Common.Cancel</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-sm btn-primary" name="submitButton" value="@Pecuniaus.Resources.Common.Save"><i class="fa fa-angle-right"></i> @Pecuniaus.Resources.Common.Save</button>
+                    <button type="reset" class="btn btn-sm btn-warning" onclick="$('.alert-success').hide();"><i class="fa fa-repeat"></i> Reset</button>
+                }
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+
+    $("#Name").focusout(function () {
+        var ProcessorId = '@Model.ProcessorId';
+        $.getJSON('@Url.Action("CheckProcessorExist", "processor")', { processorName: $(this).val(), processorID: ProcessorId }, function (data) {
+            if (data.isDuplicate) {
+
+                $("#divMessageforProcessor").show();
+               // $(".alert-success").hide();
+               
+            }
+            else {
+                $("#divMessageforProcessor").hide();
+               // $(".alert-success").html("This processor name is available.");
+                //$(".alert-success").show();
+            }
+        });
+    });
+    $(".btn-primary").click(function () {
+        $(".alert-success").hide();
+    });
+    
+    function ProcessorUpdated()
+    {
+        BindProccessors();
+    }
+    function BindProccessors() {
+        var $dvProcessorsListing = $('#dvProcessorsListing');
+        var url = $dvProcessorsListing.attr("data-source-url");
+        $dvProcessorsListing.load(url);
+    }
+   
+
+</script>

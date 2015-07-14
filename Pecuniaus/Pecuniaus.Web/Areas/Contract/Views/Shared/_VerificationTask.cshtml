@@ -1,0 +1,35 @@
+﻿
+
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" id="VeriTabs">
+        <li role="presentation"><a href="#tBankInfo" aria-controls="tBankInfo" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.BankInfoVerification</a></li>
+        @if (Pecuniaus.UICore.SessionHelper.IsMerchantPropertyRented)
+        {
+            <li role="presentation"><a href="#tLLVeri" aria-controls="tLLVeri" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.LandLordVerification</a></li>
+        }
+        <li role="presentation"><a href="#tCorpDoc" aria-controls="tCorpDoc" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.CorpDocVerification</a></li>
+        <li role="presentation"><a href="#tCommName" aria-controls="tCommName" role="tab" data-toggle="tab">@Pecuniaus.Resources.Common.CommercialnameVerification</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="tBankInfo" data-url="@Url.Action("BankInfoVer")">
+
+        </div>
+        @if (Pecuniaus.UICore.SessionHelper.IsMerchantPropertyRented)
+        {
+            <div role="tabpanel" class="tab-pane" id="tLLVeri" data-url="@Url.Action("LandLordVer")">
+
+            </div>
+        }
+        <div role="tabpanel" class="tab-pane" id="tCorpDoc" data-url="@Url.Action("CorpDocVer")">
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tCommName" data-url="@Url.Action("CommNameVer")">
+
+        </div>
+    </div>
+
+</div>

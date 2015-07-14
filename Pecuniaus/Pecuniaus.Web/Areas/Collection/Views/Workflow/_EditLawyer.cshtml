@@ -1,0 +1,36 @@
+﻿@model Pecuniaus.Collection.Models.LawyerModel
+<div id="dvNewLawyer">
+    @using (Ajax.BeginForm("EditLawyer", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewLawyer",
+       OnSuccess = "LawyerUpdated()",
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+        @Html.ValidationSummary()
+
+        @Html.HiddenFor(a => a.ID)
+         @Html.HiddenFor(a => a.lawyerId)
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.firstName)
+                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.lastName)
+                @Html.TextBoxFor(m => m.lastName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.companyName)
+                @Html.TextBoxFor(m => m.companyName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                <label>&nbsp;</label>
+                <div>
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Update" /> <button class="btn btn-primary" onclick="CancelLawyer()">@Pecuniaus.Resources.Common.Cancel</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

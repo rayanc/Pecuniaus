@@ -1,0 +1,149 @@
+﻿@model Pecuniaus.Models.Contract.DataEntryModel
+@using HtmlHelpers.Extension
+
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.CWDataEntry);
+var permissions = Pecuniaus.UICore.SessionHelper.GetPagePermissionsByPage(Pecuniaus.UICore.Modules.CW_DataEntry);
+Model.IsDisabled = isFormDisabled;
+}
+
+@using (Html.BeginForm("index", "DataEntry", FormMethod.Post, new { @class = "a", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.ContractId);
+
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_Header")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>
+                        @Pecuniaus.Resources.Common.DataEntry @*<strong>@Pecuniaus.Resources.Common.Entry</strong>*@<br>
+                    </h1>
+                    @Html.Partial("_PageMessage")
+
+                    @Html.ValidationSummary()
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="breadcrumb breadcrumb-top">
+        @Html.Partial("_breadcrumbBase")
+        <li>@Pecuniaus.Resources.Common.DataEntry</li>
+    </ul>
+    <div class="content-header tophdrbuttons">
+        <div class="row">
+            <div class="pull-right">
+                <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.Document
+                </a>
+                @*<a href="@Url.Action("Index", "MerchantEvaluation", new { area = "Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                    @Pecuniaus.Resources.Common.PQMerchantEvaluation
+                </a>*@
+                @if (permissions.Write)
+                {
+                    <a href="#mod-kickback" id="btnKickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Kickback
+                    </a>
+                    <button class="btn btn-success" type="submit" name="button" value="Complete" @(isFormDisabled ? "disabled" : "")>@Pecuniaus.Resources.Common.Complete</button>
+                    <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                    <a href="#mod_decline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>}
+            </div>
+        </div>
+    </div>
+    { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.UICore.SessionHelper.CurrentMerchantID }); }
+    <!-- Datatables Content -->
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("_DEMerchant", Model)
+        </div>
+    </div>
+    <!--//Bank Info-->
+    <div class="row">
+        <div class="col-md-12">
+            @Html.Partial("_DEBankInfo", Model)
+        </div>
+    </div>
+}
+
+@*<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Owner</strong> @Pecuniaus.Resources.Contract.DataEntry.Statement</h2>
+            </div>
+            <div id="dvEditStatement" data-source-url="@Url.Action("AddStatement")" data-edit-url="@Url.Action("EditStatement")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvStatement" data-source-url="@Url.Action("ListStatement")">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Owner</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+            </div>
+            <div id="dvEditOwner" data-source-url="@Url.Action("AddOwner")" data-edit-url="@Url.Action("EditOwner")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvOwners" data-source-url="@Url.Action("ListOwners")">
+                    @{ Html.RenderAction("ListOwners");  }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.TradeRef</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+            </div>
+            <div id="dvEditTradeReference" data-source-url="@Url.Action("AddTradeReference")" data-edit-url="@Url.Action("EditTradeReference")">
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvTradeReference" data-source-url="@Url.Action("ListTradeReference")">
+                    @{Html.RenderAction("ListTradeReference");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block full">
+            <div class="block-title">
+                <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Processor</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+            </div>
+            <div id="dvEditProcessor" data-source-url="@Url.Action("AddProcessor")" data-edit-url="@Url.Action("EditProcessor")">
+                @*@{ Html.RenderAction("AddProcessor");  }*@
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group" id="dvProcessor" data-source-url="@Url.Action("ListProcessors")">
+                    @{Html.RenderAction("ListProcessors");}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("Popup", "Kickback", new { area = "Contract", TaskTypeId = Pecuniaus.UICore.TaskTypes.CWDataEntry})
+
+<!-- END Datatables Content -->
+<!-- All Boxes Content Start -->
+<!-- END Page Content -->
+@section CSS {
+    @*@Styles.Render("~/bundles/GridMvc")*@
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/inputmask")
+    <script src="@Url.Content("~/Areas/Contract/Scripts/DataEntry.js")"></script>
+}

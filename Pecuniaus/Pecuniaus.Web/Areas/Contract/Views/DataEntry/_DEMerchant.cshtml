@@ -1,0 +1,167 @@
+﻿@model Pecuniaus.Models.Contract.DataEntryModel
+@{var isFormDisabled= Model.IsDisabled ;}
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>@Pecuniaus.Resources.Contract.DataEntry.Merchant</strong> @Pecuniaus.Resources.Contract.DataEntry.Information</h2>
+    </div>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.BusinessName)
+                @Html.TextBoxFor(m => m.BusinessName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.LegalName)
+                @Html.TextBoxFor(m => m.LegalName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.RNC)
+                @Html.TextBoxFor(m => m.RNC, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(m => m.BusinessTypeId)
+                <div class="col-md-12">
+                    @foreach (var bt in Model.BusinessType)
+                    {
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.BusinessTypeId, bt.Value, new { id = "" })
+                            @bt.Text
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Address.AddressLine1)
+                @Html.TextBoxFor(m => m.Address.AddressLine1, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Address.City)
+                @Html.TextBoxFor(m => m.Address.City, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Address.StateId)
+                @Html.DropDownListFor(m => m.Address.StateId, Model.Provinces, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Province" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.HiddenFor(m => m.Address.AddressId)
+                @Html.LabelFor(m => m.Address.Phone1)
+                @Html.EditorFor(m => m.Address.Phone1, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Address.Phone2)
+                @Html.EditorFor(m => m.Address.Phone2, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.Address.Email)
+                @Html.TextBoxFor(m => m.Address.Email, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.PropertyType)
+                @Html.DropDownListFor(m => m.PropertyType, Model.TypeOfProperties, "", new { @class = "form-control", @style = "width: 100%;", @id = "drpPropertyType", onchange = "LoadLandlord();", @placeholder = "Rented" })
+
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.RentAmount)
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+
+                        @Html.EditorFor(m => m.RentAmount, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.IndustryTypeId)
+                @Html.DropDownListFor(m => m.IndustryTypeId, Model.IndustryTypes, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Industry Type" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.BusinessStartDate)
+                @Html.EditorFor(m => m.BusinessStartDate)
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.LoanAmountRequired)
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                        @Html.EditorFor(m => m.LoanAmountRequired)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.AffiliationNumber)
+                @Html.TextBoxFor(m => m.AffiliationNumber, new { @class = "form-control", @disabled = "disabled", @placeholder = "Enter text.." })
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.PsalesRepId)
+                @Html.DropDownListFor(m => m.PsalesRepId, Model.SalesReps, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Primary Sales Rep" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.SecsalesRepId)
+                @Html.DropDownListFor(m => m.SecsalesRepId, Model.SalesReps, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Secondary Sales Rep" })
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.TypeOfAdvanceId)
+                @Html.DropDownListFor(m => m.TypeOfAdvanceId, Model.TypeOfAdvances, "", new { @class = "form-control", @style = "width: 100%;", @placeholder = "Type Of Advances" })
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.AnnualSales)
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                        @Html.EditorFor(m => m.AnnualSales, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                @Html.LabelFor(m => m.AnnualSalesCalcFile)
+                @if ((!string.IsNullOrEmpty(@Model.AnnualSalesCalcFile) && @Model.AnnualSalesCalcFile != "0"))
+                {
+                    <a href="DataEntry/Download?file=@Model.AnnualSalesCalcFile" target="_blank">@Pecuniaus.Resources.Contract.DataEntry.Download</a>
+                }
+               
+                    <input type="file" name="file" id="file" class="btn btn-success" @(isFormDisabled ? "disabled" : "") />
+               
+            </div>
+        </div>
+
+        <div class="form-group" id="dvLandlord" style="display: none">
+            @Html.HiddenFor(m => m.LandlordId)
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.CompanyName)
+                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.PhoneNumber)
+                @Html.EditorFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

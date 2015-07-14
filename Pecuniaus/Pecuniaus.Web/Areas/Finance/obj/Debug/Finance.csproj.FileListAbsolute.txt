@@ -1,0 +1,6 @@
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Finance.dll.config
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Finance.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\bin\Pecuniaus.Finance.pdb
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Finance\obj\Debug\Finance.csprojResolveAssemblyReference.cache
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Finance\obj\Debug\Pecuniaus.Finance.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.Web\Areas\Finance\obj\Debug\Pecuniaus.Finance.pdb

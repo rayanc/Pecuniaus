@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Pecuniaus.Renewal.Models.MerchantsDetail>
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = Pecuniaus.UICore.WorkflowTypes.Renewal, SearchType = "PT", ShowSf = true })
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    @Html.Partial("_HeaderRight")
+    <!-- END Right Header Navigation -->
+</header>
+
+<div id="page-content">
+    <div class="content-header">
+        <div class="header-section">
+            @Html.Partial("_RenewalWorkflowHeader")
+            <div class="row">
+                <div class="col-md-4 col-lg-6 hidden-sm">
+                    <h1>@Pecuniaus.Resources.Renewal.Renewal.merchantList<br>
+                    </h1>
+                    @Html.Partial("_PageMessage")                    
+                    @Html.ValidationSummary()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="breadcrumb breadcrumb-top">
+        <li>@Pecuniaus.Resources.Common.Home</li>
+        <li>@Pecuniaus.Resources.Renewal.Renewal.renewalWorkflow</li>
+        <li><a href="#">@Pecuniaus.Resources.Renewal.Renewal.merchantList</a></li>
+    </ul>
+    <div id="divrenewallisting">
+        @Html.Partial("_RenewalListing", Model)
+    </div>
+</div>
+    
+
+<div style="display: none">
+    <button id="btnTrigger" data-toggle="modal"></button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/scriptsbundle")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () { TablesDatatables.init(); });
+
+        function openDialog(dvsource, target, url) {
+            $(dvsource).attr('data-source-url', url);
+            $('#btnTrigger').attr('data-target', target)
+            $("#btnTrigger").click();
+        }
+
+        $(document).ready(function () {
+            //Snooze
+            
+            $("#mod_snooze_add").on('shown.bs.modal', function (e) {
+                var $model = $(this);
+                var $modBody = $model.find('.modal-body');
+                var loadURL = $modBody.attr("data-source-url");
+                $modBody.load(loadURL);
+            });
+
+            //Decline 
+            $("#mod_decline_save").on('show.bs.modal', function (e) {
+                var $modl = $(this);
+                var $modBody = $modl.find('.modal-body');
+                $modBody.html('Loading...');
+            });
+            $("#mod_decline_save").on('shown.bs.modal', function (e) {
+                var $modl = $(this);
+                var $modBody = $modl.find('.modal-body');
+                var loadURL = $modBody.attr("data-source-url");
+                $modBody.load(loadURL);
+            });
+
+            //Contract Details..
+            $("#mod_details_show").on('show.bs.modal', function (e) {
+                var $modl = $(this);
+                var $modBody = $modl.find('.modal-body');
+                $modBody.html('Loading...');
+            });
+            $("#mod_details_show").on('shown.bs.modal', function (e) {
+                var $modl = $(this);
+                var $modBody = $modl.find('.modal-body');
+                var loadURL = $modBody.attr("data-source-url");
+                $modBody.load(loadURL);
+
+            });
+        })
+
+        function CompleteContract(contractid, merchantid) {
+            if (confirm("Do you want to complete renewal?")) {
+                // location.href = @Url.Action("complete", "landing") + '?contractid=' + contractid;
+                // } return false;
+               
+                $.ajax({
+                    url: '@Url.Action("complete", "landing")',
+                    data: { contractid: contractid,merchantid: merchantid },
+                    success: function (data, textStatus, xhr) {                        
+                         //window.location.reload();
+                       window.location.href = '@Url.Action("index", "landing")';
+                    },
+                    error: function (xhr, textStatus, errorThrown) {                        
+                        $(".error-summary").html(xhr.responseText);
+                    }
+                });
+
+            }
+        }
+        
+    </script>    
+}
+
+<style>        
+        .datepicker{z-index:1151 !important;}
+        .txt_headr_tr
+    {
+        font-weight: 600 !important;
+    }
+    </style>

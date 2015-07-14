@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Pecuniaus.Collection.Models.LawyerModel>
+@using GridMvc.Html
+@if (Model != null)
+{
+    @Html.Grid(Model).Columns(columns =>
+{
+
+    columns.Add(m => m.lawyerId,true);
+    columns.Add(m => m.firstName).Titled(@Pecuniaus.Resources.Collection.Collection.LawyerFirstName);
+    columns.Add(m => m.lastName).Titled(@Pecuniaus.Resources.Collection.Collection.LawyerLastName);
+    columns.Add(m => m.companyName).Titled(@Pecuniaus.Resources.Collection.Collection.LawyerCompany);
+    columns.Add().Sanitized(false)
+           .Encoded(false)
+           .RenderValueAs(o => RenderActionLinks(o));
+}).WithPaging(5).Sortable()
+
+    @helper RenderActionLinks(Pecuniaus.Collection.Models.LawyerModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditLawyer(@m.ID);"><i class="fa fa-pencil-square-o"></i></a>
+    //if(!(@m.merchantId>0))
+    //{ 
+    @Html.Raw(Ajax.ActionLink("[Delete]", "DelLawyer", new { ID = m.ID },
+                new AjaxOptions
+                 {
+                     OnSuccess = "LawyerDeleted()",
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+    
+@*}*@
+}
+}
+<script>
+    //$(document).ready(function () {
+    //              var tbody = $("#dvLawyerList tr.grid-row");
+    //              if (tbody.children().length == 0) {
+    //                  $('#btSave').attr('disabled', 'disabled');
+    //              }
+    //              else { $('#btSave').removeAttr('disabled', 'disabled'); }
+    //          });
+</script>

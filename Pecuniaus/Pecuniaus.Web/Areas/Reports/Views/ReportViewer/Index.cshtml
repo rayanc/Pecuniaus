@@ -1,0 +1,380 @@
+﻿@model Pecuniaus.Reports.Models.ReportParametersModel
+@{
+    ViewBag.Title = "Index";
+}
+@*@using (Ajax.BeginForm())
+    {*@
+<h2>Reports</h2>
+<br />
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <select id="Reports">
+                    <option value="0">-Select-</option>
+                    <option value="1">Collection</option>
+                    <option value="2">Contracts</option>
+                    <option value="3">Contracts Declined By Avanzame</option>
+                    <option value="4">Contracts Declined By Client</option>
+                    <option value="5">Contracts Pending</option>
+                    <option value="6">Investigation</option>
+                    <option value="7">Monthly MCA</option>
+                    <option value="8">Notes</option>
+                    <option value="9">PAF Report</option>
+                    <option value="10">Prequalifications</option>
+                    <option value="11">Prequalification Declined By AvanzeMe</option>
+                    <option value="12">Prequalification Declined By Client</option>
+                    <option value="13">Prequalification Offers</option>
+                    <option value="14">Prequalifications Pending</option>
+                    <option value="15">Prequalification AcceptedOffers</option>
+                    <option value="16">Refund Done</option>
+                    <option value="17">Refund Pending</option>
+                    <option value="18">Renewals</option>
+                    <option value="19">Renewals Pending</option>
+                    <option value="20">Renewals Declined By AvanzeMe</option>
+                    <option value="21">Renewals Declined By Client</option>
+                    <option value="22">Scoring Report</option>
+                    <option value="23">WorkFlow Report</option>
+                    <option value="24">WrittenOff Contracts</option>
+                    <option value="25">WSF Report</option>
+                    <option value="26">Auditor Bad Debt Recovery Account</option>
+                    <option value="27">Auditor Collection</option>
+                    <option value="28">Auditor Contract Activity</option>
+                    <option value="29">Auditor DAR New Renewal</option>
+                    <option value="30">Auditor Processing Assets</option>
+                    <option value="31">Auditor Progress New Renewal</option>
+                    <option value="32">Author RefundsDone</option>
+                    <option value="33">Auditor RefundsEarrings</option>
+                    <option value="34">Auditor Research</option>
+                    <option value="35">Monthly Portfolio del Avance</option>
+                    <option value="36">Monthly INGRESO</option>
+                    <option value="37">Monthly Saldos de avance</option>
+                    <option value="38">Monthly DAR Pendiente</option>
+                    <option value="39">Monthly Procesamiento - Saldo del avance 2013</option>
+                    <option value="40">Monthly Procesamiento - DAR PENDIENTE</option>
+                    <option value="41">Daily DAR PENDIENTE</option>
+                    <option value="42">Daily Saldos de avance</option>
+                    <option value="43">Daily Portafolio del avance</option>
+                    <option value="44">Daily Ingreso</option>
+                    <option value="45">Daily Procesamiento - Saldo del avance 2013</option>
+                    <option value="46">Daily Procesamiento - DAR PENDIENTE</option>
+                </select>
+            </div>
+            <div class="form-group" id="dvParameters">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Date, new { style = "display: none;", id = "lblDate" })
+                    @Html.EditorFor(m => m.Date, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.LastActivityDate, new { style = "display: none;", id = "lblLastActivityDate" })
+                    @Html.EditorFor(m => m.LastActivityDate, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.StartDate, new { style = "display: none;", id = "lbStartDate" })
+                    @Html.EditorFor(m => m.StartDate, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.EndDate, new { style = "display: none;", id = "lblEndDate" })
+                    @Html.EditorFor(m => m.EndDate, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Agent, new { style = "display: none;", id = "lblAgent" })
+                    @Html.TextBoxFor(m => m.Agent, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.SalesRep, new { style = "display: none;", id = "lblSalesRep" })
+                    @Html.TextBoxFor(m => m.SalesRep, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Module, new { style = "display: none;", id = "lblModule" })
+                    @Html.TextBoxFor(m => m.Module, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.ContractStatus, new { style = "display: none;", id = "lblContractStatus" })
+                    @Html.TextBoxFor(m => m.ContractStatus, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Type, new { style = "display: none;", id = "lblType" })
+                    @Html.TextBoxFor(m => m.Type, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Percent, new { style = "display: none;", id = "lblPercent" })
+                    @Html.TextBoxFor(m => m.Percent, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Merchant, new { style = "display: none;", id = "lblMerchant" })
+                    @Html.TextBoxFor(m => m.Merchant, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.TaskStatus, new { style = "display: none;", id = "lblTaskStatus" })
+                    @Html.TextBoxFor(m => m.TaskStatus, new { style = "display: none;" })
+                </div>
+                <div class="col-md-3">
+                    <button id="btnShowReport" class="btn btn-primary" type="submit">@Pecuniaus.Resources.Common.Show</button>
+                </div>
+            </div>
+            <div id="dvRepView" style="clear: both;">
+            </div>
+        </div>
+    </div>
+</div>
+@*}*@
+
+<script>
+    $(document).ready(function () {
+
+        $("#dvParameters").hide();
+
+        $('#Reports').on('change', function () {
+            if ($(this).val() == "2") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "3") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "4") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "5") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "6") {
+                $("#lblMerchant").show();
+                $("#Merchant").show();
+            }
+            else if ($(this).val() == "7") {
+                $("#lblContractStatus").show();
+                $("#ContractStatus").show();
+                $("#lblDate").show();
+                $("#Date").show();
+                $("#lblType").show();
+                $("#Type").show();
+            }
+            else if ($(this).val() == "8") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblDate").show();
+                $("#Date").show();
+                $("#lblModule").show();
+                $("#Module").show();
+            }
+            else if ($(this).val() == "9") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "10") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "11") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "12") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "13") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "14") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "15") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "16") {
+                $("#lblDate").show();
+                $("#Date").show();
+                $("#lblFundingDate").show();
+                $("#FundingDate").show();
+            }
+            else if ($(this).val() == "18") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "19") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "20") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "21") {
+                $("#lblAgent").show();
+                $("#Agent").show();
+                $("#lblSalesRep").show();
+                $("#SalesRep").show();
+            }
+            else if ($(this).val() == "22") {
+                $("#lblDate").show();
+                $("#Date").show();
+            }
+            else if ($(this).val() == "23") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblTaskStatus").show();
+                $("#TaskStatus").show();
+            }
+            else if ($(this).val() == "24") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "25") {
+                $("#lblDate").show();
+                $("#Date").show();
+            }
+            else if ($(this).val() == "35") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "36") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "37") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "38") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "39") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+                $("#lblPercent").show();
+                $("#Percent").show();
+            }
+            else if ($(this).val() == "40") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+                $("#lblPercent").show();
+                $("#Percent").show();
+            }
+            else if ($(this).val() == "41") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "42") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "43") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "44") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+            }
+            else if ($(this).val() == "45") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+                $("#lblPercent").show();
+                $("#Percent").show();
+            }
+            else if ($(this).val() == "46") {
+                $("#lblStartDate").show();
+                $("#StartDate").show();
+                $("#lblEndDate").show();
+                $("#EndDate").show();
+                $("#lblPercent").show();
+                $("#Percent").show();
+            }
+
+            $("#dvParameters").show();
+        });
+        $('#btnShowReport').click(function () {
+            var v = $("#Reports").val();
+            var CreateDate = $("#Date").val();
+            var LastActivityDate = $("#LastActivityDate").val();
+            var StartDate = $("#StartDate").val();
+            var EndDate = $("#EndDate").val();
+            var Agent = $("#Agent").val();
+            var SalesRep = $("#SalesRep").val();
+            var Module = $("#Module").val();
+            var ContractStatus = $("#ContractStatus").val();
+            var Type = $("#Type").val();
+            var Percent = $("#Percent").val();
+            var Merchant = $("#Merchant").val();
+            var TaskStatus = $("#TaskStatus").val();
+            //CreateDate = CreateDate.replace("/", "-").replace("/", "-");
+            //alert(CreateDate);
+            //alert(v);
+            var url = '@Url.Action("ShowReport")';
+            url = url + "?id=" + v + "&CreateDate=" + CreateDate + "&LastActivityDate=" + LastActivityDate + "&StartDate=" + StartDate + "&EndDate=" + EndDate + "&Agent=" + Agent +
+                "&SalesRep=" + SalesRep + "&Module=" + Module + "&ContractStatus=" + ContractStatus + "&Type=" + Type + "&Percent=" + Percent + "&Merchant=" + Merchant
+                + "&TaskStatus=" + TaskStatus;
+            //alert(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                async: false,
+                success: function (result) {
+                    $("#dvRepView").html(result);
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,48 @@
+﻿@model Pecuniaus.MerchantProfile.Models.MPMerchantContractModel
+<div class="col-md-12">
+    <div class="panel-group">
+        <div class="block full">
+            <div class="block-title">
+                <h2>Contract Information</h2>
+            </div>
+            <div class="row top3head">
+                <div class="col-md-4">
+                    <h3>@Pecuniaus.Resources.Common.ContractID : @Html.DisplayFor(m => m.ContractId) </h3>
+                </div>
+                <div class="col-md-4"> </div>
+                <div class="col-md-4">
+                    <h3>@Pecuniaus.Resources.Common.Status : @Html.DisplayFor(m => m.ContractStatus) </h3>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2_q11" href="#faq2_q11_q1" onclick="loadContractGeneralInfo(@Html.DisplayFor(modItem => modItem.ContractId));">@Pecuniaus.Resources.Common.General</a></h4>
+                </div>
+                <div id="faq2_q11_q1" class="panel-collapse collapse in">
+                    @Html.Partial("_ContractGeneralInfo", Model)
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2_q11" href="#faq2_q11_q2" onclick="loadContractActivity(@Html.DisplayFor(modItem => modItem.ContractId));">@Pecuniaus.Resources.Common.Activity</a></h4>
+                </div>
+                <div id="faq2_q11_q2" class="panel-collapse collapse">
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2_q11" href="#faq2_q11_q3" onclick="loadContractSalesRep(@Html.DisplayFor(modItem => modItem.ContractId));">@Pecuniaus.Resources.Common.SaleRep</a></h4>
+                </div>
+                <div id="faq2_q11_q3" class="panel-collapse collapse">
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-angle-right"></i> <a class="accordion-toggle" data-toggle="collapse" data-parent="#faq2_q11" href="#faq2_q11_q4" onclick="loadContractHistory(@Html.DisplayFor(modItem => modItem.ContractId));">@Pecuniaus.Resources.Common.History</a></h4>
+                </div>
+                <div id="faq2_q11_q4" class="panel-collapse collapse">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Pecuniaus</title>
+<meta name="description" content="Pecuniaus">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/plugins.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
+</head>
+<body>
+<div id="page-container" class="sidebar-visible-lg sidebar-no-animations">
+  <!-- Main Sidebar -->
+  <div id="sidebar">
+    <div class="sidebar-scroll">
+      <!-- Sidebar Content -->
+      <div class="sidebar-content">
+        <!-- Brand -->
+        <div class="logo"><img src="img/logo.png" alt=""></div>
+        <!-- END Brand -->
+        <!-- Sidebar Navigation -->
+        <ul class="sidebar-nav">
+          <li class="sidebar-header"> <span class="sidebar-header-title">Recently Visited</span> </li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu" href="#"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-notes_2 sidebar-nav-icon"></i>Prequal Workflow</a>
+            <ul class="sidebar_infoblock">
+              <li>Merchant Name</li>
+              <li>Task Name</li>
+              <li>Business Name</li>
+              <li>Task Status</li>
+            </ul>
+          </li>
+          <li class="sidebar_darblubg"> <a class="sidebar-nav-menu open" href="#"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-stats sidebar-nav-icon"></i>Contract Workflow</a>
+            <ul class="sidebar_infoblock" style="display:block;">
+              <li>Merchant Name</li>
+              <li>Task Name</li>
+              <li>Conbtract ID</li>
+              <li>Task Status</li>
+            </ul>
+          </li>
+          <li> <a href="#"><i class="gi gi-stopwatch sidebar-nav-icon"></i>Dashboard</a> </li>
+          <li> <a href="#"><i class="gi gi-charts sidebar-nav-icon"></i>Data Entry</a></li>
+          <li> <a href="#"><i class="gi gi-share_alt sidebar-nav-icon"></i>Prequel Workflow</a> </li>
+          <li> <a href="#"><i class="gi gi-film sidebar-nav-icon"></i>Contract Workflow</a> </li>
+          <li> <a href="#"><i class="gi gi-link sidebar-nav-icon"></i>Renewal Workflow</a> </li>
+          <li> <a href="#"><i class="gi gi-link sidebar-nav-icon"></i>Merchant Screen</a> </li>
+          <li> <a href="#"><i class="gi gi-link sidebar-nav-icon"></i>Finance</a> </li>
+          <li> <a href="#"><i class="gi gi-link sidebar-nav-icon"></i>Reports</a> </li>
+          <li> <a href="#" class="active"><i class="gi gi-link sidebar-nav-icon"></i>User Security</a> </li>
+        </ul>
+        </li>
+        </ul>
+        <!-- END Sidebar Navigation -->
+      </div>
+      <!-- END Sidebar Content -->
+    </div>
+  </div>
+  <!-- END Main Sidebar -->
+  <!-- Main Container -->
+  <div id="main-container">
+    <header class="navbar navbar-default">
+      <ul class="nav navbar-nav-custom">
+        <li> <a href="javascript:void(0)" onClick="App.sidebar('toggle-sidebar');"> <i class="fa fa-bars fa-fw"></i> </a> </li>
+      </ul>
+      <ul class="nav navbar-nav-custom topsearchBox">
+        <li>
+          <input type="text" placeholder="Merchant ID/Name" class="form-control">
+        </li>
+        <li>
+          <input type="text" placeholder="Contract ID" class="form-control">
+        </li>
+        <li>
+          <select id="example-select2" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Task Name">
+            <option></option>
+            <option value="Task Name 1">Task Name 1</option>
+            <option value="Task Name 2">Task Name 2</option>
+            <option value="Task Name 3">Task Name 3</option>
+            <option value="Task Name 4">Task Name 4</option>
+            <option value="Task Name 5">Task Name 5</option>
+          </select>
+          </select>
+        </li>
+        <li>
+          <select id="example-select2" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Task Status">
+            <option></option>
+            <option value="Task Status 1">Task Status 1</option>
+            <option value="Task Status 2">Task Status 2</option>
+            <option value="Task Status 3">Task Status 3</option>
+            <option value="Task Status 4">Task Status 4</option>
+            <option value="Task Status 5">Task Status 5</option>
+          </select>
+        </li>
+        <li>
+          <button type="button" class="btn btn-sm btn-danger btn-search"><i class="fa fa-search"></i> Search</button>
+        </li>
+        <li> <a href="#modal-sf-list" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-danger enable-tooltip sflistbtn"><i class="gi gi-show_thumbnails_with_lines"></i> SF List</a></li>
+      </ul>
+      <!-- Right Header Navigation -->
+      <ul class="nav navbar-nav-custom pull-right">
+        <li> <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle"><i class="gi gi-notes_2 sidebar-nav-icon"></i> <span class="label label-white label-indicator animation-floating">4</span> </a>
+          <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li> <a href="javascript:void(0)"><i class="fa fa-plus pull-right"></i>Test Action here</a> <a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Another Action</a> <a href="javascript:void(0)"><i class="fa fa-envelope-o pull-right"></i>Another Action</a> </li>
+          </ul>
+        </li>
+        <!-- Dropdown -->
+        <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"> <img src="img/avatar.jpg" alt="avatar"> <i class="fa fa-angle-down"></i> </a>
+          <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li class="dropdown-header text-center">Account</li>
+            <li> <a href="page_ready_lock_screen.html"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a> <a href="login.html"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a> </li>
+          </ul>
+        </li>
+        <!-- END Dropdown -->
+      </ul>
+      <!-- END Right Header Navigation -->
+    </header>
+    <!-- END Header -->
+    <!-- Page content -->
+    <div id="page-content">
+      <div class="content-header">
+        <div class="header-section">
+          <div class="row header-section circles-header-section">
+            <div class="circles">
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Document<br>
+                      Scanning</a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Verification <br>
+                      Call</a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Data <br>
+                      Entry</a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block active_circle">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Verification <br>
+                      Task</a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Review <br>
+                      Task </a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Contract</a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Funding </a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="circle_block">
+                <div>
+                  <div>
+                    <div>
+                      <!-- BEG Content -->
+                      <a href="#">Final<br>
+                      Verification </a>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-lg-6 hidden-sm">
+              <h1>Verification Call</h1>
+              
+            </div>
+            <div class="row">
+          <div class="pull-right">
+            <button class="btn btn-warning" type="button">Document</button>
+            <button class="btn btn-success" type="button">Complete</button>
+            <button class="btn btn-primary" type="button">Save</button>
+            <button class="btn btn-danger" type="button">Decline</button>
+          </div>
+        </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <ul class="breadcrumb breadcrumb-top">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Contract Workflow</a></li>
+        <li>Verification Call</li>
+       
+      </ul>
+      
+      <!-- All Boxes Content Start -->
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Widget -->
+          <div class="widget">
+            <div class="widget-extra blue_bg">
+              <div class="widget-options">
+                <div class="btn-group btn-group-xs notesmrgn"> <a href="#modal-searchpopup" data-toggle="modal" data-placement="bottom" class="btn btn-sm btn-default enable-tooltip"> <i class="fa fa-pencil"></i></a> <a title="" data-toggle="tooltip" class="btn btn-default" href="javascript:void(0)" data-original-title="Quick Settings"><i class="fa fa-cog"></i></a> </div>
+              </div>
+              <h3 class="widget-content-light">Merchant <strong>Information</strong></h3>
+            </div>
+            <div class="widget-simple">
+              <div class="col-md-6">
+                <address>
+                <strong>Merchant Name: </strong> Robert Ryan<br>
+                <strong>Legal Name:</strong> Ryan <br>
+                <strong>Assigned Sales Rep:</strong> 20<br>
+                </address>
+              </div>
+              <div class="col-md-6">
+                <address>
+                <strong>Business Name: </strong> Testing<br>
+                <strong>RNC:</strong> Close <br>
+                <strong>Contract ID:</strong> Close <br>
+                </address>
+              </div>
+            </div>
+          </div>
+          <!-- END Widget -->
+        </div>
+        <div class="col-md-6">
+          <!-- Widget -->
+          <div class="widget">
+            <div class="widget-extra green_bg">
+              <h3 class="widget-content-light">Owner <strong>Information</strong></h3>
+            </div>
+            <div class="widget-simple">
+              <div class="col-md-6">
+                <address>
+                <strong>Owner Name: </strong> Robert Ryan<br>
+                <strong>Address:</strong> 00933083 <br>
+                <br>
+                </address>
+              </div>
+              <div class="col-md-6">
+                <address>
+                <strong>SSN: </strong> Testing<br>
+                <strong>Phone Number:</strong> Close <br>
+                </address>
+              </div>
+            </div>
+          </div>
+          <!-- END Widget -->
+        </div>
+      </div>
+      <!-- Datatables Content -->
+      <div class="row">
+        <div class="col-md-12">
+          <form action="" method="post" class="form-horizontal ">
+            <div class="block full">
+              <div class="block-title">
+                <div class="row">
+            <div class="col-md-4 col-lg-6 hidden-sm">
+              <h1>Verification Script<br>
+                <small>Please specify following information for verification</small></h1>
+            </div>
+          </div>
+              </div>
+             
+              <div class="row form-group">
+                <div class=" col-md-6"><strong>1 &nbsp;</strong>Please specify your Legal name</div>
+                <div class=" col-md-6"> <input type="text" id="" name="" class="form-control" placeholder="Name"></div>
+                 
+              </div>
+              <div class="row form-group">
+                <div class="col-md-6"><strong>2 &nbsp;</strong> Please specify your Business name</div>
+                <div class="col-md-6"> <input type="text" id="" name="" class="form-control" placeholder="text comes here"></div>
+              </div>
+              <div class="row form-group">
+                <div class=" col-md-6"><strong>3 &nbsp;</strong> Please specify Social Security Number</div>
+                <div class="col-md-6"> <input type="text" id="" name="" class="form-control" placeholder="text comes here"></div>
+              </div>
+              <div class="row form-group">
+                <div class=" col-md-6"><strong>4 &nbsp;</strong> Please specify Anuual Sales</div>
+                <div class="col-md-6"> <input type="text" id="" name="" class="form-control" placeholder="text comes here"></div>
+              </div>
+               <div class="row form-group">
+                <div class=" col-md-6"><strong>5 &nbsp;</strong>  What City you born in</div>
+                <div class="col-md-6"> <input type="text" id="" name="" class="form-control" placeholder="Yes or No"></div>
+              </div>
+                <div class="row form-group">
+                <div class=" col-md-6"><strong>6 &nbsp;</strong> What is Color of your First Car</div>
+                <div class="col-md-6"> <input type="text" id="" name="" class="form-control" placeholder="text comes here"></div>
+              </div>
+              
+             
+           
+              
+              
+  
+              <div class="row form-group">
+                <div class="col-md-6">8 Upload verification call*:<br>
+                  Recorded call:</div>
+                <div class=" col-md-6">
+                  <div class="pull-left">
+                    <button class="btn btn-primary" type="button">Browse</button>
+                    <button class="btn  btn-success" type="button">Save Document</button>
+                    <button class="btn btn-danger" type="button">Cancel</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div style=" background:#ccc; height:100px; padding:20px; margin:15px; width: 97%;" class="col-md-12"> Recorded call mp3/wave </div>
+              </div>
+            
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- END Datatables Content -->
+      <!-- All Boxes Content Start -->
+    </div>
+    <!-- END Page Content -->
+    <!-- Footer -->
+    <footer class="clearfix">
+      <div class="pull-left footerlinks"> <a href="#" title="About us">About us</a> <a href="#" class="Support">Support</a><a href="#" class="Privacy and Security">Privacy &amp; Security</a> <a href="#" title="Terms of Use">Terms of Use</a> <a href="#" title="How it works">How it works </a></div>
+      <div class="pull-right"> 2014  &copy; Pecuniaus </div>
+    </footer>
+    <!-- END Footer -->
+  </div>
+  <!-- END Main Container -->
+</div>
+<!-- Pop Search Start -->
+<div id="modal-searchpopup" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="row form-group">
+            <form class="form-horizontal">
+              <div class="col-sm-7">
+                <label for="example-email-input" class="col-md-2 control-label">Notes</label>
+                <div class="col-md-10">
+                  <div class="input-group"> <span class="input-group-btn">
+                    <button class="btn no_searrchbgcolor" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                    <input type="text" placeholder="Enter the search creteria here" class="form-control" name="example-input1-group2" id="example-input1-group2">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-sm btn-success pop_addbtn_margn" type="submit"><i class="hi hi-check"></i> Add Note</button>
+              </div>
+              <div class="col-sm-3">
+                <select size="1" style="float:left" class="form-control" name="example-select" id="example-select">
+                  <option value="0">Filter By</option>
+                  <option value="1">Option #1</option>
+                  <option value="2">Option #2</option>
+                  <option value="3">Option #3</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-vcenter table-bordered table-hover" id="general-table">
+              <thead>
+                <tr class="active">
+                  <th>Notes</th>
+                  <th>Dates</th>
+                  <th>User</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Notes 1</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+                <tr>
+                  <td>Notes 2</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+                <tr>
+                  <td>Notes 3</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+                <tr>
+                  <td>Notes 4</td>
+                  <td>05/08/2014 &nbsp; 2:56pm</td>
+                  <td>User 1</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3"><div class="btn-group btn-group-sm"> Results: 50 Records </div>
+                    <div class="btn-group btn-group-sm  pull-right">
+                      <select size="1" class="form-control" name="example-select" id="example-select">
+                        <option value="0">Please select</option>
+                        <option value="1">Option #1</option>
+                        <option value="2">Option #2</option>
+                        <option value="3">Option #3</option>
+                      </select>
+                    </div></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="form-group form-actions">
+            <div class="col-xs-12 text-right">
+              <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button">Close</button>
+            </div>
+          </div>
+          <!-- END Table Styles Content -->
+        </div>
+      </div>
+      <!-- END Modal Body -->
+    </div>
+  </div>
+</div>
+<!-- Pop Search End-->
+<!-- SF Search Start -->
+<div id="modal-sf-list" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="">
+          <div class="block-options pull-right">
+            <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button"><i class="hi fa-1x hi-remove"></i></button>
+          </div>
+          <h2><strong>Merchant</strong> Listing</h2>
+        </div>
+      </div>
+      <!-- END Modal Header -->
+      <!-- Modal Body -->
+      <div class="modal-body popup_row">
+        <div class="row popup_rowbg popup_hover">
+          <div class="col-md-6">
+            <address>
+            <strong>Merchant Name: </strong> Robert Ryan<br>
+            <strong>Merchant ID:</strong> 00933083 <br>
+            <strong>Sales Rep:</strong> 20<br>
+            </address>
+          </div>
+          <div class="col-md-6">
+            <address>
+            <strong>Task Name: </strong> Testing<br>
+            <strong>Task Status :</strong> Close <br>
+            </address>
+          </div>
+        </div>
+        <div class="row popup_hover">
+          <div class="col-md-6">
+            <address>
+            <strong>Merchant Name: </strong> Robert Ryan<br>
+            <strong>Merchant ID:</strong> 00933083 <br>
+            <strong>Sales Rep:</strong> 20<br>
+            </address>
+          </div>
+          <div class="col-md-6">
+            <address>
+            <strong>Task Name: </strong> Testing<br>
+            <strong>Task Status :</strong> Close <br>
+            </address>
+          </div>
+        </div>
+        <div class="row popup_rowbg popup_hover">
+          <div class="col-md-6">
+            <address>
+            <strong>Merchant Name: </strong> Robert Ryan<br>
+            <strong>Merchant ID:</strong> 00933083 <br>
+            <strong>Sales Rep:</strong> 20<br>
+            </address>
+          </div>
+          <div class="col-md-6">
+            <address>
+            <strong>Task Name: </strong> Testing<br>
+            <strong>Task Status :</strong> Close <br>
+            </address>
+          </div>
+        </div>
+      </div>
+      <!-- END Modal Body -->
+    </div>
+  </div>
+</div>
+<!-- SF Search End-->
+<!-- END Page Container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/app.js"></script>
+<script src="js/pages/uiProgress.js"></script>
+<script>$(function(){ UiProgress.init(); });</script>
+</body>
+</html>

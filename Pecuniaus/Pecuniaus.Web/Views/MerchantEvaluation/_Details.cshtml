@@ -1,0 +1,24 @@
+﻿@model Pecuniaus.Web.Models.ServiceResponse
+<div class="row">
+    <div class="col-md-12">
+        <div class="block-title">
+            <h2><strong>Credit</strong> Reports</h2>
+        </div>
+        @using (@Html.BeginForm("CreditDetails", "MerchantEvaluation"))
+        {
+             <div style="margin: 20px">
+                <div style="width: 200px; font-size: small">
+                @Html.LabelFor(model => Model.C.DCR.Individuo.Father)
+                </div>
+                @Html.TextBoxFor(model => Model.C.DCR.Individuo.Father, new { @class = "form-control", @placeholder = "", @rows = "5" })
+                
+            </div>
+
+            <div style="margin: 20px">
+                <button class="btn btn-sm btn-primary" name="submit" value="Submit">Submit</button>
+                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button" onclick="closeDialog();">Close</button>
+            </div>       
+        }
+    </div>
+</div>
+

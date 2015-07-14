@@ -1,0 +1,40 @@
+﻿@model IEnumerable <Pecuniaus.Web.Models.CreditVolumesModel>
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQMonthlyCreditCardVolumes);}
+
+    @using GridMvc.Html
+@Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(m => m.creditcardActivityId,true);
+        columns.Add(m => m.ProcessorName).Titled("Processor Name");
+        columns.Add(m => m.processorRNC).Titled("Processor Number");
+        columns.Add(m => m.year).Titled("Year");
+        columns.Add(m => m.month,true);
+        columns.Add(m => m.monthname).Titled("Month");
+        columns.Add(m => m.totalTickets).Titled("Total Tickets");
+        columns.Add(m => m.totalAmount).Titled("Amount").Format("{0:C}");
+        columns.Add(m => m.isActive,true);
+        if (!isFormDisabled) { 
+        columns.Add()
+               .Sanitized(false)
+               .Encoded(false)
+               .RenderValueAs(o => RenderActionLinks(o));
+        }
+    }).WithPaging(10).Sortable()
+
+    @helper RenderActionLinks(Pecuniaus.Web.Models.CreditVolumesModel m)
+{
+    <a href="Javascript:void(0);" title="Edit" onclick="EditCreditVolumes(@m.creditcardActivityId);"><i class="fa fa-pencil-square-o"></i></a>
+    @Html.Raw(Ajax.ActionLink("[Delete]",
+                         "DeleteCreditVolume",
+                           new { ID = m.creditcardActivityId },
+                new AjaxOptions
+                 {
+                     OnSuccess = "VolumesDeleted()",
+                     HttpMethod = "POST"
+                 }, new { title = "Delete" }).ToHtmlString().Replace("[Delete]", "<i class='fa fa-trash-o'></i>"))
+}
+
+
+
+
+

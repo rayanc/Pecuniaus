@@ -1,0 +1,51 @@
+﻿@model Pecuniaus.Renewal.Models.DeclineModel
+
+<div class="row">
+  <div class="col-md-12">
+        @*  <div class="block-title">
+            <h2><strong>Decline</strong> Contract</h2>
+        </div>*@
+
+        @*  @using (@Html.BeginForm("Decline", "Landing", FormMethod.Post))*@
+        @using (Ajax.BeginForm("Decline", "landing", new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvmodaldecline",
+       OnSuccess = "success(data);",
+   }, new { @class = "form-horizontal", role = "form" }))
+        {
+                   
+            @Html.Partial("_PageMessage")
+            @Html.ValidationSummary()    
+        
+            <div style="margin: 20px">
+                <div style="width: 200px; font-size: small">
+                    @Html.LabelFor(m => Model.DeclineReasons)
+                </div>
+
+                @Html.DropDownListFor(m => Model.DeclineId, new SelectList(Model.DeclineReasons, "keyId", "description"), new { @class = "form-control", @data_placeholder = "-- Select--" })
+            </div>
+
+            <div style="margin: 20px">
+                <div style="width: 200px; font-size: small">
+                    @Html.LabelFor(model => Model.DeclineNotes)
+                </div>
+                @Html.TextAreaFor(model => Model.DeclineNotes, new { @class = "form-control", @placeholder = "", @rows = "3" })
+                @Html.HiddenFor(model => Model.ContractID)
+            </div>
+            
+            <div style="margin: 0;float:right">
+                <button class="btn btn-sm btn-primary" type="submit" onclick="$('#dvmodaldecline').dialog('close');">Ok</button>
+                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button" onclick="closeDialog();">Close</button>
+            </div>       
+        }
+   </div>
+</div>
+
+<script>
+    function success(data) {
+        $('#mod_decline_save').modal('hide');
+        window.location.reload();
+    }
+</script>

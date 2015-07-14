@@ -1,0 +1,205 @@
+﻿@model Pecuniaus.Web.Models.RetrieveMerchantInformationModel
+@{var isFormDisabled = Pecuniaus.UICore.SessionHelper.IsFormDisabled(Pecuniaus.UICore.TaskTypes.PQMerchantEvaluation);}
+@{
+    ViewBag.Title = "Pecuniaus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<header class="navbar navbar-default">
+    <!-- Left Header Navigation -->
+    <ul class="nav navbar-nav-custom">
+        <li><a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');"><i class="fa fa-bars fa-fw"></i></a></li>
+
+    </ul>
+    @Html.Action("Index", "Search", new { area = "Common", WorkFlowID = 1, SearchType = "PT", ShowSf = false })
+
+    <!-- END Left Header Navigation -->
+    <!-- Right Header Navigation -->
+    <ul class="nav navbar-nav-custom pull-right">
+        <li>
+            <a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle"><i class="gi gi-notes_2 sidebar-nav-icon"></i><span class="label label-white label-indicator animation-floating">4</span> </a>
+            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                <li><a href="javascript:void(0)"><i class="fa fa-plus pull-right"></i>Test Action here</a> <a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Another Action</a> <a href="javascript:void(0)"><i class="fa fa-envelope-o pull-right"></i>Another Action</a> </li>
+            </ul>
+        </li>
+        <!-- Dropdown -->
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="~/images/avatar.jpg" alt="avatar">
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                <li class="dropdown-header text-center">Account</li>
+                <li><a href="page_ready_lock_screen.html"><i class="fa fa-lock fa-fw pull-right"></i>Lock Account</a> <a href="login.html"><i class="fa fa-ban fa-fw pull-right"></i>Logout</a> </li>
+            </ul>
+        </li>
+        <!-- END Dropdown -->
+    </ul>
+    <!-- END Right Header Navigation -->
+</header>
+<!-- Page content -->
+<div id="page-content">
+    @using (Html.BeginForm("Index", "MerchantEvaluation", FormMethod.Post, new { @class = "a", role = "form", }))
+    {
+        <div class="content-header">
+            <div class="header-section">
+                @Html.Partial("_MerchantWorkflowHeader")
+                <div class="row">
+                    <div class="col-md-4 col-lg-6 hidden-sm">
+                        <h1>
+                            <strong>@Pecuniaus.Resources.Common.MerchatEvaluation </strong>
+                            <br>
+                        </h1>
+
+                        @Html.Partial("_PageMessage")
+                        @if (!string.IsNullOrEmpty(@ViewBag.SuccessMsg))
+                        {
+                            <div class="alert alert-success" role="alert">@ViewBag.SuccessMsg</div>
+                        }
+                        @Html.ValidationSummary()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="breadcrumb breadcrumb-top">
+        @Html.Partial("_PrequalbreadcrumbBase")    <li>@Pecuniaus.Resources.Common.MerchatEvaluation</li>
+        </ul>
+
+        <div class="content-header tophdrbuttons">
+            <div class="row">
+                <div class="pull-right">
+                    <a href="@Url.Action("ScanDoc", "DocumentScan" , new {area="Contract" })" class="btn btn-warning" target="_blank" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Document
+                    </a>
+                    <a href="#mod-kickback" class="btn btn-warning" data-toggle="modal" data-target="#mod-kickback" @(isFormDisabled ? "disabled" : "")>
+                        Kickback
+                    </a>
+                    <input class="btn btn-success" type="submit" name="submit" value="@Pecuniaus.Resources.Common.Complete" @(isFormDisabled ? "disabled" : "") />
+                    <input class="btn btn-primary" type="submit" name="submit" value="@Pecuniaus.Resources.Common.Save" @(isFormDisabled ? "disabled" : "") />
+                    <a href="#mod_decline" id="btnDecline" class="btn btn-danger" data-toggle="modal" data-target="#mod_decline" @(isFormDisabled ? "disabled" : "")>
+                        @Pecuniaus.Resources.Common.Decline
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- All Boxes Content Start -->
+        { Html.RenderAction("Info", "Merchant", new { area = "Common", merchantid = Pecuniaus.UICore.SessionHelper.CurrentMerchantID }); }
+
+        <!-- Datatables Content -->
+        <div>
+            @Html.HiddenFor(m => m.score)
+            @Html.HiddenFor(m => m.mccv)
+            @Html.HiddenFor(m => m.finalletter)
+            @Html.HiddenFor(m => m.roundedscore)
+            @Html.HiddenFor(m => m.rawData)
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block full">
+                <div class="block">
+                    <div class="block-title">
+                        <h2><strong>Scores </strong></h2>
+                    </div>
+                    <button class="btn btn-primary" type="button" id="btngeneratescore" @(isFormDisabled ? "disabled" : "")>Genrate Score</button>
+                    <br />
+                    <br />
+                    Merchant Score:&nbsp;<div id="divscore">
+                        <b>@Model.score</b>
+                    </div>
+                    Final Letter:&nbsp;<div id="divfinalletter">
+                        <b>@Model.finalletter</b>                            
+                    </div>
+                  @*  <a href="@Model.rawData" target="_blank">Scoring Data</a>*@ 
+                    <a href="@Url.Action("GetScoringData")" target="_blank">Scoring Data</a>
+<br />
+                    Avreage MCCV&nbsp;<div>
+                        @Html.DisplayFor(m => m.mccv)
+                    </div>
+                    <br />
+                    <br />
+                    @{Html.RenderAction("CreditPull");}
+                    <br />
+                    <br />
+                    <div id="divcreditreport" class="form-group clearfix" data-source-url="@Url.Action("ListCreditReport")">
+                        @{Html.RenderAction("ListCreditReport");}
+                    </div>
+                    <br />
+                    <br />
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div style="display: none">
+        <button id="btnTrigger" data-toggle="modal"></button>
+    </div>
+    @Html.Action("Popup", "Kickback", new { area = "Prequel", TaskTypeId = Pecuniaus.UICore.TaskTypes.PQMerchantEvaluation })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/bundles/scriptsbundle")
+
+    <script type="text/javascript">
+        $(function () { TablesDatatables.init(); });
+
+        function openDialog(dvsource, target, url) {
+            $(dvsource).attr('data-source-url', url);
+            $('#btnTrigger').attr('data-target', target)
+            $("#btnTrigger").click();
+        }
+
+        $(document).ready(function () {
+            ajaxifyGridMvc("#divcreditreport");
+            $("#btngeneratescore").click(function () {
+                if ($('#score').val() != '') {
+                    var retVal = confirm("Do you wish to get new score?");
+                    if (retVal == true) {
+                        getscore();
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    getscore();
+                }
+
+            })
+        });
+        function getscore() {
+            $.ajax({
+                type: "GET",
+                url: "/MerchantEvaluation/GetScore",
+                dataType: "json",
+                success: function (data) {
+                    if (data.Error == 'NoPull')
+                    { alert('Please pull credit report before scoring.'); }
+                    else{
+                        $('#divscore').html('');
+                        $('#divfinalletter').html('');
+                        $('#score').val(data.score);
+                        $('#finalletter').val(data.finalletter);
+                        $('#roundedscore').val(data.roundedscore);
+                        $('<b>' + data.score + '</b>').appendTo('#divscore');
+                        $('<b>' + data.finalletter + '</b>').appendTo('#divfinalletter');
+                    }
+                },
+                error: function (ex) {
+                    alert(ex);
+                }
+            });
+            return false;
+        }
+
+       
+    </script>
+
+}

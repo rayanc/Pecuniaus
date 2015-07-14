@@ -1,0 +1,65 @@
+﻿@model Pecuniaus.Renewal.Models.SnoozeModel
+<div class="row">
+    <div class="col-md-12">
+
+        @* <div class="block-title">
+            <h2><strong>Snooze</strong> Contract</h2>
+        </div>*@
+        @*@using (@Html.BeginForm("updateSnooze", "landing", FormMethod.Post))*@
+        @using (Ajax.BeginForm("updateSnooze", "landing", new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "dvmodalAddsnooze",
+            OnSuccess = "successSnooze();",
+        }, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div id="errors">
+                @Html.Partial("_PageMessage")
+                @Html.ValidationSummary()
+            </div>
+            <div>
+                <div style="width: 200px; font-size: small">
+                    @Html.LabelFor(m => Model.snoozeDate)
+                </div>
+                <div>
+                @Html.TextBoxFor(m => Model.snoozeDate, new { @class = "form-control input-datepicker-close", @placeholder = "mm/dd/yy" })
+                @*@Html.EditorFor(m => Model.snoozeDate)*@</div>
+            </div>
+            <div style="margin-top: 20px">
+                <div style="width: 200px; font-size: small">
+                    @Html.LabelFor(m => Model.snoozePercent)
+                </div>
+                <div>
+                    <div class="input-group">
+                        <span class="input-group-addon">@Pecuniaus.Resources.Common.CurrencySymbol</span>
+                        @Html.TextBoxFor(model => Model.snoozePercent, new { @class = "form-control", @placeholder = "Enter text.." })
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; float: right">
+                @Html.HiddenFor(m => Model.contractID)
+                <button class="btn btn-sm btn-primary" value="Submit">Ok</button>
+                <button data-dismiss="modal" class="btn btn-sm btn-danger" type="button" onclick="closeDialog();">Close</button>
+            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    common.EnterNumberOnly("paidpercent");
+                    $('#paidpercent').val('');
+                    $('#snoozeDate').val('');
+                });
+
+
+            </script>
+        }
+    </div>
+</div>
+
+<script>
+    function successSnooze() {
+        $('#mod_snooze_add').modal('hide');
+        window.location.reload();
+    }
+</script>
+

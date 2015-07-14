@@ -1,0 +1,10 @@
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\libmp3lame.32.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\libmp3lame.64.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\Pecuniaus.AudioConvertor.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\Pecuniaus.AudioConvertor.pdb
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\NAudio.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\NAudio.Lame.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\bin\Debug\NAudio.xml
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\obj\Debug\Pecuniaus.AudioConvertor.csprojResolveAssemblyReference.cache
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\obj\Debug\Pecuniaus.AudioConvertor.dll
+D:\Harish\Harish\MCA\trunk\Pecuniaus\Pecuniaus.AudioConvertor\obj\Debug\Pecuniaus.AudioConvertor.pdb

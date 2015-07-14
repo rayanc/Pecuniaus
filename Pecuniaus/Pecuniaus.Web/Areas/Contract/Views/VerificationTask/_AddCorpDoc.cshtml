@@ -1,0 +1,154 @@
+﻿@model Pecuniaus.Models.Contract.OwnerModel
+    @{var isFormDisabled = Model.IsDisabled;}
+    <div id="dvNewOwner">
+    @using (Ajax.BeginForm(Model.IsUpdate ? "UpdateCorpDoc" : "AddCorpDoc", null, new AjaxOptions
+   {
+       HttpMethod = "POST",
+       InsertionMode = InsertionMode.Replace,
+       UpdateTargetId = "dvNewOwner",
+       OnSuccess = "CorpOwnerUpdated()",
+   }, new { @class = "form-horizontal form-bordered", role = "form" }))
+    {
+            @Html.ValidationSummary()
+            @Html.HiddenFor(m => m.addressId);
+            @Html.HiddenFor(m => m.contactId);
+            @Html.HiddenFor(m => m.IsUpdate)
+            @Html.HiddenFor(m => m.OwnerId)
+            @Html.HiddenFor(m => m.Id)
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.OwnerFirstName)
+                    @Html.TextBoxFor(m => m.OwnerFirstName, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.OwnerLastName)
+                    @Html.TextBoxFor(m => m.OwnerLastName, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.PassportNumber)
+                    @Html.TextBoxFor(m => m.PassportNumber, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    <label></label>
+                    <div class="pull-right">
+                        @if (Model.IsUpdate)
+                    {  <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Update" /> <button class="btn btn-primary" onclick="CECorpOwner()">@Pecuniaus.Resources.Common.Cancel</button>
+                    }
+                    else
+                    { <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.AddNew" @(isFormDisabled ? "disabled" : "") />
+                    }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.OwnerDOB)
+                    @Html.EditorFor(m => m.OwnerDOB)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Phone1)
+                    @Html.EditorFor(m => m.Phone1)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.CellNumber)
+                    @Html.EditorFor(m => m.CellNumber)
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Authorized)
+                    @Html.CheckBoxFor(m => m.Authorized, new { @class = "form-control", @style = "width:auto;" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.AddressLine1)
+                    @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.AddressLine2)
+                    @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.City)
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.StateID)
+                    @Html.DropDownListFor(m => m.StateID, Model.States, "", new { @class = "form-control", @style = "width: 100%;", })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Zip)
+                    @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter text.." })
+                </div>
+            </div>
+    }
+    </div>
+
+    @*@model Pecuniaus.Models.Contract.OwnerCorpModel
+        <div id="dvNewOwner">
+            @using (Ajax.BeginForm(Model.IsUpdate ? "UpdateCorpDoc" : "AddCorpDoc", null, new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "dvNewOwner",
+                    OnSuccess = "OwnerUpdated()",
+                }, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.ValidationSummary()
+
+                @Html.HiddenFor(m => m.IsUpdate)
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.HiddenFor(m => m.Id, new { @id = "Ownerid" })
+                        @Html.HiddenFor(m => m.OwnerId)
+                        @Html.HiddenFor(m => m.addressId)
+                        @Html.HiddenFor(m => m.contactId)
+                        @Html.LabelFor(m => m.OwnerName)
+                        @Html.TextBoxFor(m => m.OwnerName, new { @class = "form-control", @placeholder = "Enter text..", @id = "txtOwnerName" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.OwnerLastName)
+                        @Html.TextBoxFor(m => m.OwnerLastName, new { @class = "form-control", @placeholder = "Enter text..", @id = "txtOwnerLastName" })
+                    </div>
+                    <div style="padding: 20px 0 0" class="col-md-3">
+                        <small>
+                            @Html.LabelFor(m => m.IsAuthorized)
+                        </small>
+                        @Html.CheckBoxFor(m => m.IsAuthorized, new { @id = "chkIsAuthorized" })
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.PassportNbr)
+                        @Html.TextBoxFor(m => m.PassportNbr, new { @class = "form-control", @placeholder = "Enter text..", @id = "txtPassportNbr" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Telephone)
+                        @Html.EditorFor(m => m.Telephone)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label></label>
+                        <div class="pull-right">
+                            @if (Model.IsUpdate)
+                            {  <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.Update" /> <button class="btn btn-primary" onclick="CECorpOwner()">@Pecuniaus.Resources.Common.Cancel</button>
+                            }
+                            else
+                            { <input type="submit" class="btn btn-primary" value="@Pecuniaus.Resources.Common.AddNew" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>*@
